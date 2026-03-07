@@ -86,6 +86,12 @@ async function verifyClerkJWT(token, publishableKey) {
 
 export async function onRequest(context) {
   const { request, env, next, data } = context;
+  const url = new URL(request.url);
+
+  // Only enforce auth on /api/ routes — let static assets and SPA pass through
+  if (!url.pathname.startsWith('/api/')) {
+    return next();
+  }
 
   if (request.method === 'OPTIONS') {
     return new Response(null, {
