@@ -1,0 +1,187 @@
+import { useState } from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useUser, useClerk } from '@clerk/clerk-react';
+import clsx from 'clsx';
+
+const adminNav = [
+  { to: '/admin/dashboard', label: 'Dashboard', icon: HomeIcon },
+  { to: '/admin/staff', label: 'Staff', icon: UsersIcon },
+  { to: '/admin/grants', label: 'Grants', icon: BriefcaseIcon },
+  { to: '/admin/projects', label: 'Projects', icon: FolderIcon },
+  { to: '/admin/tasks', label: 'Tasks', icon: CheckSquareIcon },
+  { to: '/admin/assignments', label: 'Assignments', icon: LinkIcon },
+  { to: '/admin/workload', label: 'Workload', icon: ChartIcon },
+  { to: '/admin/timesheets', label: 'Approvals', icon: ClipboardIcon },
+];
+
+const staffNav = [
+  { to: '/timesheet', label: 'My Timesheet', icon: ClockIcon },
+  { to: '/my-assignments', label: 'My Assignments', icon: CheckSquareIcon },
+  { to: '/my-profile', label: 'My Profile', icon: UserIcon },
+];
+
+export default function AppLayout() {
+  const { user } = useUser();
+  const { signOut } = useClerk();
+  const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const role = user?.publicMetadata?.role || 'staff';
+  const navItems = role === 'admin' ? adminNav : staffNav;
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/sign-in');
+  };
+
+  return (
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-20 bg-black/40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={clsx(
+          'fixed inset-y-0 left-0 z-30 w-56 bg-brand-900 flex flex-col transition-transform duration-200 lg:static lg:translate-x-0',
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        )}
+      >
+        {/* Logo */}
+        <div className="flex items-center gap-2 px-4 h-14 border-b border-brand-800">
+          <span className="text-white font-bold text-lg tracking-tight">CHAMP PM</span>
+          {role === 'admin' && (
+            <span className="text-xs bg-brand-600 text-white px-1.5 py-0.5 rounded">Admin</span>
+          )}
+        </div>
+
+        {/* Nav */}
+        <nav className="flex-1 overflow-y-auto py-4 px-2">
+          {navItems.map(({ to, label, icon: Icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              onClick={() => setSidebarOpen(false)}
+              className={({ isActive }) =>
+                clsx(
+                  'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium mb-0.5 transition-colors',
+                  isActive
+                    ? 'bg-brand-700 text-white'
+                    : 'text-brand-200 hover:bg-brand-800 hover:text-white'
+                )
+              }
+            >
+              <Icon className="w-4 h-4 shrink-0" />
+              {label}
+            </NavLink>
+          ))}
+
+          {/* Admin also gets staff links */}
+          {role === 'admin' && (
+            <>
+              <div className="my-3 border-t border-brand-800" />
+              {staffNav.map(({ to, label, icon: Icon }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  onClick={() => setSidebarOpen(false)}
+                  className={({ isActive }) =>
+                    clsx(
+                      'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium mb-0.5 transition-colors',
+                      isActive
+                        ? 'bg-brand-700 text-white'
+                        : 'text-brand-200 hover:bg-brand-800 hover:text-white'
+                    )
+                  }
+                >
+                  <Icon className="w-4 h-4 shrink-0" />
+                  {label}
+                </NavLink>
+              ))}
+            </>
+          )}
+        </nav>
+
+        {/* User footer */}
+        <div className="px-3 py-3 border-t border-brand-800">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-7 h-7 rounded-full bg-brand-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
+              {user?.firstName?.[0] || user?.emailAddresses?.[0]?.emailAddress?.[0]?.toUpperCase() || '?'}
+            </div>
+            <div className="min-w-0">
+              <p className="text-white text-xs font-medium truncate">
+                {user?.firstName} {user?.lastName}
+              </p>
+              <p className="text-brand-300 text-xs truncate">
+                {user?.emailAddresses?.[0]?.emailAddress}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={handleSignOut}
+            className="w-full text-left text-brand-300 hover:text-white text-xs px-2 py-1.5 rounded hover:bg-brand-800 transition-colors"
+          >
+            Sign out
+          </button>
+        </div>
+      </aside>
+
+      {/* Main content */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* Top bar */}
+        <header className="h-14 bg-white border-b border-gray-200 flex items-center px-4 gap-3 shrink-0">
+          <button
+            className="lg:hidden p-1.5 rounded text-gray-500 hover:bg-gray-100"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <MenuIcon className="w-5 h-5" />
+          </button>
+          <div className="flex-1" />
+        </header>
+
+        {/* Page content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+}
+
+// Inline SVG icons
+function HomeIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>;
+}
+function UsersIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>;
+}
+function BriefcaseIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>;
+}
+function FolderIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>;
+}
+function CheckSquareIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>;
+}
+function LinkIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>;
+}
+function ChartIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>;
+}
+function ClipboardIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>;
+}
+function ClockIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
+}
+function UserIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>;
+}
+function MenuIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>;
+}
