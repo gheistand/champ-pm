@@ -116,10 +116,7 @@ export async function onRequest(context) {
   try {
     const payload = await verifyClerkJWT(token, env.CLERK_PUBLISHABLE_KEY);
     data.userId = payload.sub;
-    data.role =
-      payload.public_metadata?.role ||
-      payload.publicMetadata?.role ||
-      'staff';
+    data.role = payload.role || payload.public_metadata?.role || payload.publicMetadata?.role || 'staff';
     data.sessionId = payload.sid;
   } catch (err) {
     return new Response(
