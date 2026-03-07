@@ -161,12 +161,18 @@ total_cost = mtdc + fa_cost
 ```
 
 ### Budget Burndown
-The budget field on tasks/projects/grants = FEMA-allocated budget (what FEMA pays).
+The `budget` field on tasks/projects/grants = FEMA-allocated budget. **FEMA pays both direct costs (salary + fringe) AND F&A overhead** — the allocation already includes both. Total cost burned against the budget is therefore:
+
 ```
-budget_remaining = fema_budget - (loaded_personnel_cost + fa_cost)
+total_cost = loaded_personnel_cost + fa_cost
+           = (hours x hourly_loaded_rate) + (loaded_personnel_cost x grant_fa_rate)
+
+budget_remaining = fema_budget - total_cost
 burn_rate = total_cost_to_date / days_elapsed
 projected_final_cost = total_cost_to_date + (burn_rate x days_remaining)
 ```
+
+**GRF (General Revenue Fund / state funds):** A portion of Glenn Heistand's and Sarah Milton's salaries are covered by state GRF grants (already in the database). When calculating cost burned against a FEMA grant, only charge hours logged to tasks under that specific grant. Hours charged to GRF tasks burn the GRF budget only. Burndown is always grant-scoped via the task reference on each timesheet entry.
 
 ---
 
@@ -282,7 +288,7 @@ projected_final_cost = total_cost_to_date + (burn_rate x days_remaining)
 ---
 
 ## Notes
-- **Dawn Cosentino** (annual salary $90,023) is in the budget spreadsheet but not in the users table — add her before loading salary seed data, or add her salary record manually after
+- Dawn Cosentino has left the group and is not included in salary seed data
 - Salary seed data is pre-generated in migrations/0008_salary_seed.sql (29 staff from FY25 budget spreadsheet)
 - The 0008 migration must run AFTER the salary_records table is created by 0002_salary_budget.sql
 - F&A rate 31.7% applies to "Other Sponsored Activity" — the correct federal category for FEMA/DHS CTP grants
