@@ -6,6 +6,23 @@ import Badge from '../../components/Badge';
 import Modal from '../../components/Modal';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer,
+} from 'recharts';
+
+function BudgetGauge({ pct }) {
+  const color = pct > 90 ? 'bg-red-500' : pct > 75 ? 'bg-amber-500' : 'bg-green-500';
+  const textColor = pct > 90 ? 'text-red-600' : pct > 75 ? 'text-amber-600' : 'text-green-600';
+  return (
+    <div>
+      <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+        <div className={`h-2 ${color} rounded-full transition-all`} style={{ width: `${Math.min(pct, 100)}%` }} />
+      </div>
+      <p className={`text-xs font-medium ${textColor} mt-0.5`}>{pct.toFixed(1)}%</p>
+    </div>
+  );
+}
 
 const EMPTY_TASK = { name: '', description: '', start_date: '', end_date: '', budget: '', estimated_hours: '', status: 'active' };
 
@@ -20,12 +37,17 @@ export default function ProjectDetail() {
   const [editingTask, setEditingTask] = useState(null);
   const [form, setForm] = useState(EMPTY_TASK);
   const [saving, setSaving] = useState(false);
+  const [budgetData, setBudgetData] = useState(null);
 
   async function load() {
     try {
-      const res = await api.get(`/api/projects/${id}`);
+      const [res, budgetRes] = await Promise.all([
+        api.get(`/api/projects/${id}`),
+        api.get(`/api/budget/project/${id}`).catch(() => null),
+      ]);
       setProject(res.project);
       setTasks(res.tasks || []);
+      setBudgetData(budgetRes);
     } catch (e) {
       addToast(e.message, 'error');
     } finally {
@@ -118,6 +140,90 @@ export default function ProjectDetail() {
           </tbody>
         </table>
       </div>
+
+      {/* Budget Breakdown */}
+      {budgetData && budgetData.tasks.length > 0 && (
+        <div className="card p-5 mt-6 mb-6">
+          <h2 className="text-sm font-semibold text-gray-700 mb-4">Budget Breakdown</h2>
+
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+            <div>
+              <p className="text-xs text-gray-500">FEMA Budget</p>
+              <p className="text-lg font-bold">${Number(budgetData.totals.fema_budget).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">Personnel</p>
+              <p className="text-lg font-bold text-brand-600">${Number(budgetData.totals.personnel_cost).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">F&A ({(budgetData.fa_rate * 100).toFixed(1)}%)</p>
+              <p className="text-lg font-bold text-purple-600">${Number(budgetData.totals.fa_cost).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">Total Cost</p>
+              <p className="text-lg font-bold">${Number(budgetData.totals.total_cost).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">Remaining</p>
+              <p className={`text-lg font-bold ${budgetData.totals.remaining < 0 ? 'text-red-600' : 'text-green-600'}`}>
+                ${Number(budgetData.totals.remaining).toLocaleString()}
+              </p>
+            </div>
+          </div>
+
+          {/* Bar chart */}
+          <ResponsiveContainer width="100%" height={260}>
+            <BarChart data={budgetData.tasks.map(t => ({
+              name: t.name.length > 15 ? t.name.substring(0, 15) + '…' : t.name,
+              Budget: t.fema_budget,
+              Personnel: t.personnel_cost,
+              'F&A': t.fa_cost,
+              Remaining: Math.max(0, t.remaining),
+            }))} margin={{ top: 5, right: 20, left: 10, bottom: 40 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" tick={{ fontSize: 10 }} angle={-20} textAnchor="end" />
+              <YAxis tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`} tick={{ fontSize: 11 }} />
+              <Tooltip formatter={(v) => `$${Number(v).toLocaleString()}`} />
+              <Legend />
+              <Bar dataKey="Personnel" fill="#3b82f6" />
+              <Bar dataKey="F&A" fill="#8b5cf6" />
+              <Bar dataKey="Remaining" fill="#d1d5db" />
+            </BarChart>
+          </ResponsiveContainer>
+
+          {/* Per-task budget table */}
+          <div className="mt-4 overflow-x-auto">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Budget</th>
+                  <th>Hours</th>
+                  <th>Personnel</th>
+                  <th>F&A</th>
+                  <th>Total</th>
+                  <th>Remaining</th>
+                  <th>% Used</th>
+                </tr>
+              </thead>
+              <tbody>
+                {budgetData.tasks.map(t => (
+                  <tr key={t.id}>
+                    <td className="font-medium">{t.name}</td>
+                    <td>${Number(t.fema_budget).toLocaleString()}</td>
+                    <td>{t.hours_logged}h</td>
+                    <td>${Number(t.personnel_cost).toLocaleString()}</td>
+                    <td>${Number(t.fa_cost).toLocaleString()}</td>
+                    <td>${Number(t.total_cost).toLocaleString()}</td>
+                    <td className={t.remaining < 0 ? 'text-red-600' : ''}>${Number(t.remaining).toLocaleString()}</td>
+                    <td className="w-24"><BudgetGauge pct={t.pct_used} /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={editingTask ? 'Edit Task' : 'New Task'}>
         <form onSubmit={handleSave} className="space-y-4">

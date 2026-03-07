@@ -8,6 +8,20 @@ import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
 
 const EMPTY_PROJECT = { name: '', description: '', start_date: '', end_date: '', budget: '', estimated_hours: '', status: 'active' };
+const EMPTY_FA = { fa_rate: '', fa_basis: 'mtdc', effective_date: '', notes: '' };
+
+function BudgetGauge({ pct }) {
+  const color = pct > 90 ? 'bg-red-500' : pct > 75 ? 'bg-amber-500' : 'bg-green-500';
+  const textColor = pct > 90 ? 'text-red-600' : pct > 75 ? 'text-amber-600' : 'text-green-600';
+  return (
+    <div>
+      <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+        <div className={`h-3 ${color} rounded-full transition-all`} style={{ width: `${Math.min(pct, 100)}%` }} />
+      </div>
+      <p className={`text-xs font-medium ${textColor} mt-1`}>{pct.toFixed(1)}% used</p>
+    </div>
+  );
+}
 
 export default function GrantDetail() {
   const { id } = useParams();
@@ -21,11 +35,24 @@ export default function GrantDetail() {
   const [form, setForm] = useState(EMPTY_PROJECT);
   const [saving, setSaving] = useState(false);
 
+  // Phase 2: F&A and budget
+  const [faData, setFaData] = useState({ current: null, history: [] });
+  const [budgetData, setBudgetData] = useState(null);
+  const [faModalOpen, setFaModalOpen] = useState(false);
+  const [faForm, setFaForm] = useState(EMPTY_FA);
+  const [savingFa, setSavingFa] = useState(false);
+
   async function load() {
     try {
-      const res = await api.get(`/api/grants/${id}`);
-      setGrant(res.grant);
-      setProjects(res.projects || []);
+      const [grantRes, faRes, budgetRes] = await Promise.all([
+        api.get(`/api/grants/${id}`),
+        api.get(`/api/grants/${id}/fa`).catch(() => ({ current: null, history: [] })),
+        api.get(`/api/budget/grant/${id}`).catch(() => null),
+      ]);
+      setGrant(grantRes.grant);
+      setProjects(grantRes.projects || []);
+      setFaData(faRes);
+      setBudgetData(budgetRes);
     } catch (e) {
       addToast(e.message, 'error');
     } finally {
@@ -68,7 +95,26 @@ export default function GrantDetail() {
     }
   }
 
+  async function handleSaveFa(e) {
+    e.preventDefault();
+    setSavingFa(true);
+    try {
+      await api.post(`/api/grants/${id}/fa`, {
+        ...faForm,
+        fa_rate: parseFloat(faForm.fa_rate) / 100,
+      });
+      addToast('F&A rate updated');
+      setFaModalOpen(false);
+      load();
+    } catch (err) {
+      addToast(err.message, 'error');
+    } finally {
+      setSavingFa(false);
+    }
+  }
+
   const field = (key) => ({ value: form[key], onChange: (e) => setForm((f) => ({ ...f, [key]: e.target.value })) });
+  const faField = (key) => ({ value: faForm[key], onChange: (e) => setFaForm((f) => ({ ...f, [key]: e.target.value })) });
 
   if (loading) return <PageLoader />;
   if (!grant) return <p className="text-red-600">Grant not found.</p>;
@@ -115,6 +161,140 @@ export default function GrantDetail() {
           </tbody>
         </table>
       </div>
+
+      {/* F&A Rate Section */}
+      <div className="card p-5 mt-6 mb-6">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-sm font-semibold text-gray-700">F&A (Indirect Cost) Rate</h2>
+          <button className="btn-secondary btn-sm" onClick={() => { setFaForm(EMPTY_FA); setFaModalOpen(true); }}>
+            {faData.current ? 'Update Rate' : 'Set Rate'}
+          </button>
+        </div>
+        {faData.current ? (
+          <div>
+            <div className="flex items-baseline gap-3 mb-2">
+              <span className="text-2xl font-bold text-brand-600">{(faData.current.fa_rate * 100).toFixed(1)}%</span>
+              <span className="text-sm text-gray-500 uppercase">{faData.current.fa_basis}</span>
+            </div>
+            <p className="text-xs text-gray-500">Effective {formatDisplayDate(faData.current.effective_date)}</p>
+            {faData.current.notes && <p className="text-xs text-gray-400 mt-1">{faData.current.notes}</p>}
+            {faData.history.length > 1 && (
+              <div className="mt-3 pt-3 border-t border-gray-100">
+                <p className="text-xs font-medium text-gray-500 mb-2">Rate History</p>
+                {faData.history.map(r => (
+                  <p key={r.id} className="text-xs text-gray-400">
+                    {(r.fa_rate * 100).toFixed(1)}% {r.fa_basis.toUpperCase()} — {formatDisplayDate(r.effective_date)}
+                    {r.notes ? ` (${r.notes})` : ''}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <p className="text-sm text-gray-400">No F&A rate set. Click "Set Rate" to configure.</p>
+        )}
+      </div>
+
+      {/* Budget Summary Section */}
+      {budgetData && (
+        <div className="card p-5 mb-6">
+          <h2 className="text-sm font-semibold text-gray-700 mb-4">Budget Summary</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+            <div>
+              <p className="text-xs text-gray-500">FEMA Budget</p>
+              <p className="text-lg font-bold">${Number(budgetData.totals.fema_budget).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">Personnel Cost</p>
+              <p className="text-lg font-bold text-brand-600">${Number(budgetData.totals.personnel_cost).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">F&A Cost</p>
+              <p className="text-lg font-bold text-purple-600">${Number(budgetData.totals.fa_cost).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">Total Cost</p>
+              <p className="text-lg font-bold">${Number(budgetData.totals.total_cost).toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500">Remaining</p>
+              <p className={`text-lg font-bold ${budgetData.totals.remaining < 0 ? 'text-red-600' : 'text-green-600'}`}>
+                ${Number(budgetData.totals.remaining).toLocaleString()}
+              </p>
+            </div>
+          </div>
+          <BudgetGauge pct={budgetData.totals.pct_used} />
+
+          {/* Per-project breakdown */}
+          {budgetData.projects.length > 0 && (
+            <div className="mt-4 pt-4 border-t border-gray-100">
+              <h3 className="text-xs font-semibold text-gray-500 mb-2 uppercase">By Project</h3>
+              <div className="overflow-x-auto">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Project</th>
+                      <th>Budget</th>
+                      <th>Personnel</th>
+                      <th>F&A</th>
+                      <th>Total Cost</th>
+                      <th>Remaining</th>
+                      <th>% Used</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {budgetData.projects.map(p => (
+                      <tr key={p.id}>
+                        <td className="font-medium">
+                          <Link to={`/admin/projects/${p.id}`} className="text-brand-600 hover:underline">{p.name}</Link>
+                        </td>
+                        <td>${Number(p.fema_budget).toLocaleString()}</td>
+                        <td>${Number(p.personnel_cost).toLocaleString()}</td>
+                        <td>${Number(p.fa_cost).toLocaleString()}</td>
+                        <td>${Number(p.total_cost).toLocaleString()}</td>
+                        <td className={p.remaining < 0 ? 'text-red-600' : ''}>${Number(p.remaining).toLocaleString()}</td>
+                        <td>
+                          <BudgetGauge pct={p.pct_used} />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* F&A Modal */}
+      <Modal isOpen={faModalOpen} onClose={() => setFaModalOpen(false)} title="Set F&A Rate">
+        <form onSubmit={handleSaveFa} className="space-y-4">
+          <div>
+            <label className="form-label">F&A Rate (%)</label>
+            <input className="form-input" type="number" step="0.1" min="0" max="100" required
+              placeholder="e.g. 31.7" {...faField('fa_rate')} />
+          </div>
+          <div>
+            <label className="form-label">Basis</label>
+            <select className="form-select" {...faField('fa_basis')}>
+              <option value="mtdc">MTDC (Modified Total Direct Costs)</option>
+              <option value="tdc">TDC (Total Direct Costs)</option>
+            </select>
+          </div>
+          <div>
+            <label className="form-label">Effective Date</label>
+            <input className="form-input" type="date" required {...faField('effective_date')} />
+          </div>
+          <div>
+            <label className="form-label">Notes</label>
+            <input className="form-input" {...faField('notes')} placeholder="e.g. DHS cooperative agreement" />
+          </div>
+          <div className="flex justify-end gap-3 pt-2">
+            <button type="button" className="btn-secondary" onClick={() => setFaModalOpen(false)}>Cancel</button>
+            <button type="submit" className="btn-primary" disabled={savingFa}>{savingFa ? 'Saving…' : 'Save'}</button>
+          </div>
+        </form>
+      </Modal>
 
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={editingProject ? 'Edit Project' : 'New Project'}>
         <form onSubmit={handleSave} className="space-y-4">

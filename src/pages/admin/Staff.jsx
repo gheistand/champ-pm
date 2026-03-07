@@ -21,11 +21,23 @@ export default function AdminStaff() {
   const [editingStaff, setEditingStaff] = useState(null);
   const [form, setForm] = useState(EMPTY_FORM);
   const [saving, setSaving] = useState(false);
+  const [showCosts, setShowCosts] = useState(false);
+  const [salaryData, setSalaryData] = useState({});
 
   const load = useCallback(async () => {
     try {
-      const res = await api.get('/api/staff');
-      setStaff(res.staff || []);
+      const [staffRes, salaryRes] = await Promise.all([
+        api.get('/api/staff'),
+        api.get('/api/salary/list').catch(() => ({ staff: [] })),
+      ]);
+      setStaff(staffRes.staff || []);
+
+      // Build salary map by user_id
+      const salaryMap = {};
+      for (const s of (salaryRes.staff || [])) {
+        salaryMap[s.id] = s;
+      }
+      setSalaryData(salaryMap);
     } catch (e) {
       addToast(e.message, 'error');
     } finally {
@@ -92,7 +104,15 @@ export default function AdminStaff() {
     <div>
       <div className="page-header">
         <h1 className="page-title">Staff</h1>
-        <button className="btn-primary" onClick={openCreate}>+ Add Staff</button>
+        <div className="flex items-center gap-3">
+          <button
+            className={`btn-sm ${showCosts ? 'btn-primary' : 'btn-secondary'}`}
+            onClick={() => setShowCosts(!showCosts)}
+          >
+            {showCosts ? '$ Hide Costs' : '$ Show Costs'}
+          </button>
+          <button className="btn-primary" onClick={openCreate}>+ Add Staff</button>
+        </div>
       </div>
 
       {staff.length === 0 ? (
@@ -113,6 +133,8 @@ export default function AdminStaff() {
                 <th>Start Date</th>
                 <th>Assignments</th>
                 <th>Allocated Hours</th>
+                {showCosts && <th>Salary</th>}
+                {showCosts && <th>Loaded Rate</th>}
                 <th>Status</th>
                 <th></th>
               </tr>
@@ -130,6 +152,20 @@ export default function AdminStaff() {
                   <td>{formatDisplayDate(s.start_date) || '—'}</td>
                   <td>{s.assignment_count ?? 0}</td>
                   <td>{Number(s.total_allocated_hours || 0).toFixed(0)}h</td>
+                  {showCosts && (
+                    <td className="font-medium">
+                      {salaryData[s.id]?.annual_salary
+                        ? `$${Number(salaryData[s.id].annual_salary).toLocaleString()}`
+                        : '—'}
+                    </td>
+                  )}
+                  {showCosts && (
+                    <td className="text-brand-600 font-semibold">
+                      {salaryData[s.id]?.loaded_hourly_rate
+                        ? `$${salaryData[s.id].loaded_hourly_rate.toFixed(2)}/hr`
+                        : '—'}
+                    </td>
+                  )}
                   <td>
                     <Badge status={s.is_active ? 'active' : 'closed'} label={s.is_active ? 'Active' : 'Inactive'} />
                   </td>

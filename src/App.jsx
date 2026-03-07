@@ -16,6 +16,9 @@ import AdminTasks from './pages/admin/Tasks';
 import AdminAssignments from './pages/admin/Assignments';
 import AdminWorkload from './pages/admin/Workload';
 import AdminTimesheets from './pages/admin/Timesheets';
+import AdminSalary from './pages/admin/Salary';
+import AdminFringeRates from './pages/admin/FringeRates';
+import AdminBudget from './pages/admin/Budget';
 
 // Staff pages
 import StaffTimesheet from './pages/staff/Timesheet';
@@ -77,6 +80,9 @@ export default function App() {
                 <Route path="/admin/assignments" element={<AdminAssignments />} />
                 <Route path="/admin/workload" element={<AdminWorkload />} />
                 <Route path="/admin/timesheets" element={<AdminTimesheets />} />
+                <Route path="/admin/salary" element={<AdminSalary />} />
+                <Route path="/admin/fringe-rates" element={<AdminFringeRates />} />
+                <Route path="/admin/budget" element={<AdminBudget />} />
               </Route>
             </Route>
 
