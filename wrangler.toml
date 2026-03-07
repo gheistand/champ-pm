@@ -5,10 +5,10 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "champ-pm"
-database_id = "REPLACE_AFTER_CREATION"
+database_id = "c5073fbd-b4a6-42c3-95de-e3f59b517e5f"
 
 [vars]
-CLERK_PUBLISHABLE_KEY = "REPLACE_WITH_CLERK_KEY"
+CLERK_PUBLISHABLE_KEY = "pk_test_Zml0dGluZy1iYWRnZXItNC5jbGVyay5hY2NvdW50cy5kZXYk"
 
 # Secrets — set via: wrangler pages secret put <NAME>
 # CLERK_SECRET_KEY
