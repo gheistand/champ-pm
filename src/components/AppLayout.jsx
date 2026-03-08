@@ -14,6 +14,7 @@ const adminNav = [
   { to: '/admin/timesheets', label: 'Approvals', icon: ClipboardIcon },
   { to: '/admin/salary', label: 'Salary', icon: DollarIcon },
   { to: '/admin/fringe-rates', label: 'Fringe Rates', icon: PercentIcon },
+  { to: '/admin/runway', label: 'Runway', icon: RunwayIcon },
   { to: '/admin/budget', label: 'Budget', icon: PieChartIcon },
   { to: '/admin/classifications', label: 'Classifications', icon: LayersIcon },
   { to: '/admin/equity', label: 'Equity', icon: ScaleIcon },
@@ -212,4 +213,8 @@ function TrendUpIcon({ className }) {
 }
 function AdjustIcon({ className }) {
   return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>;
+}
+
+function RunwayIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>;
 }
