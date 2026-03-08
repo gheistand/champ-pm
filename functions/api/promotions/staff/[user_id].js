@@ -41,7 +41,7 @@ export async function onRequest(context) {
     WHERE classification = ?
     ORDER BY effective_date DESC
     LIMIT 1
-  `).bind(user.classification || '').first();
+  `).bind(user.band_classification || user.classification || '').first();
 
   const compaRatio = band && currentSalary ? currentSalary.annual_salary / band.band_mid : null;
 

@@ -67,7 +67,7 @@ export async function onRequest(context) {
     const compaRatio = band && s.annual_salary ? s.annual_salary / band.band_mid : null;
 
     // Find applicable promotion criteria
-    const applicableCriteria = criteria.filter(c => c.from_classification === s.classification);
+    const applicableCriteria = criteria.filter(c => c.from_classification === (s.band_classification || s.classification));
 
     for (const criterion of applicableCriteria) {
       let score = 0;
@@ -106,7 +106,7 @@ export async function onRequest(context) {
         user_id: s.id,
         name: s.name,
         email: s.email,
-        current_classification: s.classification,
+        current_classification: s.band_classification || s.classification,
         eligible_for: criterion.to_classification,
         years_in_role: Math.round(yearsInRole * 10) / 10,
         years_total: Math.round(yearsTotal * 10) / 10,
