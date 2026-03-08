@@ -14,7 +14,7 @@ export async function onRequest(context) {
   // Get all active staff with most recent salary record
   const { results: staff } = await env.DB.prepare(`
     SELECT
-      u.id, u.name, u.email, u.title, u.classification, u.start_date, u.is_active,
+      u.id, u.name, u.email, u.title, u.classification, u.band_classification, u.start_date, u.is_active,
       sr.annual_salary, sr.fringe_rate, sr.appointment_type, sr.effective_date as salary_effective
     FROM users u
     LEFT JOIN salary_records sr ON sr.user_id = u.id
@@ -50,7 +50,7 @@ export async function onRequest(context) {
       ? (new Date(today) - new Date(s.start_date)) / (365.25 * 24 * 60 * 60 * 1000)
       : 0;
 
-    const band = bandMap[s.classification];
+    const band = bandMap[s.band_classification] || bandMap[s.classification];
     const salary = s.annual_salary || 0;
 
     let compa_ratio = null;
@@ -86,7 +86,7 @@ export async function onRequest(context) {
       name: s.name,
       email: s.email,
       title: s.title,
-      classification: s.classification,
+      classification: s.band_classification || s.classification,
       start_date: s.start_date,
       years_of_service: Math.round(yearsOfService * 10) / 10,
       annual_salary: salary,

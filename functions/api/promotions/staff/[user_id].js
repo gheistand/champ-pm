@@ -14,7 +14,7 @@ export async function onRequest(context) {
 
   // Get user info
   const user = await env.DB.prepare(
-    'SELECT id, name, email, title, classification, start_date FROM users WHERE id = ?'
+    'SELECT id, name, email, title, classification, band_classification, start_date FROM users WHERE id = ?'
   ).bind(user_id).first();
 
   if (!user) return json({ error: 'User not found' }, 404);
@@ -48,7 +48,7 @@ export async function onRequest(context) {
   // Get promotion criteria for current classification
   const { results: criteria } = await env.DB.prepare(`
     SELECT * FROM promotion_criteria WHERE from_classification = ?
-  `).bind(user.classification || '').all();
+  `).bind(user.band_classification || user.classification || '').all();
 
   const promotionPaths = criteria.map(c => {
     let score = 0;
