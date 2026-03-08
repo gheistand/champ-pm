@@ -115,9 +115,29 @@ export async function onRequest(context) {
 
   try {
     const payload = await verifyClerkJWT(token, env.CLERK_PUBLISHABLE_KEY);
-    data.userId = payload.sub;
+    const clerkId = payload.sub;
+    const email = payload.email || null;
     data.role = payload.role || payload.public_metadata?.role || payload.publicMetadata?.role || 'staff';
     data.sessionId = payload.sid;
+
+    // Resolve D1 user record — fast path by clerk_id, fallback to email on first login
+    if (env.DB) {
+      let dbUser = await env.DB.prepare('SELECT * FROM users WHERE clerk_id = ?').bind(clerkId).first();
+
+      if (!dbUser && email) {
+        // First login: match by email, write clerk_id for future fast-path lookups
+        dbUser = await env.DB.prepare('SELECT * FROM users WHERE LOWER(email) = LOWER(?)').bind(email).first();
+        if (dbUser) {
+          await env.DB.prepare('UPDATE users SET clerk_id = ? WHERE id = ?').bind(clerkId, dbUser.id).run();
+        }
+      }
+
+      data.userId = dbUser?.id || clerkId;   // prefer D1 id (email prefix), fall back to Clerk sub
+      data.dbUser = dbUser || null;
+    } else {
+      data.userId = clerkId;
+      data.dbUser = null;
+    }
   } catch (err) {
     return new Response(
       JSON.stringify({ error: 'Invalid or expired token', detail: err.message }),
