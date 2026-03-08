@@ -63,6 +63,17 @@ export default function ProjectDetail() {
     setModalOpen(true);
   }
 
+  async function handleDeleteTask(t) {
+    if (!confirm(`Delete task "${t.name}"?\n\nThis will fail if the task has timesheet entries.`)) return;
+    try {
+      await api.del(`/api/tasks/${t.id}`);
+      addToast('Task deleted');
+      load();
+    } catch (err) {
+      addToast(err.message, 'error');
+    }
+  }
+
   function openEdit(t) {
     setEditingTask(t);
     setForm({ name: t.name, description: t.description || '', start_date: t.start_date || '', end_date: t.end_date || '', budget: t.budget, estimated_hours: t.estimated_hours, status: t.status });
@@ -134,7 +145,12 @@ export default function ProjectDetail() {
                 <td>{Number(t.hours_logged || 0).toFixed(1)}h</td>
                 <td>{t.assigned_count ?? 0} staff</td>
                 <td><Badge status={t.status} /></td>
-                <td><button className="btn-secondary btn-sm" onClick={() => openEdit(t)}>Edit</button></td>
+                <td>
+                  <div className="flex gap-2">
+                    <button className="btn-secondary btn-sm" onClick={() => openEdit(t)}>Edit</button>
+                    <button className="btn-secondary btn-sm text-red-600" onClick={() => handleDeleteTask(t)}>Delete</button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

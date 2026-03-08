@@ -10,6 +10,17 @@ import { formatDisplayDate } from '../../utils/dateUtils';
 export default function AdminProjects() {
   const api = useApi();
   const { addToast } = useToast();
+
+  async function handleDelete(p) {
+    if (!confirm(`Delete project "${p.name}"?\n\nThis will fail if the project has tasks. Delete all tasks first.`)) return;
+    try {
+      await api.del(`/api/projects/${p.id}`);
+      addToast('Project deleted');
+      load();
+    } catch (err) {
+      addToast(err.message, 'error');
+    }
+  }
   const [projects, setProjects] = useState([]);
   const [grants, setGrants] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -62,6 +73,7 @@ export default function AdminProjects() {
                 <th>Est. Hours</th>
                 <th>Logged</th>
                 <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -82,6 +94,7 @@ export default function AdminProjects() {
                   <td>{Number(p.estimated_hours || 0).toFixed(0)}h</td>
                   <td>{Number(p.hours_logged || 0).toFixed(1)}h</td>
                   <td><Badge status={p.status} /></td>
+                  <td><button className="btn-secondary btn-sm text-red-600" onClick={() => handleDelete(p)}>Delete</button></td>
                 </tr>
               ))}
             </tbody>

@@ -33,3 +33,17 @@ export async function onRequestPut(context) {
 
   return json({ task });
 }
+
+export async function onRequestDelete(context) {
+  const { env, data, params } = context;
+  const denied = requireAdmin(data);
+  if (denied) return denied;
+  const { id } = params;
+  const { results: entries } = await env.DB.prepare('SELECT id FROM timesheet_entries WHERE task_id = ?').bind(id).all();
+  if (entries.length > 0) {
+    return json({ error: `Cannot delete: this task has ${entries.length} timesheet entry/entries. Remove them first.` }, 409);
+  }
+  await env.DB.prepare('DELETE FROM assignments WHERE task_id = ?').bind(id).run();
+  await env.DB.prepare('DELETE FROM tasks WHERE id = ?').bind(id).run();
+  return json({ success: true });
+}

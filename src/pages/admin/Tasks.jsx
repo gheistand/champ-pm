@@ -8,6 +8,17 @@ import { PageLoader } from '../../components/LoadingSpinner';
 export default function AdminTasks() {
   const api = useApi();
   const { addToast } = useToast();
+
+  async function handleDelete(t) {
+    if (!confirm(`Delete task "${t.name}"?\n\nThis will fail if the task has timesheet entries.`)) return;
+    try {
+      await api.del(`/api/tasks/${t.id}`);
+      addToast('Task deleted');
+      load();
+    } catch (err) {
+      addToast(err.message, 'error');
+    }
+  }
   const [tasks, setTasks] = useState([]);
   const [grants, setGrants] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -78,6 +89,7 @@ export default function AdminTasks() {
                 <th>Logged</th>
                 <th>Assigned Staff</th>
                 <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -90,6 +102,7 @@ export default function AdminTasks() {
                   <td>{Number(t.hours_logged || 0).toFixed(1)}h</td>
                   <td className="max-w-xs truncate">{t.assigned_staff || '—'}</td>
                   <td><Badge status={t.status} /></td>
+                  <td><button className="btn-secondary btn-sm text-red-600" onClick={() => handleDelete(t)}>Delete</button></td>
                 </tr>
               ))}
             </tbody>

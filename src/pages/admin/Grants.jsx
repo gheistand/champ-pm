@@ -42,6 +42,17 @@ export default function AdminGrants() {
     setModalOpen(true);
   }
 
+  async function handleDelete(g) {
+    if (!confirm(`Delete grant "${g.name}"?\n\nThis will fail if the grant has projects. Delete all projects first.`)) return;
+    try {
+      await api.del(`/api/grants/${g.id}`);
+      addToast('Grant deleted');
+      load();
+    } catch (err) {
+      addToast(err.message, 'error');
+    }
+  }
+
   function openEdit(g) {
     setEditingGrant(g);
     setForm({
@@ -127,7 +138,10 @@ export default function AdminGrants() {
                   <td>{g.project_count ?? 0}</td>
                   <td><Badge status={g.status} /></td>
                   <td>
-                    <button className="btn-secondary btn-sm" onClick={() => openEdit(g)}>Edit</button>
+                    <div className="flex gap-2">
+                      <button className="btn-secondary btn-sm" onClick={() => openEdit(g)}>Edit</button>
+                      <button className="btn-secondary btn-sm text-red-600" onClick={() => handleDelete(g)}>Delete</button>
+                    </div>
                   </td>
                 </tr>
               ))}

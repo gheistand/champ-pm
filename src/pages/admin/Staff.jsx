@@ -133,6 +133,8 @@ export default function AdminStaff() {
   }
 
   async function toggleActive(s) {
+    const action = s.is_active ? 'deactivate' : 'activate';
+    if (!confirm(`${action.charAt(0).toUpperCase() + action.slice(1)} ${s.name}?`)) return;
     try {
       await api.put(`/api/staff/${s.id}`, { is_active: s.is_active ? 0 : 1 });
       addToast(`${s.name} ${s.is_active ? 'deactivated' : 'activated'}`);

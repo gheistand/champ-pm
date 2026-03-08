@@ -68,5 +68,19 @@ async function handlePut(context) {
 export async function onRequest(context) {
   if (context.request.method === 'GET') return handleGet(context);
   if (context.request.method === 'PUT') return handlePut(context);
+  if (context.request.method === 'DELETE') return handleDelete(context);
   return new Response('Method Not Allowed', { status: 405 });
+}
+
+async function handleDelete(context) {
+  const { env, data, params } = context;
+  const denied = requireAdmin(data);
+  if (denied) return denied;
+  const { id } = params;
+  const { results: tasks } = await env.DB.prepare('SELECT id FROM tasks WHERE project_id = ?').bind(id).all();
+  if (tasks.length > 0) {
+    return json({ error: `Cannot delete: this project has ${tasks.length} task(s). Delete them first.` }, 409);
+  }
+  await env.DB.prepare('DELETE FROM projects WHERE id = ?').bind(id).run();
+  return json({ success: true });
 }
