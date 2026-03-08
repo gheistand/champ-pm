@@ -122,6 +122,17 @@ export default function Classifications() {
     }
   }
 
+  async function handleDeleteCriteria(c) {
+    if (!confirm(`Delete promotion criterion "${c.from_classification} → ${c.to_classification}"?`)) return;
+    try {
+      await api.del(`/api/promotion-criteria/${c.id}`);
+      addToast('Criterion deleted');
+      load();
+    } catch (err) {
+      addToast(err.message, 'error');
+    }
+  }
+
   const field = (key) => ({ value: form[key], onChange: (e) => setForm(f => ({ ...f, [key]: e.target.value })) });
   const cField = (key) => ({ value: criteriaForm[key], onChange: (e) => setCriteriaForm(f => ({ ...f, [key]: e.target.value })) });
 
@@ -209,6 +220,7 @@ export default function Classifications() {
                 <th>Min Years in Role</th>
                 <th>Min Years Total</th>
                 <th>Notes</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -219,6 +231,7 @@ export default function Classifications() {
                   <td>{c.min_years_in_role} years</td>
                   <td>{c.min_years_total} years</td>
                   <td className="text-xs text-gray-500">{c.notes || '—'}</td>
+                  <td><button className="btn-secondary btn-sm text-red-600" onClick={() => handleDeleteCriteria(c)}>Delete</button></td>
                 </tr>
               ))}
             </tbody>

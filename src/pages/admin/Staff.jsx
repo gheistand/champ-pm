@@ -9,7 +9,7 @@ import { formatDisplayDate } from '../../utils/dateUtils';
 
 const EMPTY_FORM = {
   id: '', email: '', name: '', role: 'staff',
-  title: '', classification: '', department: 'CHAMP', start_date: '',
+  title: '', classification: '', band_classification: '', department: 'CHAMP', start_date: '',
 };
 
 function ScoreBadge({ score }) {
@@ -39,14 +39,17 @@ export default function AdminStaff() {
   const [detailTab, setDetailTab] = useState('equity');
   const [staffDetail, setStaffDetail] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
+  const [bands, setBands] = useState([]);
 
   const load = useCallback(async () => {
     try {
-      const [staffRes, salaryRes] = await Promise.all([
+      const [staffRes, salaryRes, bandsRes] = await Promise.all([
         api.get('/api/staff'),
         api.get('/api/salary/list').catch(() => ({ staff: [] })),
+        api.get('/api/classifications').catch(() => ({ bands: [] })),
       ]);
       setStaff(staffRes.staff || []);
+      setBands(bandsRes.bands || []);
 
       // Build salary map by user_id
       const salaryMap = {};
@@ -74,6 +77,7 @@ export default function AdminStaff() {
     setForm({
       id: s.id, email: s.email, name: s.name, role: s.role,
       title: s.title || '', classification: s.classification || '',
+      band_classification: s.band_classification || '',
       department: s.department || 'CHAMP', start_date: s.start_date || '',
     });
     setModalOpen(true);
@@ -276,13 +280,23 @@ export default function AdminStaff() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="form-label">Classification</label>
-              <input className="form-input" placeholder="AP Level 3" {...field('classification')} />
+              <label className="form-label">HR Classification (job title code)</label>
+              <input className="form-input" placeholder="SR SCI SPEC, HAZ MIT PLNG" {...field('classification')} />
             </div>
             <div>
               <label className="form-label">Start Date</label>
               <input className="form-input" type="date" {...field('start_date')} />
             </div>
+          </div>
+          <div>
+            <label className="form-label">Salary Band Classification</label>
+            <select className="form-select" {...field('band_classification')}>
+              <option value="">— Not assigned —</option>
+              {bands.map(b => <option key={b.id} value={b.classification}>{b.classification}</option>)}
+            </select>
+            <p className="text-xs text-gray-400 mt-1">Used for equity analysis and promotion readiness calculations.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-4" style={{display:'none'}}>
           </div>
           <div className="flex justify-end gap-3 pt-2">
             <button type="button" className="btn-secondary" onClick={() => setModalOpen(false)}>Cancel</button>

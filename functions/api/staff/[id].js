@@ -11,7 +11,7 @@ export async function onRequestPut(context) {
   const fields = [];
   const values = [];
 
-  const updatable = ['name', 'email', 'role', 'title', 'classification', 'department', 'start_date', 'is_active'];
+  const updatable = ['name', 'email', 'role', 'title', 'classification', 'band_classification', 'department', 'start_date', 'is_active'];
   for (const field of updatable) {
     if (body[field] !== undefined) {
       fields.push(`${field} = ?`);
