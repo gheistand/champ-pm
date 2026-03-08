@@ -15,6 +15,10 @@ const adminNav = [
   { to: '/admin/salary', label: 'Salary', icon: DollarIcon },
   { to: '/admin/fringe-rates', label: 'Fringe Rates', icon: PercentIcon },
   { to: '/admin/budget', label: 'Budget', icon: PieChartIcon },
+  { to: '/admin/classifications', label: 'Classifications', icon: LayersIcon },
+  { to: '/admin/equity', label: 'Equity', icon: ScaleIcon },
+  { to: '/admin/promotions', label: 'Promotions', icon: TrendUpIcon },
+  { to: '/admin/salary-adjustments', label: 'Adjustments', icon: AdjustIcon },
 ];
 
 const staffNav = [
@@ -196,4 +200,16 @@ function PercentIcon({ className }) {
 }
 function PieChartIcon({ className }) {
   return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>;
+}
+function LayersIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>;
+}
+function ScaleIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>;
+}
+function TrendUpIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>;
+}
+function AdjustIcon({ className }) {
+  return <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>;
 }

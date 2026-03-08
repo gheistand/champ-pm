@@ -19,6 +19,10 @@ import AdminTimesheets from './pages/admin/Timesheets';
 import AdminSalary from './pages/admin/Salary';
 import AdminFringeRates from './pages/admin/FringeRates';
 import AdminBudget from './pages/admin/Budget';
+import AdminClassifications from './pages/admin/Classifications';
+import AdminEquity from './pages/admin/Equity';
+import AdminPromotions from './pages/admin/Promotions';
+import AdminSalaryAdjustments from './pages/admin/SalaryAdjustments';
 
 // Staff pages
 import StaffTimesheet from './pages/staff/Timesheet';
@@ -83,6 +87,10 @@ export default function App() {
                 <Route path="/admin/salary" element={<AdminSalary />} />
                 <Route path="/admin/fringe-rates" element={<AdminFringeRates />} />
                 <Route path="/admin/budget" element={<AdminBudget />} />
+                <Route path="/admin/classifications" element={<AdminClassifications />} />
+                <Route path="/admin/equity" element={<AdminEquity />} />
+                <Route path="/admin/promotions" element={<AdminPromotions />} />
+                <Route path="/admin/salary-adjustments" element={<AdminSalaryAdjustments />} />
               </Route>
             </Route>
 
