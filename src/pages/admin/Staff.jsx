@@ -9,7 +9,7 @@ import { formatDisplayDate } from '../../utils/dateUtils';
 
 const EMPTY_FORM = {
   id: '', email: '', name: '', role: 'staff',
-  title: '', classification: '', band_classification: '', department: 'CHAMP', start_date: '',
+  title: '', classification: '', band_classification: '', department: 'CHAMP', start_date: '', role_start_date: '',
 };
 
 function ScoreBadge({ score }) {
@@ -78,7 +78,7 @@ export default function AdminStaff() {
       id: s.id, email: s.email, name: s.name, role: s.role,
       title: s.title || '', classification: s.classification || '',
       band_classification: s.band_classification || '',
-      department: s.department || 'CHAMP', start_date: s.start_date || '',
+      department: s.department || 'CHAMP', start_date: s.start_date || '', role_start_date: s.role_start_date || '',
     });
     setModalOpen(true);
   }
@@ -284,8 +284,13 @@ export default function AdminStaff() {
               <input className="form-input" placeholder="SR SCI SPEC, HAZ MIT PLNG" {...field('classification')} />
             </div>
             <div>
-              <label className="form-label">Start Date</label>
+              <label className="form-label">ISWS Start Date</label>
               <input className="form-input" type="date" {...field('start_date')} />
+            </div>
+            <div>
+              <label className="form-label">Current Role Start Date</label>
+              <input className="form-input" type="date" {...field('role_start_date')} />
+              <p className="text-xs text-gray-400 mt-1">Date they moved into their current classification band. Used for promotion readiness.</p>
             </div>
           </div>
           <div>

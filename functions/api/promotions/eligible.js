@@ -14,7 +14,7 @@ export async function onRequest(context) {
   // Get active staff with salary info
   const { results: staff } = await env.DB.prepare(`
     SELECT
-      u.id, u.name, u.email, u.title, u.classification, u.band_classification, u.start_date,
+      u.id, u.name, u.email, u.title, u.classification, u.band_classification, u.start_date, u.role_start_date,
       sr.annual_salary, sr.fringe_rate, sr.effective_date as salary_effective
     FROM users u
     LEFT JOIN salary_records sr ON sr.user_id = u.id
@@ -57,10 +57,10 @@ export async function onRequest(context) {
       ? (new Date(today) - new Date(s.start_date)) / (365.25 * 24 * 60 * 60 * 1000)
       : 0;
 
-    // Years in current role: use salary effective date as proxy for role start
-    // (when classification changed, a new salary record would be created)
-    const yearsInRole = s.salary_effective
-      ? (new Date(today) - new Date(s.salary_effective)) / (365.25 * 24 * 60 * 60 * 1000)
+    // Years in current role: use role_start_date if set, else salary_effective, else total
+    const roleStartDate = s.role_start_date || s.salary_effective;
+    const yearsInRole = roleStartDate
+      ? (new Date(today) - new Date(roleStartDate)) / (365.25 * 24 * 60 * 60 * 1000)
       : yearsTotal;
 
     const band = bandMap[s.band_classification] || bandMap[s.classification];

@@ -14,7 +14,7 @@ export async function onRequest(context) {
 
   // Get user info
   const user = await env.DB.prepare(
-    'SELECT id, name, email, title, classification, band_classification, start_date FROM users WHERE id = ?'
+    'SELECT id, name, email, title, classification, band_classification, start_date, role_start_date FROM users WHERE id = ?'
   ).bind(user_id).first();
 
   if (!user) return json({ error: 'User not found' }, 404);
@@ -31,8 +31,9 @@ export async function onRequest(context) {
     ? (new Date(today) - new Date(user.start_date)) / (365.25 * 24 * 60 * 60 * 1000)
     : 0;
 
-  const yearsInRole = currentSalary?.effective_date
-    ? (new Date(today) - new Date(currentSalary.effective_date)) / (365.25 * 24 * 60 * 60 * 1000)
+  const roleStartDate = user.role_start_date || currentSalary?.effective_date;
+  const yearsInRole = roleStartDate
+    ? (new Date(today) - new Date(roleStartDate)) / (365.25 * 24 * 60 * 60 * 1000)
     : yearsTotal;
 
   // Get band
