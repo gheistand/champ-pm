@@ -1,4 +1,4 @@
-import { ClerkProvider, SignIn, useAuth, useUser } from '@clerk/clerk-react';
+import { ClerkProvider, useAuth, useUser } from '@clerk/clerk-react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastProvider } from './hooks/useToast';
 import AppLayout from './components/AppLayout';
@@ -45,34 +45,29 @@ function RoleRedirect() {
   if (!isLoaded) return <PageLoader />;
   if (!isSignedIn) return <Navigate to="/sign-in" replace />;
 
+
   const role = user?.publicMetadata?.role || 'staff';
   return role === 'admin'
     ? <Navigate to="/admin/dashboard" replace />
     : <Navigate to="/timesheet" replace />;
 }
 
+// Sign-in is handled by Clerk Account Portal (accounts.champ-pm.app)
+// This route catches redirects and bounces unauthenticated users there
 function SignInPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-sm">
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-brand-900">CHAMP PM</h1>
-          <p className="text-gray-500 text-sm mt-1">Illinois State Water Survey</p>
-        </div>
-        <SignIn routing="path" path="/sign-in" fallbackRedirectUrl="/" />
-      </div>
-    </div>
-  );
+  const { isSignedIn, isLoaded } = useAuth();
+  if (!isLoaded) return <PageLoader />;
+  if (isSignedIn) return <Navigate to="/" replace />;
+  // Redirect to Clerk Account Portal — avoids needs_client_trust issue with embedded component
+  window.location.href = `https://accounts.champ-pm.app/sign-in?redirect_url=${encodeURIComponent(window.location.origin)}`;
+  return <PageLoader />;
 }
 
 export default function App() {
   return (
     <ClerkProvider
       publishableKey={CLERK_PUBLISHABLE_KEY}
-      signInUrl="/sign-in"
-      signUpUrl="/sign-in"
-      afterSignInUrl="/"
-      afterSignUpUrl="/"
+      fallbackRedirectUrl="/"
     >
       <ToastProvider>
         <BrowserRouter>
