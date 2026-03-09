@@ -8,8 +8,8 @@ database_name = "champ-pm"
 database_id = "c5073fbd-b4a6-42c3-95de-e3f59b517e5f"
 
 [vars]
-CLERK_PUBLISHABLE_KEY = "pk_test_Zml0dGluZy1iYWRnZXItNC5jbGVyay5hY2NvdW50cy5kZXYk"
-VITE_CLERK_PUBLISHABLE_KEY = "pk_test_Zml0dGluZy1iYWRnZXItNC5jbGVyay5hY2NvdW50cy5kZXYk"
+CLERK_PUBLISHABLE_KEY = "pk_live_Y2xlcmsuY2hhbXAtcG0uYXBwJA"
+VITE_CLERK_PUBLISHABLE_KEY = "pk_live_Y2xlcmsuY2hhbXAtcG0uYXBwJA"
 
 # Secrets — set via: wrangler pages secret put <NAME>
 # CLERK_SECRET_KEY
