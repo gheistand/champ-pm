@@ -11,11 +11,12 @@ export async function onRequestGet(context) {
 }
 
 export async function onRequestPost(context) {
-  // Mark user as onboarded
+  // Mark user as onboarded — no-op if account isn't linked to a D1 record
   const { env, data } = context;
-  if (!data.userId || !data.dbUser) return json({ error: 'User not found' }, 404);
-  await env.DB.prepare(
-    "UPDATE users SET onboarded_at = datetime('now') WHERE id = ?"
-  ).bind(data.userId).run();
+  if (data.dbUser?.id) {
+    await env.DB.prepare(
+      "UPDATE users SET onboarded_at = datetime('now') WHERE id = ?"
+    ).bind(data.dbUser.id).run();
+  }
   return json({ ok: true });
 }

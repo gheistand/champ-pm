@@ -45,10 +45,17 @@ export default function AppLayout() {
 
   useEffect(() => {
     if (!user) return;
+    // Check localStorage first — covers accounts not linked to a D1 record
+    const lsKey = `champ-onboarded-${user.id}`;
+    if (localStorage.getItem(lsKey)) return;
     api.get('/api/staff/me').then(res => {
       const u = res.user;
       setDbUser(u);
-      if (u && u.id && !u.onboarded_at) setShowOnboarding(true);
+      // Only show onboarding if: DB user exists with a real name, and not yet marked onboarded
+      const isLinked = u?.name && u?.email;
+      if (isLinked && !u.onboarded_at) setShowOnboarding(true);
+      // If no linked DB record, mark dismissed in localStorage so modal won't show again
+      if (!isLinked) localStorage.setItem(lsKey, '1');
     }).catch(() => {});
   }, [user?.id]);
 
@@ -60,8 +67,14 @@ export default function AppLayout() {
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       {/* Onboarding modal — shown on first login */}
-      {showOnboarding && dbUser && (
-        <OnboardingModal user={dbUser} onDone={() => setShowOnboarding(false)} />
+      {showOnboarding && (
+        <OnboardingModal
+          user={dbUser || { role: user?.publicMetadata?.role || 'staff' }}
+          onDone={() => {
+            localStorage.setItem(`champ-onboarded-${user?.id}`, '1');
+            setShowOnboarding(false);
+          }}
+        />
       )}
       {/* Mobile overlay */}
       {sidebarOpen && (

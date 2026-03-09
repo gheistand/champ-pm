@@ -13,11 +13,12 @@ export default function OnboardingModal({ user, onDone }) {
     setLoading(true);
     try {
       await api.post('/api/staff/me');
-      onDone();
     } catch (e) {
-      addToast(e.message, 'error');
+      // Non-fatal — modal dismisses regardless
+      console.warn('Onboarding mark failed:', e.message);
     } finally {
       setLoading(false);
+      onDone();
     }
   }
 
