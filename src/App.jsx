@@ -21,6 +21,7 @@ import AdminFringeRates from './pages/admin/FringeRates';
 import AdminBudget from './pages/admin/Budget';
 import AdminRunway from './pages/admin/Runway';
 import AdminReports from './pages/admin/Reports';
+import AdminImport from './pages/admin/Import';
 import AdminClassifications from './pages/admin/Classifications';
 import AdminEquity from './pages/admin/Equity';
 import AdminPromotions from './pages/admin/Promotions';
@@ -91,6 +92,7 @@ export default function App() {
                 <Route path="/admin/budget" element={<AdminBudget />} />
                 <Route path="/admin/runway" element={<AdminRunway />} />
                 <Route path="/admin/reports" element={<AdminReports />} />
+                <Route path="/admin/import" element={<AdminImport />} />
                 <Route path="/admin/classifications" element={<AdminClassifications />} />
                 <Route path="/admin/equity" element={<AdminEquity />} />
                 <Route path="/admin/promotions" element={<AdminPromotions />} />
