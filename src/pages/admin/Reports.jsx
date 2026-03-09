@@ -257,7 +257,7 @@ export default function Reports() {
       {report && report.by_grant && report.by_grant.length > 1 && (
         <div className="card mb-6">
           <h3 className="text-sm font-semibold text-gray-700 mb-3">By Grant</h3>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto print:overflow-visible">
             <table className="table text-sm">
               <thead>
                 <tr>
@@ -303,7 +303,7 @@ export default function Reports() {
             <p className="text-sm text-gray-600">{startDate} to {endDate}{grantId !== 'all' ? ` · ${grants.find(g => String(g.id) === grantId)?.name}` : ''}</p>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto print:overflow-visible">
             {grouped.map((group, gi) => (
               <div key={gi} className={gi > 0 ? 'mt-6' : ''}>
                 {group.label && (

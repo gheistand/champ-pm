@@ -81,3 +81,55 @@
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
+
+/* ── Print styles ──────────────────────────────────────────────────────────── */
+@media print {
+  /* Remove overflow clipping so full tables print */
+  * {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* Hide nav, sidebar, buttons, filters */
+  nav, aside, header,
+  .print\:hidden,
+  button,
+  select,
+  input[type="date"] {
+    display: none !important;
+  }
+
+  /* Expand layout to full width */
+  body, #root, main {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Cards flat on paper */
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+    break-inside: avoid;
+  }
+
+  /* Tables: allow page breaks between row groups, not mid-row */
+  table {
+    width: 100% !important;
+    font-size: 10pt;
+    border-collapse: collapse;
+  }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; }
+  th, td {
+    padding: 4px 8px !important;
+    border: 1px solid #d1d5db;
+  }
+
+  /* Ensure page fills */
+  @page {
+    margin: 0.75in;
+    size: landscape;
+  }
+}
