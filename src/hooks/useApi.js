@@ -17,6 +17,13 @@ export function useApi() {
       if (body !== null) options.body = JSON.stringify(body);
 
       const res = await fetch(url, options);
+
+      // Guard against non-JSON responses (e.g. Cloudflare 404 HTML pages)
+      const contentType = res.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error(`Request failed (${res.status}): unexpected response from server`);
+      }
+
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
       return data;
