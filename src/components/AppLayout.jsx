@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useUser, useClerk } from '@clerk/clerk-react';
+import { useApi } from '../hooks/useApi';
+import OnboardingModal from './OnboardingModal';
 import clsx from 'clsx';
 
 const adminNav = [
@@ -34,9 +36,21 @@ export default function AppLayout() {
   const { user } = useUser();
   const { signOut } = useClerk();
   const navigate = useNavigate();
+  const api = useApi();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [dbUser, setDbUser] = useState(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
   const role = user?.publicMetadata?.role || 'staff';
   const navItems = role === 'admin' ? adminNav : staffNav;
+
+  useEffect(() => {
+    if (!user) return;
+    api.get('/api/staff/me').then(res => {
+      const u = res.user;
+      setDbUser(u);
+      if (u && u.id && !u.onboarded_at) setShowOnboarding(true);
+    }).catch(() => {});
+  }, [user?.id]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -45,6 +59,10 @@ export default function AppLayout() {
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
+      {/* Onboarding modal — shown on first login */}
+      {showOnboarding && dbUser && (
+        <OnboardingModal user={dbUser} onDone={() => setShowOnboarding(false)} />
+      )}
       {/* Mobile overlay */}
       {sidebarOpen && (
         <div

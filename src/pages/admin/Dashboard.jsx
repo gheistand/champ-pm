@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import { PageLoader } from '../../components/LoadingSpinner';
+import Badge from '../../components/Badge';
+import { formatWeekRange, formatDisplayDate } from '../../utils/dateUtils';
 
 const fmt$ = (n) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n || 0);
@@ -65,6 +67,7 @@ function BudgetBar({ pct }) {
 export default function AdminDashboard() {
   const api = useApi();
   const [stats, setStats] = useState(null);
+  const [dashStats, setDashStats] = useState(null);
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [alertsLoading, setAlertsLoading] = useState(true);
@@ -103,8 +106,18 @@ export default function AdminDashboard() {
       }
     }
 
+    async function loadDashStats() {
+      try {
+        const res = await api.get('/api/dashboard/stats');
+        setDashStats(res);
+      } catch (e) {
+        console.error('Dashboard stats failed:', e);
+      }
+    }
+
     load();
     loadAlerts();
+    loadDashStats();
   }, []);
 
   if (loading) return <PageLoader />;
@@ -216,6 +229,89 @@ export default function AdminDashboard() {
           </Link>
         ))}
       </div>
+
+      {/* ── Activity stats row ──────────────────────────────────────────────── */}
+      {dashStats && (
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          <div className="card">
+            <div className="text-xs text-gray-500 mb-1">Hours This FY</div>
+            <div className="text-2xl font-bold text-gray-900">
+              {Number(dashStats.fy_hours || 0).toLocaleString('en-US', { maximumFractionDigits: 0 })}h
+            </div>
+            <div className="text-xs text-gray-400 mt-0.5">Since {dashStats.fy_start} (excl. overhead)</div>
+          </div>
+          <div className="card">
+            <div className="text-xs text-gray-500 mb-1">Hours This Week</div>
+            <div className="text-2xl font-bold text-gray-900">
+              {Number(dashStats.week_hours || 0).toLocaleString('en-US', { maximumFractionDigits: 1 })}h
+            </div>
+            <div className="text-xs text-gray-400 mt-0.5">Past 7 days, all projects</div>
+          </div>
+          <div className="card col-span-2 lg:col-span-1">
+            <div className="text-xs text-gray-500 mb-1">Active Staff (30d)</div>
+            <div className="text-2xl font-bold text-gray-900">{dashStats.active_staff_30d}</div>
+            <div className="text-xs text-gray-400 mt-0.5">People with logged time</div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Top projects + recent activity ──────────────────────────────────── */}
+      {dashStats && (dashStats.top_projects?.length > 0 || dashStats.recent_weeks?.length > 0) && (
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          {/* Top projects this FY */}
+          {dashStats.top_projects?.length > 0 && (
+            <div className="card">
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-sm font-semibold text-gray-700">Top Projects This FY</h2>
+                <Link to="/admin/reports" className="text-xs text-brand-600 hover:text-brand-800">View reports →</Link>
+              </div>
+              <div className="space-y-2">
+                {dashStats.top_projects.map((p, i) => {
+                  const max = dashStats.top_projects[0]?.hours || 1;
+                  const pct = Math.round((p.hours / max) * 100);
+                  return (
+                    <div key={i}>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-gray-700 font-medium truncate max-w-[200px]" title={p.project_name}>{p.project_name}</span>
+                        <span className="text-gray-500 shrink-0 ml-2">{Number(p.hours).toLocaleString('en-US', { maximumFractionDigits: 1 })}h</span>
+                      </div>
+                      <div className="h-1.5 bg-gray-100 rounded-full">
+                        <div className="h-1.5 bg-brand-400 rounded-full" style={{ width: `${pct}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Recent timesheet activity */}
+          {dashStats.recent_weeks?.length > 0 && (
+            <div className="card">
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-sm font-semibold text-gray-700">Recent Timesheets</h2>
+                <Link to="/admin/timesheets" className="text-xs text-brand-600 hover:text-brand-800">
+                  {stats?.pendingCount > 0 ? `${stats.pendingCount} pending →` : 'View all →'}
+                </Link>
+              </div>
+              <div className="space-y-2">
+                {dashStats.recent_weeks.map(w => (
+                  <div key={w.id} className="flex items-center justify-between text-sm">
+                    <div className="min-w-0">
+                      <span className="font-medium text-gray-800 truncate block">{w.user_name}</span>
+                      <span className="text-xs text-gray-400">{formatWeekRange(w.week_start)}</span>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0 ml-3">
+                      <span className="text-xs text-gray-500">{Number(w.hours).toFixed(1)}h</span>
+                      <Badge status={w.status} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ── Quick links + pending ────────────────────────────────────────────── */}
       <div className="grid md:grid-cols-2 gap-6">
