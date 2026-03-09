@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useUser, useClerk } from '@clerk/clerk-react';
 import { useApi } from '../hooks/useApi';
 import OnboardingModal from './OnboardingModal';
+import NotSetupPage from './NotSetupPage';
 import clsx from 'clsx';
 
 const adminNav = [
@@ -40,29 +41,38 @@ export default function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [dbUser, setDbUser] = useState(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [notSetup, setNotSetup] = useState(false);
+  const [meLoaded, setMeLoaded] = useState(false);
   const role = user?.publicMetadata?.role || 'staff';
   const navItems = role === 'admin' ? adminNav : staffNav;
 
   useEffect(() => {
     if (!user) return;
-    // Check localStorage first — covers accounts not linked to a D1 record
     const lsKey = `champ-onboarded-${user.id}`;
-    if (localStorage.getItem(lsKey)) return;
     api.get('/api/staff/me').then(res => {
       const u = res.user;
       setDbUser(u);
-      // Only show onboarding if: DB user exists with a real name, and not yet marked onboarded
-      const isLinked = u?.name && u?.email;
-      if (isLinked && !u.onboarded_at) setShowOnboarding(true);
-      // If no linked DB record, mark dismissed in localStorage so modal won't show again
-      if (!isLinked) localStorage.setItem(lsKey, '1');
-    }).catch(() => {});
+      const isLinked = !!(u?.name && u?.email);
+      const isAdmin = role === 'admin';
+
+      if (!isLinked && !isAdmin) {
+        // Authenticated with Clerk but no D1 record and not admin → holding page
+        setNotSetup(true);
+      } else if (isLinked && !u.onboarded_at && !localStorage.getItem(lsKey)) {
+        // Linked user who hasn't completed onboarding
+        setShowOnboarding(true);
+      }
+      setMeLoaded(true);
+    }).catch(() => setMeLoaded(true));
   }, [user?.id]);
 
   const handleSignOut = async () => {
     await signOut();
     navigate('/sign-in');
   };
+
+    // Not in D1 and not admin — show holding page instead of the full app
+  if (notSetup) return <NotSetupPage />;
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
