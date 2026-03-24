@@ -32,6 +32,8 @@ import StaffTimesheet from './pages/staff/Timesheet';
 import MyAssignments from './pages/staff/MyAssignments';
 import MyProfile from './pages/staff/MyProfile';
 
+import LandingPage from './pages/LandingPage';
+
 const CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!CLERK_PUBLISHABLE_KEY) {
@@ -43,7 +45,7 @@ function RoleRedirect() {
   const { user } = useUser();
 
   if (!isLoaded) return <PageLoader />;
-  if (!isSignedIn) return <Navigate to="/sign-in" replace />;
+  if (!isSignedIn) return <LandingPage />;
 
 
   const role = user?.publicMetadata?.role || 'staff';
