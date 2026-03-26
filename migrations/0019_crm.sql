@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS organizations (
   type TEXT, -- "federal", "state", "local", "private", "nonprofit", "other"
   website TEXT,
   notes TEXT,
-  created_at TEXT DEFAULT (datetime("now")),
-  updated_at TEXT DEFAULT (datetime("now"))
+  created_at TEXT,
+  updated_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS contacts (
@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS contacts (
   phone TEXT,
   role TEXT,
   notes TEXT,
-  created_at TEXT DEFAULT (datetime("now")),
-  updated_at TEXT DEFAULT (datetime("now"))
+  created_at TEXT,
+  updated_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS contact_grant_links (
@@ -40,5 +40,5 @@ CREATE TABLE IF NOT EXISTS interactions (
   next_action TEXT,
   next_action_due TEXT,
   next_action_done INTEGER DEFAULT 0,
-  created_at TEXT DEFAULT (datetime("now"))
+  created_at TEXT
 );
