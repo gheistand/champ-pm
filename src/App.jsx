@@ -26,6 +26,8 @@ import AdminClassifications from './pages/admin/Classifications';
 import AdminEquity from './pages/admin/Equity';
 import AdminPromotions from './pages/admin/Promotions';
 import AdminSalaryAdjustments from './pages/admin/SalaryAdjustments';
+import AdminCRM from './pages/admin/CRM';
+import AdminCRMContact from './pages/admin/CRMContact';
 
 // Staff pages
 import StaffTimesheet from './pages/staff/Timesheet';
@@ -100,6 +102,14 @@ export default function App() {
                 <Route path="/admin/equity" element={<AdminEquity />} />
                 <Route path="/admin/promotions" element={<AdminPromotions />} />
                 <Route path="/admin/salary-adjustments" element={<AdminSalaryAdjustments />} />
+              </Route>
+            </Route>
+
+            {/* CRM — all authenticated staff can view */}
+            <Route element={<ProtectedRoute allowedRoles={['admin', 'staff']} />}>
+              <Route element={<AppLayout />}>
+                <Route path="/admin/crm" element={<AdminCRM />} />
+                <Route path="/admin/crm/:id" element={<AdminCRMContact />} />
               </Route>
             </Route>
 
