@@ -1,0 +1,54 @@
+import { json, requireAdmin } from '../../../../../_utils.js';
+
+const FRINGE = 0.451;
+const FA = 0.317;
+
+export async function onRequest(context) {
+  const { env, data, params, request } = context;
+  const denied = requireAdmin(data);
+  if (denied) return denied;
+
+  if (request.method !== 'PUT') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
+  const { id: scenarioId, rowId } = params;
+  const body = await request.json();
+  const { allocation_pct, notes, flag } = body;
+
+  if (allocation_pct == null) {
+    return json({ error: 'allocation_pct is required' }, 400);
+  }
+
+  // Recalculate estimated_cost
+  const existing = await env.DB.prepare(
+    'SELECT * FROM staff_plan_scenario_rows WHERE id=? AND scenario_id=?'
+  ).bind(rowId, scenarioId).first();
+
+  if (!existing) return json({ error: 'Not found' }, 404);
+
+  const salary = existing.salary_rate || 0;
+  const months = monthsBetween(existing.period_start, existing.period_end);
+  const estimated_cost = (salary / 12) * (allocation_pct / 100) * months * (1 + FRINGE) * (1 + FA);
+
+  const newFlag = allocation_pct < 5 ? 'low_pct' : (flag ?? null);
+
+  await env.DB.prepare(`
+    UPDATE staff_plan_scenario_rows
+    SET allocation_pct=?, estimated_cost=?, is_override=1, flag=?, notes=?
+    WHERE id=? AND scenario_id=?
+  `).bind(allocation_pct, estimated_cost, newFlag, notes ?? existing.notes, rowId, scenarioId).run();
+
+  // Update scenario updated_at
+  await env.DB.prepare(`UPDATE staff_plan_scenarios SET updated_at=datetime('now') WHERE id=?`).bind(scenarioId).run();
+
+  const row = await env.DB.prepare('SELECT * FROM staff_plan_scenario_rows WHERE id=?').bind(rowId).first();
+  return json({ row });
+}
+
+function monthsBetween(start, end) {
+  const s = new Date(start);
+  const e = new Date(end);
+  return (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth()) +
+    (e.getDate() - s.getDate()) / 30;
+}

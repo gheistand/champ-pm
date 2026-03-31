@@ -28,6 +28,7 @@ import AdminPromotions from './pages/admin/Promotions';
 import AdminSalaryAdjustments from './pages/admin/SalaryAdjustments';
 import AdminCRM from './pages/admin/CRM';
 import AdminCRMContact from './pages/admin/CRMContact';
+import AdminStaffPlans from './pages/admin/StaffPlans';
 
 // Staff pages
 import StaffTimesheet from './pages/staff/Timesheet';
@@ -102,6 +103,7 @@ export default function App() {
                 <Route path="/admin/equity" element={<AdminEquity />} />
                 <Route path="/admin/promotions" element={<AdminPromotions />} />
                 <Route path="/admin/salary-adjustments" element={<AdminSalaryAdjustments />} />
+                <Route path="/admin/staff-plans" element={<AdminStaffPlans />} />
               </Route>
             </Route>
 

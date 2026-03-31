@@ -19,6 +19,10 @@
     @apply px-3 py-1.5 text-xs;
   }
 
+  .input-sm {
+    @apply border border-gray-300 rounded-lg px-3 py-1.5 text-sm outline-none;
+  }
+
   .card {
     @apply bg-white rounded-xl border border-gray-200 shadow-sm;
   }
@@ -72,7 +76,8 @@
 
 /* Focus styles via plain CSS to avoid @apply variant limitations */
 .form-input:focus,
-.form-select:focus {
+.form-select:focus,
+.input-sm:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
