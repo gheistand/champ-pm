@@ -43,15 +43,23 @@ export default function StaffPlans() {
 
 // ─── Grant Balances Tab ──────────────────────────────────────────────────────
 
+const SORT_FIELDS = ['fund_number', 'pop_end_date', 'current_balance', 'is_manual_override'];
+
 function GrantBalancesTab() {
   const api = useApi();
   const { addToast } = useToast();
   const [balances, setBalances] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(false);
-  const [editRow, setEditRow] = useState(null);
-  const [saving, setSaving] = useState(false);
-  const [form, setForm] = useState(EMPTY_BALANCE);
+  const [syncingAll, setSyncingAll] = useState(false);
+  const [syncingFund, setSyncingFund] = useState(null);
+  const [showManualModal, setShowManualModal] = useState(false);
+  const [editingFund, setEditingFund] = useState(null); // fund_number being inline-edited
+  const [editForm, setEditForm] = useState({});
+  const [savingFund, setSavingFund] = useState(null);
+  const [sortField, setSortField] = useState('pop_end_date');
+  const [sortDir, setSortDir] = useState('asc');
+  const [manualForm, setManualForm] = useState(EMPTY_MANUAL);
+  const [savingManual, setSavingManual] = useState(false);
 
   useEffect(() => { loadBalances(); }, []);
 
@@ -67,36 +75,94 @@ function GrantBalancesTab() {
     }
   }
 
-  function openAdd() {
-    setEditRow(null);
-    setForm(EMPTY_BALANCE);
-    setShowModal(true);
+  function toggleSort(field) {
+    if (sortField === field) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDir('asc');
+    }
   }
 
-  function openEdit(b) {
-    setEditRow(b);
-    setForm({ ...b });
-    setShowModal(true);
+  function sortedBalances() {
+    return [...balances].sort((a, b) => {
+      let av = a[sortField];
+      let bv = b[sortField];
+      if (av == null) return 1;
+      if (bv == null) return -1;
+      if (typeof av === 'string') av = av.toLowerCase();
+      if (typeof bv === 'string') bv = bv.toLowerCase();
+      const cmp = av < bv ? -1 : av > bv ? 1 : 0;
+      return sortDir === 'asc' ? cmp : -cmp;
+    });
   }
 
-  async function handleSave() {
-    setSaving(true);
+  async function syncAll() {
+    setSyncingAll(true);
     try {
-      await api.post('/api/staff-plans/balances', form);
+      const data = await api.post('/api/staff-plans/balances/sync', { all: true });
+      addToast(`Synced ${data.synced} grants from Runway`, 'success');
+      loadBalances();
+    } catch {
+      addToast('Sync failed', 'error');
+    } finally {
+      setSyncingAll(false);
+    }
+  }
+
+  async function syncFund(fund_number) {
+    setSyncingFund(fund_number);
+    try {
+      await api.post('/api/staff-plans/balances/sync', { fund_number });
+      addToast(`Synced ${fund_number} from Runway`, 'success');
+      loadBalances();
+    } catch {
+      addToast('Sync failed', 'error');
+    } finally {
+      setSyncingFund(null);
+    }
+  }
+
+  function startEdit(b) {
+    setEditingFund(b.fund_number);
+    setEditForm({
+      remaining_balance: b.current_balance ?? '',
+      pop_end_date: b.pop_end_date ?? '',
+      notes: b.notes ?? '',
+    });
+  }
+
+  function cancelEdit() {
+    setEditingFund(null);
+    setEditForm({});
+  }
+
+  async function saveEdit(b) {
+    setSavingFund(b.fund_number);
+    try {
+      await api.post('/api/staff-plans/balances', {
+        fund_number: b.fund_number,
+        remaining_balance: parseFloat(editForm.remaining_balance),
+        pop_end_date: editForm.pop_end_date,
+        notes: editForm.notes,
+        full_account_string: b.full_account_string,
+        grant_name: b.grant_name,
+      });
       addToast('Balance saved', 'success');
-      setShowModal(false);
+      setEditingFund(null);
       loadBalances();
     } catch {
       addToast('Save failed', 'error');
     } finally {
-      setSaving(false);
+      setSavingFund(null);
     }
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Delete this balance record?')) return;
+  async function handleDelete(b) {
+    if (!b.id) return;
+    if (!confirm(`Delete balance record for fund ${b.fund_number}?`)) return;
     try {
-      await api.delete(`/api/staff-plans/balances/${id}`);
+      await api.delete(`/api/staff-plans/balances/${b.id}`);
       addToast('Deleted', 'success');
       loadBalances();
     } catch {
@@ -104,54 +170,226 @@ function GrantBalancesTab() {
     }
   }
 
-  const totalBalance = balances.reduce((s, b) => s + (b.remaining_balance || 0), 0);
+  async function saveManual() {
+    if (!manualForm.fund_number || manualForm.remaining_balance === '' || !manualForm.pop_end_date) {
+      addToast('Fund, balance, and POP end date are required', 'error');
+      return;
+    }
+    setSavingManual(true);
+    try {
+      await api.post('/api/staff-plans/balances', {
+        fund_number: manualForm.fund_number,
+        remaining_balance: parseFloat(manualForm.remaining_balance),
+        pop_end_date: manualForm.pop_end_date,
+        notes: manualForm.notes,
+        full_account_string: manualForm.full_account_string,
+        grant_name: manualForm.grant_name,
+      });
+      addToast('Manual grant added', 'success');
+      setShowManualModal(false);
+      setManualForm(EMPTY_MANUAL);
+      loadBalances();
+    } catch {
+      addToast('Save failed', 'error');
+    } finally {
+      setSavingManual(false);
+    }
+  }
+
+  const totalBalance = balances.reduce((s, b) => s + (b.current_balance || 0), 0);
+  const sorted = sortedBalances();
+
+  function SortTh({ field, label, className = '' }) {
+    const active = sortField === field;
+    return (
+      <th
+        className={`px-3 py-2 cursor-pointer select-none hover:text-gray-700 ${active ? 'text-brand-600' : ''} ${className}`}
+        onClick={() => toggleSort(field)}
+      >
+        {label}
+        {active && <span className="ml-1">{sortDir === 'asc' ? '↑' : '↓'}</span>}
+      </th>
+    );
+  }
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <div>
-          <span className="text-sm text-gray-500">Total remaining: </span>
+          <span className="text-sm text-gray-500">Total current balance: </span>
           <span className="font-semibold text-gray-900">{fmtDollar(totalBalance)}</span>
         </div>
-        <button onClick={openAdd} className="btn-primary">+ Add Balance</button>
+        <div className="flex gap-2">
+          <button
+            onClick={syncAll}
+            disabled={syncingAll}
+            className="btn-secondary text-xs"
+            title="Sync all Runway grants to latest balances (clears manual overrides for those funds)"
+          >
+            {syncingAll ? 'Syncing…' : '↺ Sync All from Runway'}
+          </button>
+          <button onClick={() => setShowManualModal(true)} className="btn-primary text-xs">
+            + Add Manual Grant
+          </button>
+        </div>
       </div>
 
       {loading ? (
         <div className="text-gray-400 text-sm py-8 text-center">Loading…</div>
-      ) : balances.length === 0 ? (
-        <div className="text-gray-400 text-sm py-8 text-center">No balances yet. Add grant balances from PRIDE.</div>
+      ) : sorted.length === 0 ? (
+        <div className="text-gray-400 text-sm py-8 text-center">
+          No balances found. Click "Sync All from Runway" to pull grant data, or add a manual grant.
+        </div>
       ) : (
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">
             <thead>
               <tr className="bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wide">
-                <th className="px-3 py-2">Fund</th>
-                <th className="px-3 py-2">Account String</th>
-                <th className="px-3 py-2 text-right">Remaining Balance</th>
-                <th className="px-3 py-2">POP End Date</th>
+                <SortTh field="fund_number" label="Fund" />
+                <th className="px-3 py-2">Grant Name</th>
+                <SortTh field="pop_end_date" label="POP End Date" />
+                <th className="px-3 py-2 text-right">Runway Balance</th>
+                <SortTh field="current_balance" label="Current Balance" className="text-right" />
                 <th className="px-3 py-2">As Of</th>
+                <SortTh field="is_manual_override" label="Override?" />
                 <th className="px-3 py-2">Notes</th>
                 <th className="px-3 py-2"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {balances.map(b => {
+              {sorted.map(b => {
                 const urgency = popUrgency(b.pop_end_date);
+                const isEditing = editingFund === b.fund_number;
+                const isSaving = savingFund === b.fund_number;
+                const isSyncing = syncingFund === b.fund_number;
+
                 return (
-                  <tr key={b.id} className="hover:bg-gray-50">
-                    <td className="px-3 py-2 font-mono font-medium text-gray-900">{b.fund_number}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-gray-600">{b.full_account_string || '—'}</td>
-                    <td className="px-3 py-2 text-right font-medium text-gray-900">{fmtDollar(b.remaining_balance)}</td>
-                    <td className={`px-3 py-2 font-medium ${urgency === 'red' ? 'text-red-600' : urgency === 'yellow' ? 'text-yellow-600' : 'text-gray-700'}`}>
-                      {b.pop_end_date}
+                  <tr key={b.fund_number} className={`hover:bg-gray-50 ${b.is_manual_override ? 'bg-amber-50' : ''}`}>
+                    {/* Fund */}
+                    <td className="px-3 py-2 font-mono font-medium text-gray-900 whitespace-nowrap">
+                      {b.fund_number}
                     </td>
-                    <td className="px-3 py-2 text-gray-500">{b.as_of_date}</td>
-                    <td className="px-3 py-2 text-gray-500 max-w-xs truncate">{b.notes || ''}</td>
+
+                    {/* Grant Name */}
+                    <td className="px-3 py-2 text-gray-700 max-w-[180px] truncate" title={b.grant_name}>
+                      {b.grant_name || <span className="text-gray-400">—</span>}
+                    </td>
+
+                    {/* POP End Date */}
+                    <td className={`px-3 py-2 font-medium whitespace-nowrap ${
+                      urgency === 'red' ? 'text-red-600' :
+                      urgency === 'yellow' ? 'text-amber-600' :
+                      'text-gray-700'
+                    }`}>
+                      {isEditing ? (
+                        <input
+                          type="date"
+                          value={editForm.pop_end_date}
+                          onChange={e => setEditForm(f => ({ ...f, pop_end_date: e.target.value }))}
+                          className="border border-gray-300 rounded px-1 py-0.5 text-xs w-32"
+                        />
+                      ) : (b.pop_end_date || '—')}
+                    </td>
+
+                    {/* Runway Balance */}
+                    <td className="px-3 py-2 text-right">
+                      {b.in_runway ? (
+                        b.is_manual_override ? (
+                          <span className="line-through text-gray-400">{fmtDollar(b.runway_balance)}</span>
+                        ) : (
+                          <span className="text-gray-700">{fmtDollar(b.runway_balance)}</span>
+                        )
+                      ) : (
+                        <span className="text-gray-400">—</span>
+                      )}
+                    </td>
+
+                    {/* Current Balance */}
+                    <td className={`px-3 py-2 text-right font-medium ${b.is_manual_override ? 'text-amber-700' : 'text-gray-900'}`}>
+                      {isEditing ? (
+                        <input
+                          type="number"
+                          value={editForm.remaining_balance}
+                          onChange={e => setEditForm(f => ({ ...f, remaining_balance: e.target.value }))}
+                          className="border border-brand-400 rounded px-1 py-0.5 text-xs w-28 text-right focus:outline-none focus:ring-1 focus:ring-brand-500"
+                          autoFocus
+                        />
+                      ) : fmtDollar(b.current_balance)}
+                    </td>
+
+                    {/* As Of */}
+                    <td className="px-3 py-2 text-gray-500 whitespace-nowrap text-xs">
+                      {b.runway_as_of_date || '—'}
+                    </td>
+
+                    {/* Override badge */}
                     <td className="px-3 py-2">
-                      <div className="flex gap-2">
-                        <button onClick={() => openEdit(b)} className="text-xs text-brand-600 hover:underline">Edit</button>
-                        <button onClick={() => handleDelete(b.id)} className="text-xs text-red-500 hover:underline">Delete</button>
-                      </div>
+                      {!b.in_runway ? (
+                        <span className="text-xs bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded font-medium">Manual Only</span>
+                      ) : b.is_manual_override ? (
+                        <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium">Override</span>
+                      ) : null}
+                    </td>
+
+                    {/* Notes */}
+                    <td className="px-3 py-2 text-gray-500 max-w-[160px] truncate">
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          value={editForm.notes}
+                          onChange={e => setEditForm(f => ({ ...f, notes: e.target.value }))}
+                          placeholder="Notes"
+                          className="border border-gray-300 rounded px-1 py-0.5 text-xs w-full"
+                        />
+                      ) : (b.notes || '')}
+                    </td>
+
+                    {/* Actions */}
+                    <td className="px-3 py-2 whitespace-nowrap">
+                      {isEditing ? (
+                        <div className="flex gap-1.5">
+                          <button
+                            onClick={() => saveEdit(b)}
+                            disabled={isSaving}
+                            className="text-xs text-green-600 font-medium hover:underline"
+                          >
+                            {isSaving ? '…' : 'Save'}
+                          </button>
+                          <button onClick={cancelEdit} className="text-xs text-gray-400 hover:underline">Cancel</button>
+                        </div>
+                      ) : (
+                        <div className="flex gap-2 items-center">
+                          <button
+                            onClick={() => startEdit(b)}
+                            className="text-xs text-brand-600 hover:underline"
+                            title="Edit balance"
+                          >
+                            Edit
+                          </button>
+                          {b.in_runway && (
+                            <button
+                              onClick={() => syncFund(b.fund_number)}
+                              disabled={isSyncing}
+                              className="text-xs text-gray-500 hover:text-brand-600 hover:underline"
+                              title={b.runway_balance != null
+                                ? `Reset to Runway balance (${fmtDollar(b.runway_balance)} as of ${b.runway_as_of_date || 'unknown'})`
+                                : 'Sync from Runway'}
+                            >
+                              {isSyncing ? (
+                                <span className="inline-block w-3 h-3 border-2 border-gray-300 border-t-brand-500 rounded-full animate-spin" />
+                              ) : '↺'}
+                            </button>
+                          )}
+                          {b.id && (
+                            <button
+                              onClick={() => handleDelete(b)}
+                              className="text-xs text-red-500 hover:underline"
+                            >
+                              Del
+                            </button>
+                          )}
+                        </div>
+                      )}
                     </td>
                   </tr>
                 );
@@ -161,18 +399,18 @@ function GrantBalancesTab() {
         </div>
       )}
 
-      {showModal && (
-        <Modal title={editRow ? 'Edit Balance' : 'Add Balance'} onClose={() => setShowModal(false)}>
+      {showManualModal && (
+        <Modal title="Add Manual Grant" onClose={() => { setShowManualModal(false); setManualForm(EMPTY_MANUAL); }}>
           <div className="space-y-3">
-            <Field label="Fund Number *" value={form.fund_number} onChange={v => setForm(f => ({ ...f, fund_number: v }))} />
-            <Field label="Full Account String" value={form.full_account_string} onChange={v => setForm(f => ({ ...f, full_account_string: v }))} />
-            <Field label="Remaining Balance ($) *" type="number" value={form.remaining_balance} onChange={v => setForm(f => ({ ...f, remaining_balance: v }))} />
-            <Field label="POP End Date *" type="date" value={form.pop_end_date} onChange={v => setForm(f => ({ ...f, pop_end_date: v }))} />
-            <Field label="As Of Date *" type="date" value={form.as_of_date} onChange={v => setForm(f => ({ ...f, as_of_date: v }))} />
-            <Field label="Notes" value={form.notes} onChange={v => setForm(f => ({ ...f, notes: v }))} />
+            <Field label="Fund Number *" value={manualForm.fund_number} onChange={v => setManualForm(f => ({ ...f, fund_number: v }))} />
+            <Field label="Grant Name" value={manualForm.grant_name} onChange={v => setManualForm(f => ({ ...f, grant_name: v }))} />
+            <Field label="Full Account String" value={manualForm.full_account_string} onChange={v => setManualForm(f => ({ ...f, full_account_string: v }))} />
+            <Field label="Current Balance ($) *" type="number" value={manualForm.remaining_balance} onChange={v => setManualForm(f => ({ ...f, remaining_balance: v }))} />
+            <Field label="POP End Date *" type="date" value={manualForm.pop_end_date} onChange={v => setManualForm(f => ({ ...f, pop_end_date: v }))} />
+            <Field label="Notes" value={manualForm.notes} onChange={v => setManualForm(f => ({ ...f, notes: v }))} />
             <div className="flex justify-end gap-2 pt-2">
-              <button onClick={() => setShowModal(false)} className="btn-secondary">Cancel</button>
-              <button onClick={handleSave} disabled={saving} className="btn-primary">{saving ? 'Saving…' : 'Save'}</button>
+              <button onClick={() => { setShowManualModal(false); setManualForm(EMPTY_MANUAL); }} className="btn-secondary">Cancel</button>
+              <button onClick={saveManual} disabled={savingManual} className="btn-primary">{savingManual ? 'Saving…' : 'Save'}</button>
             </div>
           </div>
         </Modal>
@@ -181,9 +419,9 @@ function GrantBalancesTab() {
   );
 }
 
-const EMPTY_BALANCE = {
-  fund_number: '', full_account_string: '', remaining_balance: '',
-  pop_end_date: '', as_of_date: new Date().toISOString().slice(0, 10), notes: ''
+const EMPTY_MANUAL = {
+  fund_number: '', grant_name: '', full_account_string: '',
+  remaining_balance: '', pop_end_date: '', notes: '',
 };
 
 // ─── Appointments Tab ────────────────────────────────────────────────────────
