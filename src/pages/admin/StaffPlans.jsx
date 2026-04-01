@@ -5,6 +5,37 @@ import * as XLSX from 'xlsx';
 
 const TABS = ['Grant Balances', 'Appointments', 'Plan Builder', 'Saved Plans'];
 
+const STAFF_NAME_MAP = {
+  carnold3: 'Camden Arnold',
+  arpitab2: 'Arpita Banerjee',
+  gbuckley: 'Greta Buckley',
+  byard: 'Gregory Byard',
+  bchaille: 'Brian Chaille',
+  dianad: 'Diana Davisson',
+  mlfuller: 'Michelle Fuller',
+  hanstad: 'Christopher Hanstad',
+  heistand: 'Glenn Heistand',
+  nazmul: 'Nazmul Huda',
+  mrjeffer: 'Matthew Jefferson',
+  asjobe: 'Addison Jobe',
+  tannerj: 'Tanner Jones',
+  lkumar: 'Love Kumar',
+  marnilaw: 'Marni Law',
+  clebeda: 'Caitlin Lebeda',
+  makdah2: 'Lena Makdah',
+  bmcvay: 'Brad McVay',
+  rmeekma: 'Ryan Meekma',
+  smilton: 'Sarah Milton',
+  spantha: 'Samikshya Pantha',
+  spaudel: 'Sabin Paudel',
+  powell: 'James Powell',
+  mjr: 'Mary Richardson',
+  sangwan2: 'Nikhil Sangwan',
+  fghiami: 'Fereshteh Ghiami Shomami',
+  abthomas: 'Aaron Thomas',
+  zaloudek: 'Zoe Zaloudek',
+};
+
 export default function StaffPlans() {
   const [tab, setTab] = useState(0);
 
@@ -752,6 +783,85 @@ function PlanBuilderTab() {
     }
   }
 
+  async function exportExcel() {
+    if (!activeScenario || !rows.length) return;
+    try {
+      const wb = XLSX.utils.book_new();
+      const COLS = ['Employee_Name', 'Employee_Type', 'Period_Start_Date', 'Period_End_Date',
+        'Chart', 'Fund', 'Org', 'Program', 'Activity', 'Allocation_Percent',
+        'Salary_Rate', 'Full_Account_String', 'Notes'];
+
+      // Group by user, sorted by display name
+      const byUser = {};
+      for (const r of rows) {
+        if (!byUser[r.user_id]) byUser[r.user_id] = [];
+        byUser[r.user_id].push(r);
+      }
+      const sortedUsers = Object.keys(byUser).sort((a, b) => {
+        const na = STAFF_NAME_MAP[a] || byUser[a][0]?.user_name || a;
+        const nb = STAFF_NAME_MAP[b] || byUser[b][0]?.user_name || b;
+        return na.localeCompare(nb);
+      });
+
+      const summaryRows = [];
+
+      for (const userId of sortedUsers) {
+        const userRows = byUser[userId].slice().sort((a, b) =>
+          (a.period_start || '').localeCompare(b.period_start || ''));
+        const displayName = STAFF_NAME_MAP[userId] || userRows[0]?.user_name || userId;
+        const sheetRows = [COLS];
+
+        for (const r of userRows) {
+          const parts = (r.full_account_string || '').split('-');
+          const chart = parts[0] || '';
+          const fund = r.fund_number || parts[1] || '';
+          const org = parts[2] || '';
+          const program = parts[3] || '';
+          const activity = parts[4] || '';
+          sheetRows.push([
+            displayName,
+            r.employee_type || 'AP',
+            fmtDateShort(r.period_start),
+            fmtDateShort(r.period_end),
+            chart,
+            fund,
+            org,
+            program,
+            activity,
+            r.allocation_pct,
+            r.salary_rate || '',
+            r.full_account_string || '',
+            r.notes || '',
+          ]);
+          summaryRows.push({
+            Employee_Name: displayName,
+            Fund: fund,
+            Period_Start_Date: fmtDateShort(r.period_start),
+            Period_End_Date: fmtDateShort(r.period_end),
+            Allocation_Percent: r.allocation_pct,
+            Est_Cost: r.estimated_cost || '',
+          });
+        }
+
+        const ws = XLSX.utils.aoa_to_sheet(sheetRows);
+        // Trim sheet name to 31 chars (Excel limit)
+        const sheetName = displayName.slice(0, 31);
+        XLSX.utils.book_append_sheet(wb, ws, sheetName);
+      }
+
+      // Summary sheet
+      const summaryHeaders = ['Employee_Name', 'Fund', 'Period_Start_Date', 'Period_End_Date', 'Allocation_Percent', 'Est_Cost'];
+      const summaryData = [summaryHeaders, ...summaryRows.map(r => summaryHeaders.map(h => r[h]))];
+      const wsSummary = XLSX.utils.aoa_to_sheet(summaryData);
+      XLSX.utils.book_append_sheet(wb, wsSummary, 'Summary');
+
+      const today = new Date().toISOString().slice(0, 10);
+      XLSX.writeFile(wb, `StaffPlan_${today}.xlsx`);
+    } catch (err) {
+      addToast('Excel export failed: ' + err.message, 'error');
+    }
+  }
+
   async function updateRow(rowId, newPct) {
     if (!activeScenario) return;
     try {
@@ -809,6 +919,7 @@ function PlanBuilderTab() {
               {recalculating ? 'Recalculating…' : 'Recalculate'}
             </button>
             <button onClick={exportScenario} className="btn-secondary text-xs">Export JSON</button>
+            <button onClick={exportExcel} className="btn-secondary text-xs">Download Excel</button>
             <div className="ml-auto flex gap-1">
               <button onClick={() => setView('staff')} className={`text-xs px-2 py-1 rounded ${view === 'staff' ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'}`}>Staff View</button>
               <button onClick={() => setView('grant')} className={`text-xs px-2 py-1 rounded ${view === 'grant' ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'}`}>Grant View</button>
@@ -862,6 +973,9 @@ function PlanBuilderTab() {
   );
 }
 
+const PERIOD_ROW_BG = ['bg-white', 'bg-blue-50', 'bg-green-50'];
+const PERIOD_HDR_BG = ['bg-gray-100', 'bg-blue-100', 'bg-green-100'];
+
 function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
   return (
     <div className="space-y-2">
@@ -869,6 +983,17 @@ function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
         const expanded = expandedUsers.has(userId);
         const totalCost = rows.reduce((s, r) => s + (r.estimated_cost || 0), 0);
         const hasFlags = rows.some(r => r.flag);
+
+        // Group rows by period (period_start + period_end), sorted by period_start
+        const periodMap = {};
+        for (const r of rows) {
+          const key = `${r.period_start}__${r.period_end}`;
+          if (!periodMap[key]) periodMap[key] = { start: r.period_start, end: r.period_end, rows: [] };
+          periodMap[key].rows.push(r);
+        }
+        const periods = Object.values(periodMap).sort((a, b) =>
+          (a.start || '').localeCompare(b.start || ''));
+
         return (
           <div key={userId} className="border border-gray-200 rounded-lg overflow-hidden">
             <button
@@ -878,7 +1003,7 @@ function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
               <div className="flex items-center gap-2">
                 {hasFlags && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" title="Has flags" />}
                 <span className="font-medium text-gray-900">{name}</span>
-                <span className="text-xs text-gray-500">{rows.length} rows</span>
+                <span className="text-xs text-gray-500">{periods.length} {periods.length === 1 ? 'period' : 'periods'}, {rows.length} allocations</span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-sm text-gray-600">{fmtDollar(totalCost)} est.</span>
@@ -890,17 +1015,30 @@ function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
                 <table className="min-w-full text-sm">
                   <thead>
                     <tr className="bg-white border-b border-gray-200 text-xs text-gray-500 uppercase tracking-wide">
-                      <th className="px-4 py-2 text-left">Period</th>
                       <th className="px-4 py-2 text-left">Fund</th>
                       <th className="px-4 py-2 text-right">Alloc %</th>
                       <th className="px-4 py-2 text-right">Est. Cost</th>
                       <th className="px-4 py-2 text-left">Flag</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {rows.map(r => (
-                      <EditableRow key={r.id} row={r} onSave={onUpdateRow} />
-                    ))}
+                  <tbody>
+                    {periods.map((period, pi) => {
+                      const rowBg = PERIOD_ROW_BG[pi % PERIOD_ROW_BG.length];
+                      const hdrBg = PERIOD_HDR_BG[pi % PERIOD_HDR_BG.length];
+                      return (
+                        <>
+                          <tr key={`hdr-${period.start}`} className={`${hdrBg} border-t border-gray-200`}>
+                            <td colSpan={4} className="px-4 py-1.5 font-semibold text-xs text-gray-700">
+                              Period: {fmtPeriodLabel(period.start, period.end)}
+                              <span className="ml-2 font-normal text-gray-500">({period.rows.length} {period.rows.length === 1 ? 'fund' : 'funds'})</span>
+                            </td>
+                          </tr>
+                          {period.rows.map(r => (
+                            <EditableRow key={r.id} row={r} onSave={onUpdateRow} bgClass={rowBg} />
+                          ))}
+                        </>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -912,7 +1050,7 @@ function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
   );
 }
 
-function EditableRow({ row, onSave }) {
+function EditableRow({ row, onSave, bgClass = 'bg-white' }) {
   const [editing, setEditing] = useState(false);
   const [pct, setPct] = useState(row.allocation_pct);
   const [saving, setSaving] = useState(false);
@@ -924,9 +1062,10 @@ function EditableRow({ row, onSave }) {
     setEditing(false);
   }
 
+  const rowClass = row.flag ? 'bg-red-50' : row.is_override ? 'bg-yellow-50' : bgClass;
+
   return (
-    <tr className={`hover:bg-gray-50 ${row.flag ? 'bg-red-50' : ''} ${row.is_override ? 'bg-yellow-50' : ''}`}>
-      <td className="px-4 py-2 text-gray-600 whitespace-nowrap">{row.period_start} – {row.period_end}</td>
+    <tr className={`hover:opacity-90 ${rowClass} border-t border-gray-100`}>
       <td className="px-4 py-2 font-mono text-gray-700">{row.fund_number}</td>
       <td className="px-4 py-2 text-right">
         {editing ? (
@@ -1130,6 +1269,21 @@ function ChevronIcon({ expanded }) {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
     </svg>
   );
+}
+
+function fmtDateShort(dateStr) {
+  if (!dateStr) return '';
+  const [y, m, d] = dateStr.split('-');
+  return `${parseInt(m)}/${parseInt(d)}/${y.slice(2)}`;
+}
+
+function fmtPeriodLabel(start, end) {
+  if (!start) return '';
+  const s = new Date(start + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const e = end
+    ? new Date(end + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+    : '';
+  return e ? `${s} – ${e}` : s;
 }
 
 function fmtDollar(n) {
