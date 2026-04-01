@@ -70,11 +70,13 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
     // Collect all break points: plan_start, each fund pop_end_date+1day, effectivePlanEnd
     const breakSet = new Set([plan_start, effectivePlanEnd]);
     for (const f of funds) {
+      // Use pop_end_date from balanceMap if available, otherwise from fund itself
       const b = balanceMap[f.fund_number];
-      if (!b) continue;
-      if (b.pop_end_date < plan_start || b.pop_end_date > effectivePlanEnd) continue;
+      const popEnd = b?.pop_end_date || f.pop_end_date;
+      if (!popEnd) continue;
+      if (popEnd < plan_start || popEnd > effectivePlanEnd) continue;
       // Break point is the day after pop_end (start of next period after this fund ends)
-      const popEndDt = parseDate(b.pop_end_date);
+      const popEndDt = parseDate(popEnd);
       const dayAfterPop = addDay(popEndDt);
       const dayAfterStr = formatDate(dayAfterPop);
       if (dayAfterStr <= effectivePlanEnd) breakSet.add(dayAfterStr);
@@ -127,8 +129,12 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
         return { fund: f, weight: Math.max(balance, 0) / safeMonths };
       });
 
-      const totalWeight = weights.reduce((sum, w) => sum + w.weight, 0);
-      if (totalWeight <= 0) continue;
+      let totalWeight = weights.reduce((sum, w) => sum + w.weight, 0);
+      // If all weights are zero (all balances unknown), use equal weights
+      if (totalWeight <= 0) {
+        weights.forEach(w => { w.weight = 1; w.unknown = true; });
+        totalWeight = weights.length;
+      }
 
       // Normalize to 100% (whole numbers)
       let allocations = weights.map(w => ({
@@ -156,8 +162,10 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
         fundSpend[alloc.fund.fund_number] += estimated_cost;
 
         let flag = null;
-        if (alloc.pct < 5) flag = 'low_pct';
-        else if (fundSpend[alloc.fund.fund_number] > b.remaining_balance) flag = 'over_budget';
+        const remainingBal = b?.remaining_balance ?? alloc.fund.remaining_balance ?? 0;
+        if (!b || alloc.fund.balance_unknown) flag = 'balance_unknown';
+        else if (alloc.pct < 5) flag = 'low_pct';
+        else if (remainingBal > 0 && fundSpend[alloc.fund.fund_number] > remainingBal) flag = 'over_budget';
 
         allRows.push({
           user_id: userId,
