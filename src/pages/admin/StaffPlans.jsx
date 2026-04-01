@@ -514,65 +514,33 @@ function AppointmentsTab() {
       const arrayBuffer = await file.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
       const rows = [];
-      // Parse all sheets except 'Summary' — normalize inconsistent column names
+      // Standardized format: all 27 sheets use identical columns
       for (const sheetName of workbook.SheetNames) {
         if (sheetName === 'Summary') continue;
         const ws = workbook.Sheets[sheetName];
-        // Find the actual header row — scan first 5 rows for one containing date-like values
-        // Some sheets (e.g. James Powell) have 2 title rows before the real header
-        let headerRow = 1;
-        for (let r = 1; r <= 5; r++) {
-          const testRows = XLSX.utils.sheet_to_json(ws, { defval: '', raw: false, range: r - 1 });
-          if (testRows.length > 0) {
-            const firstRowKeys = Object.keys(testRows[0]).join(' ').toLowerCase();
-            if (firstRowKeys.includes('start') || firstRowKeys.includes('period') || firstRowKeys.includes('account') || firstRowKeys.includes('percent')) {
-              headerRow = r;
-              break;
-            }
-          }
-        }
-        const raw = XLSX.utils.sheet_to_json(ws, { defval: '', raw: false, range: headerRow - 1 });
+        const raw = XLSX.utils.sheet_to_json(ws, { defval: '', raw: false });
         for (const r of raw) {
-          // Normalize all keys to lowercase with underscores
-          const n = {};
-          for (const [k, v] of Object.entries(r)) {
-            n[k.toLowerCase().replace(/[\s%-]+/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '')] = v;
-          }
-          // Extract canonical fields from many possible column names
-          // Name: use sheet name as fallback (handles Meekma/Pantha/Paudel with empty name col)
-          const name = (n.employee_name || n.employee || n.staff_name || '').trim() || sheetName;
-          // Dates: handle both period_start/end and start_date/end_date
-          const startDate = n.period_start_date || n.period_start || n.start_date || '';
-          const endDate = n.period_end_date || n.period_end || n.end_date || '';
-          const accountStr = n.full_account_string || n.account || '';
-          // Allocation %: strip % sign and convert
-          const pctRaw = String(n.allocation_percent || n.allocation_pct || n.percent || n.percent_allocation || n.allocation || '0').replace('%', '').trim();
-          const pct = parseFloat(pctRaw) || 0;
-          // Salary: handle monthly salary (small numbers < 5000 = monthly, multiply by 12)
-          const salaryRaw = parseFloat(String(n.salary_rate || n.annual_salary || n.annual_rate || n.current_salary || n.salary || '0').replace(/[$,]/g, '')) || 0;
-          const salary = salaryRaw > 0 && salaryRaw < 5000 ? salaryRaw * 12 : salaryRaw;
-          // Extract fund from account string if no separate Fund column
-          const fund = n.fund ? String(n.fund) : (accountStr.split('-')[1] || '');
-          const chart = n.chart ? parseInt(n.chart) : parseInt(accountStr.split('-')[0]) || 1;
-          const org = n.org || (accountStr.split('-')[2] || '');
-          const program = n.program || (accountStr.split('-')[3] || '');
-          const activity = n.activity || (accountStr.split('-')[4] || '');
-          // Skip rows with no dates or fund (title/blank rows)
+          const name = r.Employee_Name || sheetName;
+          const startDate = r.Period_Start_Date || '';
+          const endDate = r.Period_End_Date || '';
+          const fund = String(r.Fund || '').trim();
+          const pct = parseFloat(r.Allocation_Percent) || 0;
+          const salary = parseFloat(r.Salary_Rate) || 0;
           if (!startDate || !endDate || !fund || !pct) continue;
           rows.push({
             Employee_Name: name,
-            Employee_Type: n.employee_type || n.type || n.position_type || n.position || 'AP',
+            Employee_Type: r.Employee_Type || 'AP',
             Period_Start_Date: startDate,
             Period_End_Date: endDate,
-            Chart: chart,
+            Chart: parseInt(r.Chart) || 1,
             Fund: fund,
-            Org: org,
-            Program: program,
-            Activity: activity,
+            Org: r.Org || '',
+            Program: r.Program || '',
+            Activity: r.Activity || '',
             Allocation_Percent: pct,
             Salary_Rate: salary,
-            Full_Account_String: accountStr || `${chart}-${fund}-${org}-${program}-${activity}`,
-            Notes: n.notes || '',
+            Full_Account_String: r.Full_Account_String || '',
+            Notes: r.Notes || '',
           });
         }
       }
