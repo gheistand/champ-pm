@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useApi } from '../../hooks/useApi';
 import { useToast } from '../../hooks/useToast';
+import * as XLSX from 'xlsx';
 
 const TABS = ['Grant Balances', 'Appointments', 'Plan Builder', 'Saved Plans'];
 
@@ -459,11 +460,25 @@ function AppointmentsTab() {
     const file = e.target.files[0];
     if (!file) return;
     try {
-      const text = await file.text();
-      const rows = parseCSV(text);
-      setPreview(rows);
-    } catch {
-      addToast('Failed to parse file', 'error');
+      const arrayBuffer = await file.arrayBuffer();
+      const workbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
+      const rows = [];
+      // Parse all sheets except 'Summary'
+      for (const sheetName of workbook.SheetNames) {
+        if (sheetName === 'Summary') continue;
+        const ws = workbook.Sheets[sheetName];
+        const sheetRows = XLSX.utils.sheet_to_json(ws, { defval: '' });
+        rows.push(...sheetRows);
+      }
+      if (rows.length === 0) {
+        addToast('No data found in spreadsheet', 'error');
+      } else {
+        setPreview(rows);
+        addToast(`Parsed ${rows.length} rows from ${workbook.SheetNames.length - 1} staff sheets`, 'success');
+      }
+    } catch (err) {
+      console.error('XLSX parse error:', err);
+      addToast('Failed to parse Excel file: ' + err.message, 'error');
     }
     e.target.value = '';
   }
@@ -503,7 +518,7 @@ function AppointmentsTab() {
           <button onClick={loadAppointments} className="btn-secondary text-xs">Filter</button>
         </div>
         <div>
-          <input ref={fileRef} type="file" accept=".csv,.json" className="hidden" onChange={handleFileChange} />
+          <input ref={fileRef} type="file" accept=".xlsx,.xls" className="hidden" onChange={handleFileChange} />
           <button onClick={() => fileRef.current?.click()} className="btn-primary">Import from Spreadsheet</button>
         </div>
       </div>

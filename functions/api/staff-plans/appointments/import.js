@@ -32,16 +32,27 @@ const STAFF_MAP = {
   'Zoe Zaloudek': 'zaloudek',
 };
 
-// Normalize date from M/D/YYYY or YYYY-MM-DD to YYYY-MM-DD
+// Normalize date from multiple formats to YYYY-MM-DD
 function normalizeDate(d) {
   if (!d) return null;
-  if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
-  const parts = d.split('/');
+  // JS Date object (from xlsx cellDates:true)
+  if (d instanceof Date || (typeof d === 'object' && d !== null)) {
+    try {
+      const dt = new Date(d);
+      if (!isNaN(dt)) return dt.toISOString().slice(0, 10);
+    } catch { /* fall through */ }
+  }
+  const s = String(d).trim();
+  if (!s) return null;
+  // Already YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+  // M/D/YYYY or MM/DD/YYYY
+  const parts = s.split('/');
   if (parts.length === 3) {
     const [m, day, y] = parts;
-    return `${y}-${m.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    return `${y.padStart(4,'0')}-${m.padStart(2,'0')}-${day.padStart(2,'0')}`;
   }
-  return d;
+  return s;
 }
 
 export async function onRequest(context) {
