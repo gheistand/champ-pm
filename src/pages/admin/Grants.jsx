@@ -7,6 +7,8 @@ import Badge from '../../components/Badge';
 import EmptyState from '../../components/EmptyState';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const EMPTY_FORM = {
   name: '', funder: '', grant_number: '',
@@ -94,7 +96,10 @@ export default function AdminGrants() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Grants</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Grants</h1>
+          <HelpButton {...TOOL_HELP.grants} />
+        </div>
         <button className="btn-primary" onClick={openCreate}>+ New Grant</button>
       </div>
 

@@ -6,6 +6,8 @@ import Badge from '../../components/Badge';
 import EmptyState from '../../components/EmptyState';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatWeekRange, formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 export default function AdminTimesheets() {
   const api = useApi();
@@ -69,7 +71,10 @@ export default function AdminTimesheets() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Timesheet Approvals</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Timesheet Approvals</h1>
+          <HelpButton {...TOOL_HELP.timesheets} />
+        </div>
         <select className="form-select w-40" value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
           <option value="">All</option>
           <option value="submitted">Pending</option>

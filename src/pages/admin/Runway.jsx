@@ -6,6 +6,8 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ReferenceLine, ResponsiveContainer, Area, AreaChart,
 } from 'recharts';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 function fmt$(n) {
   if (n == null) return '—';
@@ -182,7 +184,10 @@ export default function AdminRunway() {
   return (
     <div className="space-y-8">
       <div className="page-header">
-        <h1 className="page-title">Program Runway Calculator</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Program Runway Calculator</h1>
+          <HelpButton {...TOOL_HELP.runway} />
+        </div>
         <p className="text-sm text-gray-500">Enter current account balances to project how long the program can sustain the full team.</p>
       </div>
 

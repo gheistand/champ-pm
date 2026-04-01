@@ -7,6 +7,8 @@ import Modal from '../../components/Modal';
 import EmptyState from '../../components/EmptyState';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const EMPTY_FORM = {
   first_name: '', last_name: '', org_id: '', role: '', email: '', phone: '', notes: '',
@@ -84,7 +86,10 @@ export default function CRM() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">CRM — Contacts</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">CRM — Contacts</h1>
+          <HelpButton {...TOOL_HELP.crm} />
+        </div>
         {isAdmin && (
           <button className="btn-primary" onClick={openCreate}>+ New Contact</button>
         )}

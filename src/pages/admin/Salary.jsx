@@ -5,6 +5,8 @@ import Modal from '../../components/Modal';
 import EmptyState from '../../components/EmptyState';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const APPOINTMENT_TYPES = [
   { value: 'surs', label: 'SURS (Academic Professional)' },
@@ -116,7 +118,10 @@ export default function AdminSalary() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Salary Management</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Salary Management</h1>
+          <HelpButton {...TOOL_HELP.salary} />
+        </div>
         <button className="btn-primary" onClick={() => openAdd(null)}>+ Add Salary Record</button>
       </div>
 

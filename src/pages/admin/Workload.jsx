@@ -9,6 +9,8 @@ import { PageLoader } from '../../components/LoadingSpinner';
 import {
   getCurrentWeekStart, toISODate, formatWeekRange, addWeeks,
 } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 export default function AdminWorkload() {
   const api = useApi();
@@ -56,7 +58,10 @@ export default function AdminWorkload() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Workload</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Workload</h1>
+          <HelpButton {...TOOL_HELP.workload} />
+        </div>
         <div className="flex items-center gap-3">
           <select
             className="form-select w-44"

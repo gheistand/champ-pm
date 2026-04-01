@@ -6,6 +6,8 @@ import Badge from '../../components/Badge';
 import EmptyState from '../../components/EmptyState';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const EMPTY_FORM = {
   id: '', email: '', name: '', role: 'staff',
@@ -160,7 +162,10 @@ export default function AdminStaff() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Staff</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Staff</h1>
+          <HelpButton {...TOOL_HELP.staff} />
+        </div>
         <div className="flex items-center gap-3">
           <button
             className={`btn-sm ${showCosts ? 'btn-primary' : 'btn-secondary'}`}

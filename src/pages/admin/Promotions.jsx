@@ -6,6 +6,8 @@ import Badge from '../../components/Badge';
 import EmptyState from '../../components/EmptyState';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 function ScoreBadge({ score }) {
   const color = score >= 100 ? 'bg-green-100 text-green-700' :
@@ -63,7 +65,10 @@ export default function Promotions() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Promotion Readiness</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Promotion Readiness</h1>
+          <HelpButton {...TOOL_HELP.promotions} />
+        </div>
         <div className="flex items-center gap-3">
           <button
             className={`btn-sm ${showAll ? 'btn-primary' : 'btn-secondary'}`}

@@ -9,6 +9,8 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer, LineChart, Line,
 } from 'recharts';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 function BudgetGauge({ pct, size = 'md' }) {
   const color = pct > 85 ? 'bg-red-500' : pct > 60 ? 'bg-amber-500' : 'bg-green-500';
@@ -76,7 +78,10 @@ export default function AdminBudget() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Program Budget</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Program Budget</h1>
+          <HelpButton {...TOOL_HELP.budget} />
+        </div>
       </div>
 
       {/* Program summary cards */}

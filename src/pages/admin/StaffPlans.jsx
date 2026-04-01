@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useApi } from '../../hooks/useApi';
 import { useToast } from '../../hooks/useToast';
 import * as XLSX from 'xlsx';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const TABS = ['Grant Balances', 'Appointments', 'Plan Builder', 'Saved Plans'];
 
@@ -42,7 +44,10 @@ export default function StaffPlans() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Staff Plans</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-2xl font-bold text-gray-900">Staff Plans</h1>
+          <HelpButton {...TOOL_HELP.staffPlans} />
+        </div>
         <p className="text-sm text-gray-500 mt-1">Optimize staff allocations across FEMA grants</p>
       </div>
 

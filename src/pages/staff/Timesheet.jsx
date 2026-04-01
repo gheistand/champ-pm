@@ -8,6 +8,8 @@ import {
   getCurrentWeekStart, getWorkWeekDates, toISODate,
   formatWeekRange, formatShortDate, addWeeks,
 } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 export default function StaffTimesheet() {
   const api = useApi();
@@ -137,7 +139,10 @@ export default function StaffTimesheet() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">My Timesheet</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">My Timesheet</h1>
+          <HelpButton {...TOOL_HELP.timesheet} />
+        </div>
         <div className="flex items-center gap-2">
           {weekStatus && <Badge status={weekStatus.status} />}
         </div>

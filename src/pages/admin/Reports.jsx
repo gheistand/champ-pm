@@ -3,6 +3,8 @@ import { useAuth } from '@clerk/clerk-react';
 import { useApi } from '../../hooks/useApi';
 import { useToast } from '../../hooks/useToast';
 import { PageLoader } from '../../components/LoadingSpinner';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const fmt$ = (n) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n || 0);
 const fmtH = (n) => `${Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}h`;
@@ -157,7 +159,10 @@ export default function Reports() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Reports</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Reports</h1>
+          <HelpButton {...TOOL_HELP.reports} />
+        </div>
         {report && (
           <div className="flex gap-2">
             <button className="btn-secondary btn-sm" onClick={downloadCsv}>

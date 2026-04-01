@@ -4,6 +4,8 @@ import { useApi } from '../../hooks/useApi';
 import { PageLoader } from '../../components/LoadingSpinner';
 import Badge from '../../components/Badge';
 import { formatWeekRange, formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const fmt$ = (n) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n || 0);
@@ -136,7 +138,10 @@ export default function AdminDashboard() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Dashboard</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Dashboard</h1>
+          <HelpButton {...TOOL_HELP.dashboard} />
+        </div>
         {!alertsLoading && alerts.length > 0 && (
           <div className="flex items-center gap-2">
             {criticalCount > 0 && (

@@ -2,6 +2,8 @@ import { useState, useRef, useCallback } from 'react';
 import { useAuth } from '@clerk/clerk-react';
 import { useApi } from '../../hooks/useApi';
 import { useToast } from '../../hooks/useToast';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 // Monday of the week containing a given date string
 function weekStart(dateStr) {
@@ -240,7 +242,10 @@ export default function Import() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Import Timesheets</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Import Timesheets</h1>
+          <HelpButton {...TOOL_HELP.import} />
+        </div>
       </div>
 
       <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-xl text-sm text-blue-800">

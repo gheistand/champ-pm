@@ -11,6 +11,8 @@ import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, ZAxis,
   ReferenceArea,
 } from 'recharts';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 const FLAG_COLORS = { underpaid: '#ef4444', at_market: '#22c55e', above_market: '#3b82f6' };
 
@@ -173,7 +175,10 @@ export default function Equity() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Equity Dashboard</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Equity Dashboard</h1>
+          <HelpButton {...TOOL_HELP.equity} />
+        </div>
         <div className="flex items-center gap-3">
           <button className="btn-secondary" onClick={saveSnapshot} disabled={savingSnapshot}>
             {savingSnapshot ? 'Saving…' : 'Save Snapshot'}

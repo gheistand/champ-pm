@@ -5,6 +5,8 @@ import Badge from '../../components/Badge';
 import EmptyState from '../../components/EmptyState';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
+import { HelpButton } from '../../components/HelpButton';
+import { TOOL_HELP } from '../../help/toolHelp';
 
 export default function SalaryAdjustments() {
   const api = useApi();
@@ -83,7 +85,10 @@ export default function SalaryAdjustments() {
   return (
     <div>
       <div className="page-header">
-        <h1 className="page-title">Salary Adjustments</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="page-title">Salary Adjustments</h1>
+          <HelpButton {...TOOL_HELP.salaryAdjustments} />
+        </div>
         {adjustments.length > 0 && (
           <button className="btn-secondary" onClick={exportCSV}>Export CSV</button>
         )}
