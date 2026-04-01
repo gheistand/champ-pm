@@ -59,7 +59,8 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
 
   for (const member of staff) {
     const { userId, salary, funds } = member;
-    if (!salary || !funds || funds.length === 0) continue;
+    if (!funds || funds.length === 0) continue;
+    const effectiveSalary = salary || 0;
 
     // Cap plan end at termination date if applicable
     const terminationDate = terminations[userId];
@@ -155,7 +156,7 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
 
       for (const alloc of allocations) {
         const b = balanceMap[alloc.fund.fund_number];
-        const estimated_cost = (salary / 12) * (alloc.pct / 100) * periodMonths * BURN_MULTIPLIER;
+        const estimated_cost = (effectiveSalary / 12) * (alloc.pct / 100) * periodMonths * BURN_MULTIPLIER;
 
         // Track cumulative spend
         if (!fundSpend[alloc.fund.fund_number]) fundSpend[alloc.fund.fund_number] = 0;
@@ -174,7 +175,7 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
           period_start,
           period_end,
           allocation_pct: alloc.pct,
-          salary_rate: salary,
+          salary_rate: effectiveSalary,
           estimated_cost: Math.round(estimated_cost * 100) / 100,
           flag,
         });

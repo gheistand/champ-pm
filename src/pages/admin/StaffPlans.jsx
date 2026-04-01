@@ -1045,7 +1045,7 @@ function SavedPlansTab() {
   async function deleteScenario(id, name) {
     if (!confirm(`Delete scenario "${name}"?`)) return;
     try {
-      await api.delete(`/api/staff-plans/scenarios/${id}`);
+      await api.del(`/api/staff-plans/scenarios/${id}`);
       addToast('Deleted', 'success');
       loadScenarios();
     } catch {

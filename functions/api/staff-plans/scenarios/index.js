@@ -82,11 +82,16 @@ async function handlePost(context) {
 
 // Internal call to optimization engine
 async function runOptimize(env, payload) {
-  // Gather all staff with their eligible funds and salaries
+  // Gather all staff with appointments
+  // Use salary_records as authoritative salary source (fallback to appointment salary_rate)
   const { results: staffRows } = await env.DB.prepare(`
-    SELECT DISTINCT sa.user_id, MAX(sa.salary_rate) as salary
+    SELECT DISTINCT sa.user_id,
+      COALESCE(
+        (SELECT sr.annual_salary FROM salary_records sr WHERE sr.user_id = sa.user_id ORDER BY sr.effective_date DESC LIMIT 1),
+        MAX(sa.salary_rate),
+        0
+      ) as salary
     FROM staff_appointments sa
-    WHERE sa.salary_rate IS NOT NULL AND sa.salary_rate > 0
     GROUP BY sa.user_id
   `).all();
 
