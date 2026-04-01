@@ -557,11 +557,22 @@ function AppointmentsTab() {
     e.target.value = '';
   }
 
+  async function clearAppointments() {
+    if (!confirm('Clear ALL imported appointments? This only affects Staff Plans data — no other CHAMP-PM data will be changed.')) return;
+    try {
+      await api.del('/api/staff-plans/appointments');
+      addToast('Appointments cleared', 'success');
+      loadAppointments();
+    } catch {
+      addToast('Clear failed', 'error');
+    }
+  }
+
   async function confirmImport() {
     if (!preview) return;
     setImporting(true);
     try {
-      const data = await api.post('/api/staff-plans/appointments/import', { rows: preview });
+      const data = await api.post('/api/staff-plans/appointments/import', { rows: preview, replace: true });
       addToast(`Imported ${data.imported} rows${data.errors ? ` (${data.errors.length} errors)` : ''}`, data.errors ? 'warning' : 'success');
       if (data.errors) console.warn('Import errors:', data.errors);
       setPreview(null);
@@ -588,6 +599,7 @@ function AppointmentsTab() {
         <div>
           <input ref={fileRef} type="file" accept=".xlsx,.xls" className="hidden" onChange={handleFileChange} />
           <button onClick={() => fileRef.current?.click()} className="btn-primary">Import from Spreadsheet</button>
+          <button onClick={clearAppointments} className="btn-danger text-sm ml-2">Clear All Appointments</button>
         </div>
       </div>
 

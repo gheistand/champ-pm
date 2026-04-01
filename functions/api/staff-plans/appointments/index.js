@@ -5,6 +5,12 @@ export async function onRequest(context) {
   const denied = requireAdmin(data);
   if (denied) return denied;
 
+  if (request.method === 'DELETE') {
+    // Clear all appointments — only affects staff_appointments table
+    await env.DB.prepare('DELETE FROM staff_appointments').run();
+    return json({ ok: true, message: 'All appointments cleared' });
+  }
+
   if (request.method !== 'GET') {
     return new Response('Method Not Allowed', { status: 405 });
   }

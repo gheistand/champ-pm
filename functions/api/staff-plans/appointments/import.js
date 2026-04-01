@@ -66,9 +66,15 @@ export async function onRequest(context) {
 
   const body = await request.json();
   // body.rows: array of spreadsheet row objects
+  // body.replace: if true, clear all existing appointments before importing
   // Expected columns: Employee_Name, Employee_Type, Period_Start_Date, Period_End_Date,
   //   Chart, Fund, Org, Program, Activity, Allocation_Percent, Salary_Rate, Full_Account_String
-  const { rows, replace_user_id } = body;
+  const { rows, replace_user_id, replace } = body;
+
+  // Clear existing appointments if replace mode
+  if (replace) {
+    await env.DB.prepare('DELETE FROM staff_appointments').run();
+  }
 
   if (!Array.isArray(rows) || rows.length === 0) {
     return json({ error: 'rows array is required' }, 400);
