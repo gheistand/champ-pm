@@ -101,7 +101,11 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
       const activeFunds = funds.filter(f => {
         if (f.balance_unknown) return true; // unknown balance — include, will be flagged
         const b = balanceMap[f.fund_number];
-        if (!b) return f.remaining_balance >= 0; // use value from LEFT JOIN
+        if (!b) {
+          // Not in balanceMap but may have data from LEFT JOIN
+          return (f.remaining_balance > 0) || f.balance_unknown;
+        }
+        if (!b.pop_end_date) return b.remaining_balance > 0; // no end date — include if balance
         return b.pop_end_date >= period_start && b.remaining_balance > 0;
       });
 
@@ -111,10 +115,16 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
       const periodStartDt = parseDate(period_start);
       const weights = activeFunds.map(f => {
         const b = balanceMap[f.fund_number];
+        // Handle unknown balance or missing balance entry
+        if (!b || f.balance_unknown || !b.pop_end_date) {
+          return { fund: f, weight: 1, unknown: true }; // equal weight, flagged
+        }
         const popEndDt = parseDate(b.pop_end_date);
+        if (isNaN(popEndDt)) return { fund: f, weight: 1, unknown: true };
         const monthsRemaining = (popEndDt - periodStartDt) / (1000 * 60 * 60 * 24 * 30.4375);
-        const safeMonths = Math.max(monthsRemaining, 0.5); // avoid division by zero
-        return { fund: f, weight: b.remaining_balance / safeMonths };
+        const safeMonths = Math.max(monthsRemaining, 0.5);
+        const balance = b.remaining_balance ?? f.remaining_balance ?? 0;
+        return { fund: f, weight: Math.max(balance, 0) / safeMonths };
       });
 
       const totalWeight = weights.reduce((sum, w) => sum + w.weight, 0);

@@ -49,8 +49,12 @@ async function handlePost(context) {
   });
 
   if (!optimizeResp.ok) {
-    const err = await optimizeResp.json();
-    return json({ error: 'Optimization failed', detail: err }, 500);
+    let err = {};
+    try { err = await optimizeResp.json(); } catch {}
+    console.error('Optimization failed:', JSON.stringify(err));
+    // Still return the scenario even if optimization failed — user can recalculate
+    const scenario = await env.DB.prepare('SELECT * FROM staff_plan_scenarios WHERE id=?').bind(scenarioId).first();
+    return json({ scenario, row_count: 0, warning: 'Optimization failed: ' + (err.error || 'unknown error'), detail: err }, 201);
   }
 
   const { rows } = await optimizeResp.json();
@@ -123,9 +127,14 @@ async function runOptimize(env, payload) {
   };
 
   // Call optimize endpoint internally via module import
-  const { optimizeRows } = await import('../optimize.js');
-  const rows = optimizeRows(optimizePayload);
-  return new Response(JSON.stringify({ rows }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  try {
+    const { optimizeRows } = await import('../optimize.js');
+    const rows = optimizeRows(optimizePayload);
+    return new Response(JSON.stringify({ rows }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  } catch (err) {
+    console.error('optimizeRows error:', err);
+    return new Response(JSON.stringify({ error: String(err), stack: err?.stack }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+  }
 }
 
 export async function onRequest(context) {
