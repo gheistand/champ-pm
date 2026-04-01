@@ -100,19 +100,19 @@ async function runOptimize(env, payload) {
     // LEFT JOIN so staff with no balance entries are still included
     const { results: funds } = await env.DB.prepare(`
       SELECT DISTINCT
+        sa.full_account_string,
         sa.fund_number,
-        MAX(sa.full_account_string) as full_account_string,
         MAX(sa.chart) as chart,
         MAX(sa.org) as org,
         MAX(sa.program) as program,
         MAX(sa.activity) as activity,
         COALESCE(b.remaining_balance, 0) as remaining_balance,
         b.pop_end_date,
-        CASE WHEN b.fund_number IS NULL THEN 1 ELSE 0 END as balance_unknown
+        CASE WHEN b.full_account_string IS NULL THEN 1 ELSE 0 END as balance_unknown
       FROM staff_appointments sa
-      LEFT JOIN staff_plan_grant_balances b ON b.fund_number = sa.fund_number
+      LEFT JOIN staff_plan_grant_balances b ON b.full_account_string = sa.full_account_string
       WHERE sa.user_id = ?
-      GROUP BY sa.fund_number
+      GROUP BY sa.full_account_string
     `).bind(s.user_id).all();
 
     // Include all staff — optimizer handles zero-balance funds gracefully
@@ -120,7 +120,7 @@ async function runOptimize(env, payload) {
   }
 
   const { results: balances } = await env.DB.prepare(
-    'SELECT fund_number, remaining_balance, pop_end_date FROM staff_plan_grant_balances WHERE remaining_balance > 0'
+    'SELECT full_account_string, fund_number, remaining_balance, pop_end_date FROM staff_plan_grant_balances WHERE remaining_balance > 0'
   ).all();
 
   const optimizePayload = {

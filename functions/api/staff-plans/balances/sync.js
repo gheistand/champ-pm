@@ -1,12 +1,13 @@
 import { json, requireAdmin } from '../../../_utils.js';
 
-function extractFundNumber(grantNumber) {
-  if (!grantNumber) return null;
-  const parts = grantNumber.split('-');
+function extractFundNumber(accountString) {
+  if (!accountString) return null;
+  const parts = accountString.split('-');
   return parts.length >= 2 ? parts[1] : null;
 }
 
-async function getRunwayGrantsByFund(db) {
+// Get all active Runway grants keyed by grant_number (= full_account_string)
+async function getRunwayGrantsByAccount(db) {
   const { results } = await db.prepare(`
     SELECT g.id, g.name, g.grant_number, g.end_date,
            gb.balance, gb.as_of_date AS balance_as_of_date
@@ -23,8 +24,7 @@ async function getRunwayGrantsByFund(db) {
 
   const map = {};
   for (const g of results) {
-    const fund = extractFundNumber(g.grant_number);
-    if (fund) map[fund] = g;
+    map[g.grant_number] = g;
   }
   return map;
 }
@@ -39,45 +39,50 @@ export async function onRequest(context) {
   }
 
   const body = await request.json();
-  const { fund_number, all: syncAll } = body;
+  const { full_account_string, all: syncAll } = body;
 
-  if (!fund_number && !syncAll) {
-    return json({ error: 'fund_number or all:true is required' }, 400);
+  if (!full_account_string && !syncAll) {
+    return json({ error: 'full_account_string or all:true is required' }, 400);
   }
 
-  const runwayByFund = await getRunwayGrantsByFund(env.DB);
+  const runwayByAccount = await getRunwayGrantsByAccount(env.DB);
 
-  // Determine which fund_numbers to sync
-  let fundsToSync = [];
+  // Determine which accounts to sync
+  let accountsToSync = [];
   if (syncAll) {
-    // Sync all active Runway grants (appointments may not be imported yet)
-    fundsToSync = Object.keys(runwayByFund);
+    // Sync all active Runway grants that have matching full_account_string in staff_appointments
+    const { results: apptAccounts } = await env.DB.prepare(
+      'SELECT DISTINCT full_account_string FROM staff_appointments WHERE full_account_string IS NOT NULL'
+    ).all();
+    const appointmentAccountSet = new Set(apptAccounts.map(r => r.full_account_string));
+    accountsToSync = Object.keys(runwayByAccount).filter(a => appointmentAccountSet.has(a));
   } else {
-    fundsToSync = [fund_number];
+    accountsToSync = [full_account_string];
   }
 
   const updated = [];
 
-  for (const fund of fundsToSync) {
-    const g = runwayByFund[fund];
+  for (const account of accountsToSync) {
+    const g = runwayByAccount[account];
     if (!g) continue; // Not in Runway — skip
 
+    const fund_number = extractFundNumber(account);
     const runway_balance = g.balance ?? null;
     const runway_as_of_date = g.balance_as_of_date ?? null;
     const today = new Date().toISOString().slice(0, 10);
 
     const existing = await env.DB.prepare(
-      'SELECT id FROM staff_plan_grant_balances WHERE fund_number=?'
-    ).bind(fund).first();
+      'SELECT id FROM staff_plan_grant_balances WHERE full_account_string=?'
+    ).bind(account).first();
 
     if (existing) {
       await env.DB.prepare(`
         UPDATE staff_plan_grant_balances
         SET remaining_balance=?, pop_end_date=?, as_of_date=?,
             runway_balance=?, runway_as_of_date=?,
-            is_manual_override=0, grant_name=?,
+            is_manual_override=0, grant_name=?, fund_number=?,
             updated_at=datetime('now')
-        WHERE fund_number=?
+        WHERE full_account_string=?
       `).bind(
         runway_balance ?? 0,
         g.end_date ?? '',
@@ -85,16 +90,18 @@ export async function onRequest(context) {
         runway_balance,
         runway_as_of_date,
         g.name,
-        fund
+        fund_number,
+        account
       ).run();
     } else {
       await env.DB.prepare(`
         INSERT INTO staff_plan_grant_balances
-          (fund_number, remaining_balance, pop_end_date, as_of_date,
+          (full_account_string, fund_number, remaining_balance, pop_end_date, as_of_date,
            runway_balance, runway_as_of_date, is_manual_override, grant_name)
-        VALUES (?, ?, ?, ?, ?, ?, 0, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)
       `).bind(
-        fund,
+        account,
+        fund_number,
         runway_balance ?? 0,
         g.end_date ?? '',
         runway_as_of_date ?? today,
@@ -105,7 +112,8 @@ export async function onRequest(context) {
     }
 
     updated.push({
-      fund_number: fund,
+      full_account_string: account,
+      fund_number,
       balance: runway_balance,
       as_of_date: runway_as_of_date,
     });

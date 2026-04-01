@@ -75,7 +75,7 @@ export default function StaffPlans() {
 
 // ─── Grant Balances Tab ──────────────────────────────────────────────────────
 
-const SORT_FIELDS = ['fund_number', 'pop_end_date', 'current_balance', 'is_manual_override'];
+const SORT_FIELDS = ['full_account_string', 'pop_end_date', 'current_balance', 'is_manual_override'];
 
 function GrantBalancesTab() {
   const api = useApi();
@@ -83,11 +83,11 @@ function GrantBalancesTab() {
   const [balances, setBalances] = useState([]);
   const [loading, setLoading] = useState(true);
   const [syncingAll, setSyncingAll] = useState(false);
-  const [syncingFund, setSyncingFund] = useState(null);
+  const [syncingAccount, setSyncingAccount] = useState(null);
   const [showManualModal, setShowManualModal] = useState(false);
-  const [editingFund, setEditingFund] = useState(null); // fund_number being inline-edited
+  const [editingAccount, setEditingAccount] = useState(null); // full_account_string being inline-edited
   const [editForm, setEditForm] = useState({});
-  const [savingFund, setSavingFund] = useState(null);
+  const [savingAccount, setSavingAccount] = useState(null);
   const [sortField, setSortField] = useState('pop_end_date');
   const [sortDir, setSortDir] = useState('asc');
   const [manualForm, setManualForm] = useState(EMPTY_MANUAL);
@@ -142,21 +142,21 @@ function GrantBalancesTab() {
     }
   }
 
-  async function syncFund(fund_number) {
-    setSyncingFund(fund_number);
+  async function syncAccount(full_account_string) {
+    setSyncingAccount(full_account_string);
     try {
-      await api.post('/api/staff-plans/balances/sync', { fund_number });
-      addToast(`Synced ${fund_number} from Runway`, 'success');
+      await api.post('/api/staff-plans/balances/sync', { full_account_string });
+      addToast('Synced from Runway', 'success');
       loadBalances();
     } catch {
       addToast('Sync failed', 'error');
     } finally {
-      setSyncingFund(null);
+      setSyncingAccount(null);
     }
   }
 
   function startEdit(b) {
-    setEditingFund(b.fund_number);
+    setEditingAccount(b.full_account_string);
     setEditForm({
       remaining_balance: b.current_balance ?? '',
       pop_end_date: b.pop_end_date ?? '',
@@ -165,34 +165,33 @@ function GrantBalancesTab() {
   }
 
   function cancelEdit() {
-    setEditingFund(null);
+    setEditingAccount(null);
     setEditForm({});
   }
 
   async function saveEdit(b) {
-    setSavingFund(b.fund_number);
+    setSavingAccount(b.full_account_string);
     try {
       await api.post('/api/staff-plans/balances', {
-        fund_number: b.fund_number,
+        full_account_string: b.full_account_string,
         remaining_balance: parseFloat(editForm.remaining_balance),
         pop_end_date: editForm.pop_end_date,
         notes: editForm.notes,
-        full_account_string: b.full_account_string,
         grant_name: b.grant_name,
       });
       addToast('Balance saved', 'success');
-      setEditingFund(null);
+      setEditingAccount(null);
       loadBalances();
     } catch {
       addToast('Save failed', 'error');
     } finally {
-      setSavingFund(null);
+      setSavingAccount(null);
     }
   }
 
   async function handleDelete(b) {
     if (!b.id) return;
-    if (!confirm(`Delete balance record for fund ${b.fund_number}?`)) return;
+    if (!confirm(`Delete balance record for ${b.full_account_string}?`)) return;
     try {
       await api.delete(`/api/staff-plans/balances/${b.id}`);
       addToast('Deleted', 'success');
@@ -203,18 +202,17 @@ function GrantBalancesTab() {
   }
 
   async function saveManual() {
-    if (!manualForm.fund_number || manualForm.remaining_balance === '' || !manualForm.pop_end_date) {
-      addToast('Fund, balance, and POP end date are required', 'error');
+    if (!manualForm.full_account_string || manualForm.remaining_balance === '' || !manualForm.pop_end_date) {
+      addToast('Account string, balance, and POP end date are required', 'error');
       return;
     }
     setSavingManual(true);
     try {
       await api.post('/api/staff-plans/balances', {
-        fund_number: manualForm.fund_number,
+        full_account_string: manualForm.full_account_string,
         remaining_balance: parseFloat(manualForm.remaining_balance),
         pop_end_date: manualForm.pop_end_date,
         notes: manualForm.notes,
-        full_account_string: manualForm.full_account_string,
         grant_name: manualForm.grant_name,
       });
       addToast('Manual grant added', 'success');
@@ -277,7 +275,7 @@ function GrantBalancesTab() {
           <table className="min-w-full text-sm">
             <thead>
               <tr className="bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wide">
-                <SortTh field="fund_number" label="Fund" />
+                <SortTh field="full_account_string" label="Account" />
                 <th className="px-3 py-2">Grant Name</th>
                 <SortTh field="pop_end_date" label="POP End Date" />
                 <th className="px-3 py-2 text-right">Runway Balance</th>
@@ -291,15 +289,17 @@ function GrantBalancesTab() {
             <tbody className="divide-y divide-gray-100">
               {sorted.map(b => {
                 const urgency = popUrgency(b.pop_end_date);
-                const isEditing = editingFund === b.fund_number;
-                const isSaving = savingFund === b.fund_number;
-                const isSyncing = syncingFund === b.fund_number;
+                const accountKey = b.full_account_string;
+                const isEditing = editingAccount === accountKey;
+                const isSaving = savingAccount === accountKey;
+                const isSyncing = syncingAccount === accountKey;
 
                 return (
-                  <tr key={b.fund_number} className={`hover:bg-gray-50 ${b.is_manual_override ? 'bg-amber-50' : ''}`}>
-                    {/* Fund */}
+                  <tr key={accountKey} className={`hover:bg-gray-50 ${b.is_manual_override ? 'bg-amber-50' : ''}`}>
+                    {/* Account */}
                     <td className="px-3 py-2 font-mono font-medium text-gray-900 whitespace-nowrap">
-                      {b.fund_number}
+                      <div>{b.full_account_string}</div>
+                      {b.fund_number && <div className="text-xs text-gray-400">Fund {b.fund_number}</div>}
                     </td>
 
                     {/* Grant Name */}
@@ -400,7 +400,7 @@ function GrantBalancesTab() {
                           </button>
                           {b.in_runway && (
                             <button
-                              onClick={() => syncFund(b.fund_number)}
+                              onClick={() => syncAccount(b.full_account_string)}
                               disabled={isSyncing}
                               className="text-xs text-gray-500 hover:text-brand-600 hover:underline"
                               title={b.runway_balance != null
@@ -434,9 +434,8 @@ function GrantBalancesTab() {
       {showManualModal && (
         <Modal title="Add Manual Grant" onClose={() => { setShowManualModal(false); setManualForm(EMPTY_MANUAL); }}>
           <div className="space-y-3">
-            <Field label="Fund Number *" value={manualForm.fund_number} onChange={v => setManualForm(f => ({ ...f, fund_number: v }))} />
+            <Field label="Full Account String *" value={manualForm.full_account_string} onChange={v => setManualForm(f => ({ ...f, full_account_string: v }))} />
             <Field label="Grant Name" value={manualForm.grant_name} onChange={v => setManualForm(f => ({ ...f, grant_name: v }))} />
-            <Field label="Full Account String" value={manualForm.full_account_string} onChange={v => setManualForm(f => ({ ...f, full_account_string: v }))} />
             <Field label="Current Balance ($) *" type="number" value={manualForm.remaining_balance} onChange={v => setManualForm(f => ({ ...f, remaining_balance: v }))} />
             <Field label="POP End Date *" type="date" value={manualForm.pop_end_date} onChange={v => setManualForm(f => ({ ...f, pop_end_date: v }))} />
             <Field label="Notes" value={manualForm.notes} onChange={v => setManualForm(f => ({ ...f, notes: v }))} />
@@ -452,7 +451,7 @@ function GrantBalancesTab() {
 }
 
 const EMPTY_MANUAL = {
-  fund_number: '', grant_name: '', full_account_string: '',
+  full_account_string: '', grant_name: '',
   remaining_balance: '', pop_end_date: '', notes: '',
 };
 
@@ -887,11 +886,12 @@ function PlanBuilderTab() {
     byUser[r.user_id].rows.push(r);
   }
 
-  // Group rows by fund (grant view)
-  const byFund = {};
+  // Group rows by account (grant view)
+  const byAccount = {};
   for (const r of rows) {
-    if (!byFund[r.fund_number]) byFund[r.fund_number] = [];
-    byFund[r.fund_number].push(r);
+    const key = r.full_account_string || r.fund_number;
+    if (!byAccount[key]) byAccount[key] = [];
+    byAccount[key].push(r);
   }
 
   return (
@@ -943,7 +943,7 @@ function PlanBuilderTab() {
           {view === 'staff' ? (
             <StaffView byUser={byUser} expandedUsers={expandedUsers} onToggle={toggleUser} onUpdateRow={updateRow} />
           ) : (
-            <GrantView byFund={byFund} />
+            <GrantView byAccount={byAccount} />
           )}
         </>
       )}
@@ -1066,7 +1066,7 @@ function EditableRow({ row, onSave, bgClass = 'bg-white' }) {
 
   return (
     <tr className={`hover:opacity-90 ${rowClass} border-t border-gray-100`}>
-      <td className="px-4 py-2 font-mono text-gray-700">{row.fund_number}</td>
+      <td className="px-4 py-2 font-mono text-gray-700 text-xs">{row.full_account_string || row.fund_number}</td>
       <td className="px-4 py-2 text-right">
         {editing ? (
           <div className="flex items-center justify-end gap-1">
@@ -1104,15 +1104,19 @@ function EditableRow({ row, onSave, bgClass = 'bg-white' }) {
   );
 }
 
-function GrantView({ byFund }) {
+function GrantView({ byAccount }) {
   return (
     <div className="space-y-4">
-      {Object.entries(byFund).map(([fund, rows]) => {
+      {Object.entries(byAccount).map(([account, rows]) => {
         const totalCost = rows.reduce((s, r) => s + (r.estimated_cost || 0), 0);
+        const fundNumber = rows[0]?.fund_number;
         return (
-          <div key={fund} className="border border-gray-200 rounded-lg overflow-hidden">
+          <div key={account} className="border border-gray-200 rounded-lg overflow-hidden">
             <div className="px-4 py-3 bg-gray-50 flex justify-between items-center">
-              <span className="font-mono font-medium text-gray-900">{fund}</span>
+              <div>
+                <span className="font-mono font-medium text-gray-900">{account}</span>
+                {fundNumber && <span className="ml-2 text-xs text-gray-400">Fund {fundNumber}</span>}
+              </div>
               <span className="text-sm text-gray-600">Total est. spend: {fmtDollar(totalCost)}</span>
             </div>
             <div className="overflow-x-auto">
