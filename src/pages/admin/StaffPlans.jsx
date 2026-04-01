@@ -4,8 +4,9 @@ import { useToast } from '../../hooks/useToast';
 import * as XLSX from 'xlsx';
 import { HelpButton } from '../../components/HelpButton';
 import { TOOL_HELP } from '../../help/toolHelp';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ReferenceLine } from 'recharts';
 
-const TABS = ['Grant Balances', 'Appointments', 'Plan Builder', 'Saved Plans'];
+const TABS = ['Grant Balances', 'Appointments', 'Plan Builder', 'Saved Plans', 'Visualizations'];
 
 const STAFF_NAME_MAP = {
   carnold3: 'Camden Arnold',
@@ -40,6 +41,8 @@ const STAFF_NAME_MAP = {
 
 export default function StaffPlans() {
   const [tab, setTab] = useState(0);
+  const [activeScenario, setActiveScenario] = useState(null);
+  const [rows, setRows] = useState([]);
 
   return (
     <div>
@@ -53,7 +56,7 @@ export default function StaffPlans() {
 
       {/* Tabs */}
       <div className="border-b border-gray-200 mb-6">
-        <nav className="flex gap-1">
+        <nav className="flex gap-1 flex-wrap">
           {TABS.map((t, i) => (
             <button
               key={t}
@@ -72,8 +75,9 @@ export default function StaffPlans() {
 
       {tab === 0 && <GrantBalancesTab />}
       {tab === 1 && <AppointmentsTab />}
-      {tab === 2 && <PlanBuilderTab />}
+      {tab === 2 && <PlanBuilderTab activeScenario={activeScenario} setActiveScenario={setActiveScenario} rows={rows} setRows={setRows} />}
       {tab === 3 && <SavedPlansTab />}
+      {tab === 4 && <VisualizationsTab activeScenario={activeScenario} rows={rows} />}
     </div>
   );
 }
@@ -720,12 +724,10 @@ function AppointmentsTab() {
 
 // ─── Plan Builder Tab ────────────────────────────────────────────────────────
 
-function PlanBuilderTab() {
+function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
   const api = useApi();
   const { addToast } = useToast();
   const [scenarios, setScenarios] = useState([]);
-  const [activeScenario, setActiveScenario] = useState(null);
-  const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
   const [recalculating, setRecalculating] = useState(false);
   const [showNewModal, setShowNewModal] = useState(false);
@@ -1258,6 +1260,397 @@ function SavedPlansTab() {
               </div>
             </div>
           ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Visualizations Tab ──────────────────────────────────────────────────────
+
+const GRANT_COLORS = ["#2563eb","#16a34a","#dc2626","#9333ea","#ea580c","#0891b2","#65a30d","#c2410c","#7c3aed","#0f766e"];
+const BURN_MULTIPLIER = 1.451 * 1.317;
+const MONTH_LABELS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function fmtM(n) {
+  const abs = Math.abs(n || 0);
+  if (abs >= 1_000_000) return `$${((n || 0) / 1_000_000).toFixed(1)}M`;
+  if (abs >= 1_000) return `$${Math.round((n || 0) / 1_000)}k`;
+  return `$${Math.round(n || 0)}`;
+}
+
+function VisualizationsTab({ activeScenario, rows }) {
+  const api = useApi();
+  const { addToast } = useToast();
+  const [balances, setBalances] = useState([]);
+  const [loadingBalances, setLoadingBalances] = useState(false);
+
+  useEffect(() => {
+    if (!activeScenario) return;
+    loadVizBalances();
+  }, [activeScenario?.id]);
+
+  async function loadVizBalances() {
+    setLoadingBalances(true);
+    try {
+      const data = await api.get('/api/staff-plans/balances');
+      setBalances(data.balances || []);
+    } catch {
+      addToast('Failed to load balances', 'error');
+    } finally {
+      setLoadingBalances(false);
+    }
+  }
+
+  if (!activeScenario) {
+    return (
+      <div className="text-gray-400 text-sm py-12 text-center">
+        Select or create a plan in the Plan Builder tab to view visualizations.
+      </div>
+    );
+  }
+
+  if (loadingBalances) {
+    return <div className="text-gray-400 text-sm py-8 text-center">Loading visualizations…</div>;
+  }
+
+  const balanceMap = {};
+  for (const b of balances) balanceMap[b.full_account_string] = b;
+
+  const uniqueAccounts = [...new Set(rows.map(r => r.full_account_string).filter(Boolean))];
+  const colorMap = {};
+  uniqueAccounts.forEach((acc, i) => { colorMap[acc] = GRANT_COLORS[i % GRANT_COLORS.length]; });
+
+  return (
+    <div className="space-y-10">
+      <section>
+        <h2 className="text-base font-semibold text-gray-900 mb-1">Runway Status</h2>
+        <p className="text-xs text-gray-500 mb-4">Projected spend vs. remaining balance for each grant in this scenario.</p>
+        <RunwayCards rows={rows} balanceMap={balanceMap} colorMap={colorMap} />
+      </section>
+      <section>
+        <h2 className="text-base font-semibold text-gray-900 mb-1">Grant Burn-Down</h2>
+        <p className="text-xs text-gray-500 mb-4">Projected remaining balance over time based on scenario allocations.</p>
+        <BurnDownChart rows={rows} balanceMap={balanceMap} colorMap={colorMap} />
+      </section>
+      <section>
+        <h2 className="text-base font-semibold text-gray-900 mb-1">Staff Allocation Timeline</h2>
+        <p className="text-xs text-gray-500 mb-4">Appointment periods by staff member, colored by grant.</p>
+        <AllocationTimeline rows={rows} balanceMap={balanceMap} colorMap={colorMap} />
+      </section>
+    </div>
+  );
+}
+
+function RunwayCards({ rows, balanceMap, colorMap }) {
+  const byAccount = {};
+  for (const r of rows) {
+    if (!r.full_account_string) continue;
+    if (!byAccount[r.full_account_string]) byAccount[r.full_account_string] = [];
+    byAccount[r.full_account_string].push(r);
+  }
+
+  const cards = Object.entries(byAccount).map(([account, accountRows]) => {
+    const balance = balanceMap[account];
+    const projectedSpend = accountRows.reduce((s, r) => s + (r.estimated_cost || 0), 0);
+    const remaining = balance?.current_balance;
+    const hasBalance = remaining != null && remaining > 0;
+
+    let status;
+    if (!hasBalance) status = 'Unknown';
+    else if (projectedSpend > remaining) status = 'Over Budget';
+    else if (projectedSpend > remaining * 0.9) status = 'At Risk';
+    else status = 'On Track';
+
+    return { account, balance, projectedSpend, remaining, hasBalance, status };
+  });
+
+  const ORDER = { 'Over Budget': 0, 'At Risk': 1, 'On Track': 2, 'Unknown': 3 };
+  cards.sort((a, b) => ORDER[a.status] - ORDER[b.status]);
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {cards.map(card => <RunwayCard key={card.account} card={card} />)}
+    </div>
+  );
+}
+
+function RunwayCard({ card }) {
+  const { account, balance, projectedSpend, remaining, hasBalance, status } = card;
+  const pop = balance?.pop_end_date;
+
+  const popClass = pop ? (() => {
+    const days = (new Date(pop + 'T12:00:00') - new Date()) / (1000 * 60 * 60 * 24);
+    return days < 90 ? 'text-red-600' : days < 180 ? 'text-amber-600' : 'text-gray-600';
+  })() : 'text-gray-400';
+
+  const pct = hasBalance ? Math.min((projectedSpend / remaining) * 100, 150) : 0;
+  const barColor = pct > 100 ? 'bg-red-500' : pct >= 90 ? 'bg-amber-500' : 'bg-green-500';
+  const borderColor = status === 'Over Budget' ? 'border-red-200' : status === 'At Risk' ? 'border-amber-200' : status === 'On Track' ? 'border-green-200' : 'border-gray-200';
+  const badgeClass = status === 'Over Budget' ? 'bg-red-100 text-red-700' : status === 'At Risk' ? 'bg-amber-100 text-amber-700' : status === 'On Track' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500';
+
+  return (
+    <div className={`border ${borderColor} rounded-xl p-4 space-y-2`}>
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <div className="font-medium text-gray-900 text-sm truncate">{balance?.grant_name || account}</div>
+          <div className="font-mono text-xs text-gray-400 truncate">{account}</div>
+        </div>
+        <span className={`text-xs px-2 py-0.5 rounded-full font-medium shrink-0 ${badgeClass}`}>{status}</span>
+      </div>
+      <div>
+        <span className="text-2xl font-bold text-gray-900">{hasBalance ? fmtM(remaining) : '—'}</span>
+        <span className="text-xs text-gray-400 ml-1">remaining</span>
+      </div>
+      {pop && <div className={`text-xs font-medium ${popClass}`}>POP ends {pop}</div>}
+      <div className="text-xs text-gray-600">Projected spend: <span className="font-medium">{fmtM(projectedSpend)}</span></div>
+      {hasBalance ? (
+        <>
+          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div className={`h-full rounded-full ${barColor}`} style={{ width: `${Math.min(pct, 100)}%` }} />
+          </div>
+          <div className="text-xs text-gray-400">{Math.round(pct)}% of balance consumed</div>
+        </>
+      ) : (
+        <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Balance Unknown</span>
+      )}
+    </div>
+  );
+}
+
+function BurnDownChart({ rows, balanceMap, colorMap }) {
+  const grants = Object.keys(colorMap).filter(acc => {
+    const b = balanceMap[acc];
+    return b && b.current_balance > 0;
+  });
+
+  if (!grants.length) {
+    return <div className="text-gray-400 text-sm py-8 text-center">No grants with known balances to chart.</div>;
+  }
+
+  const today = new Date();
+  today.setDate(1);
+  today.setHours(0, 0, 0, 0);
+
+  let maxDate = addMonths(today, 24);
+  for (const acc of grants) {
+    const pop = balanceMap[acc]?.pop_end_date;
+    if (pop) {
+      const d = new Date(pop + 'T12:00:00');
+      if (d > maxDate) maxDate = d;
+    }
+  }
+
+  const months = [];
+  let cur = new Date(today);
+  while (cur <= maxDate) {
+    months.push(new Date(cur));
+    cur = addMonths(cur, 1);
+  }
+
+  // Pre-compute running balances for each grant
+  const runningBalances = {};
+  for (const acc of grants) {
+    let balance = balanceMap[acc].current_balance;
+    const accRows = rows.filter(r => r.full_account_string === acc);
+    runningBalances[acc] = [balance];
+    for (let i = 0; i < months.length - 1; i++) {
+      const m = months[i];
+      const mEnd = addMonths(m, 1);
+      const spend = accRows.reduce((sum, r) => {
+        if (!r.period_start || !r.period_end || !r.salary_rate) return sum;
+        const rs = new Date(r.period_start + 'T12:00:00');
+        const re = new Date(r.period_end + 'T12:00:00');
+        if (m <= re && mEnd > rs) {
+          return sum + ((r.salary_rate * (r.allocation_pct / 100) * BURN_MULTIPLIER) / 12);
+        }
+        return sum;
+      }, 0);
+      balance = Math.max(balance - spend, 0);
+      runningBalances[acc].push(balance);
+    }
+  }
+
+  const data = months.map((m, i) => {
+    const point = { month: `${MONTH_LABELS[m.getMonth()]} ${m.getFullYear()}` };
+    for (const acc of grants) point[acc] = Math.round(runningBalances[acc][i]);
+    return point;
+  });
+
+  const popMonthLabels = [...new Set(
+    grants.map(acc => balanceMap[acc]?.pop_end_date).filter(Boolean).map(pop => {
+      const d = new Date(pop + 'T12:00:00');
+      return `${MONTH_LABELS[d.getMonth()]} ${d.getFullYear()}`;
+    })
+  )];
+
+  const chartWidth = Math.max(700, months.length * 55);
+
+  return (
+    <div className="overflow-x-auto">
+      <LineChart width={chartWidth} height={350} data={data} margin={{ top: 10, right: 30, left: 70, bottom: 60 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+        <XAxis dataKey="month" tick={{ fontSize: 10 }} angle={-45} textAnchor="end" height={60} interval={Math.max(0, Math.floor(months.length / 14) - 1)} />
+        <YAxis tickFormatter={v => fmtM(v)} tick={{ fontSize: 11 }} width={65} />
+        <RechartsTooltip
+          formatter={(value, name) => [fmtM(value), balanceMap[name]?.grant_name || name]}
+          labelStyle={{ fontSize: 12 }}
+          contentStyle={{ fontSize: 11, maxWidth: 300 }}
+        />
+        <Legend formatter={name => balanceMap[name]?.grant_name || name} wrapperStyle={{ fontSize: 11 }} />
+        <ReferenceLine y={0} stroke="#dc2626" strokeDasharray="4 4" strokeWidth={1.5} />
+        {popMonthLabels.map(label => (
+          <ReferenceLine key={label} x={label} stroke="#dc2626" strokeDasharray="4 4" strokeWidth={1} />
+        ))}
+        {grants.map(acc => (
+          <Line key={acc} type="monotone" dataKey={acc} stroke={colorMap[acc]} strokeWidth={2} dot={false} />
+        ))}
+      </LineChart>
+    </div>
+  );
+}
+
+function AllocationTimeline({ rows, balanceMap, colorMap }) {
+  const [highlighted, setHighlighted] = useState(null);
+  const [tooltip, setTooltip] = useState(null);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const endDate = addMonths(today, 24);
+
+  const MONTH_WIDTH = 60;
+  const TOTAL_MONTHS = 24;
+  const totalWidth = TOTAL_MONTHS * MONTH_WIDTH;
+  const ROW_HEIGHT = 32;
+  const LEFT_WIDTH = 150;
+
+  const monthTicks = [];
+  for (let i = 0; i < TOTAL_MONTHS; i++) monthTicks.push(addMonths(today, i));
+
+  const byStaff = {};
+  for (const r of rows) {
+    const key = r.user_id;
+    const name = STAFF_NAME_MAP[key] || r.user_name || key;
+    if (!byStaff[key]) byStaff[key] = { name, rows: [] };
+    byStaff[key].rows.push(r);
+  }
+  const staffList = Object.entries(byStaff).sort((a, b) => a[1].name.localeCompare(b[1].name));
+
+  const totalDays = TOTAL_MONTHS * 30.44;
+  function dateToX(d) {
+    return ((d - today) / (1000 * 60 * 60 * 24)) / totalDays * totalWidth;
+  }
+
+  return (
+    <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <div className="overflow-x-auto">
+        <div style={{ minWidth: LEFT_WIDTH + totalWidth }}>
+          {/* Header */}
+          <div className="flex border-b border-gray-200 bg-gray-50">
+            <div style={{ width: LEFT_WIDTH, minWidth: LEFT_WIDTH }} className="px-3 py-2 text-xs font-medium text-gray-500 border-r border-gray-200 shrink-0">
+              Staff Member
+            </div>
+            <div className="relative" style={{ width: totalWidth, height: 36 }}>
+              {monthTicks.map((d, i) => (
+                <div
+                  key={i}
+                  className="absolute text-xs text-gray-400 top-0 h-full flex items-center"
+                  style={{ left: i * MONTH_WIDTH, width: MONTH_WIDTH, borderLeft: '1px solid #e5e7eb', paddingLeft: 4 }}
+                >
+                  {MONTH_LABELS[d.getMonth()]}{d.getFullYear() !== today.getFullYear() ? ` '${String(d.getFullYear()).slice(2)}` : ''}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Staff rows */}
+          {staffList.map(([userId, { name, rows: staffRows }]) => (
+            <div key={userId} className="flex border-b border-gray-100 hover:bg-gray-50/50">
+              <div
+                style={{ width: LEFT_WIDTH, minWidth: LEFT_WIDTH, height: ROW_HEIGHT }}
+                className="px-3 flex items-center shrink-0 border-r border-gray-200 text-xs text-gray-700 truncate"
+              >
+                {name}
+              </div>
+              <div className="relative" style={{ width: totalWidth, height: ROW_HEIGHT }}>
+                {monthTicks.map((_, i) => (
+                  <div key={i} className="absolute top-0 h-full" style={{ left: i * MONTH_WIDTH, width: 1, backgroundColor: '#f3f4f6' }} />
+                ))}
+                {staffRows.map(r => {
+                  if (!r.period_start || !r.period_end) return null;
+                  const rs = new Date(r.period_start + 'T12:00:00');
+                  const re = new Date(r.period_end + 'T12:00:00');
+                  if (re < today || rs > endDate) return null;
+
+                  const x = Math.max(0, dateToX(rs));
+                  const xEnd = Math.min(totalWidth, dateToX(re));
+                  const w = xEnd - x;
+                  if (w < 2) return null;
+
+                  const color = colorMap[r.full_account_string] || '#94a3b8';
+                  const isHighlighted = highlighted === r.full_account_string;
+                  const dimmed = highlighted && !isHighlighted;
+
+                  return (
+                    <div
+                      key={r.id}
+                      className="absolute rounded cursor-pointer flex items-center justify-center transition-opacity"
+                      style={{
+                        left: x,
+                        width: w,
+                        top: 5,
+                        height: ROW_HEIGHT - 10,
+                        backgroundColor: color,
+                        opacity: dimmed ? 0.2 : 0.85,
+                        outline: isHighlighted ? '2px solid rgba(0,0,0,0.35)' : 'none',
+                      }}
+                      onMouseEnter={e => {
+                        setHighlighted(r.full_account_string);
+                        setTooltip({ x: e.clientX, y: e.clientY, r });
+                      }}
+                      onMouseLeave={() => { setHighlighted(null); setTooltip(null); }}
+                      onClick={() => setHighlighted(prev => prev === r.full_account_string ? null : r.full_account_string)}
+                    >
+                      {w > 30 && (
+                        <span className="text-white font-medium truncate px-1" style={{ fontSize: 10 }}>
+                          {r.allocation_pct}%
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Legend */}
+      <div className="flex flex-wrap gap-3 px-4 py-3 border-t border-gray-100 bg-gray-50">
+        {Object.entries(colorMap).map(([acc, color]) => (
+          <button
+            key={acc}
+            className="flex items-center gap-1.5 text-xs hover:opacity-70"
+            onClick={() => setHighlighted(prev => prev === acc ? null : acc)}
+          >
+            <span className="w-3 h-3 rounded-sm shrink-0" style={{ backgroundColor: color }} />
+            <span className={highlighted === acc ? 'font-semibold text-gray-900' : 'text-gray-600'}>
+              {balanceMap[acc]?.grant_name || acc}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* Tooltip */}
+      {tooltip && (
+        <div
+          className="fixed z-50 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 pointer-events-none shadow-xl"
+          style={{ left: tooltip.x + 14, top: tooltip.y - 14 }}
+        >
+          <div className="font-medium">{balanceMap[tooltip.r.full_account_string]?.grant_name || tooltip.r.full_account_string}</div>
+          <div className="text-gray-300 mt-0.5">{tooltip.r.period_start} – {tooltip.r.period_end}</div>
+          <div className="text-gray-300">{tooltip.r.allocation_pct}% allocation</div>
+          {tooltip.r.estimated_cost > 0 && <div className="text-gray-300">Est. {fmtDollar(tooltip.r.estimated_cost)}</div>}
         </div>
       )}
     </div>
