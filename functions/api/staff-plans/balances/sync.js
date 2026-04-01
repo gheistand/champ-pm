@@ -50,12 +50,8 @@ export async function onRequest(context) {
   // Determine which fund_numbers to sync
   let fundsToSync = [];
   if (syncAll) {
-    // Sync all Runway grants that match appointment funds
-    const { results: apptFunds } = await env.DB.prepare(
-      'SELECT DISTINCT fund_number FROM staff_appointments'
-    ).all();
-    const apptFundSet = new Set(apptFunds.map(r => r.fund_number));
-    fundsToSync = Object.keys(runwayByFund).filter(f => apptFundSet.has(f));
+    // Sync all active Runway grants (appointments may not be imported yet)
+    fundsToSync = Object.keys(runwayByFund);
   } else {
     fundsToSync = [fund_number];
   }
