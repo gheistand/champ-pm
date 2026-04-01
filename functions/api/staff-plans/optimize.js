@@ -97,9 +97,11 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
     // For each period, determine active funds and calculate allocations
     for (const { period_start, period_end } of periods) {
       // Active funds: pop_end_date >= period_start AND remaining_balance > 0
+      // Also include funds with unknown balance (balance_unknown=1) — lock at current pct
       const activeFunds = funds.filter(f => {
+        if (f.balance_unknown) return true; // unknown balance — include, will be flagged
         const b = balanceMap[f.fund_number];
-        if (!b) return false;
+        if (!b) return f.remaining_balance >= 0; // use value from LEFT JOIN
         return b.pop_end_date >= period_start && b.remaining_balance > 0;
       });
 
