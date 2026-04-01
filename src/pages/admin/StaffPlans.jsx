@@ -651,36 +651,58 @@ function AppointmentsTab() {
                     <span className="text-xs text-gray-400 ml-2">{earliest} – {latest}</span>
                   )}
                 </button>
-                {!isCollapsed && (
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full text-sm">
-                      <thead>
-                        <tr className="bg-white text-left text-xs text-gray-500 uppercase tracking-wide border-b border-gray-100">
-                          <th className="px-3 py-2">Period Start</th>
-                          <th className="px-3 py-2">Period End</th>
-                          <th className="px-3 py-2">Fund</th>
-                          <th className="px-3 py-2">Account String</th>
-                          <th className="px-3 py-2 text-right">Alloc %</th>
-                          <th className="px-3 py-2 text-right">Salary Rate</th>
-                          <th className="px-3 py-2">Source</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-gray-100">
-                        {rows.map(a => (
-                          <tr key={a.id} className="hover:bg-gray-50">
-                            <td className="px-3 py-2 text-gray-600">{a.period_start}</td>
-                            <td className="px-3 py-2 text-gray-600">{a.period_end}</td>
-                            <td className="px-3 py-2 font-mono text-gray-700">{a.fund_number}</td>
-                            <td className="px-3 py-2 font-mono text-xs text-gray-500">{a.full_account_string || '—'}</td>
-                            <td className="px-3 py-2 text-right font-medium">{a.allocation_pct}%</td>
-                            <td className="px-3 py-2 text-right text-gray-600">{a.salary_rate ? fmtDollar(a.salary_rate) : '—'}</td>
-                            <td className="px-3 py-2"><span className="text-xs bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded">{a.source}</span></td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                {!isCollapsed && (() => {
+                  // Group rows by period
+                  const periodMap = {};
+                  for (const a of rows) {
+                    const key = `${a.period_start}__${a.period_end}`;
+                    if (!periodMap[key]) periodMap[key] = { start: a.period_start, end: a.period_end, rows: [] };
+                    periodMap[key].rows.push(a);
+                  }
+                  const periods = Object.values(periodMap).sort((a, b) => (a.start || '').localeCompare(b.start || ''));
+                  const periodBgs = ['bg-white', 'bg-blue-50', 'bg-green-50'];
+                  const headerBgs = ['bg-gray-100', 'bg-blue-100', 'bg-green-100'];
+                  return (
+                    <div>
+                      {periods.map((p, pi) => {
+                        const totalPct = p.rows.reduce((s, r) => s + (r.allocation_pct || 0), 0);
+                        return (
+                          <div key={pi}>
+                            <div className={`px-4 py-2 flex items-center gap-4 border-t border-gray-200 ${headerBgs[pi % 3]}`}>
+                              <span className="text-xs font-semibold text-gray-700">
+                                Period {pi + 1}: {fmtDateShort(p.start)} – {fmtDateShort(p.end)}
+                              </span>
+                              <span className="text-xs text-gray-500">{p.rows.length} fund{p.rows.length !== 1 ? 's' : ''}</span>
+                              <span className={`text-xs font-medium ml-auto ${totalPct === 100 ? 'text-green-600' : 'text-amber-600'}`}>
+                                Total: {totalPct}%
+                              </span>
+                            </div>
+                            <table className="min-w-full text-sm">
+                              <thead>
+                                <tr className={`text-left text-xs text-gray-500 uppercase tracking-wide border-b border-gray-100 ${periodBgs[pi % 3]}`}>
+                                  <th className="px-4 py-1.5 pl-8">Account String</th>
+                                  <th className="px-3 py-1.5 text-right">Alloc %</th>
+                                  <th className="px-3 py-1.5 text-right">Salary Rate</th>
+                                  <th className="px-3 py-1.5">Notes</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-gray-100">
+                                {p.rows.map(a => (
+                                  <tr key={a.id} className={`hover:opacity-90 ${periodBgs[pi % 3]}`}>
+                                    <td className="px-4 py-2 pl-8 font-mono text-xs text-gray-700">{a.full_account_string || a.fund_number}</td>
+                                    <td className="px-3 py-2 text-right font-semibold text-gray-800">{a.allocation_pct}%</td>
+                                    <td className="px-3 py-2 text-right text-gray-600">{a.salary_rate ? fmtDollar(a.salary_rate) : '—'}</td>
+                                    <td className="px-3 py-2 text-xs text-gray-500">{a.notes || ''}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
               </div>
             );
           })}
