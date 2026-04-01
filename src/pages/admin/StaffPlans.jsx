@@ -434,26 +434,46 @@ function AppointmentsTab() {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [importing, setImporting] = useState(false);
-  const [filters, setFilters] = useState({ user_id: '', fund: '', date_from: '', date_to: '' });
+  const [nameFilter, setNameFilter] = useState('');
   const [preview, setPreview] = useState(null);
+  const [collapsed, setCollapsed] = useState({});
 
   useEffect(() => { loadAppointments(); }, []);
 
   async function loadAppointments() {
     setLoading(true);
     try {
-      const params = new URLSearchParams();
-      if (filters.user_id) params.set('user_id', filters.user_id);
-      if (filters.fund) params.set('fund', filters.fund);
-      if (filters.date_from) params.set('date_from', filters.date_from);
-      if (filters.date_to) params.set('date_to', filters.date_to);
-      const data = await api.get(`/api/staff-plans/appointments?${params}`);
+      const data = await api.get('/api/staff-plans/appointments');
       setAppointments(data.appointments || []);
     } catch {
       addToast('Failed to load appointments', 'error');
     } finally {
       setLoading(false);
     }
+  }
+
+  // Group appointments by staff name
+  const grouped = {};
+  for (const a of appointments) {
+    const key = a.user_name || a.user_id || 'Unknown';
+    if (!grouped[key]) grouped[key] = [];
+    grouped[key].push(a);
+  }
+  const staffNames = Object.keys(grouped).sort();
+  const filteredNames = nameFilter.trim()
+    ? staffNames.filter(n => n.toLowerCase().includes(nameFilter.toLowerCase()))
+    : staffNames;
+
+  function toggleSection(name) {
+    setCollapsed(c => ({ ...c, [name]: !c[name] }));
+  }
+  function collapseAll() {
+    const c = {};
+    staffNames.forEach(n => { c[n] = true; });
+    setCollapsed(c);
+  }
+  function expandAll() {
+    setCollapsed({});
   }
 
   async function handleFileChange(e) {
@@ -463,12 +483,47 @@ function AppointmentsTab() {
       const arrayBuffer = await file.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
       const rows = [];
-      // Parse all sheets except 'Summary'
+      // Parse all sheets except 'Summary' — normalize inconsistent column names
       for (const sheetName of workbook.SheetNames) {
         if (sheetName === 'Summary') continue;
         const ws = workbook.Sheets[sheetName];
-        const sheetRows = XLSX.utils.sheet_to_json(ws, { defval: '' });
-        rows.push(...sheetRows);
+        const raw = XLSX.utils.sheet_to_json(ws, { defval: '', raw: false });
+        for (const r of raw) {
+          // Normalize all keys to lowercase with underscores
+          const n = {};
+          for (const [k, v] of Object.entries(r)) {
+            n[k.toLowerCase().replace(/[\s%-]+/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '')] = v;
+          }
+          // Extract canonical fields from many possible column names
+          const name = n.employee_name || n.employee || n.staff_name || sheetName;
+          const startDate = n.period_start_date || n.period_start || n.start_date || '';
+          const endDate = n.period_end_date || n.period_end || n.end_date || '';
+          const accountStr = n.full_account_string || n.account || '';
+          const pct = parseFloat(n.allocation_percent || n.allocation_pct || n.percent || n.percent_allocation || n.allocation || 0);
+          const salary = parseFloat(n.salary_rate || n.annual_salary || n.annual_rate || n.current_salary || n.monthly_salary && n.monthly_salary * 12 || 0);
+          // Extract fund from account string if no separate Fund column
+          const fund = n.fund ? String(n.fund) : (accountStr.split('-')[1] || '');
+          const chart = n.chart ? parseInt(n.chart) : (accountStr.split('-')[0] || 1);
+          const org = n.org || (accountStr.split('-')[2] || '');
+          const program = n.program || (accountStr.split('-')[3] || '');
+          const activity = n.activity || (accountStr.split('-')[4] || '');
+          if (!name || !startDate || !endDate || !fund || !pct) continue;
+          rows.push({
+            Employee_Name: name,
+            Employee_Type: n.employee_type || n.type || n.position_type || n.position || 'AP',
+            Period_Start_Date: startDate,
+            Period_End_Date: endDate,
+            Chart: chart,
+            Fund: fund,
+            Org: org,
+            Program: program,
+            Activity: activity,
+            Allocation_Percent: pct,
+            Salary_Rate: salary,
+            Full_Account_String: accountStr || `${chart}-${fund}-${org}-${program}-${activity}`,
+            Notes: n.notes || '',
+          });
+        }
       }
       if (rows.length === 0) {
         addToast('No data found in spreadsheet', 'error');
@@ -491,6 +546,7 @@ function AppointmentsTab() {
       addToast(`Imported ${data.imported} rows${data.errors ? ` (${data.errors.length} errors)` : ''}`, data.errors ? 'warning' : 'success');
       if (data.errors) console.warn('Import errors:', data.errors);
       setPreview(null);
+      setCollapsed({});
       loadAppointments();
     } catch {
       addToast('Import failed', 'error');
@@ -502,20 +558,13 @@ function AppointmentsTab() {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap items-center">
           <input
-            className="input-sm" placeholder="Filter by user ID"
-            value={filters.user_id} onChange={e => setFilters(f => ({ ...f, user_id: e.target.value }))}
+            className="input-sm" placeholder="Search by staff name"
+            value={nameFilter} onChange={e => setNameFilter(e.target.value)}
           />
-          <input
-            className="input-sm" placeholder="Filter by fund"
-            value={filters.fund} onChange={e => setFilters(f => ({ ...f, fund: e.target.value }))}
-          />
-          <input type="date" className="input-sm" value={filters.date_from}
-            onChange={e => setFilters(f => ({ ...f, date_from: e.target.value }))} />
-          <input type="date" className="input-sm" value={filters.date_to}
-            onChange={e => setFilters(f => ({ ...f, date_to: e.target.value }))} />
-          <button onClick={loadAppointments} className="btn-secondary text-xs">Filter</button>
+          <button onClick={collapseAll} className="btn-secondary text-xs">Collapse All</button>
+          <button onClick={expandAll} className="btn-secondary text-xs">Expand All</button>
         </div>
         <div>
           <input ref={fileRef} type="file" accept=".xlsx,.xls" className="hidden" onChange={handleFileChange} />
@@ -548,34 +597,64 @@ function AppointmentsTab() {
       ) : appointments.length === 0 ? (
         <div className="text-gray-400 text-sm py-8 text-center">No appointments found. Import from spreadsheet to get started.</div>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wide">
-                <th className="px-3 py-2">Staff</th>
-                <th className="px-3 py-2">Fund</th>
-                <th className="px-3 py-2">Period Start</th>
-                <th className="px-3 py-2">Period End</th>
-                <th className="px-3 py-2 text-right">Alloc %</th>
-                <th className="px-3 py-2 text-right">Salary Rate</th>
-                <th className="px-3 py-2">Source</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {appointments.map(a => (
-                <tr key={a.id} className="hover:bg-gray-50">
-                  <td className="px-3 py-2 text-gray-900">{a.user_name || a.user_id}</td>
-                  <td className="px-3 py-2 font-mono text-gray-700">{a.fund_number}</td>
-                  <td className="px-3 py-2 text-gray-600">{a.period_start}</td>
-                  <td className="px-3 py-2 text-gray-600">{a.period_end}</td>
-                  <td className="px-3 py-2 text-right font-medium">{a.allocation_pct}%</td>
-                  <td className="px-3 py-2 text-right text-gray-600">{a.salary_rate ? fmtDollar(a.salary_rate) : '—'}</td>
-                  <td className="px-3 py-2"><span className="text-xs bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded">{a.source}</span></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p className="text-xs text-gray-400 mt-2">{appointments.length} records</p>
+        <div className="space-y-3">
+          {filteredNames.length === 0 && (
+            <div className="text-gray-400 text-sm py-4 text-center">No staff match "{nameFilter}"</div>
+          )}
+          {filteredNames.map(name => {
+            const rows = grouped[name];
+            const isCollapsed = !!collapsed[name];
+            const dates = rows.map(r => r.period_start).filter(Boolean).sort();
+            const endDates = rows.map(r => r.period_end).filter(Boolean).sort();
+            const earliest = dates[0] || '';
+            const latest = endDates[endDates.length - 1] || '';
+            return (
+              <div key={name} className="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => toggleSection(name)}
+                  className="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 text-left transition-colors"
+                >
+                  <span className="text-gray-400 text-xs w-3">{isCollapsed ? '▶' : '▼'}</span>
+                  <span className="font-semibold text-gray-900 flex-1">{name}</span>
+                  <span className="text-xs text-gray-500">{rows.length} {rows.length === 1 ? 'period' : 'periods'}</span>
+                  {earliest && (
+                    <span className="text-xs text-gray-400 ml-2">{earliest} – {latest}</span>
+                  )}
+                </button>
+                {!isCollapsed && (
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full text-sm">
+                      <thead>
+                        <tr className="bg-white text-left text-xs text-gray-500 uppercase tracking-wide border-b border-gray-100">
+                          <th className="px-3 py-2">Period Start</th>
+                          <th className="px-3 py-2">Period End</th>
+                          <th className="px-3 py-2">Fund</th>
+                          <th className="px-3 py-2">Account String</th>
+                          <th className="px-3 py-2 text-right">Alloc %</th>
+                          <th className="px-3 py-2 text-right">Salary Rate</th>
+                          <th className="px-3 py-2">Source</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100">
+                        {rows.map(a => (
+                          <tr key={a.id} className="hover:bg-gray-50">
+                            <td className="px-3 py-2 text-gray-600">{a.period_start}</td>
+                            <td className="px-3 py-2 text-gray-600">{a.period_end}</td>
+                            <td className="px-3 py-2 font-mono text-gray-700">{a.fund_number}</td>
+                            <td className="px-3 py-2 font-mono text-xs text-gray-500">{a.full_account_string || '—'}</td>
+                            <td className="px-3 py-2 text-right font-medium">{a.allocation_pct}%</td>
+                            <td className="px-3 py-2 text-right text-gray-600">{a.salary_rate ? fmtDollar(a.salary_rate) : '—'}</td>
+                            <td className="px-3 py-2"><span className="text-xs bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded">{a.source}</span></td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          <p className="text-xs text-gray-400 mt-2">{appointments.length} total records across {staffNames.length} staff</p>
         </div>
       )}
     </div>
