@@ -14,10 +14,10 @@ export async function onRequest(context) {
 
   const { id: scenarioId, rowId } = params;
   const body = await request.json();
-  const { allocation_pct, notes, flag } = body;
+  const { allocation_pct, notes, flag, is_pinned } = body;
 
-  if (allocation_pct == null) {
-    return json({ error: 'allocation_pct is required' }, 400);
+  if (allocation_pct == null && is_pinned == null) {
+    return json({ error: 'allocation_pct or is_pinned is required' }, 400);
   }
 
   // Recalculate estimated_cost
@@ -27,17 +27,19 @@ export async function onRequest(context) {
 
   if (!existing) return json({ error: 'Not found' }, 404);
 
+  const newPct = allocation_pct ?? existing.allocation_pct;
   const salary = existing.salary_rate || 0;
   const months = monthsBetween(existing.period_start, existing.period_end);
-  const estimated_cost = (salary / 12) * (allocation_pct / 100) * months * (1 + FRINGE) * (1 + FA);
+  const estimated_cost = (salary / 12) * (newPct / 100) * months * (1 + FRINGE) * (1 + FA);
 
-  const newFlag = allocation_pct < 5 ? 'low_pct' : (flag ?? null);
+  const newFlag = newPct < 5 ? 'low_pct' : (flag ?? existing.flag ?? null);
+  const newIsPinned = is_pinned ?? existing.is_pinned ?? 0;
 
   await env.DB.prepare(`
     UPDATE staff_plan_scenario_rows
-    SET allocation_pct=?, estimated_cost=?, is_override=1, flag=?, notes=?
+    SET allocation_pct=?, estimated_cost=?, is_override=1, flag=?, notes=?, is_pinned=?
     WHERE id=? AND scenario_id=?
-  `).bind(allocation_pct, estimated_cost, newFlag, notes ?? existing.notes, rowId, scenarioId).run();
+  `).bind(newPct, estimated_cost, newFlag, notes ?? existing.notes, newIsPinned, rowId, scenarioId).run();
 
   // Update scenario updated_at
   await env.DB.prepare(`UPDATE staff_plan_scenarios SET updated_at=datetime('now') WHERE id=?`).bind(scenarioId).run();

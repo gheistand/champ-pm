@@ -113,6 +113,8 @@ async function handleGet(context) {
       is_manual_override,
       notes: override?.notes ?? null,
       in_runway: true,
+      priority_rank: override?.priority_rank ?? 99,
+      is_pinned: override?.is_pinned ?? 0,
     });
   }
 
@@ -131,10 +133,15 @@ async function handleGet(context) {
       is_manual_override: 1,
       notes: o.notes ?? null,
       in_runway: false,
+      priority_rank: o.priority_rank ?? 99,
+      is_pinned: o.is_pinned ?? 0,
     });
   }
 
   result.sort((a, b) => {
+    const pa = a.priority_rank ?? 99;
+    const pb = b.priority_rank ?? 99;
+    if (pa !== pb) return pa - pb;
     if (!a.pop_end_date) return 1;
     if (!b.pop_end_date) return -1;
     return a.pop_end_date.localeCompare(b.pop_end_date);
@@ -149,7 +156,7 @@ async function handlePost(context) {
   if (denied) return denied;
 
   const body = await request.json();
-  const { full_account_string, remaining_balance, pop_end_date, notes, grant_name } = body;
+  const { full_account_string, remaining_balance, pop_end_date, notes, grant_name, priority_rank, is_pinned } = body;
 
   if (!full_account_string || remaining_balance == null || !pop_end_date) {
     return json({ error: 'full_account_string, remaining_balance, pop_end_date are required' }, 400);
@@ -177,12 +184,16 @@ async function handlePost(context) {
       SET remaining_balance=?, pop_end_date=?, as_of_date=?,
           notes=?, fund_number=?, grant_name=?,
           runway_balance=?, runway_as_of_date=?,
-          is_manual_override=1, updated_at=datetime('now')
+          is_manual_override=1,
+          priority_rank=COALESCE(?, priority_rank),
+          is_pinned=COALESCE(?, is_pinned),
+          updated_at=datetime('now')
       WHERE full_account_string=?
     `).bind(
       remaining_balance, pop_end_date, today,
       notes ?? null, fund_number, resolved_grant_name,
       runway_balance, runway_as_of_date,
+      priority_rank ?? null, is_pinned ?? null,
       full_account_string
     ).run();
   } else {
@@ -190,12 +201,14 @@ async function handlePost(context) {
       INSERT INTO staff_plan_grant_balances
         (full_account_string, fund_number, remaining_balance, pop_end_date, as_of_date,
          notes, grant_name,
-         runway_balance, runway_as_of_date, is_manual_override)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+         runway_balance, runway_as_of_date, is_manual_override,
+         priority_rank, is_pinned)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?)
     `).bind(
       full_account_string, fund_number, remaining_balance, pop_end_date, today,
       notes ?? null, resolved_grant_name,
-      runway_balance, runway_as_of_date
+      runway_balance, runway_as_of_date,
+      priority_rank ?? 99, is_pinned ?? 0
     ).run();
   }
 

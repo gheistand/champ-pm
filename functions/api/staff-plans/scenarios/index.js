@@ -64,14 +64,14 @@ async function handlePost(context) {
     const stmt = env.DB.prepare(`
       INSERT INTO staff_plan_scenario_rows
         (scenario_id, user_id, fund_number, full_account_string,
-         period_start, period_end, allocation_pct, salary_rate, estimated_cost, flag)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         period_start, period_end, allocation_pct, salary_rate, estimated_cost, flag, is_pinned)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
     for (const r of rows) {
       await stmt.bind(
         scenarioId, r.user_id, r.fund_number, r.full_account_string ?? null,
         r.period_start, r.period_end, r.allocation_pct, r.salary_rate ?? null,
-        r.estimated_cost ?? null, r.flag ?? null
+        r.estimated_cost ?? null, r.flag ?? null, r.is_pinned ?? 0
       ).run();
     }
   }
@@ -108,7 +108,10 @@ async function runOptimize(env, payload) {
         MAX(sa.activity) as activity,
         COALESCE(b.remaining_balance, 0) as remaining_balance,
         b.pop_end_date,
-        CASE WHEN b.full_account_string IS NULL THEN 1 ELSE 0 END as balance_unknown
+        b.priority_rank,
+        b.is_pinned,
+        CASE WHEN b.full_account_string IS NULL THEN 1 ELSE 0 END as balance_unknown,
+        MAX(sa.allocation_pct) as pinned_pct
       FROM staff_appointments sa
       LEFT JOIN staff_plan_grant_balances b ON b.full_account_string = sa.full_account_string
       WHERE sa.user_id = ?
@@ -120,7 +123,7 @@ async function runOptimize(env, payload) {
   }
 
   const { results: balances } = await env.DB.prepare(
-    'SELECT full_account_string, fund_number, remaining_balance, pop_end_date FROM staff_plan_grant_balances WHERE remaining_balance > 0'
+    'SELECT full_account_string, fund_number, remaining_balance, pop_end_date, priority_rank, is_pinned FROM staff_plan_grant_balances'
   ).all();
 
   const optimizePayload = {

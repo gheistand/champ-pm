@@ -97,10 +97,12 @@ function GrantBalancesTab() {
   const [editingAccount, setEditingAccount] = useState(null); // full_account_string being inline-edited
   const [editForm, setEditForm] = useState({});
   const [savingAccount, setSavingAccount] = useState(null);
-  const [sortField, setSortField] = useState('pop_end_date');
+  const [sortField, setSortField] = useState('priority_rank');
   const [sortDir, setSortDir] = useState('asc');
   const [manualForm, setManualForm] = useState(EMPTY_MANUAL);
   const [savingManual, setSavingManual] = useState(false);
+  const [savingPriority, setSavingPriority] = useState(null);
+  const [savingPin, setSavingPin] = useState(null);
 
   useEffect(() => { loadBalances(); }, []);
 
@@ -235,6 +237,41 @@ function GrantBalancesTab() {
     }
   }
 
+  async function savePriority(full_account_string, priority_rank) {
+    setSavingPriority(full_account_string);
+    try {
+      await api.post('/api/staff-plans/balances/priority', {
+        updates: [{ full_account_string, priority_rank: priority_rank === '' ? 99 : parseInt(priority_rank, 10) }],
+      });
+      setBalances(prev => prev.map(b =>
+        b.full_account_string === full_account_string
+          ? { ...b, priority_rank: priority_rank === '' ? 99 : parseInt(priority_rank, 10) }
+          : b
+      ));
+    } catch {
+      addToast('Failed to save priority', 'error');
+    } finally {
+      setSavingPriority(null);
+    }
+  }
+
+  async function togglePin(b) {
+    setSavingPin(b.full_account_string);
+    const newPinned = b.is_pinned ? 0 : 1;
+    try {
+      await api.post('/api/staff-plans/balances/priority', {
+        updates: [{ full_account_string: b.full_account_string, is_pinned: newPinned }],
+      });
+      setBalances(prev => prev.map(x =>
+        x.full_account_string === b.full_account_string ? { ...x, is_pinned: newPinned } : x
+      ));
+    } catch {
+      addToast('Failed to update pin', 'error');
+    } finally {
+      setSavingPin(null);
+    }
+  }
+
   const totalBalance = balances.reduce((s, b) => s + (b.current_balance || 0), 0);
   const sorted = sortedBalances();
 
@@ -253,6 +290,9 @@ function GrantBalancesTab() {
 
   return (
     <div>
+      <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-800">
+        Set <strong>priority</strong> to control optimizer order (lower number = higher priority). <strong>Pinned</strong> grants keep their original appointment percentages unchanged during recalculate.
+      </div>
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <div>
           <span className="text-sm text-gray-500">Total current balance: </span>
@@ -291,6 +331,8 @@ function GrantBalancesTab() {
                 <SortTh field="current_balance" label="Current Balance" className="text-right" />
                 <th className="px-3 py-2">As Of</th>
                 <SortTh field="is_manual_override" label="Override?" />
+                <SortTh field="priority_rank" label="Priority" />
+                <th className="px-3 py-2">Pin</th>
                 <th className="px-3 py-2">Notes</th>
                 <th className="px-3 py-2"></th>
               </tr>
@@ -370,6 +412,44 @@ function GrantBalancesTab() {
                       ) : b.is_manual_override ? (
                         <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium">Override</span>
                       ) : null}
+                    </td>
+
+                    {/* Priority */}
+                    <td className="px-3 py-2">
+                      <input
+                        type="number"
+                        min="1"
+                        max="99"
+                        defaultValue={b.priority_rank === 99 ? '' : b.priority_rank}
+                        placeholder="—"
+                        className="w-14 text-center border border-gray-300 rounded px-1 py-0.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-500"
+                        title="Priority rank (1 = highest, blank = unranked)"
+                        onBlur={e => {
+                          const val = e.target.value;
+                          const cur = b.priority_rank === 99 ? '' : String(b.priority_rank);
+                          if (val !== cur) savePriority(b.full_account_string, val);
+                        }}
+                        disabled={savingPriority === b.full_account_string}
+                      />
+                      {b.priority_rank < 99 && (
+                        <span className={`ml-1 text-xs font-semibold px-1.5 py-0.5 rounded-full ${
+                          b.priority_rank <= 3 ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500'
+                        }`}>
+                          {b.priority_rank}
+                        </span>
+                      )}
+                    </td>
+
+                    {/* Pin toggle */}
+                    <td className="px-3 py-2 text-center">
+                      <button
+                        onClick={() => togglePin(b)}
+                        disabled={savingPin === b.full_account_string}
+                        title={b.is_pinned ? 'Pinned — optimizer will not change this grant. Click to unpin.' : 'Click to pin (lock allocations)'}
+                        className={`text-base transition-opacity ${savingPin === b.full_account_string ? 'opacity-40' : 'hover:opacity-70'}`}
+                      >
+                        {b.is_pinned ? '📌' : <span className="text-gray-300 text-base">📌</span>}
+                      </button>
                     </td>
 
                     {/* Notes */}
@@ -900,6 +980,16 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
     }
   }
 
+  async function toggleRowPin(rowId, isPinned) {
+    if (!activeScenario) return;
+    try {
+      const data = await api.put(`/api/staff-plans/scenarios/${activeScenario.id}/rows/${rowId}`, { is_pinned: isPinned ? 1 : 0 });
+      setRows(prev => prev.map(r => r.id === rowId ? data.row : r));
+    } catch {
+      addToast('Failed to update pin', 'error');
+    }
+  }
+
   function toggleUser(userId) {
     setExpandedUsers(prev => {
       const next = new Set(prev);
@@ -970,7 +1060,7 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
           </div>
 
           {view === 'staff' ? (
-            <StaffView byUser={byUser} expandedUsers={expandedUsers} onToggle={toggleUser} onUpdateRow={updateRow} />
+            <StaffView byUser={byUser} expandedUsers={expandedUsers} onToggle={toggleUser} onUpdateRow={updateRow} onTogglePin={toggleRowPin} />
           ) : (
             <GrantView byAccount={byAccount} />
           )}
@@ -1005,7 +1095,7 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
 const PERIOD_ROW_BG = ['bg-white', 'bg-blue-50', 'bg-green-50'];
 const PERIOD_HDR_BG = ['bg-gray-100', 'bg-blue-100', 'bg-green-100'];
 
-function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
+function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow, onTogglePin }) {
   return (
     <div className="space-y-2">
       {Object.entries(byUser).map(([userId, { name, rows }]) => {
@@ -1048,6 +1138,7 @@ function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
                       <th className="px-4 py-2 text-right">Alloc %</th>
                       <th className="px-4 py-2 text-right">Est. Cost</th>
                       <th className="px-4 py-2 text-left">Flag</th>
+                      <th className="px-4 py-2 text-center">Pin</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1057,13 +1148,13 @@ function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
                       return (
                         <>
                           <tr key={`hdr-${period.start}`} className={`${hdrBg} border-t border-gray-200`}>
-                            <td colSpan={4} className="px-4 py-1.5 font-semibold text-xs text-gray-700">
+                            <td colSpan={5} className="px-4 py-1.5 font-semibold text-xs text-gray-700">
                               Period: {fmtPeriodLabel(period.start, period.end)}
                               <span className="ml-2 font-normal text-gray-500">({period.rows.length} {period.rows.length === 1 ? 'fund' : 'funds'})</span>
                             </td>
                           </tr>
                           {period.rows.map(r => (
-                            <EditableRow key={r.id} row={r} onSave={onUpdateRow} bgClass={rowBg} />
+                            <EditableRow key={r.id} row={r} onSave={onUpdateRow} onTogglePin={onTogglePin} bgClass={rowBg} />
                           ))}
                         </>
                       );
@@ -1079,10 +1170,11 @@ function StaffView({ byUser, expandedUsers, onToggle, onUpdateRow }) {
   );
 }
 
-function EditableRow({ row, onSave, bgClass = 'bg-white' }) {
+function EditableRow({ row, onSave, onTogglePin, bgClass = 'bg-white' }) {
   const [editing, setEditing] = useState(false);
   const [pct, setPct] = useState(row.allocation_pct);
   const [saving, setSaving] = useState(false);
+  const [togglingPin, setTogglingPin] = useState(false);
 
   async function save() {
     setSaving(true);
@@ -1091,11 +1183,22 @@ function EditableRow({ row, onSave, bgClass = 'bg-white' }) {
     setEditing(false);
   }
 
-  const rowClass = row.flag ? 'bg-red-50' : row.is_override ? 'bg-yellow-50' : bgClass;
+  async function handleTogglePin() {
+    if (!onTogglePin) return;
+    setTogglingPin(true);
+    await onTogglePin(row.id, !row.is_pinned);
+    setTogglingPin(false);
+  }
+
+  const isPinned = !!row.is_pinned;
+  const rowClass = isPinned ? 'bg-amber-50' : row.flag ? 'bg-red-50' : row.is_override ? 'bg-yellow-50' : bgClass;
 
   return (
     <tr className={`hover:opacity-90 ${rowClass} border-t border-gray-100`}>
-      <td className="px-4 py-2 font-mono text-gray-700 text-xs">{row.full_account_string || row.fund_number}</td>
+      <td className="px-4 py-2 font-mono text-gray-700 text-xs">
+        {row.full_account_string || row.fund_number}
+        {isPinned && <span className="ml-1.5 text-xs bg-amber-100 text-amber-700 px-1 py-0.5 rounded font-medium">Pinned</span>}
+      </td>
       <td className="px-4 py-2 text-right">
         {editing ? (
           <div className="flex items-center justify-end gap-1">
@@ -1115,7 +1218,7 @@ function EditableRow({ row, onSave, bgClass = 'bg-white' }) {
             title="Click to edit"
           >
             {row.allocation_pct}%
-            {row.is_override ? <span className="ml-1 text-yellow-500 text-xs">✎</span> : null}
+            {row.is_override && !isPinned ? <span className="ml-1 text-yellow-500 text-xs">✎</span> : null}
           </button>
         )}
       </td>
@@ -1128,6 +1231,16 @@ function EditableRow({ row, onSave, bgClass = 'bg-white' }) {
             'bg-yellow-100 text-yellow-700'
           }`}>{row.flag}</span>
         )}
+      </td>
+      <td className="px-4 py-2 text-center">
+        <button
+          onClick={handleTogglePin}
+          disabled={togglingPin}
+          title={isPinned ? 'Pinned — will not change on recalculate. Click to unpin.' : 'Click to pin this allocation'}
+          className={`text-base transition-opacity ${togglingPin ? 'opacity-40' : 'hover:opacity-70'}`}
+        >
+          {isPinned ? '📌' : <span className="text-gray-300">📌</span>}
+        </button>
       </td>
     </tr>
   );

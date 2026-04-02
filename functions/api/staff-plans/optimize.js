@@ -22,36 +22,26 @@ function addDay(dt) {
   return d;
 }
 
-// Fractional months between two dates
-function monthsBetween(startStr, endStr) {
-  const s = parseDate(startStr);
-  const e = parseDate(endStr);
-  const ms = e - s;
-  return ms / (1000 * 60 * 60 * 24 * 30.4375);
-}
-
 /**
- * Core optimization function.
+ * Priority-driven optimization function.
  *
  * Input:
- *   staff: [{ userId, salary, funds: [{ full_account_string, fund_number, remaining_balance, pop_end_date, ... }] }]
- *   balances: [{ full_account_string, fund_number, remaining_balance, pop_end_date }]
+ *   staff: [{ userId, salary, funds: [{ full_account_string, fund_number,
+ *              remaining_balance, pop_end_date, priority_rank, is_pinned,
+ *              balance_unknown, pinned_pct }] }]
+ *   balances: [{ full_account_string, fund_number, remaining_balance,
+ *                pop_end_date, priority_rank, is_pinned }]
  *   plan_start: 'YYYY-MM-DD'
  *   plan_end: 'YYYY-MM-DD'
  *   terminations: { userId: 'YYYY-MM-DD', ... }
  *
- * Returns: array of proposed rows
- * Note: full_account_string is the canonical unique identifier for all joins.
- *       fund_number is for display only.
+ * Returns: array of proposed rows (with is_pinned field)
  */
 export function optimizeRows({ staff, balances, plan_start, plan_end, terminations = {} }) {
-  // Build balance lookup by full_account_string (canonical key)
+  // Build balance map keyed by full_account_string
   const balanceMap = {};
   for (const b of balances) {
-    balanceMap[b.full_account_string] = {
-      remaining_balance: b.remaining_balance,
-      pop_end_date: b.pop_end_date,
-    };
+    balanceMap[b.full_account_string] = b;
   }
 
   // Track cumulative spend per account across all staff
@@ -67,21 +57,17 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
     // Cap plan end at termination date if applicable
     const terminationDate = terminations[userId];
     const effectivePlanEnd = terminationDate && terminationDate < plan_end ? terminationDate : plan_end;
+    if (effectivePlanEnd <= plan_start) continue;
 
-    if (effectivePlanEnd <= plan_start) continue; // Already terminated before plan starts
-
-    // Collect all break points: plan_start, each fund pop_end_date+1day, effectivePlanEnd
+    // Collect break points: plan_start, each fund pop_end_date+1 day, effectivePlanEnd
     const breakSet = new Set([plan_start, effectivePlanEnd]);
     for (const f of funds) {
-      // Use pop_end_date from balanceMap if available, otherwise from fund itself
       const b = balanceMap[f.full_account_string];
       const popEnd = b?.pop_end_date || f.pop_end_date;
       if (!popEnd) continue;
-      if (popEnd < plan_start || popEnd > effectivePlanEnd) continue;
-      // Break point is the day after pop_end (start of next period after this fund ends)
+      if (popEnd < plan_start || popEnd >= effectivePlanEnd) continue;
       const popEndDt = parseDate(popEnd);
-      const dayAfterPop = addDay(popEndDt);
-      const dayAfterStr = formatDate(dayAfterPop);
+      const dayAfterStr = formatDate(addDay(popEndDt));
       if (dayAfterStr <= effectivePlanEnd) breakSet.add(dayAfterStr);
     }
 
@@ -91,85 +77,159 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
     const periods = [];
     for (let i = 0; i < breakPoints.length - 1; i++) {
       const periodStart = breakPoints[i];
-      // Period end = day before next break point
       const nextBreak = parseDate(breakPoints[i + 1]);
       const periodEndDt = new Date(nextBreak);
       periodEndDt.setUTCDate(periodEndDt.getUTCDate() - 1);
-      const periodEnd = formatDate(periodEndDt);
-      periods.push({ period_start: periodStart, period_end: periodEnd });
+      periods.push({ period_start: periodStart, period_end: formatDate(periodEndDt) });
     }
 
-    // For each period, determine active funds and calculate allocations
     for (const { period_start, period_end } of periods) {
-      // Active funds: pop_end_date >= period_start AND remaining_balance > 0
-      // Also include funds with unknown balance (balance_unknown=1) — lock at current pct
+      // Determine active funds for this period
       const activeFunds = funds.filter(f => {
-        if (f.balance_unknown) return true; // unknown balance — include, will be flagged
         const b = balanceMap[f.full_account_string];
-        if (!b) {
-          // Not in balanceMap but may have data from LEFT JOIN
-          return (f.remaining_balance > 0) || f.balance_unknown;
-        }
-        if (!b.pop_end_date) return b.remaining_balance > 0; // no end date — include if balance
-        return b.pop_end_date >= period_start && b.remaining_balance > 0;
+        if (!b) return (f.remaining_balance > 0) || f.balance_unknown;
+        if (b.is_pinned) return true; // pinned funds always active
+        if (f.balance_unknown || b.balance_unknown) return true;
+        if (!b.pop_end_date) return b.remaining_balance > 0;
+        return b.pop_end_date >= period_start && (b.remaining_balance > 0 || b.balance_unknown);
       });
 
       if (activeFunds.length === 0) continue;
 
-      // Calculate weight per fund: remaining_balance / months_remaining_in_pop
-      const periodStartDt = parseDate(period_start);
-      const weights = activeFunds.map(f => {
+      const periodMonths = Math.max(
+        (parseDate(period_end) - parseDate(period_start)) / (1000 * 60 * 60 * 24 * 30.4375),
+        0.5
+      );
+
+      // Separate pinned from free funds
+      const pinnedFunds = activeFunds.filter(f => {
         const b = balanceMap[f.full_account_string];
-        // Handle unknown balance or missing balance entry
-        if (!b || f.balance_unknown || !b.pop_end_date) {
-          return { fund: f, weight: 1, unknown: true }; // equal weight, flagged
-        }
-        const popEndDt = parseDate(b.pop_end_date);
-        if (isNaN(popEndDt)) return { fund: f, weight: 1, unknown: true };
-        const monthsRemaining = (popEndDt - periodStartDt) / (1000 * 60 * 60 * 24 * 30.4375);
-        const safeMonths = Math.max(monthsRemaining, 0.5);
-        const balance = b.remaining_balance ?? f.remaining_balance ?? 0;
-        return { fund: f, weight: Math.max(balance, 0) / safeMonths };
+        return b?.is_pinned === 1 || b?.is_pinned === true;
+      });
+      const freeFunds = activeFunds.filter(f => {
+        const b = balanceMap[f.full_account_string];
+        return !(b?.is_pinned === 1 || b?.is_pinned === true);
       });
 
-      let totalWeight = weights.reduce((sum, w) => sum + w.weight, 0);
-      // If all weights are zero (all balances unknown), use equal weights
-      if (totalWeight <= 0) {
-        weights.forEach(w => { w.weight = 1; w.unknown = true; });
-        totalWeight = weights.length;
+      // Build pinned allocations using pinned_pct from fund record
+      const pinnedAllocs = [];
+      let pinnedTotal = 0;
+      for (const f of pinnedFunds) {
+        const origPct = f.pinned_pct ?? 10;
+        pinnedAllocs.push({ fund: f, pct: origPct, isPinned: true });
+        pinnedTotal += origPct;
       }
 
-      // Normalize to 100% (whole numbers)
-      let allocations = weights.map(w => ({
-        fund: w.fund,
-        pct: Math.round((w.weight / totalWeight) * 100),
-      }));
-
-      // Adjust largest to ensure sum = 100
-      const sumPct = allocations.reduce((s, a) => s + a.pct, 0);
-      const diff = 100 - sumPct;
-      if (diff !== 0) {
-        const largest = allocations.reduce((max, a) => a.pct > max.pct ? a : max, allocations[0]);
-        largest.pct += diff;
+      // Warn if pinned already >= 100%
+      if (pinnedTotal >= 100) {
+        for (const alloc of pinnedAllocs) {
+          const b = balanceMap[alloc.fund.full_account_string];
+          const estimated_cost = (effectiveSalary / 12) * (alloc.pct / 100) * periodMonths * BURN_MULTIPLIER;
+          if (!fundSpend[alloc.fund.full_account_string]) fundSpend[alloc.fund.full_account_string] = 0;
+          fundSpend[alloc.fund.full_account_string] += estimated_cost;
+          allRows.push({
+            user_id: userId,
+            fund_number: alloc.fund.fund_number,
+            full_account_string: alloc.fund.full_account_string,
+            period_start,
+            period_end,
+            allocation_pct: alloc.pct,
+            salary_rate: effectiveSalary,
+            estimated_cost: Math.round(estimated_cost * 100) / 100,
+            flag: pinnedTotal > 100 ? 'over_budget' : null,
+            is_pinned: 1,
+          });
+        }
+        continue;
       }
 
-      // Calculate estimated costs and flags
-      const periodMonths = monthsBetween(period_start, period_end);
+      let available = 100 - pinnedTotal;
 
-      for (const alloc of allocations) {
+      // Sort free funds by priority_rank ASC (lower = higher priority), fallback 99
+      const sortedFree = [...freeFunds].sort((a, b) => {
+        const ba = balanceMap[a.full_account_string];
+        const bb = balanceMap[b.full_account_string];
+        const pa = ba?.priority_rank ?? 99;
+        const pb = bb?.priority_rank ?? 99;
+        return pa - pb;
+      });
+
+      // Priority-driven allocation
+      const freeAllocs = [];
+      let remainingPct = available;
+
+      for (const f of sortedFree) {
+        if (remainingPct <= 0) break;
+        const b = balanceMap[f.full_account_string];
+
+        if (!b || b.balance_unknown || f.balance_unknown) {
+          freeAllocs.push({ fund: f, pct: 0, unknown: true });
+          continue;
+        }
+
+        if (!b.remaining_balance || b.remaining_balance <= 0) continue;
+
+        const popEnd = b.pop_end_date;
+        if (!popEnd || popEnd < period_start) continue;
+
+        const monthsLeft = Math.max(
+          (parseDate(popEnd) - parseDate(period_start)) / (1000 * 60 * 60 * 24 * 30.4375),
+          0.5
+        );
+
+        // pct needed to exhaust this grant by POP end
+        const costAt1PctPerMonth = (effectiveSalary / 12) * 0.01 * BURN_MULTIPLIER;
+        const pctNeeded = costAt1PctPerMonth > 0
+          ? Math.ceil(b.remaining_balance / (costAt1PctPerMonth * monthsLeft))
+          : remainingPct;
+
+        // Cap: don't exceed available, don't put >70% on one grant, floor at 5%
+        const maxPct = Math.min(remainingPct, 70);
+        const assignedPct = Math.min(Math.max(pctNeeded, 5), maxPct);
+
+        freeAllocs.push({ fund: f, pct: assignedPct });
+        remainingPct -= assignedPct;
+      }
+
+      // Distribute leftover to unknown-balance grants equally
+      const unknownAllocs = freeAllocs.filter(a => a.unknown);
+      if (unknownAllocs.length > 0 && remainingPct > 0) {
+        const share = Math.floor(remainingPct / unknownAllocs.length);
+        for (const a of unknownAllocs) a.pct = share;
+        remainingPct -= share * unknownAllocs.length;
+      }
+
+      // Add any remaining % to highest-priority non-unknown grant
+      if (remainingPct > 0 && freeAllocs.length > 0) {
+        const first = freeAllocs.find(a => !a.unknown);
+        if (first) first.pct += remainingPct;
+        else if (unknownAllocs.length > 0) unknownAllocs[0].pct += remainingPct;
+      }
+
+      // Combine pinned + free, remove zero-pct
+      const allAllocs = [...pinnedAllocs, ...freeAllocs].filter(a => a.pct > 0);
+
+      // Normalize to exactly 100% (rounding fix)
+      const sumPct = allAllocs.reduce((s, a) => s + a.pct, 0);
+      if (sumPct !== 100 && allAllocs.length > 0) {
+        const diff = 100 - sumPct;
+        // Add diff to highest-priority free alloc (not pinned)
+        const adj = allAllocs.find(a => !a.isPinned) || allAllocs[0];
+        adj.pct += diff;
+      }
+
+      for (const alloc of allAllocs) {
         const b = balanceMap[alloc.fund.full_account_string];
         const estimated_cost = (effectiveSalary / 12) * (alloc.pct / 100) * periodMonths * BURN_MULTIPLIER;
 
-        // Track cumulative spend
         const accountKey = alloc.fund.full_account_string;
         if (!fundSpend[accountKey]) fundSpend[accountKey] = 0;
         fundSpend[accountKey] += estimated_cost;
 
         let flag = null;
-        const remainingBal = b?.remaining_balance ?? alloc.fund.remaining_balance ?? 0;
-        if (!b || alloc.fund.balance_unknown) flag = 'balance_unknown';
+        if (alloc.unknown || b?.balance_unknown || alloc.fund?.balance_unknown) flag = 'balance_unknown';
         else if (alloc.pct < 5) flag = 'low_pct';
-        else if (remainingBal > 0 && fundSpend[accountKey] > remainingBal) flag = 'over_budget';
+        else if (b?.remaining_balance > 0 && fundSpend[accountKey] > b.remaining_balance) flag = 'over_budget';
 
         allRows.push({
           user_id: userId,
@@ -181,6 +241,7 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
           salary_rate: effectiveSalary,
           estimated_cost: Math.round(estimated_cost * 100) / 100,
           flag,
+          is_pinned: alloc.isPinned ? 1 : 0,
         });
       }
     }
