@@ -259,14 +259,22 @@ function GrantBalancesTab() {
     setSavingPin(b.full_account_string);
     const newPinned = b.is_pinned ? 0 : 1;
     try {
-      await api.post('/api/staff-plans/balances/priority', {
+      const result = await api.post('/api/staff-plans/balances/priority', {
         updates: [{ full_account_string: b.full_account_string, is_pinned: newPinned }],
       });
-      setBalances(prev => prev.map(x =>
-        x.full_account_string === b.full_account_string ? { ...x, is_pinned: newPinned } : x
-      ));
-    } catch {
-      addToast('Failed to update pin', 'error');
+      if (result && result.updated > 0) {
+        setBalances(prev => prev.map(x =>
+          x.full_account_string === b.full_account_string ? { ...x, is_pinned: newPinned } : x
+        ));
+        addToast(newPinned ? 'Grant pinned' : 'Grant unpinned', 'success');
+      } else {
+        addToast('Pin update returned no changes — try reloading', 'warning');
+        // Reload to get fresh state
+        loadBalances();
+      }
+    } catch (err) {
+      console.error('togglePin error:', err);
+      addToast('Failed to update pin: ' + String(err), 'error');
     } finally {
       setSavingPin(null);
     }
