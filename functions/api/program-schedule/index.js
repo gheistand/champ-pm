@@ -58,6 +58,8 @@ async function handleGet(context) {
   const projectPlaceholders = projectIds.map(() => '?').join(',');
 
   // 3. Schedule phases + 4. Key milestones — run in parallel
+  // Note: fetch all dependencies without IN clause to avoid D1's 100-param limit;
+  // filter in JS. Dependencies table is small so this is fine.
   const [phasesRes, milestonesRes, studyAreasRes, depsRes] = await Promise.all([
     env.DB.prepare(`
       SELECT id, project_id, label, start_date, end_date, display_order
@@ -78,14 +80,19 @@ async function handleGet(context) {
       `SELECT id, name, status FROM study_areas ORDER BY name`
     ).all(),
 
+    // Fetch all dependencies — filter in JS to avoid double-binding projectIds (D1 100-param limit)
     env.DB.prepare(`
       SELECT pd.id, pd.upstream_project_id, pd.downstream_project_id,
              pd.upstream_milestone_id, pd.dependency_label
       FROM project_dependencies pd
-      WHERE pd.upstream_project_id IN (${projectPlaceholders})
-         OR pd.downstream_project_id IN (${projectPlaceholders})
-    `).bind(...projectIds, ...projectIds).all(),
+    `).all(),
   ]);
+
+  // Filter dependencies to only those involving our projects
+  const projectIdSet = new Set(projectIds);
+  const filteredDeps = depsRes.results.filter(
+    d => projectIdSet.has(d.upstream_project_id) || projectIdSet.has(d.downstream_project_id)
+  );
 
   // Group phases and milestones by project_id
   const phasesByProject = {};
@@ -133,7 +140,7 @@ async function handleGet(context) {
   return json({
     grants: grantsWithProjects,
     study_areas: studyAreas,
-    dependencies: depsRes.results,
+    dependencies: filteredDeps,
   });
 }
 
