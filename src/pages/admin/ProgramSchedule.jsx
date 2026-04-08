@@ -119,24 +119,26 @@ export default function ProgramSchedule() {
         ))}
       </div>
 
-      {/* Chart */}
-      {loading ? (
-        <PageLoader />
-      ) : data.grants.length === 0 ? (
-        <div className="rounded border border-gray-200 bg-white p-8 text-center text-gray-400 text-sm">
-          No project schedules found. Open a project and set up its schedule to see it here.
-        </div>
-      ) : (
-        <ProgramGantt
-          grants={data.grants}
-          studyAreas={data.study_areas}
-          dependencies={data.dependencies}
-          viewMode={viewMode}
-          filterType={filterType}
-          filterStatus={filterStatus}
-          filterStudyArea={filterStudyArea}
-        />
-      )}
+      {/* Chart — fixed-height viewport container */}
+      <div className="h-[calc(100vh-220px)] min-h-[300px]">
+        {loading ? (
+          <PageLoader />
+        ) : data.grants.length === 0 ? (
+          <div className="rounded border border-gray-200 bg-white p-8 text-center text-gray-400 text-sm">
+            No project schedules found. Open a project and set up its schedule to see it here.
+          </div>
+        ) : (
+          <ProgramGantt
+            grants={data.grants}
+            studyAreas={data.study_areas}
+            dependencies={data.dependencies}
+            viewMode={viewMode}
+            filterType={filterType}
+            filterStatus={filterStatus}
+            filterStudyArea={filterStudyArea}
+          />
+        )}
+      </div>
     </div>
   );
 }

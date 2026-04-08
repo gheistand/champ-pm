@@ -57,7 +57,7 @@ function formatDateShort(str) {
 
 function getMonthTicks(minDate, maxDate, zoom) {
   const ticks = [];
-  const step = zoom === 'year' ? 3 : zoom === 'quarter' ? 1 : 1;
+  const step = zoom === 'year' ? 3 : 1;
   const d = new Date(Date.UTC(minDate.getUTCFullYear(), minDate.getUTCMonth(), 1));
   while (d <= maxDate) {
     ticks.push(new Date(d));
@@ -66,9 +66,10 @@ function getMonthTicks(minDate, maxDate, zoom) {
   return ticks;
 }
 
+// Scale: toX returns pixels from the left edge of the chart area (no label offset)
 function makeScale(minDate, pxPerDay) {
   return {
-    toX: (date) => LABEL_W + diffDays(minDate, date) * pxPerDay,
+    toX: (date) => diffDays(minDate, date) * pxPerDay,
     pxPerDay,
   };
 }
@@ -111,7 +112,8 @@ export default function ProgramGantt({
   filterStatus = 'active',
   filterStudyArea = '',
 }) {
-  const containerRef = useRef(null);
+  const chartScrollRef = useRef(null); // right scroll area — observed for width
+  const labelScrollRef = useRef(null); // label rows — scroll synced to chart
   const [containerW, setContainerW] = useState(900);
   const [zoom, setZoom] = useState('quarter'); // 'year' | 'quarter' | 'month'
   const [collapsed, setCollapsed] = useState(new Set());
@@ -119,12 +121,19 @@ export default function ProgramGantt({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!chartScrollRef.current) return;
     const ro = new ResizeObserver(([entry]) => {
       setContainerW(entry.contentRect.width || 900);
     });
-    ro.observe(containerRef.current);
+    ro.observe(chartScrollRef.current);
     return () => ro.disconnect();
+  }, []);
+
+  // Sync vertical scroll: chart drives label column
+  const syncScroll = useCallback((e) => {
+    if (labelScrollRef.current) {
+      labelScrollRef.current.scrollTop = e.currentTarget.scrollTop;
+    }
   }, []);
 
   // ── Build flat project list from grants ───────────────────────────────────
@@ -175,26 +184,23 @@ export default function ProgramGantt({
   const totalDays = diffDays(minDate, maxDate);
 
   const PX_PER_DAY_BASE = zoom === 'year' ? 1.2 : zoom === 'quarter' ? 2.5 : 5;
-  const timelineW = Math.max(containerW - LABEL_W, 400);
+  // containerW is now just the right chart area width (no label column)
+  const timelineW = Math.max(containerW, 400);
   const autoScale = timelineW / totalDays;
   const pxPerDay = Math.max(PX_PER_DAY_BASE, autoScale);
   const svgTimelineW = totalDays * pxPerDay;
-  const svgW = LABEL_W + svgTimelineW;
+  // SVG width is timeline only — label column is HTML, not SVG
+  const svgW = svgTimelineW;
 
   const scale = makeScale(minDate, pxPerDay);
   const todayX = scale.toX(today);
   const monthTicks = getMonthTicks(minDate, maxDate, zoom);
 
   // ── Build rows based on viewMode ──────────────────────────────────────────
-  // Each row: { type: 'study'|'grant'|'project', ... }
   const rows = [];
 
   if (viewMode === 'study_area') {
-    // Group by study area
-    const projectById = Object.fromEntries(visibleProjects.map(p => [p.id, p]));
     const studyAreaMap = new Map();
-
-    // Assign projects to their study area
     for (const p of visibleProjects) {
       const saId = p.study_area_id || '__none__';
       if (!studyAreaMap.has(saId)) {
@@ -244,31 +250,22 @@ export default function ProgramGantt({
       }
     }
   } else {
-    // All projects flat, sorted by start_date
     const sorted = [...visibleProjects].sort((a, b) => (a.start_date || '') < (b.start_date || '') ? -1 : 1);
     for (const p of sorted) {
       rows.push({ type: 'project', project: p, key: `p-${p.id}`, grantPopColor: POP_COLORS[0] });
     }
   }
 
-  // ── Compute SVG height ────────────────────────────────────────────────────
-  let svgH = HEADER_H;
-  for (const row of rows) {
-    if (row.type === 'study') svgH += STUDY_H;
-    else if (row.type === 'grant') svgH += GROUP_H;
-    else svgH += ROW_H;
-  }
-  svgH += 8; // bottom pad
-
-  // ── Build row Y positions ─────────────────────────────────────────────────
+  // ── Row Y positions (SVG body — y=0 is top of body, no header offset) ─────
   const rowYs = [];
-  let y = HEADER_H;
+  let yAcc = 0;
   for (const row of rows) {
-    rowYs.push(y);
-    if (row.type === 'study') y += STUDY_H;
-    else if (row.type === 'grant') y += GROUP_H;
-    else y += ROW_H;
+    rowYs.push(yAcc);
+    if (row.type === 'study') yAcc += STUDY_H;
+    else if (row.type === 'grant') yAcc += GROUP_H;
+    else yAcc += ROW_H;
   }
+  const svgBodyH = yAcc + 8; // bottom pad
 
   // ── Project bar helpers ───────────────────────────────────────────────────
   function getProjectBarRange(p) {
@@ -303,7 +300,6 @@ export default function ProgramGantt({
       const downProj = visibleProjects.find(p => p.id === dep.downstream_project_id);
       if (!upProj || !downProj) continue;
 
-      // Upstream: use milestone date if specified, else project end
       let upX;
       if (dep.upstream_milestone_id) {
         const ms = (upProj.milestones || []).find(m => m.id === dep.upstream_milestone_id);
@@ -322,14 +318,11 @@ export default function ProgramGantt({
       const upY = rowYs[upIdx] + ROW_H / 2;
       const downY = rowYs[downIdx] + ROW_H / 2;
 
-      // Warning: upstream end is after downstream start
       const isViolation = dep.upstream_milestone_id
         ? false
         : (upProj.end_date && downProj.start_date && upProj.end_date > downProj.start_date);
 
       const color = isViolation ? '#f97316' : '#94a3b8';
-
-      // Curved path: right from upX, arc down, left to downX
       const midX = (upX + downX) / 2;
       const path = `M ${upX} ${upY} C ${upX + 20} ${upY}, ${midX} ${(upY + downY) / 2}, ${downX} ${downY}`;
 
@@ -356,399 +349,405 @@ export default function ProgramGantt({
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <div className="flex flex-col gap-2">
-      {/* Zoom controls */}
-      <div className="flex items-center justify-between px-1">
-        <div className="flex gap-1">
-          {(['year', 'quarter', 'month']).map(z => (
-            <button
-              key={z}
-              onClick={() => setZoom(z)}
-              className={`px-2.5 py-1 text-xs rounded-full font-medium border transition-colors ${
-                zoom === z
-                  ? 'bg-brand-700 text-white border-brand-700'
-                  : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'
-              }`}
-            >
-              {z.charAt(0).toUpperCase() + z.slice(1)}
-            </button>
-          ))}
+    <div className="flex flex-col h-full min-h-0 gap-2">
+
+      {/* Main chart area — flex row: label column + scrollable chart */}
+      <div className="flex flex-1 min-h-0 overflow-hidden border border-gray-200 rounded bg-white">
+
+        {/* ── Left: sticky label column ─────────────────────────────────── */}
+        <div
+          className="flex-shrink-0 bg-white border-r border-gray-200 flex flex-col overflow-hidden z-20"
+          style={{ width: LABEL_W }}
+        >
+          {/* Header cell — zoom controls, matches timeline header height */}
+          <div
+            className="flex-shrink-0 bg-gray-100 border-b border-gray-200 flex items-center px-2 gap-1"
+            style={{ height: HEADER_H }}
+          >
+            {(['year', 'quarter', 'month']).map(z => (
+              <button
+                key={z}
+                onClick={() => setZoom(z)}
+                className={`px-2 py-0.5 text-xs rounded-full font-medium border transition-colors ${
+                  zoom === z
+                    ? 'bg-brand-700 text-white border-brand-700'
+                    : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'
+                }`}
+              >
+                {z.charAt(0).toUpperCase() + z.slice(1)}
+              </button>
+            ))}
+          </div>
+
+          {/* Label rows — overflowY hidden, scrollTop synced to chart */}
+          <div ref={labelScrollRef} style={{ overflowY: 'hidden', flex: 1 }}>
+            {rows.map((row, i) => {
+              if (row.type === 'study') {
+                const isCollapsed = collapsed.has(row.key);
+                return (
+                  <div
+                    key={row.key}
+                    style={{ height: STUDY_H, flexShrink: 0 }}
+                    className="flex items-center px-2 bg-slate-200 border-b border-slate-300 select-none"
+                  >
+                    <span className="flex-1 text-xs font-bold text-slate-800 truncate">
+                      {row.sa.name}
+                    </span>
+                    <button
+                      onClick={() => toggleCollapse(row.key)}
+                      className="ml-1 text-slate-500 hover:text-slate-700 text-xs flex-shrink-0"
+                      aria-label={isCollapsed ? 'Expand study area' : 'Collapse study area'}
+                    >
+                      {isCollapsed ? '▼' : '▲'}
+                    </button>
+                  </div>
+                );
+              }
+
+              if (row.type === 'grant') {
+                const isCollapsed = collapsed.has(row.key);
+                return (
+                  <div
+                    key={row.key}
+                    style={{ height: GROUP_H, flexShrink: 0 }}
+                    className="flex items-center px-3 bg-slate-100 border-b border-slate-200 select-none"
+                  >
+                    <span className="flex-1 text-xs font-semibold text-gray-700 truncate">
+                      {row.grant.name}
+                    </span>
+                    <button
+                      onClick={() => toggleCollapse(row.key)}
+                      className="ml-1 text-slate-500 hover:text-slate-700 text-xs flex-shrink-0"
+                      aria-label={isCollapsed ? 'Expand grant' : 'Collapse grant'}
+                    >
+                      {isCollapsed ? '▼' : '▲'}
+                    </button>
+                  </div>
+                );
+              }
+
+              // Project row
+              const p = row.project;
+              const rowBg = i % 2 === 0 ? '#f9fafb' : '#ffffff';
+              return (
+                <div
+                  key={row.key}
+                  style={{ height: ROW_H, flexShrink: 0, background: rowBg }}
+                  className="flex items-center px-3 border-b border-gray-100 cursor-pointer hover:bg-blue-50 select-none"
+                  onClick={() => navigate(`/admin/projects/${p.id}?tab=schedule`)}
+                >
+                  <span className="text-xs text-gray-700 truncate w-full text-right">
+                    {p.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        {/* Legend */}
-        <div className="flex items-center gap-3 text-xs text-gray-500 flex-wrap">
-          {Object.entries(TYPE_COLORS).map(([k, c]) => (
-            <span key={k} className="flex items-center gap-1">
-              <span className="inline-block w-3 h-2 rounded-sm" style={{ background: c }} />
-              {TYPE_LABELS[k]}
-            </span>
-          ))}
-          <span className="flex items-center gap-1">
-            <span className="inline-block w-0.5 h-3 bg-blue-500" style={{ borderLeft: '2px dashed #3b82f6' }} />
-            Today
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="inline-block w-3 h-0.5 bg-orange-400" />
-            Dep. warning
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="inline-block w-3 h-0.5 bg-slate-300" />
-            Dep. ok
-          </span>
+
+        {/* ── Right: scrollable chart area ──────────────────────────────── */}
+        <div
+          ref={chartScrollRef}
+          className="flex-1 overflow-auto"
+          onScroll={syncScroll}
+        >
+          {/* Sticky timeline header */}
+          <div
+            className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200"
+            style={{ height: HEADER_H, minWidth: Math.max(svgW, containerW), position: 'relative' }}
+          >
+            {/* Month tick labels */}
+            {monthTicks.map((tick, i) => {
+              const x = scale.toX(tick);
+              const isJan = tick.getUTCMonth() === 0;
+              const label = (i === 0 || isJan) ? monthLabel(tick) : shortMonthLabel(tick);
+              return (
+                <div
+                  key={i}
+                  style={{
+                    position: 'absolute',
+                    left: x + 4,
+                    bottom: 8,
+                    fontSize: 10,
+                    color: '#6b7280',
+                    whiteSpace: 'nowrap',
+                    fontFamily: 'sans-serif',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  {label}
+                </div>
+              );
+            })}
+
+            {/* Today bubble in header */}
+            {todayX >= 0 && (
+              <div
+                style={{
+                  position: 'absolute',
+                  left: todayX - 16,
+                  top: 2,
+                  width: 32,
+                  height: 16,
+                  background: '#3b82f6',
+                  borderRadius: 3,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 9,
+                  color: '#fff',
+                  pointerEvents: 'none',
+                  fontFamily: 'sans-serif',
+                }}
+              >
+                Today
+              </div>
+            )}
+          </div>
+
+          {/* Chart SVG body — no header, no label column */}
+          <svg
+            width={Math.max(svgW, containerW)}
+            height={svgBodyH}
+            style={{ display: 'block', minWidth: svgW }}
+            onMouseLeave={() => setTip(null)}
+          >
+            {/* Background stripes for project rows */}
+            {rows.map((row, i) => {
+              if (row.type !== 'project') return null;
+              return (
+                <rect
+                  key={row.key + '-bg'}
+                  x={0}
+                  y={rowYs[i]}
+                  width={Math.max(svgW, containerW)}
+                  height={ROW_H}
+                  fill={i % 2 === 0 ? '#f9fafb' : '#ffffff'}
+                />
+              );
+            })}
+
+            {/* Month grid lines */}
+            {monthTicks.map((tick, i) => {
+              const x = scale.toX(tick);
+              return (
+                <line key={i} x1={x} y1={0} x2={x} y2={svgBodyH} stroke="#e5e7eb" strokeWidth={1} />
+              );
+            })}
+
+            {/* Grant PoP vertical lines (behind rows) */}
+            {grants.map((g, gi) => {
+              const popColor = POP_COLORS[gi % POP_COLORS.length];
+              const px = g.end_date ? scale.toX(parseDate(g.end_date)) : null;
+              if (!px) return null;
+              return (
+                <g key={`pop-bg-${g.id}`}>
+                  <line
+                    x1={px} y1={0} x2={px} y2={svgBodyH}
+                    stroke={popColor} strokeWidth={1} strokeDasharray="4,3" opacity={0.35}
+                  />
+                </g>
+              );
+            })}
+
+            {/* Today line */}
+            {todayX >= 0 && (
+              <line
+                x1={todayX} y1={0} x2={todayX} y2={svgBodyH}
+                stroke="#3b82f6" strokeWidth={1.5} strokeDasharray="5,4"
+              />
+            )}
+
+            {/* Dependency connectors */}
+            {depPaths.map((dep, i) => (
+              <g key={`dep-${i}`}>
+                <path
+                  d={dep.path}
+                  fill="none"
+                  stroke={dep.color}
+                  strokeWidth={1.5}
+                  strokeDasharray={dep.isViolation ? '4,2' : 'none'}
+                  opacity={0.7}
+                  onMouseEnter={() => setTip({
+                    x: (dep.upX + dep.downX) / 2,
+                    y: (dep.upY + dep.downY) / 2,
+                    lines: [dep.label, dep.isViolation ? '⚠ Sequencing conflict' : ''].filter(Boolean),
+                  })}
+                  style={{ cursor: 'default' }}
+                />
+                <polygon
+                  points={`${dep.downX},${dep.downY} ${dep.downX - 6},${dep.downY - 3} ${dep.downX - 6},${dep.downY + 3}`}
+                  fill={dep.color}
+                  opacity={0.7}
+                />
+              </g>
+            ))}
+
+            {/* Rows — bars and milestones only (labels are in HTML column) */}
+            {rows.map((row, i) => {
+              const y = rowYs[i];
+
+              if (row.type === 'study') {
+                return (
+                  <g key={row.key}>
+                    <rect x={0} y={y} width={Math.max(svgW, containerW)} height={STUDY_H} fill="#e2e8f0" />
+                    <line x1={0} y1={y} x2={Math.max(svgW, containerW)} y2={y} stroke="#cbd5e1" strokeWidth={1} />
+                  </g>
+                );
+              }
+
+              if (row.type === 'grant') {
+                const g = row.grant;
+                const popX = g.end_date ? scale.toX(parseDate(g.end_date)) : null;
+                return (
+                  <g key={row.key}>
+                    <rect x={0} y={y} width={Math.max(svgW, containerW)} height={GROUP_H} fill="#f1f5f9" />
+                    <line x1={0} y1={y} x2={Math.max(svgW, containerW)} y2={y} stroke="#e2e8f0" strokeWidth={1} />
+                    {g.end_date && (
+                      <text x={4} y={y + GROUP_H / 2 + 4} fontSize={9} fill={row.popColor} fontFamily="sans-serif">
+                        PoP: {formatDateShort(g.end_date)}
+                      </text>
+                    )}
+                    {popX != null && (
+                      <g>
+                        <line x1={popX} y1={y} x2={popX} y2={y + GROUP_H} stroke={row.popColor} strokeWidth={2} />
+                        <rect x={popX - 18} y={y + 2} width={36} height={14} rx={2} fill={row.popColor} />
+                        <text x={popX} y={y + 13} fontSize={8} fill="#fff" textAnchor="middle" fontFamily="sans-serif">
+                          Grant PoP
+                        </text>
+                      </g>
+                    )}
+                  </g>
+                );
+              }
+
+              // Project row
+              const p = row.project;
+              const range = getProjectBarRange(p);
+              const barStart = range.start;
+              const barEnd = range.end;
+              const color = TYPE_COLORS[p.project_type] || TYPE_COLORS.custom;
+
+              const barX1 = barStart ? scale.toX(parseDate(barStart)) : null;
+              const barX2 = barEnd ? scale.toX(parseDate(barEnd)) : null;
+              const barW = barX1 != null && barX2 != null ? Math.max(barX2 - barX1, 4) : 0;
+              const barY = y + 6;
+              const barH = ROW_H - 12;
+
+              return (
+                <g
+                  key={row.key}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => navigate(`/admin/projects/${p.id}?tab=schedule`)}
+                  onMouseEnter={() => {
+                    setTip({
+                      x: barX1 != null ? barX1 + barW / 2 : 20,
+                      y: y + ROW_H / 2,
+                      lines: [
+                        p.name,
+                        `Grant: ${p.grantName || ''}`,
+                        `Type: ${TYPE_LABELS[p.project_type] || p.project_type}`,
+                        barStart && barEnd ? `${formatDateShort(barStart)} – ${formatDateShort(barEnd)}` : 'No dates',
+                      ].filter(Boolean),
+                    });
+                  }}
+                  onMouseLeave={() => setTip(null)}
+                >
+                  {/* Bar */}
+                  {barX1 != null && barX2 != null && (
+                    range.hasPhases ? (
+                      <rect
+                        x={barX1}
+                        y={barY}
+                        width={barW}
+                        height={barH}
+                        rx={3}
+                        fill={color + '33'}
+                        stroke={color}
+                        strokeWidth={1.5}
+                        aria-label={`${p.name} bar`}
+                      />
+                    ) : (
+                      <rect
+                        x={barX1}
+                        y={barY}
+                        width={barW}
+                        height={barH}
+                        rx={3}
+                        fill="none"
+                        stroke="#9ca3af"
+                        strokeWidth={1.5}
+                        strokeDasharray="5,3"
+                        aria-label={`${p.name} bar (no schedule)`}
+                      />
+                    )
+                  )}
+
+                  {/* "no schedule" label */}
+                  {!range.hasPhases && barX1 != null && barW > 30 && (
+                    <text
+                      x={barX1 + 4}
+                      y={barY + barH / 2 + 4}
+                      fontSize={9}
+                      fill="#9ca3af"
+                      fontFamily="sans-serif"
+                      fontStyle="italic"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      no schedule
+                    </text>
+                  )}
+
+                  {/* Milestone diamonds */}
+                  {(p.milestones || []).map((ms) => {
+                    const mx = scale.toX(parseDate(ms.target_date));
+                    const isKey = Number(ms.is_key_decision) === 1;
+                    const isPop = Number(ms.is_pop_anchor) === 1;
+                    const fill = isPop ? '#0e9e8e' : isKey ? '#f59e0b' : '#3b82f6';
+                    return (
+                      <g
+                        key={ms.id}
+                        onMouseEnter={() => setTip({
+                          x: mx,
+                          y,
+                          lines: [ms.label, formatDateShort(ms.target_date), isPop ? 'PoP Anchor' : isKey ? 'Key Decision' : ''].filter(Boolean),
+                        })}
+                        onMouseLeave={() => setTip(null)}
+                      >
+                        <Diamond cx={mx} cy={y + ROW_H / 2} size={5} fill={fill} stroke={fill} />
+                      </g>
+                    );
+                  })}
+                </g>
+              );
+            })}
+
+            {/* Tooltip (on top of everything) */}
+            {tip && <Tooltip tip={tip} svgW={Math.max(svgW, containerW)} />}
+          </svg>
         </div>
       </div>
 
-      {/* Chart */}
-      <div
-        ref={containerRef}
-        className="overflow-x-auto rounded border border-gray-200 bg-white select-none"
-        aria-label="Program Gantt chart"
-      >
-        <svg
-          width={Math.max(svgW, containerW)}
-          height={svgH}
-          style={{ display: 'block', minWidth: svgW }}
-          onMouseLeave={() => setTip(null)}
-        >
-          {/* Background stripes for project rows */}
-          {rows.map((row, i) => {
-            if (row.type !== 'project') return null;
-            return (
-              <rect
-                key={row.key + '-bg'}
-                x={0}
-                y={rowYs[i]}
-                width={Math.max(svgW, containerW)}
-                height={ROW_H}
-                fill={i % 2 === 0 ? '#f9fafb' : '#ffffff'}
-              />
-            );
-          })}
-
-          {/* Month grid lines */}
-          {monthTicks.map((tick, i) => {
-            const x = scale.toX(tick);
-            if (x < LABEL_W) return null;
-            return (
-              <line key={i} x1={x} y1={HEADER_H} x2={x} y2={svgH} stroke="#e5e7eb" strokeWidth={1} />
-            );
-          })}
-
-          {/* Header */}
-          <rect x={0} y={0} width={Math.max(svgW, containerW)} height={HEADER_H} fill="#f8fafc" />
-          <line x1={0} y1={HEADER_H} x2={Math.max(svgW, containerW)} y2={HEADER_H} stroke="#e5e7eb" strokeWidth={1} />
-
-          {monthTicks.map((tick, i) => {
-            const x = scale.toX(tick);
-            if (x < LABEL_W - 4) return null;
-            const isJan = tick.getUTCMonth() === 0;
-            const label = (i === 0 || isJan) ? monthLabel(tick) : shortMonthLabel(tick);
-            return (
-              <text key={i} x={x + 4} y={HEADER_H - 8} fontSize={10} fill="#6b7280" fontFamily="sans-serif">
-                {label}
-              </text>
-            );
-          })}
-
-          {/* Grant PoP vertical lines (behind rows) */}
-          {grants.map((g, gi) => {
-            const popColor = POP_COLORS[gi % POP_COLORS.length];
-            const px = g.end_date ? scale.toX(parseDate(g.end_date)) : null;
-            if (!px || px < LABEL_W) return null;
-            return (
-              <g key={`pop-bg-${g.id}`}>
-                <line
-                  x1={px} y1={HEADER_H} x2={px} y2={svgH}
-                  stroke={popColor} strokeWidth={1} strokeDasharray="4,3" opacity={0.35}
-                />
-              </g>
-            );
-          })}
-
-          {/* Today line */}
-          {todayX >= LABEL_W && (
-            <g>
-              <line x1={todayX} y1={HEADER_H} x2={todayX} y2={svgH} stroke="#3b82f6" strokeWidth={1.5} strokeDasharray="5,4" />
-              <rect x={todayX - 16} y={2} width={32} height={16} rx={3} fill="#3b82f6" />
-              <text x={todayX} y={14} fontSize={9} fill="#ffffff" textAnchor="middle" fontFamily="sans-serif">Today</text>
-            </g>
-          )}
-
-          {/* Dependency connectors */}
-          {depPaths.map((dep, i) => (
-            <g key={`dep-${i}`}>
-              <path
-                d={dep.path}
-                fill="none"
-                stroke={dep.color}
-                strokeWidth={1.5}
-                strokeDasharray={dep.isViolation ? '4,2' : 'none'}
-                opacity={0.7}
-                onMouseEnter={(e) => setTip({ x: (dep.upX + dep.downX) / 2, y: (dep.upY + dep.downY) / 2, lines: [dep.label, dep.isViolation ? '⚠ Sequencing conflict' : ''] })}
-                style={{ cursor: 'default' }}
-              />
-              {/* Arrow head at downX */}
-              <polygon
-                points={`${dep.downX},${dep.downY} ${dep.downX - 6},${dep.downY - 3} ${dep.downX - 6},${dep.downY + 3}`}
-                fill={dep.color}
-                opacity={0.7}
-              />
-            </g>
-          ))}
-
-          {/* Rows */}
-          {rows.map((row, i) => {
-            const y = rowYs[i];
-
-            if (row.type === 'study') {
-              const isCollapsed = collapsed.has(row.key);
-              return (
-                <g key={row.key} role="row" aria-label={`Study area: ${row.sa.name}`}>
-                  <rect x={0} y={y} width={Math.max(svgW, containerW)} height={STUDY_H} fill="#e2e8f0" />
-                  <line x1={0} y1={y} x2={Math.max(svgW, containerW)} y2={y} stroke="#cbd5e1" strokeWidth={1} />
-                  <text
-                    x={8} y={y + STUDY_H / 2 + 5}
-                    fontSize={12} fontWeight="700" fill="#1e293b" fontFamily="sans-serif"
-                  >
-                    {row.sa.name}
-                  </text>
-                  {/* Collapse toggle */}
-                  <g
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => toggleCollapse(row.key)}
-                    role="button"
-                    aria-label={isCollapsed ? 'Expand study area' : 'Collapse study area'}
-                  >
-                    <text x={LABEL_W - 16} y={y + STUDY_H / 2 + 5} fontSize={11} fill="#64748b" fontFamily="sans-serif">
-                      {isCollapsed ? '▼' : '▲'}
-                    </text>
-                  </g>
-                </g>
-              );
-            }
-
-            if (row.type === 'grant') {
-              const g = row.grant;
-              const isCollapsed = collapsed.has(row.key);
-              const popX = g.end_date ? scale.toX(parseDate(g.end_date)) : null;
-              const grantLabel = g.name.length > 28 ? g.name.slice(0, 27) + '…' : g.name;
-
-              return (
-                <g key={row.key} role="row" aria-label={`Grant: ${g.name}`}>
-                  <rect x={0} y={y} width={Math.max(svgW, containerW)} height={GROUP_H} fill="#f1f5f9" />
-                  <line x1={0} y1={y} x2={Math.max(svgW, containerW)} y2={y} stroke="#e2e8f0" strokeWidth={1} />
-                  <text
-                    x={12} y={y + GROUP_H / 2 + 4}
-                    fontSize={11} fontWeight="600" fill="#374151" fontFamily="sans-serif"
-                  >
-                    {grantLabel}
-                  </text>
-                  {g.end_date && (
-                    <text x={LABEL_W + 4} y={y + GROUP_H / 2 + 4} fontSize={9} fill={row.popColor} fontFamily="sans-serif">
-                      PoP: {formatDateShort(g.end_date)}
-                    </text>
-                  )}
-                  {/* PoP tick mark in grant header */}
-                  {popX && popX >= LABEL_W && (
-                    <g>
-                      <line x1={popX} y1={y} x2={popX} y2={y + GROUP_H} stroke={row.popColor} strokeWidth={2} />
-                      <rect x={popX - 18} y={y + 2} width={36} height={14} rx={2} fill={row.popColor} />
-                      <text x={popX} y={y + 13} fontSize={8} fill="#fff" textAnchor="middle" fontFamily="sans-serif">
-                        Grant PoP
-                      </text>
-                    </g>
-                  )}
-                  {/* Collapse toggle */}
-                  <g
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => toggleCollapse(row.key)}
-                    role="button"
-                    aria-label={isCollapsed ? 'Expand grant' : 'Collapse grant'}
-                  >
-                    <text x={LABEL_W - 16} y={y + GROUP_H / 2 + 4} fontSize={10} fill="#64748b" fontFamily="sans-serif">
-                      {isCollapsed ? '▼' : '▲'}
-                    </text>
-                  </g>
-                </g>
-              );
-            }
-
-            // Project row
-            const p = row.project;
-            const range = getProjectBarRange(p);
-            const barStart = range.start;
-            const barEnd = range.end;
-            const color = TYPE_COLORS[p.project_type] || TYPE_COLORS.custom;
-            const nameLabel = p.name.length > 28 ? p.name.slice(0, 27) + '…' : p.name;
-
-            let barX1 = barStart ? scale.toX(parseDate(barStart)) : null;
-            let barX2 = barEnd ? scale.toX(parseDate(barEnd)) : null;
-            const barW = barX1 && barX2 ? Math.max(barX2 - barX1, 4) : 0;
-            const barY = y + 6;
-            const barH = ROW_H - 12;
-
-            return (
-              <g
-                key={row.key}
-                role="row"
-                aria-label={`Project: ${p.name}`}
-                style={{ cursor: 'pointer' }}
-                onClick={() => navigate(`/admin/projects/${p.id}?tab=schedule`)}
-                onMouseEnter={(e) => {
-                  const rect = e.currentTarget.closest('svg').getBoundingClientRect();
-                  setTip({
-                    x: barX1 ? barX1 + barW / 2 : LABEL_W + 20,
-                    y: y + ROW_H / 2,
-                    lines: [
-                      p.name,
-                      `Grant: ${p.grantName || ''}`,
-                      `Type: ${TYPE_LABELS[p.project_type] || p.project_type}`,
-                      barStart && barEnd ? `${formatDateShort(barStart)} – ${formatDateShort(barEnd)}` : 'No dates',
-                    ].filter(Boolean),
-                  });
-                }}
-                onMouseLeave={() => setTip(null)}
-              >
-                {/* Label */}
-                <text
-                  x={LABEL_W - 6}
-                  y={y + ROW_H / 2 + 4}
-                  fontSize={11}
-                  fill="#374151"
-                  textAnchor="end"
-                  fontFamily="sans-serif"
-                >
-                  {nameLabel}
-                </text>
-
-                {/* Bar */}
-                {barX1 && barX2 && (
-                  range.hasPhases ? (
-                    <rect
-                      x={barX1}
-                      y={barY}
-                      width={barW}
-                      height={barH}
-                      rx={3}
-                      fill={color + '33'}
-                      stroke={color}
-                      strokeWidth={1.5}
-                      aria-label={`${p.name} bar`}
-                    />
-                  ) : (
-                    <rect
-                      x={barX1}
-                      y={barY}
-                      width={barW}
-                      height={barH}
-                      rx={3}
-                      fill="none"
-                      stroke="#9ca3af"
-                      strokeWidth={1.5}
-                      strokeDasharray="5,3"
-                      aria-label={`${p.name} bar (no schedule)`}
-                    />
-                  )
-                )}
-
-                {/* "no schedule" label */}
-                {!range.hasPhases && barX1 && barW > 30 && (
-                  <text
-                    x={barX1 + 4}
-                    y={barY + barH / 2 + 4}
-                    fontSize={9}
-                    fill="#9ca3af"
-                    fontFamily="sans-serif"
-                    fontStyle="italic"
-                    style={{ pointerEvents: 'none' }}
-                  >
-                    no schedule
-                  </text>
-                )}
-
-                {/* Milestone diamonds */}
-                {(p.milestones || []).map((ms) => {
-                  const mx = scale.toX(parseDate(ms.target_date));
-                  const isKey = Number(ms.is_key_decision) === 1;
-                  const isPop = Number(ms.is_pop_anchor) === 1;
-                  const fill = isPop ? '#0e9e8e' : isKey ? '#f59e0b' : '#3b82f6';
-                  return (
-                    <g key={ms.id}
-                      onMouseEnter={() => setTip({
-                        x: mx,
-                        y: y,
-                        lines: [ms.label, formatDateShort(ms.target_date), isPop ? 'PoP Anchor' : isKey ? 'Key Decision' : ''],
-                      })}
-                      onMouseLeave={() => setTip(null)}
-                    >
-                      <Diamond cx={mx} cy={y + ROW_H / 2} size={5} fill={fill} stroke={fill} />
-                    </g>
-                  );
-                })}
-              </g>
-            );
-          })}
-
-          {/* Label column overlay */}
-          <rect x={0} y={0} width={LABEL_W} height={svgH} fill="rgba(248,250,252,0.92)" />
-          <line x1={LABEL_W} y1={0} x2={LABEL_W} y2={svgH} stroke="#e5e7eb" strokeWidth={1} />
-          <rect x={0} y={0} width={LABEL_W} height={HEADER_H} fill="#f1f5f9" />
-
-          {/* Re-render labels on top of overlay */}
-          {rows.map((row, i) => {
-            const y = rowYs[i];
-            if (row.type === 'study') {
-              const isCollapsed = collapsed.has(row.key);
-              return (
-                <g key={row.key + '-label'}>
-                  <rect x={0} y={y} width={LABEL_W} height={STUDY_H} fill="#e2e8f0" />
-                  <text x={8} y={y + STUDY_H / 2 + 5} fontSize={12} fontWeight="700" fill="#1e293b" fontFamily="sans-serif">
-                    {row.sa.name.length > 24 ? row.sa.name.slice(0, 23) + '…' : row.sa.name}
-                  </text>
-                  <g style={{ cursor: 'pointer' }} onClick={() => toggleCollapse(row.key)}>
-                    <text x={LABEL_W - 16} y={y + STUDY_H / 2 + 5} fontSize={11} fill="#64748b" fontFamily="sans-serif">
-                      {isCollapsed ? '▼' : '▲'}
-                    </text>
-                  </g>
-                </g>
-              );
-            }
-            if (row.type === 'grant') {
-              const g = row.grant;
-              const isCollapsed = collapsed.has(row.key);
-              const grantLabel = g.name.length > 26 ? g.name.slice(0, 25) + '…' : g.name;
-              return (
-                <g key={row.key + '-label'}>
-                  <rect x={0} y={y} width={LABEL_W} height={GROUP_H} fill="#f1f5f9" />
-                  <text x={12} y={y + GROUP_H / 2 + 4} fontSize={11} fontWeight="600" fill="#374151" fontFamily="sans-serif">
-                    {grantLabel}
-                  </text>
-                  <g style={{ cursor: 'pointer' }} onClick={() => toggleCollapse(row.key)}>
-                    <text x={LABEL_W - 16} y={y + GROUP_H / 2 + 4} fontSize={10} fill="#64748b" fontFamily="sans-serif">
-                      {isCollapsed ? '▼' : '▲'}
-                    </text>
-                  </g>
-                </g>
-              );
-            }
-            // Project label
-            const p = row.project;
-            const nameLabel = p.name.length > 28 ? p.name.slice(0, 27) + '…' : p.name;
-            return (
-              <g key={row.key + '-label'} style={{ cursor: 'pointer' }} onClick={() => navigate(`/admin/projects/${p.id}?tab=schedule`)}>
-                <rect x={0} y={y} width={LABEL_W} height={ROW_H} fill="transparent" />
-                <text x={LABEL_W - 6} y={y + ROW_H / 2 + 4} fontSize={11} fill="#374151" textAnchor="end" fontFamily="sans-serif">
-                  {nameLabel}
-                </text>
-              </g>
-            );
-          })}
-
-          {/* Tooltip (on top of everything) */}
-          {tip && <Tooltip tip={tip} svgW={Math.max(svgW, containerW)} />}
-
-          {/* Border */}
-          <rect x={0} y={0} width={Math.max(svgW, containerW)} height={svgH} fill="none" stroke="#e5e7eb" strokeWidth={1} />
-        </svg>
+      {/* Legend — below chart, always visible */}
+      <div className="flex-shrink-0 flex items-center gap-3 text-xs text-gray-500 flex-wrap px-1">
+        {Object.entries(TYPE_COLORS).map(([k, c]) => (
+          <span key={k} className="flex items-center gap-1">
+            <span className="inline-block w-3 h-2 rounded-sm" style={{ background: c }} />
+            {TYPE_LABELS[k]}
+          </span>
+        ))}
+        <span className="flex items-center gap-1">
+          <span className="inline-block w-0.5 h-3 bg-blue-500" style={{ borderLeft: '2px dashed #3b82f6' }} />
+          Today
+        </span>
+        <span className="flex items-center gap-1">
+          <span className="inline-block w-3 h-0.5 bg-orange-400" />
+          Dep. warning
+        </span>
+        <span className="flex items-center gap-1">
+          <span className="inline-block w-3 h-0.5 bg-slate-300" />
+          Dep. ok
+        </span>
       </div>
     </div>
   );
