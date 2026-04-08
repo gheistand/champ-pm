@@ -7,7 +7,7 @@ import Modal from '../../components/Modal';
 import { PageLoader } from '../../components/LoadingSpinner';
 import { formatDisplayDate } from '../../utils/dateUtils';
 
-const EMPTY_PROJECT = { name: '', description: '', start_date: '', end_date: '', budget: '', estimated_hours: '', status: 'active' };
+const EMPTY_PROJECT = { name: '', description: '', start_date: '', end_date: '', budget: '', estimated_hours: '', status: 'active', project_type: 'custom', study_area_id: '' };
 const EMPTY_FA = { fa_rate: '', fa_basis: 'mtdc', effective_date: '', notes: '' };
 
 function BudgetGauge({ pct }) {
@@ -41,18 +41,21 @@ export default function GrantDetail() {
   const [faModalOpen, setFaModalOpen] = useState(false);
   const [faForm, setFaForm] = useState(EMPTY_FA);
   const [savingFa, setSavingFa] = useState(false);
+  const [studyAreas, setStudyAreas] = useState([]);
 
   async function load() {
     try {
-      const [grantRes, faRes, budgetRes] = await Promise.all([
+      const [grantRes, faRes, budgetRes, areaRes] = await Promise.all([
         api.get(`/api/grants/${id}`),
         api.get(`/api/grants/${id}/fa`).catch(() => ({ current: null, history: [] })),
         api.get(`/api/budget/grant/${id}`).catch(() => null),
+        api.get('/api/study-areas').catch(() => ({ study_areas: [] })),
       ]);
       setGrant(grantRes.grant);
       setProjects(grantRes.projects || []);
       setFaData(faRes);
       setBudgetData(budgetRes);
+      setStudyAreas(areaRes.study_areas || []);
     } catch (e) {
       addToast(e.message, 'error');
     } finally {
@@ -70,7 +73,7 @@ export default function GrantDetail() {
 
   function openEdit(p) {
     setEditingProject(p);
-    setForm({ name: p.name, description: p.description || '', start_date: p.start_date || '', end_date: p.end_date || '', budget: p.budget, estimated_hours: p.estimated_hours, status: p.status });
+    setForm({ name: p.name, description: p.description || '', start_date: p.start_date || '', end_date: p.end_date || '', budget: p.budget, estimated_hours: p.estimated_hours, status: p.status, project_type: p.project_type || 'custom', study_area_id: p.study_area_id || '' });
     setModalOpen(true);
   }
 
@@ -78,7 +81,7 @@ export default function GrantDetail() {
     e.preventDefault();
     setSaving(true);
     try {
-      const payload = { ...form, grant_id: Number(id), budget: Number(form.budget) || 0, estimated_hours: Number(form.estimated_hours) || 0 };
+      const payload = { ...form, grant_id: Number(id), budget: Number(form.budget) || 0, estimated_hours: Number(form.estimated_hours) || 0, study_area_id: form.study_area_id ? Number(form.study_area_id) : null };
       if (editingProject) {
         await api.put(`/api/projects/${editingProject.id}`, payload);
         addToast('Project updated');
@@ -309,6 +312,25 @@ export default function GrantDetail() {
             <div><label className="form-label">Est. Hours</label><input className="form-input" type="number" min="0" step="0.5" {...field('estimated_hours')} /></div>
           </div>
           <div><label className="form-label">Status</label><select className="form-select" {...field('status')}><option value="active">Active</option><option value="on_hold">On Hold</option><option value="complete">Complete</option></select></div>
+          <div>
+            <label className="form-label">Project Type</label>
+            <select className="form-select" {...field('project_type')}>
+              <option value="custom">Custom</option>
+              <option value="data_development">FEMA Data Development</option>
+              <option value="mapping">FEMA Mapping</option>
+            </select>
+          </div>
+          {(form.project_type === 'data_development' || form.project_type === 'mapping') && (
+            <div>
+              <label className="form-label">Study Area <span className="text-gray-400 font-normal">(optional)</span></label>
+              <select className="form-select" {...field('study_area_id')}>
+                <option value="">— None —</option>
+                {studyAreas.map(sa => (
+                  <option key={sa.id} value={sa.id}>{sa.name}</option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className="flex justify-end gap-3 pt-2">
             <button type="button" className="btn-secondary" onClick={() => setModalOpen(false)}>Cancel</button>
             <button type="submit" className="btn-primary" disabled={saving}>{saving ? 'Saving…' : 'Save'}</button>
