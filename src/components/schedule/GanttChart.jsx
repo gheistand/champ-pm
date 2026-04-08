@@ -78,6 +78,11 @@ export default function GanttChart({
   readOnly = true,
   onPhaseChange,
   onMilestoneChange,
+  // Compare overlay props
+  basePhases = [],
+  baseMilestones = [],
+  compareMode = false,
+  baseLabel = 'Base Plan',
 }) {
   const containerRef = useRef(null);
   const [containerW, setContainerW] = useState(TARGET_CHART_W);
@@ -99,6 +104,9 @@ export default function GanttChart({
     ...phases.map(p => parseDate(p.start_date)),
     ...phases.map(p => parseDate(p.end_date)),
     ...milestones.map(m => parseDate(m.target_date)),
+    ...(compareMode ? basePhases.map(p => parseDate(p.start_date)) : []),
+    ...(compareMode ? basePhases.map(p => parseDate(p.end_date)) : []),
+    ...(compareMode ? baseMilestones.map(m => parseDate(m.target_date)) : []),
     popDate ? parseDate(popDate) : null,
     todayDate ? parseDate(todayDate) : null,
   ].filter(Boolean);
@@ -186,6 +194,14 @@ export default function GanttChart({
   const popX = popDate ? scale.toX(parseDate(popDate)) : null;
   const todayX = todayDate ? scale.toX(parseDate(todayDate)) : null;
 
+  // ── build a lookup of base phases by id for compare overlay ──────────────
+  const basePhaseMap = compareMode
+    ? Object.fromEntries(basePhases.map(p => [p.id, p]))
+    : {};
+  const baseMilestoneMap = compareMode
+    ? Object.fromEntries(baseMilestones.map(m => [m.id, m]))
+    : {};
+
   // ── render ────────────────────────────────────────────────────────────────
   return (
     <div ref={containerRef} className="overflow-x-auto rounded border border-gray-200 bg-white select-none">
@@ -243,6 +259,74 @@ export default function GanttChart({
         <rect x={0} y={0} width={LABEL_W} height={svgH} fill="#f8fafc" />
         <line x1={LABEL_W} y1={0} x2={LABEL_W} y2={svgH} stroke="#e5e7eb" strokeWidth={1} />
         <rect x={0} y={0} width={LABEL_W} height={HEADER_H} fill="#f1f5f9" />
+
+        {/* ── compare overlay legend ────────────────────────────────── */}
+        {compareMode && (
+          <g>
+            <rect x={svgW - 130} y={5} width={122} height={34} rx={3} fill="white" stroke="#e5e7eb" strokeWidth={1} opacity={0.95} />
+            <rect x={svgW - 122} y={11} width={10} height={8} rx={1} fill="#6b7280" opacity={0.4} />
+            <text x={svgW - 108} y={19} fontSize={9} fill="#6b7280" fontFamily="sans-serif">{baseLabel}</text>
+            <rect x={svgW - 122} y={24} width={10} height={8} rx={1} fill="#3b82f6" opacity={0.85} />
+            <text x={svgW - 108} y={32} fontSize={9} fill="#374151" fontFamily="sans-serif">Scenario</text>
+          </g>
+        )}
+
+        {/* ── ghost base phase bars (compare mode only) ─────────────── */}
+        {compareMode && phases.map((phase, i) => {
+          const base = basePhaseMap[phase.id];
+          if (!base) return null;
+          const baseStart = base.start_date;
+          const baseEnd = base.end_date;
+          const preview = dragPreview && dragPreview.phaseId === phase.id ? dragPreview : null;
+          const scenStart = preview ? preview.start_date : phase.start_date;
+          const scenEnd = preview ? preview.end_date : phase.end_date;
+
+          // Skip ghost if dates are identical
+          if (baseStart === scenStart && baseEnd === scenEnd) return null;
+
+          const bx1 = scale.toX(parseDate(baseStart));
+          const bx2 = scale.toX(parseDate(baseEnd));
+          const barW = Math.max(bx2 - bx1, 4);
+          const y = HEADER_H + i * ROW_H;
+          const barY = y + 9;
+          const barH = ROW_H - 18;
+
+          // Delta annotations
+          const startDelta = diffDays(parseDate(baseStart), parseDate(scenStart));
+          const endDelta = diffDays(parseDate(baseEnd), parseDate(scenEnd));
+          const deltaLabel = endDelta !== 0
+            ? (endDelta > 0 ? `+${endDelta}d` : `${endDelta}d`)
+            : startDelta !== 0 ? (startDelta > 0 ? `+${startDelta}d start` : `${startDelta}d start`) : null;
+
+          return (
+            <g key={`ghost-${phase.id}`}>
+              <rect
+                x={bx1}
+                y={barY}
+                width={barW}
+                height={barH}
+                rx={2}
+                fill="#9ca3af"
+                stroke="#6b7280"
+                strokeWidth={1}
+                strokeDasharray="3,2"
+                opacity={0.4}
+              />
+              {deltaLabel && (
+                <text
+                  x={(bx1 + bx2) / 2}
+                  y={barY - 2}
+                  fontSize={8}
+                  fill={endDelta > 0 ? '#d97706' : '#059669'}
+                  textAnchor="middle"
+                  fontFamily="sans-serif"
+                >
+                  {deltaLabel}
+                </text>
+              )}
+            </g>
+          );
+        })}
 
         {/* ── phase rows ────────────────────────────────────────────── */}
         {phases.map((phase, i) => {
@@ -352,6 +436,25 @@ export default function GanttChart({
         >
           Milestones
         </text>
+
+        {/* ── ghost base milestones (compare mode only) ─────────────── */}
+        {compareMode && milestones.map((ms) => {
+          const base = baseMilestoneMap[ms.id];
+          if (!base) return null;
+          const baseDate = base.target_date;
+          const scenDate = ms.target_date;
+          if (baseDate === scenDate) return null;
+
+          const bx = scale.toX(parseDate(baseDate));
+          const bandY = HEADER_H + phases.length * ROW_H;
+          const cy = bandY + MILESTONE_H / 2;
+
+          return (
+            <g key={`ghost-ms-${ms.id}`} opacity={0.4}>
+              <Diamond cx={bx} cy={cy} size={5} fill="#9ca3af" stroke="#6b7280" strokeWidth={1} />
+            </g>
+          );
+        })}
 
         {/* ── milestones ────────────────────────────────────────────── */}
         {milestones.map((ms, i) => {

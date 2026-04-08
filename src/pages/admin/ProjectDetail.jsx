@@ -10,6 +10,7 @@ import GanttChart from '../../components/schedule/GanttChart';
 import ScheduleTable from '../../components/schedule/ScheduleTable';
 import ScheduleSetup from '../../components/schedule/ScheduleSetup';
 import WhatIfPanel from '../../components/schedule/WhatIfPanel';
+import ScenarioCompareTable from '../../components/schedule/ScenarioCompareTable';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer,
@@ -83,7 +84,11 @@ export default function ProjectDetail() {
   const [scheduleLoading, setScheduleLoading] = useState(false);
   const [whatIfMode, setWhatIfMode] = useState(false);
   const [activeScenario, setActiveScenario] = useState(null);
-  const [compareBase, setCompareBase] = useState(false);
+  // compareTarget: '' | 'base' | '<scenarioId>'
+  const [compareTarget, setCompareTarget] = useState('');
+  const [basePhases, setBasePhases] = useState([]);
+  const [baseMilestones, setBaseMilestones] = useState([]);
+  const [cascadeWarnings, setCascadeWarnings] = useState([]);
   const [addPhaseOpen, setAddPhaseOpen] = useState(false);
   const [addMilestoneOpen, setAddMilestoneOpen] = useState(false);
   const [phaseForm, setPhaseForm] = useState(EMPTY_PHASE);
@@ -129,6 +134,53 @@ export default function ProjectDetail() {
     }
   }, [id]);
 
+  // ── load cascade warnings ───────────────────────────────────────────────────
+  const loadCascadeWarnings = useCallback(async (scenarioId) => {
+    try {
+      const qs = scenarioId ? `&scenario_id=${scenarioId}` : '';
+      const res = await api.get(`/api/schedule/cascade-check?project_id=${id}${qs}`);
+      setCascadeWarnings(res.warnings || []);
+    } catch {
+      // Cascade check is non-critical — silently ignore errors
+    }
+  }, [id]);
+
+  // ── load base or another scenario for compare overlay ──────────────────────
+  const loadCompareTo = useCallback(async (target) => {
+    if (!target) {
+      setBasePhases([]);
+      setBaseMilestones([]);
+      return;
+    }
+    try {
+      if (target === 'base') {
+        const [phRes, msRes] = await Promise.all([
+          api.get(`/api/schedule/phases?project_id=${id}`),
+          api.get(`/api/schedule/milestones?project_id=${id}`),
+        ]);
+        setBasePhases(phRes.phases || []);
+        setBaseMilestones(msRes.milestones || []);
+      } else {
+        // Another scenario
+        const res = await api.get(`/api/schedule/scenario-overrides?scenario_id=${target}`);
+        // Resolve override dates for the comparison scenario
+        const resolvedPhases = (res.phases || []).map(p => ({
+          ...p,
+          start_date: p.override?.start_date ?? p.start_date,
+          end_date: p.override?.end_date ?? p.end_date,
+        }));
+        const resolvedMilestones = (res.milestones || []).map(m => ({
+          ...m,
+          target_date: m.override?.target_date ?? m.target_date,
+        }));
+        setBasePhases(resolvedPhases);
+        setBaseMilestones(resolvedMilestones);
+      }
+    } catch (e) {
+      addToast(e.message, 'error');
+    }
+  }, [id]);
+
   useEffect(() => { load(); }, [id]);
   useEffect(() => { if (activeTab === 'Schedule') loadSchedule(); }, [activeTab, id]);
 
@@ -146,6 +198,18 @@ export default function ProjectDetail() {
     }
     loadOverrides();
   }, [activeScenario]);
+
+  // ── reload compare base when compareTarget changes ──────────────────────────
+  useEffect(() => {
+    loadCompareTo(compareTarget);
+  }, [compareTarget]);
+
+  // ── cascade check after schedule/scenario changes ──────────────────────────
+  useEffect(() => {
+    if (activeTab === 'Schedule') {
+      loadCascadeWarnings(activeScenario?.id || null);
+    }
+  }, [phases, milestones, activeScenario, activeTab]);
 
   // ── tasks tab handlers ──────────────────────────────────────────────────────
   function openCreate() { setEditingTask(null); setForm(EMPTY_TASK); setModalOpen(true); }
@@ -389,10 +453,10 @@ export default function ProjectDetail() {
     }
   }
 
-  async function handleSaveScenario({ name }) {
+  async function handleSaveScenario({ name, notes }) {
     if (!activeScenario) return;
     try {
-      const res = await api.put('/api/schedule/scenarios', { id: activeScenario.id, name, status: 'saved' });
+      const res = await api.put('/api/schedule/scenarios', { id: activeScenario.id, name, notes: notes || null, status: 'saved' });
       setActiveScenario(res.scenario);
       setScenarios(prev => prev.map(s => s.id === res.scenario.id ? res.scenario : s));
       addToast('Scenario saved');
@@ -404,7 +468,9 @@ export default function ProjectDetail() {
   function handleExitWhatIf() {
     setWhatIfMode(false);
     setActiveScenario(null);
-    setCompareBase(false);
+    setCompareTarget('');
+    setBasePhases([]);
+    setBaseMilestones([]);
     loadSchedule();
   }
 
@@ -434,12 +500,39 @@ export default function ProjectDetail() {
     }
   }
 
+  async function handleArchiveScenario(scenarioId) {
+    try {
+      const res = await api.put('/api/schedule/scenarios', { id: scenarioId, status: 'archived' });
+      setScenarios(prev => prev.map(s => s.id === res.scenario.id ? res.scenario : s));
+      addToast('Scenario archived');
+    } catch (err) {
+      addToast(err.message, 'error');
+    }
+  }
+
   // ── guards ──────────────────────────────────────────────────────────────────
   if (loading) return <PageLoader />;
   if (!project) return <p className="text-red-600">Project not found.</p>;
 
   const popDate = project.grant_end_date || null;
   const hasSchedule = phases.length > 0 || milestones.length > 0;
+  const compareEnabled = compareTarget !== '';
+
+  // Resolve override dates for Gantt display (scenario bars show scenario dates)
+  const ganttPhases = phases.map(p => ({
+    ...p,
+    start_date: p.override?.start_date ?? p.start_date,
+    end_date: p.override?.end_date ?? p.end_date,
+  }));
+  const ganttMilestones = milestones.map(m => ({
+    ...m,
+    target_date: m.override?.target_date ?? m.target_date,
+  }));
+
+  // For compare table: use same resolved dates
+  const compareBaseLabel = compareTarget === 'base'
+    ? 'Base Plan'
+    : (scenarios.find(s => String(s.id) === compareTarget)?.name || 'Base');
 
   // ── render ──────────────────────────────────────────────────────────────────
   return (
@@ -610,7 +703,7 @@ export default function ProjectDetail() {
                       }}
                     >
                       <option value="" disabled>Load Scenario…</option>
-                      {scenarios.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                      {scenarios.filter(s => s.status !== 'archived').map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                     </select>
                   )}
                   <button
@@ -633,21 +726,66 @@ export default function ProjectDetail() {
                   onExit={handleExitWhatIf}
                   onLoad={handleLoadScenario}
                   onDelete={handleDeleteScenario}
-                  compareEnabled={compareBase}
-                  onToggleCompare={setCompareBase}
+                  onArchive={handleArchiveScenario}
+                  compareTarget={compareTarget}
+                  onChangeCompareTarget={setCompareTarget}
                 />
+              )}
+
+              {/* Cascade warnings banner */}
+              {cascadeWarnings.length > 0 && (
+                <div
+                  role="alert"
+                  className="cascade-warning-banner flex gap-3 px-4 py-3 bg-amber-50 border border-amber-300 rounded-lg text-sm"
+                >
+                  <span className="text-amber-500 text-base flex-shrink-0">⚠</span>
+                  <div>
+                    <p className="font-semibold text-amber-800 mb-1">Downstream Impact Warnings</p>
+                    <ul className="space-y-1">
+                      {cascadeWarnings.map((w, i) => (
+                        <li key={i} className="text-amber-700">
+                          <Link
+                            to={`/admin/projects/${w.downstream_project_id}`}
+                            className="font-medium underline hover:text-amber-900"
+                          >
+                            {w.downstream_project_name}
+                          </Link>
+                          {': '}
+                          {w.message}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               )}
 
               {/* Gantt chart */}
               <GanttChart
-                phases={phases}
-                milestones={milestones}
+                phases={ganttPhases}
+                milestones={ganttMilestones}
                 popDate={popDate}
                 todayDate={new Date().toISOString().slice(0, 10)}
                 readOnly={!whatIfMode}
                 onPhaseChange={handlePhaseChange}
                 onMilestoneChange={handleMilestoneChange}
+                compareMode={compareEnabled}
+                basePhases={basePhases}
+                baseMilestones={baseMilestones}
+                baseLabel={compareBaseLabel}
               />
+
+              {/* Scenario compare table (shown when compare is active) */}
+              {compareEnabled && basePhases.length > 0 && (
+                <ScenarioCompareTable
+                  phases={ganttPhases}
+                  milestones={ganttMilestones}
+                  basePhases={basePhases}
+                  baseMilestones={baseMilestones}
+                  popDate={popDate}
+                  baseLabel={compareBaseLabel}
+                  scenarioLabel={activeScenario?.name || 'Scenario'}
+                />
+              )}
 
               {/* Schedule table */}
               <ScheduleTable

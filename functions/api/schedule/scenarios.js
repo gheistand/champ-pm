@@ -26,16 +26,16 @@ async function handlePost(context) {
   if (denied) return denied;
 
   const body = await request.json();
-  const { project_id, name, description, created_by, status = 'draft' } = body;
+  const { project_id, name, description, notes, created_by, status = 'draft' } = body;
 
   if (!project_id || !name) {
     return json({ error: 'project_id and name are required' }, 400);
   }
 
   const result = await env.DB.prepare(`
-    INSERT INTO schedule_scenarios (project_id, name, description, created_by, status)
-    VALUES (?, ?, ?, ?, ?)
-  `).bind(project_id, name, description || null, created_by || null, status).run();
+    INSERT INTO schedule_scenarios (project_id, name, description, notes, created_by, status)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `).bind(project_id, name, description || null, notes || null, created_by || null, status).run();
 
   const scenario = await env.DB.prepare('SELECT * FROM schedule_scenarios WHERE id = ?')
     .bind(result.meta.last_row_id).first();
@@ -55,7 +55,7 @@ async function handlePut(context) {
   const fields = [];
   const values = [];
 
-  const updatable = ['name', 'description', 'status'];
+  const updatable = ['name', 'description', 'status', 'notes'];
   for (const field of updatable) {
     if (updates[field] !== undefined) {
       fields.push(`${field} = ?`);
