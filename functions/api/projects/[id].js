@@ -8,7 +8,7 @@ async function handleGet(context) {
   const { id } = params;
 
   const project = await env.DB.prepare(`
-    SELECT p.*, g.name as grant_name
+    SELECT p.*, g.name as grant_name, g.end_date as grant_end_date
     FROM projects p
     JOIN grants g ON g.id = p.grant_id
     WHERE p.id = ?
