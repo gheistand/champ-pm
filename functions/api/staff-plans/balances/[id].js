@@ -47,7 +47,6 @@ export async function onRequest(context) {
     return new Response('Method Not Allowed', { status: 405 });
   }
 
-  const { id } = params;
   await env.DB.prepare('DELETE FROM staff_plan_grant_balances WHERE id=?').bind(id).run();
   return json({ ok: true });
 }
