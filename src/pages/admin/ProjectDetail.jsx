@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import { useToast } from '../../hooks/useToast';
 import Badge from '../../components/Badge';
@@ -60,6 +60,7 @@ function exportScheduleCSV(phases, milestones) {
 
 export default function ProjectDetail() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const api = useApi();
   const { addToast } = useToast();
 
@@ -67,7 +68,9 @@ export default function ProjectDetail() {
   const [project, setProject] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('Tasks');
+  const [activeTab, setActiveTab] = useState(
+    searchParams.get('tab') === 'schedule' ? 'Schedule' : 'Tasks'
+  );
 
   // tasks tab
   const [modalOpen, setModalOpen] = useState(false);
