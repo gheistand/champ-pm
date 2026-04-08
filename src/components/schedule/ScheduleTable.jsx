@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { formatDisplayDate } from '../../utils/dateUtils';
 
 function diffDays(start, end) {
@@ -42,13 +42,29 @@ function InlineNumber({ value, onChange, readOnly }) {
 
 function PhaseRow({ phase, popDate, readOnly, onSave, onDelete }) {
   const [editing, setEditing] = useState(false);
+  const effectiveStart = phase.override?.start_date ?? phase.start_date;
+  const effectiveEnd = phase.override?.end_date ?? phase.end_date;
+  const effectiveDur = phase.override?.duration_days ?? (phase.duration_days ?? diffDays(phase.start_date, phase.end_date));
   const [form, setForm] = useState({
-    start_date: phase.start_date,
-    end_date: phase.end_date,
-    duration_days: phase.duration_days ?? diffDays(phase.start_date, phase.end_date),
+    start_date: effectiveStart,
+    end_date: effectiveEnd,
+    duration_days: effectiveDur,
     notes: phase.notes || '',
   });
   const [error, setError] = useState('');
+
+  // Re-sync form when parent phase data changes (e.g. after optimistic update)
+  useEffect(() => {
+    if (!editing) {
+      setForm({
+        start_date: effectiveStart,
+        end_date: effectiveEnd,
+        duration_days: effectiveDur,
+        notes: phase.notes || '',
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [effectiveStart, effectiveEnd, effectiveDur, phase.notes, editing]);
 
   function handleStartChange(val) {
     const dur = form.duration_days || 0;
@@ -86,9 +102,6 @@ function PhaseRow({ phase, popDate, readOnly, onSave, onDelete }) {
     setEditing(false);
   }
 
-  const effectiveStart = phase.override?.start_date ?? phase.start_date;
-  const effectiveEnd = phase.override?.end_date ?? phase.end_date;
-  const effectiveDur = phase.override?.duration_days ?? (phase.duration_days ?? diffDays(phase.start_date, phase.end_date));
   const isPastPoP = popDate && effectiveEnd > popDate;
 
   if (editing) {
@@ -140,11 +153,20 @@ function PhaseRow({ phase, popDate, readOnly, onSave, onDelete }) {
 
 function MilestoneRow({ milestone, popDate, readOnly, onSave, onDelete }) {
   const [editing, setEditing] = useState(false);
+  const effectiveDate = milestone.override?.target_date ?? milestone.target_date;
   const [form, setForm] = useState({
-    target_date: milestone.target_date,
+    target_date: effectiveDate,
     notes: milestone.notes || '',
   });
   const [error, setError] = useState('');
+
+  // Re-sync form when parent milestone data changes
+  useEffect(() => {
+    if (!editing) {
+      setForm({ target_date: effectiveDate, notes: milestone.notes || '' });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [effectiveDate, milestone.notes, editing]);
 
   function handleDateChange(val) {
     if (popDate && val > popDate) {
@@ -161,7 +183,6 @@ function MilestoneRow({ milestone, popDate, readOnly, onSave, onDelete }) {
     setEditing(false);
   }
 
-  const effectiveDate = milestone.override?.target_date ?? milestone.target_date;
   const isPastPoP = popDate && effectiveDate > popDate;
   const typeLabel = Number(milestone.is_pop_anchor) ? 'PoP Anchor' : Number(milestone.is_key_decision) ? 'Key Decision' : 'Milestone';
   const typeColor = Number(milestone.is_pop_anchor) ? 'text-red-600' : Number(milestone.is_key_decision) ? 'text-amber-600' : 'text-brand-600';

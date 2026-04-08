@@ -261,6 +261,8 @@ export default function ProjectDetail() {
   }
 
   async function handlePhaseChange(phaseId, updates) {
+    // Optimistic update — apply immediately so chart/table reflect change at once
+    setPhases(prev => prev.map(p => p.id === phaseId ? { ...p, ...updates } : p));
     if (whatIfMode && activeScenario) {
       // Write to scenario override, not base
       try {
@@ -270,19 +272,21 @@ export default function ProjectDetail() {
           phase_id: phaseId,
           ...updates,
         });
-        // Reload merged overrides
+        // Reload merged overrides to confirm server state
         const res = await api.get(`/api/schedule/scenario-overrides?scenario_id=${activeScenario.id}`);
         setPhases(res.phases || []);
         setMilestones(res.milestones || []);
       } catch (err) {
         addToast(err.message, 'error');
+        loadSchedule(); // revert on error
       }
     } else {
       try {
         await api.put('/api/schedule/phases', { id: phaseId, ...updates });
-        loadSchedule();
+        // No full reload needed — optimistic update already applied
       } catch (err) {
         addToast(err.message, 'error');
+        loadSchedule(); // revert on error
       }
     }
   }
@@ -329,6 +333,8 @@ export default function ProjectDetail() {
   }
 
   async function handleMilestoneChange(msId, updates) {
+    // Optimistic update — apply immediately
+    setMilestones(prev => prev.map(m => m.id === msId ? { ...m, ...updates } : m));
     if (whatIfMode && activeScenario) {
       try {
         await api.post('/api/schedule/scenario-overrides', {
@@ -342,13 +348,15 @@ export default function ProjectDetail() {
         setMilestones(res.milestones || []);
       } catch (err) {
         addToast(err.message, 'error');
+        loadSchedule(); // revert on error
       }
     } else {
       try {
         await api.put('/api/schedule/milestones', { id: msId, ...updates });
-        loadSchedule();
+        // No full reload needed — optimistic update already applied
       } catch (err) {
         addToast(err.message, 'error');
+        loadSchedule(); // revert on error
       }
     }
   }
