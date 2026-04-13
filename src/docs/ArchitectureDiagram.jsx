@@ -186,7 +186,12 @@ export default function ArchitectureDiagram() {
         </div>
       </div>
 
-      <div className="border border-gray-200 rounded-xl bg-white overflow-auto relative">
+      {/* Print fallback — shown only in print, hidden on screen */}
+      <div className="architecture-print-show hidden p-4 border border-gray-200 rounded bg-gray-50 text-sm text-gray-600 italic">
+        Interactive architecture diagram available at champ-pm.app/admin/docs/architecture/overview
+      </div>
+
+      <div className="border border-gray-200 rounded-xl bg-white overflow-auto relative architecture-print-hide">
         <svg
           width={Math.round(980 * zoom)}
           height={Math.round(660 * zoom)}
