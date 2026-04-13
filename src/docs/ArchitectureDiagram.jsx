@@ -55,7 +55,7 @@ const NODES = [
   { id: 'd-contacts', type: 'db', label: 'contacts', desc: 'CRM contacts — name, org, email, role', x: 140, y: 590 },
 
   // External
-  { id: 'e-clerk', type: 'external', label: 'Clerk', desc: 'Authentication & authorization — JWT verification, user roles, account portal', x: 870, y: 80 },
+  { id: 'e-clerk', type: 'external', label: 'Clerk', desc: 'Authentication & authorization — JWT verification via middleware (_middleware.js), user roles (admin/staff), account portal. Verifies all 15 API groups on every request.', x: 870, y: 80 },
   { id: 'e-cf', type: 'external', label: 'Cloudflare Pages', desc: 'Hosting + serverless functions — auto-deploys from GitHub main branch. Runs all 15 API function groups. Backed by D1.', x: 870, y: 180 },
   { id: 'e-d1', type: 'external', label: 'D1 (SQLite)', desc: 'Cloudflare edge database — SQLite, globally replicated. All 15 API groups read from and write to D1. It is the single data store for the entire application.', x: 870, y: 280 },
 ];
