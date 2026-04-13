@@ -89,6 +89,19 @@
 
 /* ── Docs print styles ─────────────────────────────────────────────────────── */
 @media print {
+  /* Reset the outer docs flex wrapper — the -m-6 and overflow-hidden break print */
+  .docs-layout-outer {
+    display: block !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  /* Make main content full width with no flex offset */
+  .docs-layout-outer > main {
+    width: 100% !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
   .docs-sidebar, .docs-sidebar * { display: none !important; }
   .docs-content { width: 100% !important; margin: 0 !important; max-height: none !important; overflow: visible !important; }
   .docs-section { page-break-before: always; }

@@ -109,7 +109,7 @@ export default function AdminDocs() {
   const PageComponent = current?.component;
 
   return (
-    <div className="flex h-full -m-6 overflow-hidden">
+    <div className="docs-layout-outer flex h-full -m-6 overflow-hidden">
       {/* ── Left Sidebar ── */}
       <aside className="docs-sidebar w-56 shrink-0 bg-gray-50 border-r border-gray-200 flex flex-col overflow-hidden">
         {/* Version block */}
