@@ -1,4 +1,4 @@
-import { HelpSection } from '../components/HelpModal';
+import { HelpSection, DocLink } from '../components/HelpModal';
 
 const placeholder = (
   <HelpSection title="Documentation">
@@ -30,6 +30,7 @@ export const TOOL_HELP = {
             <li><strong>Info:</strong> budget overruns, staff without active grant assignments</li>
           </ul>
         </HelpSection>
+        <DocLink to="dashboard" />
       </div>
     ),
   },
@@ -59,6 +60,7 @@ export const TOOL_HELP = {
             <li>Band classification and role start date are needed for the Equity Dashboard</li>
           </ul>
         </HelpSection>
+        <DocLink to="staff" />
       </div>
     ),
   },
@@ -85,6 +87,7 @@ export const TOOL_HELP = {
         <HelpSection title="F&A Rates">
           <p>All FEMA/DHS grants use <strong>31.7% MTDC</strong>. GRF and other grant types may use different rates — check the award terms.</p>
         </HelpSection>
+        <DocLink to="grants" />
       </div>
     ),
   },
@@ -109,6 +112,7 @@ export const TOOL_HELP = {
         <HelpSection title="Limitations">
           <p>This view only reflects <strong>labor costs</strong> from CHAMP timesheets. Non-labor costs (travel, equipment, subcontracts) are not included. For a full budget picture, reconcile against PRIDE.</p>
         </HelpSection>
+        <DocLink to="budget" />
       </div>
     ),
   },
@@ -139,6 +143,7 @@ export const TOOL_HELP = {
         <HelpSection title="Connection to Staff Plans">
           <p>Grant balances entered here are also used by the <strong>Staff Plans</strong> tool as the constraint for optimizer calculations.</p>
         </HelpSection>
+        <DocLink to="runway" />
       </div>
     ),
   },
@@ -184,6 +189,7 @@ export const TOOL_HELP = {
         <HelpSection title="Important">
           <p>Results are a <strong>starting point, not a final answer.</strong> Glenn reviews and adjusts before any PRIDE entry.</p>
         </HelpSection>
+        <DocLink to="staff-plans" />
       </div>
     ),
   },
@@ -206,6 +212,7 @@ export const TOOL_HELP = {
         <HelpSection title="Important">
           <p><strong>Only approved hours</strong> are used in budget burn calculations and reports. Pending or rejected timesheets have no effect on reported spend.</p>
         </HelpSection>
+        <DocLink to="timesheets" />
       </div>
     ),
   },
@@ -230,6 +237,7 @@ export const TOOL_HELP = {
         <HelpSection title="After Submission">
           <p>If your timesheet is returned (rejected), you will need to correct it and resubmit. Check the rejection reason for guidance.</p>
         </HelpSection>
+        <DocLink to="timesheets" />
       </div>
     ),
   },
@@ -251,6 +259,7 @@ export const TOOL_HELP = {
         <HelpSection title="Data">
           <p>Reports are based on <strong>approved timesheet entries only.</strong> Pending or rejected timesheets are excluded.</p>
         </HelpSection>
+        <DocLink to="reports" />
       </div>
     ),
   },
@@ -272,6 +281,7 @@ export const TOOL_HELP = {
         <HelpSection title="Status">
           <p>Partially operational — requires band_classification and role_start_date data for full analysis. These fields are currently being populated.</p>
         </HelpSection>
+        <DocLink to="equity" />
       </div>
     ),
   },
@@ -313,6 +323,7 @@ export const TOOL_HELP = {
             <li><strong>Staff Plans optimizer:</strong> Projects future spend based on current salary</li>
           </ul>
         </HelpSection>
+        <DocLink to="salary" />
       </div>
     ),
   },
@@ -351,6 +362,7 @@ export const TOOL_HELP = {
         <HelpSection title="Mapping">
           <p>External project/task names must be mapped to CHAMP task IDs before import. Manage mappings on the Import page. Unmapped entries are flagged for review before import completes.</p>
         </HelpSection>
+        <DocLink to="import" />
       </div>
     ),
   },
@@ -376,6 +388,7 @@ export const TOOL_HELP = {
         <HelpSection title="Grant Links">
           <p>Contacts can be linked to specific grants with a relationship type (program officer, partner, subrecipient, etc.). This helps track who to contact for each active grant.</p>
         </HelpSection>
+        <DocLink to="crm" />
       </div>
     ),
   },

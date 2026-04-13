@@ -30,6 +30,7 @@ import AdminCRM from './pages/admin/CRM';
 import AdminCRMContact from './pages/admin/CRMContact';
 import AdminStaffPlans from './pages/admin/StaffPlans';
 import ProgramSchedule from './pages/admin/ProgramSchedule';
+import AdminDocs from './pages/admin/AdminDocs';
 
 // Staff pages
 import StaffTimesheet from './pages/staff/Timesheet';
@@ -106,6 +107,9 @@ export default function App() {
                 <Route path="/admin/salary-adjustments" element={<AdminSalaryAdjustments />} />
                 <Route path="/admin/staff-plans" element={<AdminStaffPlans />} />
                 <Route path="/admin/program-schedule" element={<ProgramSchedule />} />
+                <Route path="/admin/docs" element={<AdminDocs />} />
+                <Route path="/admin/docs/:section" element={<AdminDocs />} />
+                <Route path="/admin/docs/:section/:page" element={<AdminDocs />} />
               </Route>
             </Route>
 

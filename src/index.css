@@ -87,6 +87,15 @@
   outline-offset: 2px;
 }
 
+/* ── Docs print styles ─────────────────────────────────────────────────────── */
+@media print {
+  .docs-sidebar, .docs-sidebar * { display: none !important; }
+  .docs-content { width: 100% !important; margin: 0 !important; max-height: none !important; overflow: visible !important; }
+  .docs-section { page-break-before: always; }
+  a::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+  .no-print { display: none !important; }
+}
+
 /* ── Print styles ──────────────────────────────────────────────────────────── */
 @media print {
   /* Remove overflow clipping so full tables print */

@@ -10,6 +10,16 @@ export function HelpSection({ title, children }) {
   );
 }
 
+export function DocLink({ to }) {
+  return (
+    <div className="mt-4 pt-4 border-t border-gray-200 text-sm text-gray-500">
+      <a href={`/admin/docs/user-guide/${to}`} className="text-blue-600 underline">
+        View full documentation →
+      </a>
+    </div>
+  );
+}
+
 export default function HelpModal({ title, onClose, children }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
