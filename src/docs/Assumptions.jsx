@@ -46,7 +46,7 @@ export default function Assumptions() {
       assumption: 'Overhead grant ID',
       value: 'Grant ID 19 (OVERHEAD)',
       appliesTo: 'Time entry availability',
-      notes: 'Overhead tasks always visible to all staff; hours excluded from FEMA budget burn',
+      notes: 'Overhead tasks always visible to all staff for internal time tracking. The OVERHEAD entry is a system placeholder, not a real grant or funding source. Overhead hours do not affect grant budget calculations because grant salary allocations already cover 100% of each employee’s time. See Technical Reference → Two Cost Views.',
     },
     {
       assumption: 'Timesheet week boundary',
