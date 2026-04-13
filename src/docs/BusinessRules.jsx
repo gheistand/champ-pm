@@ -124,8 +124,17 @@ export default function BusinessRules() {
           </ul>
         </RuleDetail>
         <RuleDetail label="Budget impact">
-          Overhead hours do NOT burn FEMA grant budget. They are tracked for workload analysis
-          but excluded from grant cost calculations.
+          All CHAMP staff hours must be charged against a funding source — either a FEMA/DHS
+          grant, a GRF (General Revenue Fund / state funds) grant, or another contract.
+          Overhead hours are charged to the OVERHEAD grant (Grant ID 19), which represents
+          GRF/state fund allocations. They do not reduce FEMA or DHS grant budgets, but
+          they are fully accounted for in timesheets and reports.
+        </RuleDetail>
+        <RuleDetail label="In CHAMP-PM">
+          The OVERHEAD grant has no dollar budget entered (GRF allocations are tracked
+          separately outside this system). The dashboard excludes OVERHEAD entries from
+          FEMA burndown charts. The timesheet report includes overhead entries when the
+          OVERHEAD grant is selected or when running a report across all grants.
         </RuleDetail>
       </Rule>
 
