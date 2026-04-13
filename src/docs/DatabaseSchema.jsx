@@ -235,9 +235,14 @@ const TABLES = [
   {
     group: 'financial',
     name: 'fringe_rates',
-    purpose: 'Fringe benefit rates by appointment type and effective date',
+    purpose: 'Fringe benefit rates by appointment type and effective date. Lookup-only table — no foreign key relationships.',
     fks: [],
-    rules: ['Immutable after creation — only notes can be updated', 'Matched to salary records by appointment_type'],
+    rules: [
+      'Immutable after creation — only notes can be updated',
+      'Lookup table: when a new salary record is created, the API queries fringe_rates to find the current rate for the appointment type, then copies that rate into salary_records.fringe_rate. All subsequent cost calculations read from salary_records, not fringe_rates directly.',
+      'This design means historical cost calculations remain stable even if fringe rates change later. The rate at time of entry is preserved in salary_records.',
+      'No foreign key arrow in the ERD because fringe_rates is not joined in cost calculations — salary_records.fringe_rate already holds the captured value.',
+    ],
     cols: [
       { name: 'id', type: 'INTEGER PK', required: true, default: 'autoincrement', desc: '' },
       { name: 'appointment_type', type: 'TEXT', required: true, default: null, desc: 'AP, CS, GA, etc.' },
@@ -510,9 +515,10 @@ function ERDiagram() {
         <text x="85" y="176" textAnchor="middle" fill="#cbd5e1" fontSize="9">grant_id, fa_rate</text>
 
         {/* fringe_rates */}
-        <rect x="180" y="140" width="110" height="50" rx="6" fill="#475569" />
-        <text x="235" y="160" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold">fringe_rates</text>
-        <text x="235" y="176" textAnchor="middle" fill="#cbd5e1" fontSize="9">appt_type, rate</text>
+        <rect x="180" y="140" width="110" height="50" rx="6" fill="#475569" strokeDasharray="4 2" stroke="#94a3b8" strokeWidth="1.5" />
+        <text x="235" y="158" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold">fringe_rates</text>
+        <text x="235" y="172" textAnchor="middle" fill="#cbd5e1" fontSize="9">appt_type, rate</text>
+        <text x="235" y="183" textAnchor="middle" fill="#94a3b8" fontSize="8" fontStyle="italic">(lookup only)</text>
 
         {/* schedule_phases */}
         <rect x="180" y="260" width="120" height="50" rx="6" fill="#0e7490" />
