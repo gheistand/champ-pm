@@ -89,9 +89,15 @@ export default function FormulaReference() {
           Personnel Cost = Hours Logged × Hourly Loaded Rate
         </FormulaBlock>
         <VarTable rows={[
-          ['Hours Logged', 'Sum of approved timesheet hours for the period', 'timesheet_entries (approved only)'],
+          ['Hours Logged', 'Sum of ALL logged timesheet hours for the period — includes draft, submitted, and approved weeks', 'timesheet_entries (no approval filter)'],
           ['Hourly Loaded Rate', 'See Formula #1', 'Calculated from salary_records + fringe_rates'],
         ]} />
+        <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 my-3 text-sm text-amber-900">
+          <strong>Note:</strong> The cost report and budget burndown include hours from all timesheet
+          entries regardless of approval status. Hours entered in draft or submitted-but-not-yet-approved
+          weeks are counted. This means burndown figures may include hours that have not yet been
+          formally reviewed by an administrator.
+        </div>
         <Example calc="80 hours × $47.88/hr = $3,830.40" />
       </FormulaSection>
 
@@ -138,7 +144,7 @@ export default function FormulaReference() {
         </FormulaBlock>
         <VarTable rows={[
           ['Grant Total Budget', 'Full award amount including F&A', 'grants.total_budget'],
-          ['Σ Total Cost', 'Sum of all approved timesheet costs across all staff, projects, tasks within the grant', 'timesheet_entries (approved) × loaded rates'],
+          ['Σ Total Cost', 'Sum of ALL logged timesheet costs across all staff, projects, tasks within the grant — includes draft, submitted, and approved weeks', 'timesheet_entries (no approval filter) × loaded rates'],
         ]} />
         <p className="text-sm text-gray-600 mt-2">
           Computed at the grant level — aggregates all projects, tasks, and staff within that grant.
