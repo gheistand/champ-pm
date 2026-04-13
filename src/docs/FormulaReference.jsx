@@ -236,7 +236,7 @@ export default function FormulaReference() {
       <FormulaSection id="loaded-rate-staff-plans" number={9} title="Loaded Rate for Staff Plans">
         <p className="text-sm text-gray-600 mb-2">
           Monthly cost estimate used in Staff Plan scenario projections. Applies both fringe and F&A
-          to a fractional monthly salary.
+          to a fractional monthly salary based on the employee’s allocation percentage to the grant.
         </p>
         <FormulaBlock>
           {'Monthly Salary Rate = Annual Salary ÷ 12\n'}
@@ -244,11 +244,41 @@ export default function FormulaReference() {
         </FormulaBlock>
         <VarTable rows={[
           ['Annual Salary', 'From most recent salary record', 'salary_records'],
-          ['Allocation %', 'Fraction of time on this grant (e.g., 0.50 = 50%)', 'staff_plan_scenario_rows.allocation_pct'],
+          ['Allocation %', 'Fraction of time formally appointed to this grant (e.g., 0.50 = 50%)', 'staff_plan_scenario_rows.allocation_pct'],
           ['Fringe Rate', 'From salary record (e.g., 0.451 for AP SURS-eligible, FY2026)', 'salary_records.fringe_rate'],
           ['F&A Rate', 'From grant F&A rates (typically 0.317)', 'grant_fa_rates'],
         ]} />
-        <Example calc="Salary = $75,000, Allocation = 50%, Fringe = 0.451, F&A = 0.317 → ($75,000 ÷ 12) × 0.50 × 1.451 × 1.317 = $6,250 × 0.50 × 1.451 × 1.317 = $5,977/month" />
+        <Example calc="Salary = $75,000, Allocation = 50%, Fringe = 0.451, F&A = 0.317 → ($75,000 ÷ 12) × 0.50 × 1.451 × 1.317 = $5,977/month" />
+        <p className="text-xs text-gray-500 mt-2 italic">
+          Note: Staff Plan allocations reflect formal salary appointments, which cover 100% of an
+          employee’s time including overhead activities. See Technical Reference → Two Cost Views
+          for the distinction between this and timesheet-based cost tracking.
+        </p>
+      </FormulaSection>
+
+      <FormulaSection id="runway" number={10} title="Program Runway">
+        <p className="text-sm text-gray-600 mb-2">
+          Estimates how long current grant balances will sustain the full program staffing level.
+          Uses manually entered grant balance snapshots and full annual staff costs — not timesheet hours.
+        </p>
+        <FormulaBlock>
+          {'Annual staff cost = Σ [ salary × (1 + fringe) × (1 + weighted F&A) ]\n'}
+          {'Monthly burn rate = Annual staff cost ÷ 12\n'}
+          {'Runway (months) = Total grant balances ÷ Monthly burn rate\n'}
+          {'Weighted F&A = Σ(grant balance × F&A rate) ÷ Σ(grant balance)'}
+        </FormulaBlock>
+        <VarTable rows={[
+          ['Annual salary', 'From most recent salary_records entry for each staff member', 'salary_records'],
+          ['Fringe rate', 'From most recent salary_records entry', 'salary_records.fringe_rate'],
+          ['Weighted F&A', 'Balance-weighted average F&A across included grants; defaults to 0.317 if no balances entered', 'grant_balances, grant_fa_rates'],
+          ['Total grant balances', 'Sum of most recent manually entered balance snapshots for included grants', 'grant_balances'],
+        ]} />
+        <Example calc="3 staff with total annual cost (salary+fringe+F&A) of $450,000. Total grant balances = $1,350,000. Monthly burn = $450,000 ÷ 12 = $37,500. Runway = $1,350,000 ÷ $37,500 = 36 months." />
+        <p className="text-xs text-gray-500 mt-2 italic">
+          Runway does not use individual allocation percentages. It assumes all selected staff are
+          collectively funded by the selected grants. GRF, indirect cost recovery, and trust fund
+          grants are excluded from the calculation by default.
+        </p>
       </FormulaSection>
     </div>
   );

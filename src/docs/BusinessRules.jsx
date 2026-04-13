@@ -107,10 +107,24 @@ export default function BusinessRules() {
         </RuleDetail>
       </Rule>
 
-      <Rule number={5} title="Overhead Tasks Are Always Available" badge="System" badgeColor="system">
+      <Rule number={5} title="Overhead Tasks Are Internal Tracking Only" badge="System" badgeColor="system">
         <RuleDetail label="What it means">
-          Tasks under Grant ID 19 (OVERHEAD) are available to all staff for time entry,
-          regardless of assignment records. Staff do not need to be assigned to overhead tasks.
+          Each staff member’s salary is fully covered by their grant allocations — the combination
+          of grants they are allocated to accounts for 100% of their time, including both
+          production work and overhead activities (leave, admin, PD, etc.).
+        </RuleDetail>
+        <RuleDetail label="Purpose of overhead time entries">
+          Overhead timesheet entries are for <strong>internal workload tracking only</strong>.
+          They allow management to see how staff time is actually distributed between
+          productive grant work and overhead activities. This visibility is useful for
+          project management but does not affect grant cost calculations or budget burndown.
+        </RuleDetail>
+        <RuleDetail label="The OVERHEAD grant in CHAMP-PM">
+          The “OVERHEAD” entry in the grants list is a <strong>system placeholder</strong>,
+          not a real grant or funding source. It exists solely to group overhead tasks so
+          staff can log overhead time. It has no dollar budget. Overhead time entries do
+          not burn any grant balance — the grant allocations (salary appointments) already
+          account for the full cost of each employee’s time across all activities.
         </RuleDetail>
         <RuleDetail label="Overhead task types">
           <ul className="list-disc pl-4 mt-1 space-y-0.5">
@@ -122,19 +136,11 @@ export default function BusinessRules() {
             <li>General</li>
             <li>CNMS</li>
           </ul>
+          All of these tasks are available to all active staff regardless of assignment records.
         </RuleDetail>
-        <RuleDetail label="Budget impact">
-          All CHAMP staff hours must be charged against a funding source — either a FEMA/DHS
-          grant, a GRF (General Revenue Fund / state funds) grant, or another contract.
-          Overhead hours are charged to the OVERHEAD grant (Grant ID 19), which represents
-          GRF/state fund allocations. They do not reduce FEMA or DHS grant budgets, but
-          they are fully accounted for in timesheets and reports.
-        </RuleDetail>
-        <RuleDetail label="In CHAMP-PM">
-          The OVERHEAD grant has no dollar budget entered (GRF allocations are tracked
-          separately outside this system). The dashboard excludes OVERHEAD entries from
-          FEMA burndown charts. The timesheet report includes overhead entries when the
-          OVERHEAD grant is selected or when running a report across all grants.
+        <RuleDetail label="See also">
+          Technical Reference → Two Cost Views explains the relationship between timesheet
+          entries and grant salary allocations in detail.
         </RuleDetail>
       </Rule>
 

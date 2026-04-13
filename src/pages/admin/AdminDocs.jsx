@@ -7,6 +7,7 @@ import FormulaReference from '../../docs/FormulaReference';
 import BusinessRules from '../../docs/BusinessRules';
 import Assumptions from '../../docs/Assumptions';
 import DatabaseSchema from '../../docs/DatabaseSchema';
+import CostViews from '../../docs/CostViews';
 
 // Architecture
 import ArchitectureDiagram from '../../docs/ArchitectureDiagram';
@@ -37,6 +38,7 @@ const NAV = [
       { page: 'business-rules', label: 'Business Rules', component: BusinessRules },
       { page: 'assumptions', label: 'Assumptions & Config', component: Assumptions },
       { page: 'schema', label: 'Database Schema', component: DatabaseSchema },
+      { page: 'cost-views', label: 'Two Cost Views', component: CostViews },
     ],
   },
   {
