@@ -93,7 +93,7 @@ export default function Assumptions() {
   ];
 
   return (
-    <div className="docs-content max-w-4xl">
+    <div className="docs-content max-w-4xl mx-auto px-4 py-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Assumptions &amp; Configuration</h2>
         <p className="text-gray-500 text-sm mt-1">

@@ -39,7 +39,7 @@ function RuleDetail({ label, children }) {
 
 export default function BusinessRules() {
   return (
-    <div className="docs-content max-w-3xl">
+    <div className="docs-content max-w-3xl mx-auto px-4 py-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Business Rules</h2>
         <p className="text-gray-500 text-sm mt-1">

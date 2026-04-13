@@ -156,7 +156,7 @@ export default function ArchitectureDiagram() {
   }, [selected]);
 
   return (
-    <div className="docs-content">
+    <div className="docs-content max-w-5xl mx-auto px-4 py-8">
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-gray-900">System Architecture</h2>
         <p className="text-gray-500 text-sm mt-1">
