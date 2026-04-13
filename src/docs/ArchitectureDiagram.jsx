@@ -56,8 +56,8 @@ const NODES = [
 
   // External
   { id: 'e-clerk', type: 'external', label: 'Clerk', desc: 'Authentication & authorization — JWT verification, user roles, account portal', x: 870, y: 80 },
-  { id: 'e-cf', type: 'external', label: 'Cloudflare Pages', desc: 'Hosting + serverless functions — auto-deploys from GitHub main branch', x: 870, y: 180 },
-  { id: 'e-d1', type: 'external', label: 'D1 (SQLite)', desc: 'Cloudflare edge database — SQLite, globally replicated, no connection pooling needed', x: 870, y: 280 },
+  { id: 'e-cf', type: 'external', label: 'Cloudflare Pages', desc: 'Hosting + serverless functions — auto-deploys from GitHub main branch. Runs all 15 API function groups. Backed by D1.', x: 870, y: 180 },
+  { id: 'e-d1', type: 'external', label: 'D1 (SQLite)', desc: 'Cloudflare edge database — SQLite, globally replicated. All 15 API groups read from and write to D1. It is the single data store for the entire application.', x: 870, y: 280 },
 ];
 
 const EDGES = [
@@ -96,8 +96,19 @@ const EDGES = [
   { from: 'a-import', to: 'd-users' },
   { from: 'a-crm', to: 'd-contacts' },
   { from: 'a-alerts', to: 'd-grants' }, { from: 'a-alerts', to: 'd-timesheet_weeks' },
-  { from: 'a-users', to: 'e-clerk' },
+  // ── External infrastructure connections ──
+  // All API groups use D1 for data, run on CF Pages, and are authenticated by Clerk.
+  // Shown as grouped representative connections to convey the pattern without 45+ crossing lines.
+  // D1: pick 3 API groups across different areas of the diagram to show reach
+  // CF Pages: connect to D1 and one API to show the hosting layer
+  // Clerk: connect to users API to show auth middleware pattern
   { from: 'e-cf', to: 'e-d1' },
+  { from: 'e-cf', to: 'a-import' },
+  { from: 'a-users', to: 'e-clerk' },
+  { from: 'a-grants', to: 'e-clerk' },
+  { from: 'e-d1', to: 'a-budget' },
+  { from: 'e-d1', to: 'a-runway' },
+  { from: 'e-d1', to: 'a-reports' },
 ];
 
 const nodeMap = Object.fromEntries(NODES.map(n => [n.id, n]));
