@@ -41,17 +41,38 @@ export default function Equity() {
 
   // Snapshot
   const [savingSnapshot, setSavingSnapshot] = useState(false);
+  const [snapshots, setSnapshots] = useState([]);
+  const [snapshotModalOpen, setSnapshotModalOpen] = useState(false);
+  const [loadedSnapshot, setLoadedSnapshot] = useState(null);
+  const [snapshotLoading, setSnapshotLoading] = useState(false);
 
   const load = useCallback(async () => {
     try {
-      const res = await api.get('/api/equity/current');
+      const [res, snapshotsRes] = await Promise.all([
+        api.get('/api/equity/current'),
+        api.get('/api/equity/snapshots'),
+      ]);
       setData(res);
+      setSnapshots(snapshotsRes.snapshots || []);
     } catch (e) {
       addToast(e.message, 'error');
     } finally {
       setLoading(false);
     }
   }, []);
+
+  async function loadSnapshot(id) {
+    setSnapshotLoading(true);
+    try {
+      const res = await api.get(`/api/equity/snapshots/${id}`);
+      setLoadedSnapshot(res);
+      setSnapshotModalOpen(true);
+    } catch (err) {
+      addToast(err.message, 'error');
+    } finally {
+      setSnapshotLoading(false);
+    }
+  }
 
   useEffect(() => { load(); }, [load]);
 
@@ -180,6 +201,20 @@ export default function Equity() {
           <HelpButton {...TOOL_HELP.equity} />
         </div>
         <div className="flex items-center gap-3">
+          {snapshots.length > 0 && (
+            <select
+              className="form-select w-48 text-sm"
+              defaultValue=""
+              onChange={(e) => { if (e.target.value) { loadSnapshot(e.target.value); e.target.value = ''; } }}
+            >
+              <option value="" disabled>View Snapshot…</option>
+              {snapshots.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.snapshot_date} ({s.item_count} staff)
+                </option>
+              ))}
+            </select>
+          )}
           <button className="btn-secondary" onClick={saveSnapshot} disabled={savingSnapshot}>
             {savingSnapshot ? 'Saving…' : 'Save Snapshot'}
           </button>
@@ -378,6 +413,64 @@ export default function Equity() {
             <button type="submit" className="btn-primary" disabled={savingAdj}>{savingAdj ? 'Saving…' : 'Save'}</button>
           </div>
         </form>
+      </Modal>
+
+      {/* Snapshot View Modal */}
+      <Modal
+        isOpen={snapshotModalOpen}
+        onClose={() => { setSnapshotModalOpen(false); setLoadedSnapshot(null); }}
+        title={`Equity Snapshot — ${loadedSnapshot?.snapshot?.snapshot_date || ''}`}
+        size="lg"
+      >
+        {snapshotLoading ? (
+          <div className="py-8 text-center text-gray-400">Loading…</div>
+        ) : loadedSnapshot ? (
+          <div>
+            {loadedSnapshot.snapshot?.notes && (
+              <p className="text-sm text-gray-500 mb-4">{loadedSnapshot.snapshot.notes}</p>
+            )}
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-3 py-2 text-left font-medium text-gray-600 border-b border-gray-200">Name</th>
+                    <th className="px-3 py-2 text-left font-medium text-gray-600 border-b border-gray-200">Classification</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">Years</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">Salary</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">Compa-Ratio</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">Equity Gap</th>
+                    <th className="px-3 py-2 text-left font-medium text-gray-600 border-b border-gray-200">Flag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(loadedSnapshot.items || []).map((item) => (
+                    <tr key={item.id} className="border-b border-gray-100 last:border-0">
+                      <td className="px-3 py-2 font-medium text-gray-800">{item.name}</td>
+                      <td className="px-3 py-2 text-gray-600 text-xs">{item.classification}</td>
+                      <td className="px-3 py-2 text-right text-gray-600">
+                        {item.years_of_service != null ? `${item.years_of_service} yr` : '—'}
+                      </td>
+                      <td className="px-3 py-2 text-right text-gray-600">
+                        ${Number(item.annual_salary).toLocaleString()}
+                      </td>
+                      <td className="px-3 py-2 text-right text-gray-600">
+                        {item.compa_ratio != null ? item.compa_ratio.toFixed(3) : '—'}
+                      </td>
+                      <td className={`px-3 py-2 text-right ${
+                        item.equity_gap > 3000 ? 'text-red-600 font-semibold' : 'text-gray-600'
+                      }`}>
+                        {item.equity_gap != null
+                          ? `${item.equity_gap > 0 ? '+' : ''}$${Number(item.equity_gap).toLocaleString()}`
+                          : '—'}
+                      </td>
+                      <td className="px-3 py-2 text-xs capitalize text-gray-500">{item.flag || '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ) : null}
       </Modal>
     </div>
   );

@@ -12,9 +12,11 @@ export async function onRequest(context) {
   const today = new Date().toISOString().split('T')[0];
 
   // Get all active staff with most recent salary record
+  try {
   const { results: staff } = await env.DB.prepare(`
     SELECT
-      u.id, u.name, u.email, u.title, u.classification, u.band_classification, u.start_date, u.is_active,
+      u.id, u.name, u.email, u.title, u.classification, u.band_classification,
+      u.start_date, u.role_start_date, u.is_active,
       sr.annual_salary, sr.fringe_rate, sr.appointment_type, sr.effective_date as salary_effective
     FROM users u
     LEFT JOIN salary_records sr ON sr.user_id = u.id
@@ -46,12 +48,43 @@ export async function onRequest(context) {
 
   // Calculate equity metrics for each staff member
   const analysis = staff.map(s => {
+    const msPerYear = 365.25 * 24 * 60 * 60 * 1000;
+
+    // Total org tenure (displayed in UI)
     const yearsOfService = s.start_date
-      ? (new Date(today) - new Date(s.start_date)) / (365.25 * 24 * 60 * 60 * 1000)
+      ? (new Date(today) - new Date(s.start_date)) / msPerYear
       : 0;
+
+    // Years in current band: use role_start_date if available, else fall back to start_date
+    const bandStartDate = s.role_start_date || s.start_date;
+    const yearsInBand = bandStartDate
+      ? (new Date(today) - new Date(bandStartDate)) / msPerYear
+      : yearsOfService;
 
     const band = bandMap[s.band_classification] || bandMap[s.classification];
     const salary = s.annual_salary || 0;
+
+    // Staff with no start_date: return compa_ratio only, no tenure-based metrics
+    if (!s.start_date) {
+      return {
+        user_id: s.id,
+        name: s.name,
+        email: s.email,
+        title: s.title,
+        classification: s.band_classification || s.classification,
+        start_date: null,
+        years_of_service: null,
+        annual_salary: salary,
+        appointment_type: s.appointment_type,
+        band_min: band?.band_min || null,
+        band_mid: band?.band_mid || null,
+        band_max: band?.band_max || null,
+        compa_ratio: band && salary > 0 ? Math.round((salary / band.band_mid) * 1000) / 1000 : null,
+        percentile_in_band: null,
+        equity_gap: null,
+        flag: null,
+      };
+    }
 
     let compa_ratio = null;
     let percentile_in_band = null;
@@ -65,9 +98,9 @@ export async function onRequest(context) {
       const range = band.band_max - band.band_min;
       percentile_in_band = range > 0 ? (salary - band.band_min) / range : 0.5;
 
-      // Expected salary by tenure (linear interpolation)
+      // Expected salary by tenure in current band (not total org tenure)
       const typicalYearsMax = band.typical_years_max || 10;
-      const tenurePct = Math.min(yearsOfService / typicalYearsMax, 1.0);
+      const tenurePct = Math.min(yearsInBand / typicalYearsMax, 1.0);
       const expectedSalary = band.band_min + (tenurePct * (band.band_max - band.band_min));
       equity_gap = expectedSalary - salary;
 
@@ -115,4 +148,7 @@ export async function onRequest(context) {
   };
 
   return json({ analysis, summary, bands });
+  } catch (err) {
+    return json({ error: 'Failed to load equity data', detail: err.message }, 500);
+  }
 }

@@ -11,6 +11,7 @@ export async function onRequest(context) {
 
   const today = new Date().toISOString().split('T')[0];
 
+  try {
   // Get active staff with salary info
   const { results: staff } = await env.DB.prepare(`
     SELECT
@@ -126,4 +127,7 @@ export async function onRequest(context) {
   const all = results;
 
   return json({ eligible, all });
+  } catch (err) {
+    return json({ error: 'Failed to load promotions data', detail: err.message }, 500);
+  }
 }
