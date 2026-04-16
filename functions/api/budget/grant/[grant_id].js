@@ -11,6 +11,7 @@ export async function onRequest(context) {
 
   const { grant_id } = params;
 
+  try {
   // Get grant info
   const grant = await env.DB.prepare('SELECT * FROM grants WHERE id = ?').bind(grant_id).first();
   if (!grant) return json({ error: 'Grant not found' }, 404);
@@ -37,29 +38,35 @@ export async function onRequest(context) {
   let grant_total_cost = 0;
   let grant_fema_budget = 0;
 
+  // Batch: all entries for this grant across all projects at once
+  const { results: allEntries } = await env.DB.prepare(`
+    SELECT
+      t.project_id,
+      te.hours,
+      sr.annual_salary, sr.fringe_rate
+    FROM timesheet_entries te
+    JOIN tasks t ON t.id = te.task_id
+    LEFT JOIN salary_records sr ON sr.user_id = te.user_id
+      AND sr.effective_date = (
+        SELECT MAX(sr2.effective_date)
+        FROM salary_records sr2
+        WHERE sr2.user_id = te.user_id AND sr2.effective_date <= te.entry_date
+      )
+    WHERE t.project_id IN (SELECT id FROM projects WHERE grant_id = ?)
+  `).bind(grant_id).all();
+
+  // Aggregate by project_id
+  const entryByProject = {};
+  for (const e of allEntries) {
+    const hourly_loaded = ((e.annual_salary || 0) / 2080) * (1 + (e.fringe_rate || 0));
+    const cost = (e.hours || 0) * hourly_loaded;
+    if (!entryByProject[e.project_id]) entryByProject[e.project_id] = { hours: 0, personnel_cost: 0 };
+    entryByProject[e.project_id].hours += e.hours || 0;
+    entryByProject[e.project_id].personnel_cost += cost;
+  }
+
   for (const project of projects) {
-    // Get all task timesheet entries for this project
-    const { results: entries } = await env.DB.prepare(`
-      SELECT te.hours, sr.annual_salary, sr.fringe_rate
-      FROM timesheet_entries te
-      JOIN tasks t ON t.id = te.task_id
-      LEFT JOIN salary_records sr ON sr.user_id = te.user_id
-        AND sr.effective_date = (
-          SELECT MAX(sr2.effective_date)
-          FROM salary_records sr2
-          WHERE sr2.user_id = te.user_id AND sr2.effective_date <= te.entry_date
-        )
-      WHERE t.project_id = ?
-    `).bind(project.id).all();
-
-    let personnel_cost = 0;
-    let hours_logged = 0;
-    for (const e of entries) {
-      const hourly_loaded = ((e.annual_salary || 0) / 2080) * (1 + (e.fringe_rate || 0));
-      personnel_cost += (e.hours || 0) * hourly_loaded;
-      hours_logged += e.hours || 0;
-    }
-
+    const { hours: hours_logged = 0, personnel_cost = 0 } = entryByProject[project.id] || {};
     const project_fa = personnel_cost * fa_rate;
     const total_cost = personnel_cost + project_fa;
     const fema_budget = project.budget || 0;
@@ -109,4 +116,7 @@ export async function onRequest(context) {
         ? Math.round((grant_total_cost / total_budget) * 1000) / 10 : 0,
     },
   });
+  } catch (err) {
+    return json({ error: 'Grant budget calculation failed', detail: err.message }, 500);
+  }
 }

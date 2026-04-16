@@ -9,6 +9,7 @@ export async function onRequest(context) {
   const denied = requireAdmin(data);
   if (denied) return denied;
 
+  try {
   const url = new URL(context.request.url);
   const grant_id = url.searchParams.get('grant_id');
 
@@ -37,54 +38,46 @@ export async function onRequest(context) {
 
     const fa_rate = faRate?.fa_rate || 0;
 
-    // Get monthly cost data for this grant
-    const { results: monthlyCosts } = await env.DB.prepare(`
+    // Fetch all entries for this grant in one batch query (replaces per-month N+1)
+    const { results: allEntries } = await env.DB.prepare(`
       SELECT
         strftime('%Y-%m', te.entry_date) as month,
-        SUM(te.hours) as hours,
-        COUNT(DISTINCT te.user_id) as staff_count
+        te.hours,
+        sr.annual_salary, sr.fringe_rate
       FROM timesheet_entries te
       JOIN tasks t ON t.id = te.task_id
       JOIN projects p ON p.id = t.project_id
+      LEFT JOIN salary_records sr ON sr.user_id = te.user_id
+        AND sr.effective_date = (
+          SELECT MAX(sr2.effective_date)
+          FROM salary_records sr2
+          WHERE sr2.user_id = te.user_id AND sr2.effective_date <= te.entry_date
+        )
       WHERE p.grant_id = ?
-      GROUP BY strftime('%Y-%m', te.entry_date)
       ORDER BY month
     `).bind(grant.id).all();
 
-    // Calculate loaded costs per month
+    // Aggregate by month in JS
+    const byMonth = {};
+    for (const e of allEntries) {
+      const hourly_loaded = ((e.annual_salary || 0) / 2080) * (1 + (e.fringe_rate || 0));
+      const cost = (e.hours || 0) * hourly_loaded;
+      if (!byMonth[e.month]) byMonth[e.month] = { hours: 0, personnel: 0 };
+      byMonth[e.month].hours += e.hours || 0;
+      byMonth[e.month].personnel += cost;
+    }
+
     const monthlyData = [];
     let total_loaded_cost = 0;
 
-    for (const mc of monthlyCosts) {
-      // Get the loaded cost for this month
-      const { results: monthEntries } = await env.DB.prepare(`
-        SELECT te.hours, sr.annual_salary, sr.fringe_rate
-        FROM timesheet_entries te
-        JOIN tasks t ON t.id = te.task_id
-        JOIN projects p ON p.id = t.project_id
-        LEFT JOIN salary_records sr ON sr.user_id = te.user_id
-          AND sr.effective_date = (
-            SELECT MAX(sr2.effective_date)
-            FROM salary_records sr2
-            WHERE sr2.user_id = te.user_id AND sr2.effective_date <= te.entry_date
-          )
-        WHERE p.grant_id = ? AND strftime('%Y-%m', te.entry_date) = ?
-      `).bind(grant.id, mc.month).all();
-
-      let month_personnel = 0;
-      for (const e of monthEntries) {
-        const hourly_loaded = ((e.annual_salary || 0) / 2080) * (1 + (e.fringe_rate || 0));
-        month_personnel += (e.hours || 0) * hourly_loaded;
-      }
-
-      const month_fa = month_personnel * fa_rate;
-      const month_total = month_personnel + month_fa;
+    for (const [month, data] of Object.entries(byMonth).sort()) {
+      const month_fa = data.personnel * fa_rate;
+      const month_total = data.personnel + month_fa;
       total_loaded_cost += month_total;
-
       monthlyData.push({
-        month: mc.month,
-        hours: Math.round(mc.hours * 10) / 10,
-        personnel_cost: Math.round(month_personnel * 100) / 100,
+        month,
+        hours: Math.round(data.hours * 10) / 10,
+        personnel_cost: Math.round(data.personnel * 100) / 100,
         fa_cost: Math.round(month_fa * 100) / 100,
         total_cost: Math.round(month_total * 100) / 100,
       });
@@ -131,4 +124,7 @@ export async function onRequest(context) {
   }
 
   return json({ projections });
+  } catch (err) {
+    return json({ error: 'Budget projection calculation failed', detail: err.message }, 500);
+  }
 }

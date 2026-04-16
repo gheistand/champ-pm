@@ -52,6 +52,9 @@ CREATE TABLE IF NOT EXISTS salary_adjustments (
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+-- task_budget_lines: Reserved for future per-category budget entry UI.
+-- Currently unused — budgets are calculated dynamically from timesheet entries.
+-- Do not remove; Phase 4+ may use this for non-personnel budget lines (travel, equipment, etc.)
 -- Budget category breakdown per task
 CREATE TABLE IF NOT EXISTS task_budget_lines (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

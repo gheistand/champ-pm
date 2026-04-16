@@ -41,6 +41,8 @@ export default function AdminStaff() {
   const [detailTab, setDetailTab] = useState('equity');
   const [staffDetail, setStaffDetail] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
+  const [staffCost, setStaffCost] = useState(null);
+  const [costLoading, setCostLoading] = useState(false);
   const [bands, setBands] = useState([]);
 
   const load = useCallback(async () => {
@@ -112,6 +114,14 @@ export default function AdminStaff() {
     } finally {
       setDetailLoading(false);
     }
+
+    // Load staff cost data separately (non-blocking)
+    setCostLoading(true);
+    setStaffCost(null);
+    api.get(`/api/budget/staff/${s.id}`)
+      .then((res) => setStaffCost(res))
+      .catch(() => setStaffCost(null))
+      .finally(() => setCostLoading(false));
   }
 
   async function handleSave(e) {
@@ -157,6 +167,7 @@ export default function AdminStaff() {
     { key: 'equity', label: 'Equity Summary' },
     { key: 'promotion', label: 'Promotion Readiness' },
     { key: 'adjustments', label: 'Adjustments' },
+    { key: 'cost', label: 'YTD Cost' },
   ];
 
   return (
@@ -480,6 +491,56 @@ export default function AdminStaff() {
                   </div>
                 ) : (
                   <p className="text-sm text-gray-400 py-4">No salary adjustments for this staff member.</p>
+                )}
+              </div>
+            )}
+
+            {/* YTD Cost Tab */}
+            {detailTab === 'cost' && (
+              <div>
+                {costLoading ? (
+                  <div className="py-8 text-center text-gray-400">Loading cost data…</div>
+                ) : staffCost && staffCost.grants.length > 0 ? (
+                  <div>
+                    <p className="text-xs text-gray-500 mb-3">
+                      Fiscal year to date — since {staffCost.fy_start}
+                    </p>
+                    <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden mb-4">
+                      <thead>
+                        <tr className="bg-gray-50">
+                          <th className="px-3 py-2 text-left font-medium text-gray-600 border-b border-gray-200">Grant</th>
+                          <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">Hours</th>
+                          <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">Personnel</th>
+                          <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">F&A</th>
+                          <th className="px-3 py-2 text-right font-medium text-gray-600 border-b border-gray-200">Total Cost</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {staffCost.grants.map((g) => (
+                          <tr key={g.grant_id} className="border-b border-gray-100 last:border-0">
+                            <td className="px-3 py-2 font-medium text-gray-800">{g.grant_name}</td>
+                            <td className="px-3 py-2 text-right text-gray-600">{g.hours}h</td>
+                            <td className="px-3 py-2 text-right text-gray-600">${Number(g.personnel_cost).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                            <td className="px-3 py-2 text-right text-gray-600">${Number(g.fa_cost).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                            <td className="px-3 py-2 text-right font-semibold text-gray-900">${Number(g.total_cost).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    {staffCost.grants.map((g) => g.projects.length > 0 && (
+                      <div key={g.grant_id} className="mb-3">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">{g.grant_name} — by project</p>
+                        {g.projects.map((p) => (
+                          <div key={p.project_id} className="flex justify-between text-xs text-gray-600 py-0.5 px-2">
+                            <span>{p.project_name}</span>
+                            <span className="text-gray-500">{p.hours}h</span>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-gray-400 py-4">No timesheet entries found for this fiscal year.</p>
                 )}
               </div>
             )}

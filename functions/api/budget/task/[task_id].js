@@ -11,6 +11,7 @@ export async function onRequest(context) {
 
   const { task_id } = params;
 
+  try {
   // Get task info with grant reference
   const task = await env.DB.prepare(`
     SELECT t.*, p.name as project_name, p.grant_id, g.name as grant_name
@@ -121,4 +122,7 @@ export async function onRequest(context) {
       loaded_hourly_rate: Math.round(s.loaded_hourly_rate * 100) / 100,
     })),
   });
+  } catch (err) {
+    return json({ error: 'Task budget calculation failed', detail: err.message }, 500);
+  }
 }
