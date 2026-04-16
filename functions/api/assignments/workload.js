@@ -14,6 +14,8 @@ export async function onRequestGet(context) {
     return json({ error: 'week parameter is required (YYYY-MM-DD Monday)' }, 400);
   }
 
+  try {
+
   // Calculate week end (Sunday)
   const weekEnd = new Date(week + 'T00:00:00Z');
   weekEnd.setUTCDate(weekEnd.getUTCDate() + 6);
@@ -99,5 +101,8 @@ export async function onRequestGet(context) {
     assignments: assignments.filter((a) => a.user_id === s.id),
   }));
 
-  return json({ workload, week, week_end: weekEndStr });
+    return json({ workload, week, week_end: weekEndStr });
+  } catch (err) {
+    return json({ error: 'Failed to load workload data', detail: err.message }, 500);
+  }
 }

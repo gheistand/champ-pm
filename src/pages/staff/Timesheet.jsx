@@ -215,7 +215,7 @@ export default function StaffTimesheet() {
                         const key = `${task.id}|${dateStr}`;
                         const entry = entries[key] || {};
                         return (
-                          <td key={dateStr} className="p-1">
+                          <td key={dateStr} className="p-1 space-y-1">
                             <input
                               type="number"
                               min="0"
@@ -224,13 +224,16 @@ export default function StaffTimesheet() {
                               disabled={isLocked}
                               value={entry.hours ?? ''}
                               onChange={(e) => handleHoursChange(task.id, dateStr, e.target.value)}
-                              onBlur={(e) => {
-                                if (e.target.value === '') {
-                                  // Remove zero entry
-                                }
-                              }}
                               className="w-16 text-center text-sm border border-gray-200 rounded px-1 py-1 disabled:bg-gray-50 disabled:text-gray-400 focus:border-brand-400 focus:outline-none"
                               placeholder="0"
+                            />
+                            <input
+                              type="text"
+                              disabled={isLocked}
+                              value={entry.notes ?? ''}
+                              onChange={(e) => handleNotesChange(task.id, dateStr, e.target.value)}
+                              className="w-16 text-xs border border-gray-100 rounded px-1 py-0.5 disabled:bg-gray-50 disabled:text-gray-400 focus:border-brand-300 focus:outline-none text-gray-500 placeholder-gray-300"
+                              placeholder="note"
                             />
                           </td>
                         );

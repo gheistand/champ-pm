@@ -19,7 +19,9 @@ export default function AdminWorkload() {
   const [workload, setWorkload] = useState([]);
   const [loading, setLoading] = useState(true);
   const [grants, setGrants] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [grantFilter, setGrantFilter] = useState('');
+  const [projectFilter, setProjectFilter] = useState('');
   const [view, setView] = useState('chart'); // 'chart' | 'table'
 
   const load = useCallback(async () => {
@@ -28,18 +30,21 @@ export default function AdminWorkload() {
       const week = toISODate(weekStart);
       let url = `/api/assignments/workload?week=${week}`;
       if (grantFilter) url += `&grant_id=${grantFilter}`;
-      const [wlRes, grantsRes] = await Promise.all([
+      if (projectFilter) url += `&project_id=${projectFilter}`;
+      const [wlRes, grantsRes, projectsRes] = await Promise.all([
         api.get(url),
         api.get('/api/grants'),
+        api.get('/api/projects'),
       ]);
       setWorkload(wlRes.workload || []);
       setGrants(grantsRes.grants || []);
+      setProjects(projectsRes.projects || []);
     } catch (e) {
       addToast(e.message, 'error');
     } finally {
       setLoading(false);
     }
-  }, [weekStart, grantFilter]);
+  }, [weekStart, grantFilter, projectFilter]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -66,10 +71,20 @@ export default function AdminWorkload() {
           <select
             className="form-select w-44"
             value={grantFilter}
-            onChange={(e) => setGrantFilter(e.target.value)}
+            onChange={(e) => { setGrantFilter(e.target.value); setProjectFilter(''); }}
           >
             <option value="">All Grants</option>
             {grants.map((g) => <option key={g.id} value={g.id}>{g.name}</option>)}
+          </select>
+          <select
+            className="form-select w-44"
+            value={projectFilter}
+            onChange={(e) => setProjectFilter(e.target.value)}
+          >
+            <option value="">All Projects</option>
+            {projects
+              .filter((p) => !grantFilter || String(p.grant_id) === String(grantFilter))
+              .map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
           </select>
           <div className="flex rounded-lg border border-gray-300 overflow-hidden">
             <button

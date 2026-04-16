@@ -53,7 +53,7 @@ async function handlePost(context) {
   const body = await request.json();
   const { task_id, entry_date, hours, notes } = body;
 
-  if (!task_id || !entry_date || hours === undefined) {
+  if (!task_id || !entry_date || hours == null || typeof hours !== 'number') {
     return json({ error: 'task_id, entry_date, and hours are required' }, 400);
   }
 
