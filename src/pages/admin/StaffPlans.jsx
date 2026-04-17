@@ -8,6 +8,13 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsToolti
 
 const TABS = ['Grant Balances', 'Appointments', 'Plan Builder', 'Saved Plans', 'Visualizations'];
 
+// Termination dates — staff with hard end dates for appointment planning
+const TERMINATIONS = {
+  mjr: '2026-04-30',    // Mary Richardson — no appointments past this date
+  dianad: '2026-04-30', // Diana Davisson — no appointments past this date
+  lkumar: '2026-04-01', // Love Kumar — no new appointments
+};
+
 const STAFF_NAME_MAP = {
   carnold3: 'Camden Arnold',
   arpitab2: 'Arpita Banerjee',
@@ -857,7 +864,10 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
     if (!newForm.name) return addToast('Name is required', 'error');
     setCreating(true);
     try {
-      const data = await api.post('/api/staff-plans/scenarios', newForm);
+      const data = await api.post('/api/staff-plans/scenarios', {
+        ...newForm,
+        terminations: TERMINATIONS,
+      });
       addToast(`Created "${data.scenario.name}" with ${data.row_count} rows`, 'success');
       setShowNewModal(false);
       await loadScenarios();
@@ -873,7 +883,9 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
     if (!activeScenario) return;
     setRecalculating(true);
     try {
-      const data = await api.post(`/api/staff-plans/scenarios/${activeScenario.id}/recalculate`, {});
+      const data = await api.post(`/api/staff-plans/scenarios/${activeScenario.id}/recalculate`, {
+        terminations: TERMINATIONS,
+      });
       setRows(data.rows || []);
       addToast(`Recalculated: ${data.row_count} rows`, 'success');
     } catch {
@@ -947,7 +959,9 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
             r.allocation_pct,
             r.salary_rate || '',
             r.full_account_string || '',
-            r.notes || '',
+            r.is_pinned
+              ? ('Pinned - not optimized' + (r.notes ? ' — ' + r.notes : ''))
+              : (r.notes || ''),
           ]);
           summaryRows.push({
             Employee_Name: displayName,

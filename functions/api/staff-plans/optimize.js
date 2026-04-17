@@ -54,6 +54,12 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
     if (!funds || funds.length === 0) continue;
     const effectiveSalary = salary || 0;
 
+    // Skip staff with no salary data — optimizer math breaks down at zero salary
+    if (!effectiveSalary || effectiveSalary <= 0) {
+      console.warn(`Skipping staff ${userId}: no salary data`);
+      continue;
+    }
+
     // Cap plan end at termination date if applicable
     const terminationDate = terminations[userId];
     const effectivePlanEnd = terminationDate && terminationDate < plan_end ? terminationDate : plan_end;
@@ -183,9 +189,12 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
           ? Math.ceil(b.remaining_balance / (costAt1PctPerMonth * monthsLeft))
           : remainingPct;
 
-        // Cap: don't exceed available, don't put >70% on one grant, floor at 5%
-        const maxPct = Math.min(remainingPct, 70);
-        const assignedPct = Math.min(Math.max(pctNeeded, 5), maxPct);
+        // Skip grants needing < 5% — don't force tiny allocations
+        if (pctNeeded < 5) continue;
+
+        // Cap: don't exceed available, don't put >50% on one grant
+        const maxPct = Math.min(remainingPct, 50);
+        const assignedPct = Math.min(pctNeeded, maxPct);
 
         freeAllocs.push({ fund: f, pct: assignedPct });
         remainingPct -= assignedPct;

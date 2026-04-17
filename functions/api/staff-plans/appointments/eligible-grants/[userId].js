@@ -28,9 +28,9 @@ export async function onRequest(context) {
       b.as_of_date,
       b.id as balance_id
     FROM staff_appointments sa
-    LEFT JOIN staff_plan_grant_balances b ON b.fund_number = sa.fund_number
+    LEFT JOIN staff_plan_grant_balances b ON b.full_account_string = sa.full_account_string
     WHERE sa.user_id = ?
-    GROUP BY sa.fund_number, sa.full_account_string, sa.chart, sa.org, sa.program, sa.activity
+    GROUP BY sa.full_account_string, sa.fund_number, sa.chart, sa.org, sa.program, sa.activity
     ORDER BY sa.fund_number
   `).bind(userId).all();
 
