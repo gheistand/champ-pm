@@ -7,20 +7,20 @@ export default function LandingPage() {
             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
-      title: 'Grant Portfolio Tracking',
+      title: 'Grant & Budget Tracking',
       description:
-        'Manage BRIC, HMA, and other FEMA mitigation grants in one place. Track budgets, obligations, drawdowns, and deadlines across your entire portfolio.',
+        'Track FEMA grant budgets, period of performance dates, and burndown in one place. All cost calculations use standard government accounting formulas — salary, fringe, and F&A — applied consistently across every grant.',
     },
     {
       icon: (
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.347.347a3.5 3.5 0 01-4.949 0l-.347-.347z" />
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: 'AI Status Summaries',
+      title: 'Timesheets & Staff Plans',
       description:
-        'Get instant, plain-language summaries of project health, budget runway, and task bottlenecks — surfaced automatically so you spend less time in spreadsheets.',
+        'Staff enter hours by project and task. The system calculates loaded costs and tracks them against grant budgets using the same formulas used in quarterly FEMA reporting. Staff planning tools project salary costs against remaining grant balances.',
     },
     {
       icon: (
@@ -29,9 +29,9 @@ export default function LandingPage() {
             d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
-      title: 'Team Workload Management',
+      title: 'Equity & Scheduling',
       description:
-        'Assign tasks across staff and contractors, track time by grant, and forecast capacity — so multi-stakeholder coordination stays on schedule.',
+        'Analyze staff pay equity against classification bands. Track project schedules with Gantt charts and period-of-performance constraints. All calculations are deterministic — the same inputs always produce the same outputs.',
     },
   ];
 
@@ -53,13 +53,15 @@ export default function LandingPage() {
         </h1>
 
         <p className="mt-4 text-lg text-brand-700 font-medium max-w-xl">
-          AI-Assisted Project Management for FEMA Flood Mitigation Programs
+          Internal Program Management for CHAMP &mdash; Illinois State Water Survey
         </p>
 
         <p className="mt-4 text-base text-gray-500 max-w-2xl">
-          Built for government teams and grant managers who need to track BRIC/HMA projects,
-          surface insights across complex portfolios, and coordinate multi-stakeholder programs
-          — without the spreadsheet chaos.
+          A purpose-built tool for the CHAMP section to track FEMA grant budgets, manage
+          timesheets, plan staff allocations, and schedule project work. All calculations
+          use standard government accounting formulas. No AI is involved in data processing
+          or calculations &mdash; the software was built using AI-assisted development tools,
+          but runs entirely on conventional, deterministic logic.
         </p>
 
         {/* CTAs */}
@@ -91,7 +93,7 @@ export default function LandingPage() {
       <section className="bg-white border-t border-gray-200 py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-10">
-            What's inside
+            What the tool does
           </h2>
           <div className="grid gap-8 sm:grid-cols-3">
             {features.map((f) => (
