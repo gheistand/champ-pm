@@ -216,7 +216,11 @@ export default function QuarterlyReports() {
 
         if (Array.isArray(updates) && updates.length > 0) {
           const best = updates.reduce((a, b) => a.date > b.date ? a : b);
-          row[4] = best.text;
+          // Append the new status to the end of existing comments.
+          // best.text already starts with "As of MM/DD/YYYY:" from the status spreadsheet.
+          const existing = String(row[4] || '').trim();
+          const newEntry = best.text.trim();
+          row[4] = existing ? `${existing}\n\n${newEntry}` : newEntry;
           matchStatus = 'matched';
         } else if (mipCase in statusMap) {
           matchStatus = 'no_quarter_update';
