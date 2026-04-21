@@ -8,12 +8,13 @@ function currentFiscalYear() {
 }
 
 function quarterDateRange(fy, q) {
+  // Calendar year quarters: Q1=Jan-Mar, Q2=Apr-Jun, Q3=Jul-Sep, Q4=Oct-Dec
   switch (q) {
-    case 'Q1': return { start: new Date(fy - 1, 9, 1), end: new Date(fy - 1, 11, 31) };
-    case 'Q2': return { start: new Date(fy, 0, 1), end: new Date(fy, 2, 31) };
-    case 'Q3': return { start: new Date(fy, 3, 1), end: new Date(fy, 5, 30) };
-    case 'Q4': return { start: new Date(fy, 6, 1), end: new Date(fy, 8, 30) };
-    default: return { start: new Date(fy - 1, 9, 1), end: new Date(fy - 1, 11, 31) };
+    case 'Q1': return { start: new Date(fy, 0, 1),  end: new Date(fy, 2, 31) };
+    case 'Q2': return { start: new Date(fy, 3, 1),  end: new Date(fy, 5, 30) };
+    case 'Q3': return { start: new Date(fy, 6, 1),  end: new Date(fy, 8, 30) };
+    case 'Q4': return { start: new Date(fy, 9, 1),  end: new Date(fy, 11, 31) };
+    default:   return { start: new Date(fy, 0, 1),  end: new Date(fy, 2, 31) };
   }
 }
 
@@ -301,10 +302,10 @@ export default function QuarterlyReports() {
               onChange={e => setQuarter(e.target.value)}
               className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
             >
-              <option value="Q1">Q1 (Oct–Dec)</option>
-              <option value="Q2">Q2 (Jan–Mar)</option>
-              <option value="Q3">Q3 (Apr–Jun)</option>
-              <option value="Q4">Q4 (Jul–Sep)</option>
+              <option value="Q1">Q1 (Jan–Mar)</option>
+              <option value="Q2">Q2 (Apr–Jun)</option>
+              <option value="Q3">Q3 (Jul–Sep)</option>
+              <option value="Q4">Q4 (Oct–Dec)</option>
             </select>
           </div>
         </div>
