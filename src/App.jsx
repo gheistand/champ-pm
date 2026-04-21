@@ -31,6 +31,7 @@ import AdminCRMContact from './pages/admin/CRMContact';
 import AdminStaffPlans from './pages/admin/StaffPlans';
 import ProgramSchedule from './pages/admin/ProgramSchedule';
 import AdminDocs from './pages/admin/AdminDocs';
+import QuarterlyReports from './pages/admin/QuarterlyReports';
 
 // Staff pages
 import StaffTimesheet from './pages/staff/Timesheet';
@@ -110,6 +111,7 @@ export default function App() {
                 <Route path="/admin/docs" element={<AdminDocs />} />
                 <Route path="/admin/docs/:section" element={<AdminDocs />} />
                 <Route path="/admin/docs/:section/:page" element={<AdminDocs />} />
+                <Route path="/admin/quarterly-reports" element={<QuarterlyReports />} />
               </Route>
             </Route>
 
