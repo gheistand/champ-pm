@@ -44,18 +44,53 @@ function parseStatusDate(text) {
   return null;
 }
 
+// Regex to identify a valid MIP Case# (e.g. "22-05-0007S" or "16-05-2865S")
+const MIP_CASE_RE = /^\d{2}-\d{2}-\d{4}[A-Z]$/;
+
 function buildStatusMap(workbook, quarterStart, quarterEnd) {
   const ws = workbook.Sheets[workbook.SheetNames[0]];
   const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
   const statusMap = {};
 
+  // Detect which column holds the MIP Case# by scanning the header row for known labels
+  // and which column first has the status-update pattern
+  let mipCol = -1;
+  let statusStartCol = -1;
+
   for (const row of rows) {
-    const mipCase = String(row[2] || '').trim();
-    if (!mipCase || mipCase === 'MIP Case#' || mipCase.toLowerCase().includes('header')) continue;
+    // Find the MIP Case# column: look for a cell matching the pattern OR the header label
+    if (mipCol === -1) {
+      for (let c = 0; c < row.length; c++) {
+        const v = String(row[c] || '');
+        if (MIP_CASE_RE.test(v.trim()) || v.replace(/\s+/g, ' ').toLowerCase().includes('mip') && v.toLowerCase().includes('case')) {
+          mipCol = c;
+          break;
+        }
+      }
+    }
+    // Find the first status-update column: look for a cell starting with "As of"
+    if (statusStartCol === -1) {
+      for (let c = 0; c < row.length; c++) {
+        if (/^as of/i.test(String(row[c] || '').trim())) {
+          statusStartCol = c;
+          break;
+        }
+      }
+    }
+    if (mipCol !== -1 && statusStartCol !== -1) break;
+  }
+
+  // Fallback to known offsets if detection failed
+  if (mipCol === -1) mipCol = 1;        // column C when B is first (B=0,C=1)
+  if (statusStartCol === -1) statusStartCol = 6; // column H when B is first
+
+  for (const row of rows) {
+    const mipCase = String(row[mipCol] || '').trim();
+    if (!mipCase || !MIP_CASE_RE.test(mipCase)) continue; // skip non-data rows
 
     let bestUpdate = null;
 
-    for (let col = 7; col < row.length; col++) {
+    for (let col = statusStartCol; col < row.length; col++) {
       const cellText = String(row[col] || '').trim();
       if (!cellText) continue;
       const cellDate = parseStatusDate(cellText);
