@@ -126,11 +126,12 @@ function parseCsv(text) {
 }
 
 // Aggregate same (user, task, date) entries — UNIQUE constraint
-function aggregate(rows, projMap, staffMap) {
+function aggregate(rows, projMap, staffMap, inactiveUserIds) {
   const agg = new Map();
   const weeks = new Set();
   const unmappedProjects = new Set();
   const unmappedStaff = new Set();
+  const inactiveStaff = new Set();
 
   for (const r of rows) {
     const taskId = projMap[r.projectName];
@@ -139,6 +140,8 @@ function aggregate(rows, projMap, staffMap) {
 
     const userId = staffMap[r.employee];
     if (!userId) { unmappedStaff.add(r.employee); continue; }
+
+    if (inactiveUserIds.has(userId)) inactiveStaff.add(r.employee);
 
     const key = `${userId}|${taskId}|${r.date}`;
     if (!agg.has(key)) {
@@ -161,7 +164,7 @@ function aggregate(rows, projMap, staffMap) {
     return { user_id, week_start };
   });
 
-  return { entries, weeks: weekList, unmappedProjects: [...unmappedProjects], unmappedStaff: [...unmappedStaff] };
+  return { entries, weeks: weekList, unmappedProjects: [...unmappedProjects], unmappedStaff: [...unmappedStaff], inactiveStaff: [...inactiveStaff] };
 }
 
 const BATCH_SIZE = 400;
@@ -208,7 +211,11 @@ export default function Import() {
 
       // 2. Auto-match remaining: "Last, First" → "First Last" search in users
       const usersByName = {};
-      for (const u of config.users) usersByName[u.name.toLowerCase()] = u.id;
+      const inactiveUserIds = new Set();
+      for (const u of config.users) {
+        usersByName[u.name.toLowerCase()] = u.id;
+        if (!u.is_active) inactiveUserIds.add(u.id);
+      }
 
       for (const row of rawRows) {
         if (staffMap[row.employee]) continue;
@@ -216,13 +223,14 @@ export default function Import() {
         if (usersByName[display]) staffMap[row.employee] = usersByName[display];
       }
 
-      const { entries, weeks, unmappedProjects, unmappedStaff } = aggregate(rawRows, projMap, staffMap);
+      const { entries, weeks, unmappedProjects, unmappedStaff, inactiveStaff } = aggregate(rawRows, projMap, staffMap, inactiveUserIds);
 
       setPreview({
         entries,
         weeks,
         unmappedProjects,
         unmappedStaff,
+        inactiveStaff,
         totalRows: rawRows.length,
         totalHours: rawRows.reduce((s, r) => s + r.hours, 0),
       });
@@ -376,6 +384,22 @@ export default function Import() {
               <div className="flex flex-wrap gap-1">
                 {preview.unmappedStaff.map(s => (
                   <span key={s} className="text-xs px-2 py-0.5 bg-amber-100 text-amber-800 rounded font-mono">{s}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {preview.inactiveStaff?.length > 0 && (
+            <div className="card border-blue-200 bg-blue-50">
+              <h3 className="text-sm font-semibold text-blue-800 mb-2">
+                {preview.inactiveStaff.length} former staff member{preview.inactiveStaff.length !== 1 ? 's' : ''} — entries included (historical)
+              </h3>
+              <p className="text-xs text-blue-700 mb-2">
+                These staff are no longer active. Their historical entries will still be imported.
+              </p>
+              <div className="flex flex-wrap gap-1">
+                {preview.inactiveStaff.map(s => (
+                  <span key={s} className="text-xs px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-mono">{s}</span>
                 ))}
               </div>
             </div>

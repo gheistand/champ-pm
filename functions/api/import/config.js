@@ -12,7 +12,7 @@ export async function onRequestGet(context) {
     const [projMap, staffOverrides, users] = await Promise.all([
       env.DB.prepare('SELECT csv_name, task_id, notes FROM timesheet_project_map ORDER BY csv_name').all(),
       env.DB.prepare('SELECT csv_name, user_id, notes FROM timesheet_staff_map').all(),
-      env.DB.prepare('SELECT id, name FROM users ORDER BY name').all(),
+      env.DB.prepare('SELECT id, name, is_active FROM users ORDER BY name').all(),
     ]);
 
     return json({
