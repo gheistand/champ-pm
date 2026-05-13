@@ -34,27 +34,67 @@ function csvNameToDisplay(csvName) {
   return `${first} ${last}`;
 }
 
-// Parse the rptDetailedActivity CSV format (cp1252, date sentinel rows)
-function parseCsv(text) {
-  const lines = text.split(/\r?\n/);
+// Split a single CSV line, handling quoted fields
+function splitCsvLine(line) {
+  const cols = [];
+  let cur = '', inQuote = false;
+  for (let ci = 0; ci < line.length; ci++) {
+    const ch = line[ci];
+    if (ch === '"') { inQuote = !inQuote; continue; }
+    if (ch === ',' && !inQuote) { cols.push(cur); cur = ''; continue; }
+    cur += ch;
+  }
+  cols.push(cur);
+  return cols;
+}
+
+// Parse the "Detailed Activity Report" format (rptDetailedActivity export)
+// Layout: col[2]=employee, col[14]=projectName, col[18]=activity,
+//         col[20]=nonBillable, col[22]=billable
+// Date sentinels: col[0] has date, all other cols empty
+// Description rows: col[12]="Description:" — skip
+// Total rows:       col[2] empty — skip
+function parseCsvDetailed(lines) {
   const rows = [];
   let currentDate = null;
+  for (let i = 3; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line.trim()) continue;
+    const cols = splitCsvLine(line);
 
-  // Skip header rows (first 3 lines)
+    // Date sentinel: col[0] has date, col[1] empty
+    if (cols[0]?.trim() && !cols[1]?.trim()) {
+      const d = parseDate(cols[0].trim());
+      if (d) { currentDate = d; continue; }
+    }
+
+    // Skip description rows and total rows
+    if (cols[12]?.trim() === 'Description:') continue;
+    const employee = cols[2]?.trim();
+    if (!employee || !currentDate) continue;
+
+    const projectName = cols[14]?.trim();
+    const activity = cols[18]?.trim();
+    const nonBillable = parseFloat(cols[20]) || 0;
+    const billable = parseFloat(cols[22]) || 0;
+    const hours = nonBillable + billable;
+
+    if (!projectName || hours <= 0) continue;
+    rows.push({ date: currentDate, employee, projectName, activity, hours });
+  }
+  return rows;
+}
+
+// Parse the simple summary CSV format
+// Layout: col[1]=employee, col[4]=projectName, col[5]=activity,
+//         col[6]=nonBillable, col[7]=billable
+function parseCsvSimple(lines) {
+  const rows = [];
+  let currentDate = null;
   for (let i = 3; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
-
-    // Simple CSV split (handles quoted fields)
-    const cols = [];
-    let cur = '', inQuote = false;
-    for (let ci = 0; ci < line.length; ci++) {
-      const ch = line[ci];
-      if (ch === '"') { inQuote = !inQuote; continue; }
-      if (ch === ',' && !inQuote) { cols.push(cur); cur = ''; continue; }
-      cur += ch;
-    }
-    cols.push(cur);
+    const cols = splitCsvLine(line);
 
     // Date sentinel row: col0 has date, col1 empty
     if (cols[0]?.trim() && !cols[1]?.trim()) {
@@ -62,7 +102,6 @@ function parseCsv(text) {
       if (d) { currentDate = d; continue; }
     }
 
-    // Data row
     if (!cols[1]?.trim() || !currentDate) continue;
 
     const employee = cols[1]?.trim();
@@ -76,6 +115,14 @@ function parseCsv(text) {
     rows.push({ date: currentDate, employee, projectName, activity, hours });
   }
   return rows;
+}
+
+// Auto-detect format and parse
+function parseCsv(text) {
+  const lines = text.split(/\r?\n/);
+  // Detailed Activity Report has "Detailed Activity Report" in the first line
+  const isDetailed = lines[0]?.includes('Detailed Activity Report');
+  return isDetailed ? parseCsvDetailed(lines) : parseCsvSimple(lines);
 }
 
 // Aggregate same (user, task, date) entries — UNIQUE constraint
@@ -249,8 +296,8 @@ export default function Import() {
       </div>
 
       <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-xl text-sm text-blue-800">
-        Export <strong>rptDetailedActivity</strong> from your timesheet app, then drop it here.
-        Entries that already exist are skipped automatically — safe to re-import overlapping periods.
+        Export <strong>rptDetailedActivity</strong> (Detailed Activity Report) or the simple summary CSV from your timesheet app, then drop it here.
+        Both formats are supported. Entries that already exist are skipped automatically — safe to re-import overlapping periods.
       </div>
 
       {/* Drop zone */}
@@ -267,7 +314,7 @@ export default function Import() {
         <div className="text-4xl mb-3">📂</div>
         {fileName
           ? <p className="text-sm font-medium text-gray-700">{fileName}</p>
-          : <p className="text-sm text-gray-500">Drop <strong>rptDetailedActivity.csv</strong> here, or click to browse</p>
+          : <p className="text-sm text-gray-500">Drop a timesheet CSV here, or click to browse</p>
         }
       </div>
 
