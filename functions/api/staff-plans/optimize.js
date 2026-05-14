@@ -44,12 +44,29 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
     balanceMap[b.full_account_string] = b;
   }
 
-  // Track cumulative spend per account across all staff
+  // Track cumulative spend per account across all staff — shared state.
+  // This is the critical fix: allocations are deducted in real-time so
+  // later staff see reduced effective balances, preventing double-booking.
   const fundSpend = {};
+
+  // Helper: effective remaining balance for a grant after committed spend
+  const effectiveBalance = (accountKey) => {
+    const b = balanceMap[accountKey];
+    if (!b || b.balance_unknown) return Infinity;
+    return Math.max(0, (b.remaining_balance || 0) - (fundSpend[accountKey] || 0));
+  };
+
+  // Sort staff "most constrained first" — staff with fewer eligible grants
+  // are allocated first so they aren't squeezed out by less-constrained staff.
+  const sortedStaff = [...staff].sort((a, b) => {
+    const aFunds = (a.funds || []).filter(f => !balanceMap[f.full_account_string]?.balance_unknown).length;
+    const bFunds = (b.funds || []).filter(f => !balanceMap[f.full_account_string]?.balance_unknown).length;
+    return aFunds - bFunds;
+  });
 
   const allRows = [];
 
-  for (const member of staff) {
+  for (const member of sortedStaff) {
     const { userId, salary, funds } = member;
     if (!funds || funds.length === 0) continue;
     const effectiveSalary = salary || 0;
@@ -90,14 +107,14 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
     }
 
     for (const { period_start, period_end } of periods) {
-      // Determine active funds for this period
+      // Determine active funds for this period — use effective balance (after committed spend)
       const activeFunds = funds.filter(f => {
         const b = balanceMap[f.full_account_string];
-        if (!b) return (f.remaining_balance > 0) || f.balance_unknown;
+        if (!b) return f.balance_unknown;
         if (b.is_pinned) return true; // pinned funds always active
         if (f.balance_unknown || b.balance_unknown) return true;
-        if (!b.pop_end_date) return b.remaining_balance > 0;
-        return b.pop_end_date >= period_start && (b.remaining_balance > 0 || b.balance_unknown);
+        if (!b.pop_end_date) return effectiveBalance(f.full_account_string) > 0;
+        return b.pop_end_date >= period_start && effectiveBalance(f.full_account_string) > 0;
       });
 
       if (activeFunds.length === 0) continue;
@@ -173,7 +190,9 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
           continue;
         }
 
-        if (!b.remaining_balance || b.remaining_balance <= 0) continue;
+        // Use effective balance (original minus already committed to other staff)
+        const effBal = effectiveBalance(f.full_account_string);
+        if (effBal <= 0) continue;
 
         const popEnd = b.pop_end_date;
         if (!popEnd || popEnd < period_start) continue;
@@ -183,10 +202,10 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
           0.5
         );
 
-        // pct needed to exhaust this grant by POP end
+        // pct needed to exhaust this grant's EFFECTIVE remaining balance by POP end
         const costAt1PctPerMonth = (effectiveSalary / 12) * 0.01 * BURN_MULTIPLIER;
         const pctNeeded = costAt1PctPerMonth > 0
-          ? Math.ceil(b.remaining_balance / (costAt1PctPerMonth * monthsLeft))
+          ? Math.ceil(effBal / (costAt1PctPerMonth * monthsLeft))
           : remainingPct;
 
         // Skip grants needing < 5% — don't force tiny allocations
@@ -238,7 +257,7 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
         let flag = null;
         if (alloc.unknown || b?.balance_unknown || alloc.fund?.balance_unknown) flag = 'balance_unknown';
         else if (alloc.pct < 5) flag = 'low_pct';
-        else if (b?.remaining_balance > 0 && fundSpend[accountKey] > b.remaining_balance) flag = 'over_budget';
+        else if (b?.remaining_balance > 0 && fundSpend[accountKey] > b.remaining_balance) flag = 'over_budget'; // over original balance
 
         allRows.push({
           user_id: userId,
