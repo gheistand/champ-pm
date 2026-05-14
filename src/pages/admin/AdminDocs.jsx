@@ -28,6 +28,7 @@ import ScheduleGuide from '../../docs/ScheduleGuide';
 import ProgramScheduleGuide from '../../docs/ProgramScheduleGuide';
 import ImportGuide from '../../docs/ImportGuide';
 import CRMGuide from '../../docs/CRMGuide';
+import PRIDESyncGuide from '../../docs/PRIDESyncGuide';
 
 const NAV = [
   {
@@ -67,6 +68,7 @@ const NAV = [
       { page: 'program-schedule', label: 'Program Schedule', component: ProgramScheduleGuide },
       { page: 'import', label: 'Import', component: ImportGuide },
       { page: 'crm', label: 'CRM', component: CRMGuide },
+      { page: 'pride-sync', label: 'PRIDE Sync', component: PRIDESyncGuide },
     ],
   },
 ];

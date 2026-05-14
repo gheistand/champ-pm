@@ -4,9 +4,18 @@ Program management tool for the Illinois State Water Survey CHAMP section.
 
 ## Features
 
-- **Phase 1:** Staff management, grant/project/task hierarchy, daily timesheets, workload visualization
-- **Phase 2:** Salary tracking, loaded cost calculation, budget burndown (coming soon)
-- **Phase 3:** Equity analysis, promotion readiness scoring (coming soon)
+- **Staff & Salary** — staff roster, append-only salary history, fringe rates, equity analysis
+- **Grants & Projects** — FEMA grant hierarchy (grants → projects → tasks), F&A rate management
+- **Timesheets** — daily time entry, weekly approval workflow, admin oversight
+- **Budget & Burndown** — loaded cost projections, remaining balance tracking, runway analysis
+- **Staff Plans** — linear-programming scenario optimizer for salary appointments; exports for PRIDE entry
+  - **AI-Assisted Goals** — plain-English optimization goals translated to LP constraints via Claude (Haiku)
+- **Schedule** — per-project Gantt charts, phase/milestone management, what-if scenarios, program-level view
+- **PRIDE Sync** — browser bookmarklet that syncs salaries & end dates from PRIDE's staffplan.php into CHAMP-PM
+- **Import** — CSV timesheet import with project/staff name mapping
+- **Reports** — timesheet reports with loaded cost breakdown, Excel export
+- **Equity Dashboard** — band classification, salary equity analysis
+- **CRM** — contact management for FEMA/ISWS stakeholders
 
 ## Tech Stack
 
@@ -42,7 +51,19 @@ npx wrangler d1 execute champ-pm --file=migrations/0001_init.sql --local
 npx wrangler d1 execute champ-pm --file=migrations/0001_init.sql --remote
 ```
 
-### 4. Configure Clerk
+### 4. Configure optional secrets
+
+```bash
+# AI-Assisted Goals in Staff Plans (requires Anthropic API key)
+npx wrangler pages secret put ANTHROPIC_API_KEY --project-name champ-pm
+
+# PRIDE salary sync bookmarklet
+npx wrangler pages secret put PRIDE_SYNC_TOKEN --project-name champ-pm
+```
+
+See `public/pride-bookmarklet.js` for the PRIDE sync setup instructions.
+
+### 5. Configure Clerk
 
 1. Create a Clerk application at [clerk.com](https://clerk.com)
 2. Enable **Email/Password** sign-in

@@ -274,6 +274,58 @@ export default function StaffPlansGuide() {
         />
       </GuideSection>
 
+      <GuideSection title="AI-Assisted Optimization Goals">
+        <p>
+          The <strong>✨ AI Goals</strong> button in the Plan Builder toolbar opens a collapsible panel
+          where you can describe your optimization priorities in plain English before running the
+          optimizer. This is entirely optional — leaving the panel closed runs the standard LP
+          optimization exactly as before.
+        </p>
+        <div className="p-3 bg-violet-50 border border-violet-200 rounded-lg text-sm text-violet-900 mt-2 mb-3">
+          <strong>Example goals you can type:</strong>
+          <ul className="mt-2 space-y-1 list-disc list-inside">
+            <li>"Prioritize burning down the FY23 grants before their POP expires"</li>
+            <li>"Don't put Nazmul on FY22 grants"</li>
+            <li>"Keep Zaloudek at least 30% on FY24 FEMA"</li>
+            <li>"Spread allocations more evenly — avoid concentrating anyone above 40% on a single grant"</li>
+            <li>"Maximize spend on grants expiring before December"</li>
+          </ul>
+        </div>
+        <p><strong>How it works:</strong></p>
+        <Tips
+          items={[
+            'Your goals are sent to an AI model (Claude) along with the current grant balances, PoP dates, and staff roster as context.',
+            'The AI translates your goals into structured constraint overrides: urgency multipliers per grant, per-person allocation caps/floors, and staff-grant exclusions.',
+            'Those overrides are merged into the LP optimizer, which then solves as normal — respecting all hard constraints (budget caps, 100% rule, pinned rows).',
+            'After the run, a violet explanation banner shows what the AI adjusted and why.',
+            'Pinned rows and manual overrides are always preserved, regardless of AI goals.',
+          ]}
+        />
+        <p><strong>What the AI can adjust:</strong></p>
+        <ColDef
+          cols={[
+            ['Grant urgency multipliers', 'Boost or reduce how aggressively the optimizer targets a specific grant. Example: "prioritize FY23" doubles the urgency weight on all FY23 grants.'],
+            ['Per-person grant caps', 'Override the default 60% per-person cap for specific person-grant pairs. Example: "keep Zaloudek above 30% on FY24" sets a minimum floor.'],
+            ['Per-person grant floors', 'Set a minimum allocation for a specific person-grant combination.'],
+            ['Exclusions', 'Remove a specific person from a specific grant entirely. Example: "don\'t put Nazmul on FY22".'],
+          ]}
+        />
+        <p><strong>What the AI cannot change:</strong></p>
+        <Tips
+          items={[
+            'Hard budget caps — the LP will never project spending more than a grant\'s remaining balance.',
+            'The 100% constraint — every person\'s allocations must sum to exactly 100% in every period.',
+            'Pinned rows — grants marked as pinned retain their fixed percentage.',
+            'The salary math — all cost projections remain accurate regardless of AI goals.',
+          ]}
+        />
+        <p>
+          Click <strong>"Reset to standard"</strong> to re-run without AI goals at any time.
+          The AI Goals panel is powered by Claude (Anthropic) and requires the
+          <code>ANTHROPIC_API_KEY</code> Cloudflare Pages secret to be configured.
+        </p>
+      </GuideSection>
+
       <GuideSection title="Tips & Common Questions">
         <Tips
           items={[
