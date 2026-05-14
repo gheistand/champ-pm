@@ -1,299 +1,276 @@
 import { json, requireAdmin } from '../../_utils.js';
+import Solver from 'javascript-lp-solver';
 
 const FRINGE = 0.451;
-const FA = 0.317;
-const BURN_MULTIPLIER = (1 + FRINGE) * (1 + FA); // 1.451 * 1.317 ≈ 1.9110
+const FA    = 0.317;
+const BURN_MULTIPLIER = (1 + FRINGE) * (1 + FA); // ≈ 1.9110
 
-// Parse YYYY-MM-DD to Date (UTC midnight)
+// ── Date helpers ──────────────────────────────────────────────────────────────
+
 function parseDate(s) {
   const [y, m, d] = s.split('-').map(Number);
   return new Date(Date.UTC(y, m - 1, d));
 }
-
-// Format Date to YYYY-MM-DD
-function formatDate(dt) {
-  return dt.toISOString().slice(0, 10);
-}
-
-// Add one day to a date
+function formatDate(dt) { return dt.toISOString().slice(0, 10); }
 function addDay(dt) {
-  const d = new Date(dt);
-  d.setUTCDate(d.getUTCDate() + 1);
-  return d;
+  const d = new Date(dt); d.setUTCDate(d.getUTCDate() + 1); return d;
+}
+function monthsBetween(a, b) {
+  return Math.max((parseDate(b) - parseDate(a)) / (1000 * 60 * 60 * 24 * 30.4375), 0.5);
 }
 
-/**
- * Priority-driven optimization function.
- *
- * Input:
- *   staff: [{ userId, salary, funds: [{ full_account_string, fund_number,
- *              remaining_balance, pop_end_date, priority_rank, is_pinned,
- *              balance_unknown, pinned_pct }] }]
- *   balances: [{ full_account_string, fund_number, remaining_balance,
- *                pop_end_date, priority_rank, is_pinned }]
- *   plan_start: 'YYYY-MM-DD'
- *   plan_end: 'YYYY-MM-DD'
- *   terminations: { userId: 'YYYY-MM-DD', ... }
- *
- * Returns: array of proposed rows (with is_pinned field)
- */
+// ── LP optimizer ──────────────────────────────────────────────────────────────
+//
+// Decision variables for each eligible (person p, grant g, period t):
+//   x[p,g,t]  = allocation percentage charged to grant g
+//   slack[p,t] = allocation that falls back to overhead/GRF (always feasible)
+//
+// Constraints:
+//   Σ_g x[p,g,t] + slack[p,t] = 100 - pinned_pct  (for each p, t)
+//   Σ_(p,t) cost(x[p,g,t]) ≤ remaining_balance_g   (for each grant g)
+//   x[p,g,t] ≤ 80                                   (max 80% one grant per person)
+//   x[p,g,t] ≥ 0, slack[p,t] ≥ 0
+//
+// Objective: maximize Σ_(p,g,t) urgency_g × cost(x[p,g,t])
+//            - small penalty on slack (minimize overhead)
+//
+// urgency_g = 1 / (months_to_pop_end + 0.5) — sooner expiry = more weight
+
 export function optimizeRows({ staff, balances, plan_start, plan_end, terminations = {} }) {
-  // Build balance map keyed by full_account_string
+
+  // ── 1. Balance map ─────────────────────────────────────────────────────────
   const balanceMap = {};
+  for (const b of balances) balanceMap[b.full_account_string] = b;
+
+  // ── 2. Global time periods (all PoP break points) ─────────────────────────
+  const breakSet = new Set([plan_start, plan_end]);
   for (const b of balances) {
-    balanceMap[b.full_account_string] = b;
+    if (!b.pop_end_date || b.pop_end_date < plan_start || b.pop_end_date >= plan_end) continue;
+    const d = formatDate(addDay(parseDate(b.pop_end_date)));
+    if (d < plan_end) breakSet.add(d);
+  }
+  for (const td of Object.values(terminations)) {
+    if (td > plan_start && td < plan_end) breakSet.add(td);
+  }
+  const breakPoints = Array.from(breakSet).sort();
+  const periods = [];
+  for (let i = 0; i < breakPoints.length - 1; i++) {
+    const pEnd = new Date(parseDate(breakPoints[i + 1]));
+    pEnd.setUTCDate(pEnd.getUTCDate() - 1);
+    periods.push({ period_start: breakPoints[i], period_end: formatDate(pEnd) });
   }
 
-  // Track cumulative spend per account across all staff — shared state.
-  // This is the critical fix: allocations are deducted in real-time so
-  // later staff see reduced effective balances, preventing double-booking.
-  const fundSpend = {};
+  // ── 3. Build LP model ─────────────────────────────────────────────────────
+  const model = { optimize: 'obj', opType: 'max', constraints: {}, variables: {} };
+  const pinnedRows = [];
+  const pinnedSpend = {};   // pre-committed grant spend from pinned rows
+  const varMeta = {};       // metadata stripped before solve, restored after
 
-  // Helper: effective remaining balance for a grant after committed spend
-  const effectiveBalance = (accountKey) => {
-    const b = balanceMap[accountKey];
-    if (!b || b.balance_unknown) return Infinity;
-    return Math.max(0, (b.remaining_balance || 0) - (fundSpend[accountKey] || 0));
-  };
-
-  // Sort staff "most constrained first" — staff with fewer eligible grants
-  // are allocated first so they aren't squeezed out by less-constrained staff.
-  const sortedStaff = [...staff].sort((a, b) => {
-    const aFunds = (a.funds || []).filter(f => !balanceMap[f.full_account_string]?.balance_unknown).length;
-    const bFunds = (b.funds || []).filter(f => !balanceMap[f.full_account_string]?.balance_unknown).length;
-    return aFunds - bFunds;
-  });
-
-  const allRows = [];
-
-  for (const member of sortedStaff) {
+  // ── 4. Populate variables + constraints ────────────────────────────────────
+  for (const member of staff) {
     const { userId, salary, funds } = member;
-    if (!funds || funds.length === 0) continue;
-    const effectiveSalary = salary || 0;
+    if (!salary || salary <= 0 || !funds?.length) continue;
+    const termDate = terminations[userId];
 
-    // Skip staff with no salary data — optimizer math breaks down at zero salary
-    if (!effectiveSalary || effectiveSalary <= 0) {
-      console.warn(`Skipping staff ${userId}: no salary data`);
-      continue;
-    }
+    for (const period of periods) {
+      const { period_start, period_end } = period;
+      if (termDate && period_start >= termDate) continue;
+      const effEnd = (termDate && termDate < period_end) ? termDate : period_end;
 
-    // Cap plan end at termination date if applicable
-    const terminationDate = terminations[userId];
-    const effectivePlanEnd = terminationDate && terminationDate < plan_end ? terminationDate : plan_end;
-    if (effectivePlanEnd <= plan_start) continue;
+      const months      = monthsBetween(period_start, effEnd);
+      const costPer1Pct = (salary / 12) * 0.01 * months * BURN_MULTIPLIER;
+      const ppKey       = `pp_${userId}_${period_start}`;
 
-    // Collect break points: plan_start, each fund pop_end_date+1 day, effectivePlanEnd
-    const breakSet = new Set([plan_start, effectivePlanEnd]);
-    for (const f of funds) {
-      const b = balanceMap[f.full_account_string];
-      const popEnd = b?.pop_end_date || f.pop_end_date;
-      if (!popEnd) continue;
-      if (popEnd < plan_start || popEnd >= effectivePlanEnd) continue;
-      const popEndDt = parseDate(popEnd);
-      const dayAfterStr = formatDate(addDay(popEndDt));
-      if (dayAfterStr <= effectivePlanEnd) breakSet.add(dayAfterStr);
-    }
-
-    const breakPoints = Array.from(breakSet).sort();
-
-    // Generate consecutive periods from break points
-    const periods = [];
-    for (let i = 0; i < breakPoints.length - 1; i++) {
-      const periodStart = breakPoints[i];
-      const nextBreak = parseDate(breakPoints[i + 1]);
-      const periodEndDt = new Date(nextBreak);
-      periodEndDt.setUTCDate(periodEndDt.getUTCDate() - 1);
-      periods.push({ period_start: periodStart, period_end: formatDate(periodEndDt) });
-    }
-
-    for (const { period_start, period_end } of periods) {
-      // Determine active funds for this period — use effective balance (after committed spend)
-      const activeFunds = funds.filter(f => {
-        const b = balanceMap[f.full_account_string];
-        if (!b) return f.balance_unknown;
-        if (b.is_pinned) return true; // pinned funds always active
-        if (f.balance_unknown || b.balance_unknown) return true;
-        if (!b.pop_end_date) return effectiveBalance(f.full_account_string) > 0;
-        return b.pop_end_date >= period_start && effectiveBalance(f.full_account_string) > 0;
-      });
-
-      if (activeFunds.length === 0) continue;
-
-      const periodMonths = Math.max(
-        (parseDate(period_end) - parseDate(period_start)) / (1000 * 60 * 60 * 24 * 30.4375),
-        0.5
-      );
-
-      // Separate pinned from free funds
-      const pinnedFunds = activeFunds.filter(f => {
-        const b = balanceMap[f.full_account_string];
-        return b?.is_pinned === 1 || b?.is_pinned === true;
-      });
-      const freeFunds = activeFunds.filter(f => {
-        const b = balanceMap[f.full_account_string];
-        return !(b?.is_pinned === 1 || b?.is_pinned === true);
-      });
-
-      // Build pinned allocations using pinned_pct from fund record
-      const pinnedAllocs = [];
+      // Collect pinned funds first
       let pinnedTotal = 0;
-      for (const f of pinnedFunds) {
-        const origPct = f.pinned_pct ?? 10;
-        pinnedAllocs.push({ fund: f, pct: origPct, isPinned: true });
-        pinnedTotal += origPct;
-      }
+      const freeFunds = [];
 
-      // Warn if pinned already >= 100%
-      if (pinnedTotal >= 100) {
-        for (const alloc of pinnedAllocs) {
-          const b = balanceMap[alloc.fund.full_account_string];
-          const estimated_cost = (effectiveSalary / 12) * (alloc.pct / 100) * periodMonths * BURN_MULTIPLIER;
-          if (!fundSpend[alloc.fund.full_account_string]) fundSpend[alloc.fund.full_account_string] = 0;
-          fundSpend[alloc.fund.full_account_string] += estimated_cost;
-          allRows.push({
-            user_id: userId,
-            fund_number: alloc.fund.fund_number,
-            full_account_string: alloc.fund.full_account_string,
-            period_start,
-            period_end,
-            allocation_pct: alloc.pct,
-            salary_rate: effectiveSalary,
-            estimated_cost: Math.round(estimated_cost * 100) / 100,
-            flag: pinnedTotal > 100 ? 'over_budget' : null,
-            is_pinned: 1,
+      for (const f of funds) {
+        const b = balanceMap[f.full_account_string];
+        if (b?.is_pinned === 1 || b?.is_pinned === true) {
+          const pct  = f.pinned_pct ?? 10;
+          const cost = costPer1Pct * pct;
+          pinnedTotal += pct;
+          pinnedRows.push({
+            user_id: userId, fund_number: f.fund_number,
+            full_account_string: f.full_account_string,
+            period_start, period_end: effEnd,
+            allocation_pct: pct, salary_rate: salary,
+            estimated_cost: Math.round(cost * 100) / 100,
+            flag: null, is_pinned: 1,
           });
+          const gk = `g_${f.full_account_string}`;
+          pinnedSpend[gk] = (pinnedSpend[gk] || 0) + cost;
+        } else {
+          freeFunds.push(f);
         }
-        continue;
       }
 
-      let available = 100 - pinnedTotal;
+      const available = 100 - pinnedTotal;
+      if (available <= 0 || freeFunds.length === 0) continue;
 
-      // Sort free funds by priority_rank ASC (lower = higher priority), fallback 99
-      const sortedFree = [...freeFunds].sort((a, b) => {
-        const ba = balanceMap[a.full_account_string];
-        const bb = balanceMap[b.full_account_string];
-        const pa = ba?.priority_rank ?? 99;
-        const pb = bb?.priority_rank ?? 99;
-        return pa - pb;
-      });
+      // Person-period equality: free allocations + slack = available
+      model.constraints[ppKey] = { equal: available };
 
-      // Priority-driven allocation
-      const freeAllocs = [];
-      let remainingPct = available;
+      // Slack variable — absorbs any allocation that can't fit in grants.
+      // Small negative objective weight ensures LP minimises overhead.
+      const slackKey = `slack_${userId}_${period_start}`;
+      model.variables[slackKey] = { [ppKey]: 1, obj: -0.001 };
+      varMeta[slackKey] = { _type: 'slack', _userId: userId, _periodStart: period_start };
 
-      for (const f of sortedFree) {
-        if (remainingPct <= 0) break;
+      // Grant variables
+      for (const f of freeFunds) {
         const b = balanceMap[f.full_account_string];
 
-        if (!b || b.balance_unknown || f.balance_unknown) {
-          freeAllocs.push({ fund: f, pct: 0, unknown: true });
-          continue;
-        }
+        // Skip expired grants
+        if (b?.pop_end_date && b.pop_end_date < period_start) continue;
 
-        // Use effective balance (original minus already committed to other staff)
-        const effBal = effectiveBalance(f.full_account_string);
-        if (effBal <= 0) continue;
+        // Unknown-balance grants: skip from LP; handled in fallback pass
+        if (b?.balance_unknown || f.balance_unknown) continue;
 
-        const popEnd = b.pop_end_date;
-        if (!popEnd || popEnd < period_start) continue;
+        // Skip exhausted grants
+        if (b && (b.remaining_balance || 0) <= 0) continue;
 
-        const monthsLeft = Math.max(
-          (parseDate(popEnd) - parseDate(period_start)) / (1000 * 60 * 60 * 24 * 30.4375),
-          0.5
-        );
+        const gk = `g_${f.full_account_string}`;
 
-        // pct needed to exhaust this grant's EFFECTIVE remaining balance by POP end
-        const costAt1PctPerMonth = (effectiveSalary / 12) * 0.01 * BURN_MULTIPLIER;
-        const pctNeeded = costAt1PctPerMonth > 0
-          ? Math.ceil(effBal / (costAt1PctPerMonth * monthsLeft))
-          : remainingPct;
+        // Urgency weight
+        const popEnd = b?.pop_end_date || plan_end;
+        const urgency = 1 / (monthsBetween(period_start, popEnd) + 0.5);
 
-        // Skip grants needing < 5% — don't force tiny allocations
-        if (pctNeeded < 5) continue;
+        const varKey = `x_${userId}_${f.full_account_string}_${period_start}`;
+        const ubKey  = `ub_${varKey}`;
 
-        // Cap: don't exceed available, don't put >50% on one grant
-        const maxPct = Math.min(remainingPct, 50);
-        const assignedPct = Math.min(pctNeeded, maxPct);
-
-        freeAllocs.push({ fund: f, pct: assignedPct });
-        remainingPct -= assignedPct;
+        model.variables[varKey] = {
+          [ppKey]: 1,                        // person-period sum
+          [gk]:    costPer1Pct,              // grant spend capacity
+          [ubKey]: 1,                        // per-variable 80% cap
+          obj:     urgency * costPer1Pct,    // weighted objective
+        };
+        model.constraints[ubKey] = { max: Math.min(available, 80) };
+        varMeta[varKey] = {
+          _type: 'grant', _userId: userId,
+          _account: f.full_account_string, _fundNumber: f.fund_number,
+          _periodStart: period_start, _periodEnd: effEnd,
+          _costPer1Pct: costPer1Pct, _salary: salary,
+        };
       }
+    }
+  }
 
-      // Distribute leftover to unknown-balance grants equally
-      const unknownAllocs = freeAllocs.filter(a => a.unknown);
-      if (unknownAllocs.length > 0 && remainingPct > 0) {
-        const share = Math.floor(remainingPct / unknownAllocs.length);
-        for (const a of unknownAllocs) a.pct = share;
-        remainingPct -= share * unknownAllocs.length;
-      }
+  // ── 5. Grant capacity constraints (net of pinned spend) ────────────────────
+  const grantKeys = new Set(
+    Object.values(varMeta)
+      .filter(m => m._type === 'grant')
+      .map(m => `g_${m._account}`)
+  );
+  for (const gk of grantKeys) {
+    const account = gk.slice(2); // strip 'g_'
+    const b = balanceMap[account];
+    if (!b || b.balance_unknown) continue;
+    const cap = Math.max(0, (b.remaining_balance || 0) - (pinnedSpend[gk] || 0));
+    model.constraints[gk] = { max: cap };
+  }
 
-      // Add any remaining % to highest-priority non-unknown grant
-      if (remainingPct > 0 && freeAllocs.length > 0) {
-        const first = freeAllocs.find(a => !a.unknown);
-        if (first) first.pct += remainingPct;
-        else if (unknownAllocs.length > 0) unknownAllocs[0].pct += remainingPct;
-      }
+  // ── 6. Solve ───────────────────────────────────────────────────────────────
+  let result = {};
+  try { result = Solver.Solve(model); }
+  catch (e) { console.error('LP error:', e.message); }
 
-      // Combine pinned + free, remove zero-pct
-      const allAllocs = [...pinnedAllocs, ...freeAllocs].filter(a => a.pct > 0);
+  // ── 7. Extract grant rows from LP result ───────────────────────────────────
+  const lpRows = [];
+  const grantSpend = { ...pinnedSpend };
+  const allocatedByPP = {}; // track % used per person-period for fallback pass
 
-      // Normalize to exactly 100% (rounding fix)
-      const sumPct = allAllocs.reduce((s, a) => s + a.pct, 0);
-      if (sumPct !== 100 && allAllocs.length > 0) {
-        const diff = 100 - sumPct;
-        // Add diff to highest-priority free alloc (not pinned)
-        const adj = allAllocs.find(a => !a.isPinned) || allAllocs[0];
-        adj.pct += diff;
-      }
+  // Accumulate pinned
+  for (const r of pinnedRows) {
+    const ppKey = `${r.user_id}|${r.period_start}`;
+    allocatedByPP[ppKey] = (allocatedByPP[ppKey] || 0) + r.allocation_pct;
+  }
 
-      for (const alloc of allAllocs) {
-        const b = balanceMap[alloc.fund.full_account_string];
-        const estimated_cost = (effectiveSalary / 12) * (alloc.pct / 100) * periodMonths * BURN_MULTIPLIER;
+  if (result.feasible !== false || Object.keys(result).length > 1) {
+    for (const [key, meta] of Object.entries(varMeta)) {
+      if (meta._type !== 'grant') continue;
+      const rawPct = result[key] || 0;
+      if (rawPct < 0.5) continue;
 
-        const accountKey = alloc.fund.full_account_string;
-        if (!fundSpend[accountKey]) fundSpend[accountKey] = 0;
-        fundSpend[accountKey] += estimated_cost;
+      const pct  = Math.round(rawPct * 10) / 10;
+      const cost = meta._costPer1Pct * rawPct;
+      const gk   = `g_${meta._account}`;
+      grantSpend[gk] = (grantSpend[gk] || 0) + cost;
 
-        let flag = null;
-        if (alloc.unknown || b?.balance_unknown || alloc.fund?.balance_unknown) flag = 'balance_unknown';
-        else if (alloc.pct < 5) flag = 'low_pct';
-        else if (b?.remaining_balance > 0 && fundSpend[accountKey] > b.remaining_balance) flag = 'over_budget'; // over original balance
+      const b    = balanceMap[meta._account];
+      const flag = (b?.remaining_balance > 0 && grantSpend[gk] > b.remaining_balance)
+        ? 'over_budget' : null;
 
-        allRows.push({
-          user_id: userId,
-          fund_number: alloc.fund.fund_number,
-          full_account_string: alloc.fund.full_account_string ?? null,
-          period_start,
-          period_end,
-          allocation_pct: alloc.pct,
-          salary_rate: effectiveSalary,
-          estimated_cost: Math.round(estimated_cost * 100) / 100,
-          flag,
-          is_pinned: alloc.isPinned ? 1 : 0,
+      lpRows.push({
+        user_id: meta._userId, fund_number: meta._fundNumber,
+        full_account_string: meta._account,
+        period_start: meta._periodStart, period_end: meta._periodEnd,
+        allocation_pct: pct, salary_rate: meta._salary,
+        estimated_cost: Math.round(cost * 100) / 100,
+        flag, is_pinned: 0,
+      });
+
+      const ppKey = `${meta._userId}|${meta._periodStart}`;
+      allocatedByPP[ppKey] = (allocatedByPP[ppKey] || 0) + pct;
+    }
+  }
+
+  // ── 8. Fallback: unknown-balance grants get leftover % ────────────────────
+  const fallbackRows = [];
+  for (const member of staff) {
+    const { userId, salary, funds } = member;
+    if (!salary || salary <= 0 || !funds?.length) continue;
+    const termDate = terminations[userId];
+
+    for (const period of periods) {
+      const { period_start, period_end } = period;
+      if (termDate && period_start >= termDate) continue;
+      const effEnd = (termDate && termDate < period_end) ? termDate : period_end;
+      const costPer1Pct = (salary / 12) * 0.01 * monthsBetween(period_start, effEnd) * BURN_MULTIPLIER;
+
+      const ppKey  = `${userId}|${period_start}`;
+      const used   = allocatedByPP[ppKey] || 0;
+      const leftover = Math.round((100 - used) * 10) / 10;
+      if (leftover < 1) continue;
+
+      const unknownFunds = funds.filter(f => {
+        const b = balanceMap[f.full_account_string];
+        return (b?.balance_unknown || f.balance_unknown)
+          && !(b?.is_pinned === 1 || b?.is_pinned === true)
+          && (!b?.pop_end_date || b.pop_end_date >= period_start);
+      });
+
+      if (!unknownFunds.length) continue;
+      const share = Math.round((leftover / unknownFunds.length) * 10) / 10;
+
+      for (const f of unknownFunds) {
+        fallbackRows.push({
+          user_id: userId, fund_number: f.fund_number,
+          full_account_string: f.full_account_string,
+          period_start, period_end: effEnd,
+          allocation_pct: share, salary_rate: salary,
+          estimated_cost: Math.round(costPer1Pct * share * 100) / 100,
+          flag: 'balance_unknown', is_pinned: 0,
         });
       }
     }
   }
 
-  return allRows;
+  return [...pinnedRows, ...lpRows, ...fallbackRows];
 }
 
-// HTTP handler for direct POST calls to /api/staff-plans/optimize
+// ── HTTP handler ──────────────────────────────────────────────────────────────
+
 export async function onRequest(context) {
   const { data, request } = context;
   const denied = requireAdmin(data);
   if (denied) return denied;
+  if (request.method !== 'POST') return new Response('Method Not Allowed', { status: 405 });
 
-  if (request.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405 });
-  }
-
-  const body = await request.json();
-  const { staff, balances, plan_start, plan_end, terminations } = body;
-
-  if (!staff || !balances || !plan_start || !plan_end) {
+  const { staff, balances, plan_start, plan_end, terminations } = await request.json();
+  if (!staff || !balances || !plan_start || !plan_end)
     return json({ error: 'staff, balances, plan_start, plan_end are required' }, 400);
-  }
 
   const rows = optimizeRows({ staff, balances, plan_start, plan_end, terminations });
   return json({ rows });
