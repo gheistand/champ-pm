@@ -1461,7 +1461,8 @@ function VisualizationsTab({ activeScenario, rows }) {
       <section>
         <h2 className="text-base font-semibold text-gray-900 mb-1">Runway Status</h2>
         <p className="text-xs text-gray-500 mb-4">Projected spend vs. remaining balance for each grant in this scenario.</p>
-        <RunwayCards rows={rows} balanceMap={balanceMap} colorMap={colorMap} />
+        <RunwayCards rows={rows} balanceMap={balanceMap} colorMap={colorMap}
+          planStart={activeScenario.plan_start_date} planEnd={activeScenario.plan_end_date} />
       </section>
       <section>
         <h2 className="text-base font-semibold text-gray-900 mb-1">Grant Burn-Down</h2>
@@ -1477,7 +1478,11 @@ function VisualizationsTab({ activeScenario, rows }) {
   );
 }
 
-function RunwayCards({ rows, balanceMap, colorMap }) {
+function monthsBetweenDates(a, b) {
+  return Math.max((new Date(b) - new Date(a)) / (1000 * 60 * 60 * 24 * 30.4375), 0.5);
+}
+
+function RunwayCards({ rows, balanceMap, colorMap, planStart, planEnd }) {
   const byAccount = {};
   for (const r of rows) {
     if (!r.full_account_string) continue;
@@ -1485,22 +1490,40 @@ function RunwayCards({ rows, balanceMap, colorMap }) {
     byAccount[r.full_account_string].push(r);
   }
 
+  const today = new Date().toISOString().slice(0, 10);
+  const planMonths = planStart && planEnd ? monthsBetweenDates(planStart, planEnd) : null;
+
   const cards = Object.entries(byAccount).map(([account, accountRows]) => {
     const balance = balanceMap[account];
     const projectedSpend = accountRows.reduce((s, r) => s + (r.estimated_cost || 0), 0);
     const remaining = balance?.current_balance;
     const hasBalance = remaining != null && remaining > 0;
+    const pop = balance?.pop_end_date;
 
+    // Burn-rate comparison: is projected monthly spend fast enough to zero out by PoP?
     let status;
-    if (!hasBalance) status = 'Unknown';
-    else if (projectedSpend > remaining) status = 'Over Budget';
-    else if (projectedSpend > remaining * 0.9) status = 'At Risk';
-    else status = 'On Track';
+    let coverageRatio = null;
+    if (!hasBalance) {
+      status = 'Unknown';
+    } else if (projectedSpend > remaining) {
+      status = 'Over Budget';
+    } else if (pop && planMonths) {
+      const monthsUntilPop = Math.max(monthsBetweenDates(today, pop), planMonths);
+      const requiredBurn = remaining / monthsUntilPop;        // $ needed per month
+      const projectedBurn = projectedSpend / planMonths;      // $ projected per month
+      coverageRatio = requiredBurn > 0 ? projectedBurn / requiredBurn : 1;
+      if (coverageRatio >= 0.85) status = 'On Track';
+      else if (coverageRatio >= 0.60) status = 'At Risk';
+      else status = 'Under-allocated';
+    } else {
+      // No PoP date — fall back to simple within-budget check
+      status = projectedSpend >= remaining * 0.9 ? 'At Risk' : 'On Track';
+    }
 
-    return { account, balance, projectedSpend, remaining, hasBalance, status };
+    return { account, balance, projectedSpend, remaining, hasBalance, status, coverageRatio };
   });
 
-  const ORDER = { 'Over Budget': 0, 'At Risk': 1, 'On Track': 2, 'Unknown': 3 };
+  const ORDER = { 'Over Budget': 0, 'At Risk': 1, 'Under-allocated': 2, 'On Track': 3, 'Unknown': 4 };
   cards.sort((a, b) => ORDER[a.status] - ORDER[b.status]);
 
   return (
@@ -1511,7 +1534,7 @@ function RunwayCards({ rows, balanceMap, colorMap }) {
 }
 
 function RunwayCard({ card }) {
-  const { account, balance, projectedSpend, remaining, hasBalance, status } = card;
+  const { account, balance, projectedSpend, remaining, hasBalance, status, coverageRatio } = card;
   const pop = balance?.pop_end_date;
 
   const popClass = pop ? (() => {
@@ -1521,8 +1544,8 @@ function RunwayCard({ card }) {
 
   const pct = hasBalance ? Math.min((projectedSpend / remaining) * 100, 150) : 0;
   const barColor = pct > 100 ? 'bg-red-500' : pct >= 90 ? 'bg-amber-500' : 'bg-green-500';
-  const borderColor = status === 'Over Budget' ? 'border-red-200' : status === 'At Risk' ? 'border-amber-200' : status === 'On Track' ? 'border-green-200' : 'border-gray-200';
-  const badgeClass = status === 'Over Budget' ? 'bg-red-100 text-red-700' : status === 'At Risk' ? 'bg-amber-100 text-amber-700' : status === 'On Track' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500';
+  const borderColor = status === 'Over Budget' ? 'border-red-200' : (status === 'At Risk' || status === 'Under-allocated') ? 'border-amber-200' : status === 'On Track' ? 'border-green-200' : 'border-gray-200';
+  const badgeClass = status === 'Over Budget' ? 'bg-red-100 text-red-700' : (status === 'At Risk' || status === 'Under-allocated') ? 'bg-amber-100 text-amber-700' : status === 'On Track' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500';
 
   return (
     <div className={`border ${borderColor} rounded-xl p-4 space-y-2`}>
@@ -1544,7 +1567,12 @@ function RunwayCard({ card }) {
           <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
             <div className={`h-full rounded-full ${barColor}`} style={{ width: `${Math.min(pct, 100)}%` }} />
           </div>
-          <div className="text-xs text-gray-400">{Math.round(pct)}% of balance consumed</div>
+          <div className="text-xs text-gray-400">
+            {Math.round(pct)}% of balance consumed
+            {coverageRatio != null && (
+              <span className="ml-2">· burn rate {Math.round(coverageRatio * 100)}% of required</span>
+            )}
+          </div>
         </>
       ) : (
         <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Balance Unknown</span>

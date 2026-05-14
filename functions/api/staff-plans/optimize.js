@@ -126,11 +126,11 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
           && (!b?.pop_end_date || b.pop_end_date >= period_start);
       }).length;
 
-      // Dynamic per-grant cap: 1.5× fair share, floored at 20%, capped at 75%.
-      // For 2 grants: 75%  |  3 grants: 50%  |  4 grants: 38%  |  5+: ~30%
-      // This prevents the LP from collapsing everyone into a rigid 80/20 pattern.
+      // Dynamic per-grant cap: 1.2× fair share, floored at 20%, hard ceiling 60%.
+      // For 2 grants: 60%  |  3 grants: 40%  |  4 grants: 30%  |  5+: 24%
+      // The 60% ceiling prevents near-80/20 collapse when someone has only 2 eligible grants.
       const fairShare = available / Math.max(eligibleCount, 1);
-      const perGrantCap = Math.min(75, Math.max(20, Math.ceil(fairShare * 1.5)));
+      const perGrantCap = Math.min(60, Math.max(20, Math.ceil(fairShare * 1.2)));
 
       // Grant variables
       for (const f of freeFunds) {
