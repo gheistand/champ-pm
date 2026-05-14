@@ -4,7 +4,7 @@ function GuideHeader({ title, subtitle }) {
       <div className="text-xs text-gray-400 mb-1">User Guide → {title}</div>
       <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
       {subtitle && <p className="text-gray-500 text-sm mt-1">{subtitle}</p>}
-      <p className="text-xs text-gray-400 mt-2">Last reviewed: April 2026</p>
+      <p className="text-xs text-gray-400 mt-2">Last reviewed: May 2026</p>
     </div>
   );
 }
@@ -77,7 +77,8 @@ export default function StaffPlansGuide() {
         <p>
           Staff Plans is a scenario planner for salary appointments. You build proposed appointment schedules
           (what percentage of each staff member's time to charge to each grant for a given period), project
-          the resulting monthly costs, and see how long each grant's balance will last under that scenario.
+          the resulting monthly costs, and see whether each grant's balance is on track to spend down to
+          zero by its Period of Performance end date.
         </p>
         <p>
           Staff Plans operates entirely in sandbox mode. Nothing you do here changes actual salary records,
@@ -90,7 +91,8 @@ export default function StaffPlansGuide() {
         <p>
           Use Staff Plans at the start of each semester or budget period when preparing appointment spreadsheets
           for PRIDE. Also use it before requesting a no-cost extension (to model how much runway the extension
-          buys) or when a key grant ends and you need to plan where to move staff appointments.
+          buys), when a key grant is expiring and you need to concentrate labor on it, or when you want to
+          check whether current staffing levels are sufficient to spend down the portfolio by each PoP end.
         </p>
       </GuideSection>
 
@@ -102,24 +104,80 @@ export default function StaffPlansGuide() {
         </div>
       </GuideSection>
 
-      <GuideSection title="Burn Rate Formula">
+      <GuideSection title="The LP Optimizer">
         <p>
-          Staff Plans uses the following formula to calculate monthly cost for each appointment line:
+          When you create a new scenario, CHAMP-PM runs a <strong>Linear Programming optimizer</strong> to
+          generate an initial set of allocation percentages. This is not a simple heuristic — it solves
+          a constrained optimization problem across all staff and all grants simultaneously to find the
+          globally best allocation given the current balances and PoP dates.
+        </p>
+        <p><strong>What the optimizer maximizes:</strong></p>
+        <Tips
+          items={[
+            "Spend-down toward zero for each grant — grants that expire sooner receive higher weight in the objective.",
+            "Distribution across eligible grants — no single grant is given more than its proportional share (with a modest urgency premium).",
+          ]}
+        />
+        <p><strong>Hard constraints the optimizer always respects:</strong></p>
+        <Tips
+          items={[
+            "Each person must sum to exactly 100% in every planning period.",
+            "No grant can be over-spent — total projected cost across all staff cannot exceed the grant's remaining balance.",
+            "Pinned allocations (marked in the Grant Balances tab) are treated as fixed and not adjusted.",
+            "Staff with a termination date receive no allocation in periods after that date.",
+          ]}
+        />
+        <p><strong>Slack / overhead:</strong></p>
+        <p>
+          If a person's total eligible grant capacity is less than 100% of their salary (e.g., all their
+          grants are fully consumed by the rest of the team), the optimizer assigns the remainder to an
+          overhead/GRF bucket rather than over-spending any grant. This ensures the math always balances to
+          100% even when grants can't absorb the full team.
+        </p>
+        <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
+          <strong>The optimizer output is a starting point, not a final answer.</strong> Review the generated
+          scenario, adjust percentages as needed for practical or policy reasons, and confirm before exporting.
+        </div>
+      </GuideSection>
+
+      <GuideSection title="How the Optimizer Handles Urgency">
+        <p>
+          Each grant's urgency weight is calculated as:
         </p>
         <p className="font-mono bg-gray-50 border border-gray-200 rounded p-3 text-xs">
-          Monthly Cost = (Annual Salary ÷ 12) × Allocation% × (1 + Fringe Rate) × (1 + F&A Rate)
+          urgency = 1 / √(months_to_PoP_end + 1)
+        </p>
+        <p>
+          A grant expiring in 3 months has roughly twice the urgency weight of a grant expiring in 12 months
+          (not four times, as a linear formula would give). This <em>dampened</em> weighting means urgent
+          grants attract more allocation without completely starving grants with longer PoPs.
+        </p>
+        <p>
+          Per-grant allocation is also capped at approximately 1.2× the fair share per person (based on how
+          many eligible grants they have), with a hard ceiling of 60%. So a person eligible for 4 grants
+          can have at most ~30% on any single grant in one period, producing natural-looking distributions
+          rather than extreme concentration.
+        </p>
+      </GuideSection>
+
+      <GuideSection title="Burn Rate Formula">
+        <p>
+          Staff Plans uses the following formula to calculate cost for each appointment line per period:
+        </p>
+        <p className="font-mono bg-gray-50 border border-gray-200 rounded p-3 text-xs">
+          Period Cost = (Annual Salary ÷ 12) × Months × Allocation% × (1 + Fringe Rate) × (1 + F&A Rate)
         </p>
         <p>
           For a typical Academic Professional staff member on a FEMA grant:
         </p>
         <p className="font-mono bg-gray-50 border border-gray-200 rounded p-3 text-xs">
-          Monthly Cost = (Salary ÷ 12) × Allocation% × 1.451 × 1.317
+          Period Cost = (Salary ÷ 12) × Months × Allocation% × 1.451 × 1.317
         </p>
         <Tips
           items={[
-            "The fringe multiplier (1.451) reflects the FY2026 AP rate of 45.1%. Staff Plans uses the fringe rate effective on the scenario start date.",
-            "The F&A multiplier (1.317) reflects a 31.7% rate. Staff Plans uses the F&A rate from the selected grant's rate history.",
-            "Changing a staff member's salary in their record will automatically update the projected cost in any scenario that references them.",
+            "The fringe multiplier (1.451) reflects the FY2026 AP rate of 45.1%.",
+            "The F&A multiplier (1.317) reflects ISWS's 31.7% MTDC rate — applied to all FEMA/DHS grants, no exceptions.",
+            "The optimizer splits the plan into sub-periods at each grant's PoP end date so costs are correctly attributed only while the grant is active.",
           ]}
         />
       </GuideSection>
@@ -127,59 +185,73 @@ export default function StaffPlansGuide() {
       <GuideSection title="Creating a Scenario">
         <Steps
           items={[
-            "Navigate to Staff Plans in the sidebar.",
+            "Navigate to Staff Plans → Plan Builder tab.",
             "Click \"New Scenario\".",
-            "Enter a scenario name (e.g., 'Spring 2026 Appointments', 'FY2026 Q3-Q4 Plan').",
-            "Set the scenario start and end dates — this defines the appointment period you are planning.",
-            "Click Create. The scenario opens in edit mode with an empty appointments grid.",
-            "Add staff members and grants to the grid (see Importing Appointments below for bulk setup).",
-            "Enter appointment percentages for each staff member-grant combination.",
-            "Review the Runway Cards on the right side to see projected months of runway per grant.",
-            "Adjust percentages as needed until the scenario looks sustainable.",
-            "When satisfied, click Save Scenario.",
+            "Enter a scenario name (e.g., 'FY2026 Q3-Q4 Plan') and set start and end dates.",
+            "Click Create. The optimizer runs automatically and populates an initial set of allocation rows.",
+            "Review the rows in the Plan Builder table. Each row shows staff member, grant, period, allocation %, and estimated cost.",
+            "Adjust any percentages that don't match operational reality (e.g., a person is only available for specific grants).",
+            "Check the Visualizations tab to see Runway Status, Burn-Down Chart, and Allocation Timeline.",
+            "When satisfied, export to Excel for PRIDE entry.",
           ]}
         />
       </GuideSection>
 
-      <GuideSection title="Importing Appointments">
+      <GuideSection title="Visualizations Tab — Runway Status Cards">
         <p>
-          If you have the current appointment spreadsheet from PRIDE, you can import it as a starting point
-          rather than entering every appointment manually:
+          The Runway Status cards show how each grant is projected to perform against its PoP end date.
+          Status is based on <strong>burn rate</strong> — whether the projected monthly spend is fast enough
+          to zero out the grant by its PoP end — not just whether the scenario is within budget.
         </p>
-        <Steps
+        <ColDef
+          cols={[
+            ["On Track", "Projected monthly burn ≥ 85% of the rate required to reach zero by PoP end. The grant will be substantially spent down."],
+            ["At Risk", "Projected monthly burn is 60–85% of the required rate. The grant will likely underspend unless allocations are increased."],
+            ["Under-allocated", "Projected monthly burn is less than 60% of the required rate. Significant underspend is likely — consider increasing team allocations to this grant, extending the PoP, or both."],
+            ["Over Budget", "Projected total spend exceeds the grant's remaining balance. Reduce allocations."],
+            ["Unknown", "No balance has been entered for this grant. Enter a balance in the Grant Balances tab before interpreting status."],
+          ]}
+        />
+        <p className="mt-2">
+          Each card also shows a <strong>burn rate X% of required</strong> annotation so you can see
+          exactly how far off the pace you are. For example, "burn rate 52% of required" means the scenario
+          is projecting spending at about half the pace needed to zero out the grant by its PoP.
+        </p>
+        <Tips
           items={[
-            "Export the current appointment summary from PRIDE as a CSV or Excel file.",
-            "In the scenario editor, click \"Import Appointments\".",
-            "Upload the file. CHAMP-PM attempts to match staff names and grant numbers to existing records.",
-            "Review the mapping results. Any unmatched entries appear in an orange 'Unmapped' list for manual resolution.",
-            "For each unmapped entry, use the dropdown to link it to the correct CHAMP-PM staff member or grant, or mark it as 'Skip' if it should not be imported.",
-            "Click \"Confirm Import\". The appointments populate the scenario grid.",
+            "\"Under-allocated\" on a large grant (EMC-2021, EMC-2022) often means the team's total eligible labor capacity is insufficient to spend the grant down alone — consider whether a no-cost extension or additional headcount is warranted.",
+            "\"On Track\" does not guarantee exact zero-out — it means the burn rate is close enough that normal variation should result in full spend.",
           ]}
         />
       </GuideSection>
 
-      <GuideSection title="Appointment Constraints">
-        <ColDef
-          cols={[
-            ["Minimum appointment", "5% per grant per staff member. Appointments below 5% cannot be entered — set to 0% (no appointment) instead."],
-            ["Maximum per person", "Appointment percentages for a single staff member across all grants cannot exceed 100% for any given month. The system flags over-100% allocations in red."],
-            ["No appointment past grant end date", "If a grant expires on October 31, you cannot enter an appointment on that grant for November. The cell will be locked."],
-            ["Active grants only", "Staff Plans only shows grants with status = 'active' or 'no-cost-extension' in the grant selector."],
-          ]}
-        />
-      </GuideSection>
-
-      <GuideSection title="Reading the Runway Cards per Grant">
+      <GuideSection title="Visualizations Tab — Burn-Down Chart">
         <p>
-          On the right side of the scenario editor, each grant shows a Runway Card displaying:
+          The Burn-Down Chart shows projected remaining balance over time for each grant in the scenario.
+          Each line starts at the current remaining balance and slopes down as the optimizer's estimated
+          costs accumulate. Dotted vertical lines mark each grant's PoP end date.
+        </p>
+        <Tips
+          items={[
+            "A line that reaches zero before its PoP line means the grant is projected to be fully spent — ideally this is what you want.",
+            "A line that is still well above zero when it hits the PoP line means the grant will have unspent funds at expiration.",
+            "Adjust allocation percentages in Plan Builder and regenerate the scenario to see how changes affect the burn-down curves.",
+          ]}
+        />
+      </GuideSection>
+
+      <GuideSection title="Grant Balances Tab">
+        <p>
+          The Grant Balances tab manages the remaining balance and PoP end date for each grant used in
+          Staff Plan scenarios. Balances are synced from the Runway page (which reads from PRIDE/Banner)
+          but can be manually overridden if you know of pending expenditures not yet reflected in PRIDE.
         </p>
         <ColDef
           cols={[
-            ["Current Balance", "The most recently entered PRIDE balance from the Runway page. Highlighted in amber if the balance is more than 30 days old."],
-            ["Projected Monthly Cost", "The sum of all appointment costs charged to this grant in the scenario, per month."],
-            ["Projected Runway", "Current Balance ÷ Projected Monthly Cost. How many months the balance will last at this appointment level."],
-            ["PoP Remaining", "Months from the scenario start date to the grant's end_date."],
-            ["Status indicator", "Green: runway ≥ PoP remaining (money will last). Yellow: runway is 1–2 months shorter than PoP. Red: runway is significantly shorter than PoP — appointments likely need to be reduced or balance needs to be supplemented."],
+            ["Sync All from Runway", "Pulls the latest balance from every active Runway grant and updates the Staff Plan balance table. Use this at the start of each planning cycle."],
+            ["Pinned", "A pinned grant keeps its allocation fixed at the pinned percentage across all staff. The optimizer will not adjust pinned grants. Use for grants with contractual minimums."],
+            ["Priority Rank", "Used by the optimizer to break ties when two grants have similar urgency. Lower rank = higher priority. 99 = default (no preference)."],
+            ["Manual Override", "If you set a manual balance, it will be used instead of the Runway sync balance until you clear the override. Useful for modeling pending drawdowns."],
           ]}
         />
       </GuideSection>
@@ -187,17 +259,17 @@ export default function StaffPlansGuide() {
       <GuideSection title="Exporting for PRIDE">
         <Steps
           items={[
-            "Open the finalized scenario.",
+            "Open the finalized scenario in Plan Builder.",
             "Click \"Export for PRIDE\".",
-            "The system generates an Excel file formatted for PRIDE appointment entry, with one row per staff member-grant combination showing name, grant CFOP, appointment percentage, and period.",
-            "Download the file.",
-            "Use this file as the source document when entering appointments in PRIDE. The file does not auto-upload to PRIDE — manual entry is required.",
+            "The system generates an Excel file with one row per staff member–grant combination: name, grant CFOP, allocation percentage, and period.",
+            "Download and use this file as the source document for PRIDE appointment entry.",
+            "CHAMP-PM does not auto-upload to PRIDE — manual entry is required.",
           ]}
         />
         <Tips
           items={[
-            "Compare the exported file against the most recent PRIDE appointment printout before entry to spot any changes.",
-            "Archive the exported file with a date stamp for each budget period as documentation of your appointment planning process.",
+            "Compare the exported file against the most recent PRIDE appointment printout before entry to catch any changes.",
+            "Archive the exported file with a date stamp for each budget period as documentation.",
           ]}
         />
       </GuideSection>
@@ -206,9 +278,10 @@ export default function StaffPlansGuide() {
         <Tips
           items={[
             "You can have multiple active scenarios simultaneously — for example, a base case and an alternative in case a grant renewal is delayed.",
-            "Deleting a scenario is permanent. If you want to archive a finalized scenario, mark it 'Archived' rather than deleting it.",
-            "Staff Plans uses the salary record effective on the scenario start date. If a merit increase takes effect mid-scenario, the cost projection will use the pre-increase salary for the whole period. Adjust manually if needed.",
-            "If a staff member's fringe rate changes during the scenario period (e.g., at the July 1 fiscal year boundary), Staff Plans does not automatically split the cost. Build scenarios that align with fiscal year boundaries when possible.",
+            "The optimizer runs once when a scenario is created. If you update grant balances or staff eligibility afterward, delete the scenario and create a new one to get a fresh optimized result.",
+            "Staff Plans uses the most recent salary record for each person. If a merit increase takes effect mid-scenario, the cost projection uses the pre-increase salary for the whole period.",
+            "If staff are showing up with no grant allocations (all slack), check that they have entries in the Appointments tab with active grants.",
+            "The Under-allocated status on large multi-year grants (like EMC-2021 or EMC-2022) is often a portfolio reality, not a mistake — the total team labor capacity may simply be less than the total grant balances. Use this as input for NCE requests or hiring decisions.",
           ]}
         />
       </GuideSection>

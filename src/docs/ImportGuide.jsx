@@ -4,7 +4,7 @@ function GuideHeader({ title, subtitle }) {
       <div className="text-xs text-gray-400 mb-1">User Guide → {title}</div>
       <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
       {subtitle && <p className="text-gray-500 text-sm mt-1">{subtitle}</p>}
-      <p className="text-xs text-gray-400 mt-2">Last reviewed: April 2026</p>
+      <p className="text-xs text-gray-400 mt-2">Last reviewed: May 2026</p>
     </div>
   );
 }
@@ -70,50 +70,84 @@ export default function ImportGuide() {
     <div className="max-w-3xl mx-auto px-4 py-8">
       <GuideHeader
         title="Import Timesheets"
-        subtitle="Bulk-load timesheet hours from a CSV file with staff and project name mapping."
+        subtitle="Bulk-load timesheet hours from the Detailed Activity Report or simple summary CSV."
       />
 
       <GuideSection title="What This Page Does">
         <p>
-          The Import page lets you bulk-load timesheet entries from a CSV file — useful when staff have
-          been tracking hours outside of CHAMP-PM (e.g., in a spreadsheet) and you need to bring that
-          historical data into the system. Staff and project names in the CSV are mapped to CHAMP-PM IDs
-          before import completes.
+          The Import page lets you bulk-load timesheet entries from a CSV file exported from the ISWS
+          timesheet system (AURA). CHAMP-PM automatically detects which export format you uploaded and
+          parses it accordingly. Staff and project names in the CSV are mapped to CHAMP-PM IDs before
+          import completes.
         </p>
         <p>
-          Imported entries start in 'draft' status and still require Admin approval before they count toward
-          budget calculations.
+          Imported entries start in <em>draft</em> status and require Admin approval before they count
+          toward budget calculations.
         </p>
       </GuideSection>
 
       <GuideSection title="When to Use It">
         <p>
-          Use the import tool when onboarding legacy timesheet data from a prior tracking system, when
-          a staff member has been tracking hours offline for several weeks and needs to catch up, or when
-          another system (e.g., a project management tool) exports hours in CSV format. For ongoing week-by-week
-          entry, staff should use the Timesheets page directly rather than importing.
+          Use the import tool for regular weekly or bi-weekly timesheet syncing from AURA, when onboarding
+          a backlog of historical hours, or anytime you need to bulk-load hours from a CSV export.
+          For ad-hoc single-entry corrections, use the Timesheets page directly.
         </p>
       </GuideSection>
 
-      <GuideSection title="CSV Format Requirements">
+      <GuideSection title="Supported CSV Formats">
         <p>
-          Your CSV file must have exactly these five column headers in the first row (case-sensitive):
+          CHAMP-PM supports two CSV formats and auto-detects which one you uploaded based on the file header.
+          You do not need to select the format manually.
+        </p>
+
+        <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800">
+          <strong>Recommended format: Detailed Activity Report</strong> — export <code>rptDetailedActivity</code>
+          from AURA. This is the preferred format for regular imports because it includes per-day hours and
+          full project/activity detail.
+        </div>
+
+        <ColDef
+          cols={[
+            ["Detailed Activity Report\n(rptDetailedActivity)", "Export from AURA using the rptDetailedActivity report. The file starts with a header line containing \"Detailed Activity Report\". Includes employee name, project, activity/task, date, billable hours, and non-billable hours. CHAMP-PM sums billable + non-billable for the total hours per entry."],
+            ["Simple Summary CSV", "A flat CSV with columns: date, staff_name, project_name, task_name, hours. Can be used for manual CSV construction or exports from other tools. Header row is required and column names must match exactly (case-sensitive)."],
+          ]}
+        />
+      </GuideSection>
+
+      <GuideSection title="Exporting the Detailed Activity Report from AURA">
+        <Steps
+          items={[
+            "Log into AURA and navigate to Reports.",
+            "Select rptDetailedActivity (Detailed Activity Report).",
+            "Set the date range to cover the period you want to import (weekly or bi-weekly is typical).",
+            "Export as CSV.",
+            "Upload the exported file directly to CHAMP-PM Import — no reformatting needed.",
+          ]}
+        />
+        <Tips
+          items={[
+            "The Detailed Activity Report includes all staff in one file. You do not need to export per-person.",
+            "CHAMP-PM skips rows where hours = 0 and description/total summary rows automatically.",
+            "If a staff member has left ISWS and their AURA account is inactive, their rows are skipped during import (they will appear in the skipped/inactive list after upload).",
+          ]}
+        />
+      </GuideSection>
+
+      <GuideSection title="Simple CSV Format Reference">
+        <p>
+          If you are not using the Detailed Activity Report, your CSV must have exactly these five column
+          headers in the first row (case-sensitive):
         </p>
         <ColDef
           cols={[
-            ["date", "The date the hours were worked. Format: YYYY-MM-DD (e.g., 2026-04-07). The import system determines the Monday–Sunday week from this date automatically."],
-            ["staff_name", "The name of the staff member. Must be an exact match to a name in CHAMP-PM, or it will be flagged as unmapped (see Mapping section)."],
-            ["project_name", "The name of the project the hours are charged to. Must match a CHAMP-PM project name or will be flagged as unmapped."],
-            ["task_name", "The name of the task within the project. Must match a CHAMP-PM task name under the specified project, or will be flagged as unmapped."],
-            ["hours", "Number of hours worked. Decimal fractions are allowed (e.g., 2.5). Must be greater than 0."],
+            ["date", "Date worked. Format: YYYY-MM-DD (e.g., 2026-04-07). The week (Mon–Sun) is determined automatically."],
+            ["staff_name", "Staff member's name. Must match a name in CHAMP-PM or will be flagged as unmapped."],
+            ["project_name", "Project the hours are charged to. Must match a CHAMP-PM project name."],
+            ["task_name", "Task within the project. Must match a CHAMP-PM task name under that project."],
+            ["hours", "Hours worked. Decimal fractions allowed (e.g., 2.5). Must be > 0."],
           ]}
         />
-        <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
-          <strong>Note:</strong> The CSV must be UTF-8 encoded. Extra columns are ignored but the five required
-          columns must be present. The header row is required — do not omit it.
-        </div>
-        <p className="mt-2">Example CSV rows:</p>
-        <pre className="bg-gray-50 border border-gray-200 rounded p-3 text-xs overflow-x-auto">
+        <pre className="bg-gray-50 border border-gray-200 rounded p-3 text-xs overflow-x-auto mt-2">
 {`date,staff_name,project_name,task_name,hours
 2026-04-07,Jane Smith,Coastal Flood Mapping,Data Collection,6.0
 2026-04-07,Jane Smith,Coastal Flood Mapping,QA Review,2.0
@@ -123,56 +157,45 @@ export default function ImportGuide() {
 
       <GuideSection title="The Mapping Workflow">
         <p>
-          After you upload the CSV, CHAMP-PM attempts to match each unique staff_name, project_name, and
-          task_name to existing records. Names that match exactly are mapped automatically. Names that
-          do not match exactly are flagged as unmapped and require manual resolution before the import
-          can complete.
+          After upload, CHAMP-PM matches each unique employee name, project name, and activity/task name
+          to existing CHAMP-PM records. Exact matches are mapped automatically. Non-matches are flagged
+          for manual resolution.
         </p>
         <Steps
           items={[
             "Navigate to Import Timesheets in the sidebar.",
-            "Click \"Choose File\" and select your CSV.",
-            "Click \"Upload\". The system parses the file and shows a summary: total rows, auto-mapped rows, and unmapped rows.",
-            "If there are unmapped entries, click the \"Unmapped\" tab to see them.",
-            "For each unmapped staff name, use the dropdown to select the correct CHAMP-PM staff member from the list. Or select 'Skip' to exclude all rows for that name from this import.",
-            "For each unmapped project or task name, use the dropdown to select the correct CHAMP-PM project or task. Or select 'Skip'.",
-            "Once all unmapped entries are resolved (mapped or skipped), the \"Confirm Import\" button becomes active.",
-            "Click \"Confirm Import\" to create the timesheet entries. A confirmation message shows how many entries were created.",
+            "Click \"Choose File\" and select your CSV (Detailed Activity Report or simple format).",
+            "Click \"Upload\". CHAMP-PM auto-detects the format, parses the file, and shows a summary: total rows, auto-mapped rows, and unmapped rows.",
+            "If there are unmapped entries, open the \"Unmapped\" tab.",
+            "For each unmapped staff name, select the correct CHAMP-PM staff member from the dropdown, or select 'Skip' to exclude that person from this import.",
+            "For each unmapped project or task name, select the correct CHAMP-PM record or 'Skip'.",
+            "Once all unmapped entries are resolved, click \"Confirm Import\". A confirmation shows how many entries were created.",
           ]}
         />
       </GuideSection>
 
       <GuideSection title="Handling Unmapped Entries">
-        <p>
-          An entry is unmapped when its staff_name, project_name, or task_name does not exactly match a
-          record in CHAMP-PM. Common reasons:
-        </p>
+        <p>Common reasons a name appears as unmapped:</p>
         <Tips
           items={[
-            "Name variations: 'J. Smith' vs 'Jane Smith', or 'Coastal Mapping' vs 'Coastal Flood Mapping'.",
-            "Typos in the source CSV.",
-            "The project or task exists in CHAMP-PM but under a slightly different name.",
-            "The staff member, project, or task genuinely does not exist in CHAMP-PM yet — you must create it before you can map to it.",
+            "Name format differences: AURA exports names as \"Last, First\" (e.g., \"Smith, Jane\") while CHAMP-PM may store them differently. Once you map this once, it's saved for future imports.",
+            "New staff members not yet added to CHAMP-PM — add them in the Staff page first, then re-upload.",
+            "Project or activity names that differ between AURA and CHAMP-PM — use the dropdown to link them.",
+            "Inactive staff — rows for staff marked inactive in CHAMP-PM are automatically skipped and listed separately; no action needed.",
           ]}
         />
-        <p>
-          For entries you skip, no timesheet records are created for those rows. You can re-run the import
-          with the same or corrected CSV after fixing the underlying data (either in the CSV or in CHAMP-PM)
-          — the import tool does not create duplicates if you re-upload a file, as long as the dates and
-          staff-task combinations are the same.
-        </p>
       </GuideSection>
 
       <GuideSection title="Saved Maps">
         <p>
-          Once you complete a mapping (linking a CSV name to a CHAMP-PM ID), that mapping is saved for future
-          imports. The next time you upload a CSV that contains "J. Smith", the system will automatically
-          map it to the staff record you previously linked without requiring manual resolution.
+          Once you map a name (e.g., "Smith, Jane" → Jane Smith), that mapping is saved permanently.
+          Future imports that contain the same name are mapped automatically without prompting.
         </p>
         <Tips
           items={[
-            "Saved maps persist across import sessions. If a name mapping becomes incorrect (e.g., a staff member leaves and a new person with a similar name joins), you can edit saved maps on the Maps Management tab.",
-            "Saved maps apply to staff names, project names, and task names independently.",
+            "Saved maps persist across import sessions and apply to all future uploads.",
+            "If a mapping becomes incorrect (e.g., a name collision after a new hire), edit it on the Maps Management tab.",
+            "Staff, project, and task name maps are stored independently.",
           ]}
         />
       </GuideSection>
@@ -180,19 +203,18 @@ export default function ImportGuide() {
       <GuideSection title="Re-Running an Import After Fixes">
         <Steps
           items={[
-            "If an import had errors or unmapped entries you skipped, fix the source CSV (correct the names, add missing rows, etc.) and re-upload.",
-            "Or, fix the CHAMP-PM records first (create missing projects, tasks, or staff members), then re-upload the original CSV.",
-            "The import tool will not create duplicate entries for rows that were already successfully imported. It skips exact duplicates (same staff, same date, same task, same hours).",
-            "Review the import summary after re-running to confirm all rows were processed correctly.",
+            "Fix the source CSV or the underlying CHAMP-PM records (add missing staff, projects, or tasks).",
+            "Re-upload the same file. CHAMP-PM skips exact duplicates (same staff, same date, same task, same hours) so re-importing is safe.",
+            "Review the import summary to confirm all rows processed correctly.",
           ]}
         />
       </GuideSection>
 
-      <GuideSection title="Import vs. Manual Entry — When to Use Each">
+      <GuideSection title="Import vs. Manual Entry">
         <ColDef
           cols={[
-            ["Use Import when...", "You have a backlog of weeks (5+) to enter, you are migrating from a legacy system, or you have a batch of hours from a tool that exports CSV."],
-            ["Use Manual Entry when...", "You are entering hours for the current or prior week, you have only a few entries to add, or you are correcting a specific existing entry."],
+            ["Use Import when...", "You are doing your regular AURA sync (weekly or bi-weekly), you have a backlog of weeks to catch up, or you are migrating historical data."],
+            ["Use Manual Entry when...", "You are correcting a single existing entry, entering hours for one person for the current week, or the change is too small to warrant a CSV export."],
           ]}
         />
       </GuideSection>
@@ -200,10 +222,11 @@ export default function ImportGuide() {
       <GuideSection title="Tips & Common Questions">
         <Tips
           items={[
-            "The import creates entries in 'draft' status. An Admin must still approve them before they count toward budget. After importing a large batch, go to the Timesheets page and batch-approve the entries.",
-            "There is no row limit on the CSV file, but very large files (10,000+ rows) may take 30–60 seconds to process.",
-            "If your CSV has a notes column in addition to the required five, it will be ignored. Add notes manually to individual entries after import if needed.",
-            "Always keep the original source CSV as documentation in case of audit questions about how the entries were created.",
+            "Imported entries start in draft status. Go to the Timesheets page and batch-approve after a large import.",
+            "Inactive staff rows (people who have left ISWS) are automatically skipped — you'll see them listed in the import summary as skipped/inactive, not as errors.",
+            "There is no row limit, but very large files (10,000+ rows) may take 30–60 seconds to process.",
+            "Always keep the original AURA export as documentation in case of audit questions.",
+            "The import does not modify or delete existing timesheet entries — it only adds new ones.",
           ]}
         />
       </GuideSection>
