@@ -118,6 +118,20 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
       model.variables[slackKey] = { [ppKey]: 1, obj: -0.001 };
       varMeta[slackKey] = { _type: 'slack', _userId: userId, _periodStart: period_start };
 
+      // Count eligible free grants for this person+period (for cap calculation)
+      const eligibleCount = freeFunds.filter(f => {
+        const b = balanceMap[f.full_account_string];
+        return !b?.balance_unknown && !f.balance_unknown
+          && (b?.remaining_balance || 0) > 0
+          && (!b?.pop_end_date || b.pop_end_date >= period_start);
+      }).length;
+
+      // Dynamic per-grant cap: 1.5× fair share, floored at 20%, capped at 75%.
+      // For 2 grants: 75%  |  3 grants: 50%  |  4 grants: 38%  |  5+: ~30%
+      // This prevents the LP from collapsing everyone into a rigid 80/20 pattern.
+      const fairShare = available / Math.max(eligibleCount, 1);
+      const perGrantCap = Math.min(75, Math.max(20, Math.ceil(fairShare * 1.5)));
+
       // Grant variables
       for (const f of freeFunds) {
         const b = balanceMap[f.full_account_string];
@@ -133,9 +147,10 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
 
         const gk = `g_${f.full_account_string}`;
 
-        // Urgency weight
+        // Urgency weight: sqrt-dampened so concentration isn't too aggressive.
+        // A grant expiring in 3 months vs 12 months gets 2× weight (not 4×).
         const popEnd = b?.pop_end_date || plan_end;
-        const urgency = 1 / (monthsBetween(period_start, popEnd) + 0.5);
+        const urgency = 1 / Math.sqrt(monthsBetween(period_start, popEnd) + 1);
 
         const varKey = `x_${userId}_${f.full_account_string}_${period_start}`;
         const ubKey  = `ub_${varKey}`;
@@ -143,10 +158,10 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
         model.variables[varKey] = {
           [ppKey]: 1,                        // person-period sum
           [gk]:    costPer1Pct,              // grant spend capacity
-          [ubKey]: 1,                        // per-variable 80% cap
-          obj:     urgency * costPer1Pct,    // weighted objective
+          [ubKey]: 1,                        // per-variable dynamic cap
+          obj:     urgency * costPer1Pct,    // sqrt-dampened urgency objective
         };
-        model.constraints[ubKey] = { max: Math.min(available, 80) };
+        model.constraints[ubKey] = { max: Math.min(available, perGrantCap) };
         varMeta[varKey] = {
           _type: 'grant', _userId: userId,
           _account: f.full_account_string, _fundNumber: f.fund_number,
