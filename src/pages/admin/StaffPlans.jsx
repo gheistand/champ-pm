@@ -835,6 +835,11 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
     plan_end_date: addMonths(new Date(), 24).toISOString().slice(0, 10),
   });
   const [creating, setCreating] = useState(false);
+  // AI Goals panel state
+  const [aiPanelOpen, setAiPanelOpen] = useState(false);
+  const [aiGoalsText, setAiGoalsText] = useState('');
+  const [aiRunning, setAiRunning] = useState(false);
+  const [aiExplanation, setAiExplanation] = useState(null);
 
   useEffect(() => { loadScenarios(); }, []);
 
@@ -882,6 +887,7 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
   async function recalculate() {
     if (!activeScenario) return;
     setRecalculating(true);
+    setAiExplanation(null);
     try {
       const data = await api.post(`/api/staff-plans/scenarios/${activeScenario.id}/recalculate`, {
         terminations: TERMINATIONS,
@@ -892,6 +898,26 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
       addToast('Recalculate failed', 'error');
     } finally {
       setRecalculating(false);
+    }
+  }
+
+  async function runAiOptimize() {
+    if (!activeScenario || !aiGoalsText.trim()) return;
+    setAiRunning(true);
+    setAiExplanation(null);
+    try {
+      const data = await api.post('/api/staff-plans/ai-goals', {
+        scenario_id: activeScenario.id,
+        goals_text: aiGoalsText,
+        terminations: TERMINATIONS,
+      });
+      setRows(data.rows || []);
+      setAiExplanation(data.explanation || null);
+      addToast(`AI optimization complete: ${data.row_count} rows`, 'success');
+    } catch (err) {
+      addToast('AI optimization failed: ' + String(err), 'error');
+    } finally {
+      setAiRunning(false);
     }
   }
 
@@ -1059,6 +1085,17 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
             <button onClick={recalculate} disabled={recalculating} className="btn-secondary text-xs">
               {recalculating ? 'Recalculating…' : 'Recalculate'}
             </button>
+            <button
+              onClick={() => { setAiPanelOpen(o => !o); setAiExplanation(null); }}
+              className={`text-xs px-3 py-1.5 rounded border transition-colors ${
+                aiPanelOpen
+                  ? 'bg-violet-600 text-white border-violet-600'
+                  : 'bg-white text-violet-700 border-violet-300 hover:border-violet-500'
+              }`}
+              title="Set natural-language goals for the optimizer"
+            >
+              ✨ AI Goals
+            </button>
             <button onClick={exportScenario} className="btn-secondary text-xs">Export JSON</button>
             <button onClick={exportExcel} className="btn-secondary text-xs">Download Excel</button>
             <div className="ml-auto flex gap-1">
@@ -1070,6 +1107,68 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
       </div>
 
       {loading && <div className="text-gray-400 text-sm py-8 text-center">Loading scenario…</div>}
+
+      {/* AI Goals Panel */}
+      {activeScenario && aiPanelOpen && (
+        <div className="mb-4 border border-violet-200 rounded-xl bg-violet-50 p-4">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl mt-0.5" aria-hidden>✨</span>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-violet-900 mb-1">AI-Assisted Optimization Goals</p>
+              <p className="text-xs text-violet-700 mb-3">
+                Describe your allocation priorities in plain English. The AI will translate them into optimizer constraints and re-run the plan.
+                Pinned rows and manual overrides are always preserved.
+              </p>
+              <textarea
+                value={aiGoalsText}
+                onChange={e => setAiGoalsText(e.target.value)}
+                placeholder={'Examples:\n• “Prioritize burning down the FY23 grants before their POP expires”\n• “Don’t put Nazmul on FY22 grants”\n• “Keep Zaloudek at least 30% on FY24 FEMA”\n• “Spread allocations more evenly across all active grants”'}
+                rows={5}
+                className="w-full border border-violet-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-white resize-y"
+              />
+              <div className="flex items-center gap-3 mt-2">
+                <button
+                  onClick={runAiOptimize}
+                  disabled={aiRunning || !aiGoalsText.trim()}
+                  className="px-4 py-2 text-sm font-medium bg-violet-600 text-white rounded-lg hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {aiRunning ? (
+                    <span className="flex items-center gap-2">
+                      <span className="inline-block w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                      Optimizing with AI…
+                    </span>
+                  ) : '✨ Optimize with AI Goals'}
+                </button>
+                <button
+                  onClick={recalculate}
+                  disabled={recalculating}
+                  className="text-xs text-violet-600 hover:underline"
+                  title="Run standard optimization without AI goals"
+                >
+                  Reset to standard
+                </button>
+                <span className="text-xs text-violet-500 ml-auto">Powered by Claude</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* AI Explanation Banner */}
+      {activeScenario && aiExplanation && (
+        <div className="mb-4 flex items-start gap-3 px-4 py-3 bg-violet-100 border border-violet-200 rounded-xl text-sm text-violet-900">
+          <span className="text-base mt-0.5" aria-hidden>🤖</span>
+          <div>
+            <span className="font-semibold">AI adjustments: </span>
+            {aiExplanation}
+          </div>
+          <button
+            onClick={() => setAiExplanation(null)}
+            className="ml-auto text-violet-400 hover:text-violet-600 text-base leading-none shrink-0"
+            title="Dismiss"
+          >&times;</button>
+        </div>
+      )}
 
       {!loading && activeScenario && (
         <>

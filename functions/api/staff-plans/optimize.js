@@ -36,7 +36,7 @@ function monthsBetween(a, b) {
 //
 // urgency_g = 1 / (months_to_pop_end + 0.5) — sooner expiry = more weight
 
-export function optimizeRows({ staff, balances, plan_start, plan_end, terminations = {} }) {
+export function optimizeRows({ staff, balances, plan_start, plan_end, terminations = {}, ai_overrides = {} }) {
 
   // ── 1. Balance map ─────────────────────────────────────────────────────────
   const balanceMap = {};
@@ -150,7 +150,9 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
         // Urgency weight: sqrt-dampened so concentration isn't too aggressive.
         // A grant expiring in 3 months vs 12 months gets 2× weight (not 4×).
         const popEnd = b?.pop_end_date || plan_end;
-        const urgency = 1 / Math.sqrt(monthsBetween(period_start, popEnd) + 1);
+        const baseUrgency = 1 / Math.sqrt(monthsBetween(period_start, popEnd) + 1);
+        const urgencyMult = ai_overrides.grant_urgency_multipliers?.[f.full_account_string] ?? 1;
+        const urgency = baseUrgency * urgencyMult;
 
         const varKey = `x_${userId}_${f.full_account_string}_${period_start}`;
         const ubKey  = `ub_${varKey}`;
@@ -161,7 +163,17 @@ export function optimizeRows({ staff, balances, plan_start, plan_end, terminatio
           [ubKey]: 1,                        // per-variable dynamic cap
           obj:     urgency * costPer1Pct,    // sqrt-dampened urgency objective
         };
-        model.constraints[ubKey] = { max: Math.min(available, perGrantCap) };
+        // AI cap override (per-person per-grant)
+        const aiCap = ai_overrides.per_person_grant_caps?.[userId]?.[f.full_account_string];
+        const aiFloor = ai_overrides.per_person_grant_floors?.[userId]?.[f.full_account_string];
+        const effectiveCap = aiCap != null ? Math.min(available, aiCap) : Math.min(available, perGrantCap);
+        model.constraints[ubKey] = { max: Math.max(effectiveCap, 0) };
+        // AI floor: add a >= constraint so LP must allocate at least this much
+        if (aiFloor != null && aiFloor > 0) {
+          const lbKey = `lb_${varKey}`;
+          model.variables[varKey][lbKey] = 1;
+          model.constraints[lbKey] = { min: Math.min(aiFloor, effectiveCap) };
+        }
         varMeta[varKey] = {
           _type: 'grant', _userId: userId,
           _account: f.full_account_string, _fundNumber: f.fund_number,
