@@ -9,7 +9,7 @@ export default function LandingPage() {
       ),
       title: 'Grant & Budget Tracking',
       description:
-        'Track FEMA grant budgets, period of performance dates, and burndown in one place. All cost calculations use standard government accounting formulas — salary, fringe, and F&A — applied consistently across every grant.',
+        'Track FEMA grant budgets, period of performance dates, and burndown in one place. All cost calculations use standard government accounting formulas - salary, fringe, and F&A - applied consistently across every grant.',
     },
     {
       icon: (
@@ -72,7 +72,7 @@ export default function LandingPage() {
     {
       label: 'AI-Assisted Staff Planning',
       date: 'May 2026',
-      desc: 'Natural-language goals translated by Claude into LP constraint overrides — urgency multipliers, per-person grant caps, floors, and exclusions — then fed into the optimizer.',
+      desc: 'Natural-language goals translated by Claude into LP constraint overrides - urgency multipliers, per-person grant caps, floors, and exclusions - then fed into the optimizer.',
     },
     {
       label: 'PRIDE Salary Sync',
@@ -87,7 +87,7 @@ export default function LandingPage() {
     {
       label: 'Full Account String Refactor',
       date: 'April 2026',
-      desc: 'Corrected a structural issue where fund numbers — not unique — were being used as grant identifiers. All joins and matching now use the canonical full account string throughout.',
+      desc: 'Corrected a structural issue where fund numbers - not unique - were being used as grant identifiers. All joins and matching now use the canonical full account string throughout.',
     },
   ];
 
@@ -109,14 +109,14 @@ export default function LandingPage() {
         </h1>
 
         <p className="mt-4 text-lg text-brand-700 font-medium max-w-xl">
-          Internal Program Management for CHAMP &mdash; Illinois State Water Survey
+          Internal Program Management for CHAMP - Illinois State Water Survey
         </p>
 
         <p className="mt-4 text-base text-gray-500 max-w-2xl">
           A purpose-built tool for the CHAMP section to track FEMA grant budgets, manage
           timesheets, plan staff allocations, and schedule project work across a ~$15M grant
           portfolio. All cost calculations use standard government accounting formulas.
-          No AI is involved in data processing or financial calculations &mdash; the software
+          No AI is involved in data processing or financial calculations - the software
           was built using AI-assisted development tools, but runs entirely on conventional,
           deterministic logic.
         </p>
@@ -206,7 +206,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="bg-gray-50 border-t border-gray-200 py-6 text-center text-xs text-gray-400">
-        &copy; {new Date().getFullYear()} Illinois State Water Survey &mdash; CHAMP Section &middot;{' '}
+        &copy; {new Date().getFullYear()} Illinois State Water Survey - CHAMP Section &middot;{' '}
         <a href="https://reepworks.com" className="hover:text-gray-600 transition-colors">Reep Works LLC</a>
       </footer>
     </div>
