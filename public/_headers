@@ -1,0 +1,8 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  # CSP in report-only mode — observe violations in browser console before enforcing.
+  # When no violations appear after normal use, change to: Content-Security-Policy:
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' https://clerk.champ-pm.app; connect-src 'self' https://clerk.champ-pm.app https://*.clerk.champ-pm.app; img-src 'self' data: https://img.clerk.com; style-src 'self' 'unsafe-inline'; frame-src https://clerk.champ-pm.app; frame-ancestors 'none'
