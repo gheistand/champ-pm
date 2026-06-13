@@ -8,43 +8,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsToolti
 
 const TABS = ['Grant Balances', 'Appointments', 'Plan Builder', 'Saved Plans', 'Visualizations'];
 
-// Termination dates — staff with hard end dates for appointment planning
-const TERMINATIONS = {
-  mjr: '2026-04-30',    // Mary Richardson — no appointments past this date
-  dianad: '2026-04-30', // Diana Davisson — no appointments past this date
-  lkumar: '2026-04-01', // Love Kumar — no new appointments
-};
-
-const STAFF_NAME_MAP = {
-  carnold3: 'Camden Arnold',
-  arpitab2: 'Arpita Banerjee',
-  gbuckley: 'Greta Buckley',
-  byard: 'Gregory Byard',
-  bchaille: 'Brian Chaille',
-  dianad: 'Diana Davisson',
-  mlfuller: 'Michelle Fuller',
-  hanstad: 'Christopher Hanstad',
-  heistand: 'Glenn Heistand',
-  nazmul: 'Nazmul Huda',
-  mrjeffer: 'Matthew Jefferson',
-  asjobe: 'Addison Jobe',
-  tannerj: 'Tanner Jones',
-  lkumar: 'Love Kumar',
-  marnilaw: 'Marni Law',
-  clebeda: 'Caitlin Lebeda',
-  makdah2: 'Lena Makdah',
-  bmcvay: 'Brad McVay',
-  rmeekma: 'Ryan Meekma',
-  smilton: 'Sarah Milton',
-  spantha: 'Samikshya Pantha',
-  spaudel: 'Sabin Paudel',
-  powell: 'James Powell',
-  mjr: 'Mary Richardson',
-  sangwan2: 'Nikhil Sangwan',
-  fghiami: 'Fereshteh Ghiami Shomami',
-  abthomas: 'Aaron Thomas',
-  zaloudek: 'Zoe Zaloudek',
-};
+// Staff name lookups are served from the API (users table) — no client-side PII maps
 
 export default function StaffPlans() {
   const [tab, setTab] = useState(0);
@@ -211,7 +175,7 @@ function GrantBalancesTab() {
     if (!b.id) return;
     if (!confirm(`Delete balance record for ${b.full_account_string}?`)) return;
     try {
-      await api.delete(`/api/staff-plans/balances/${b.id}`);
+      await api.del(`/api/staff-plans/balances/${b.id}`);
       addToast('Deleted', 'success');
       loadBalances();
     } catch {
@@ -871,7 +835,6 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
     try {
       const data = await api.post('/api/staff-plans/scenarios', {
         ...newForm,
-        terminations: TERMINATIONS,
       });
       addToast(`Created "${data.scenario.name}" with ${data.row_count} rows`, 'success');
       setShowNewModal(false);
@@ -889,9 +852,7 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
     setRecalculating(true);
     setAiExplanation(null);
     try {
-      const data = await api.post(`/api/staff-plans/scenarios/${activeScenario.id}/recalculate`, {
-        terminations: TERMINATIONS,
-      });
+      const data = await api.post(`/api/staff-plans/scenarios/${activeScenario.id}/recalculate`, {});
       setRows(data.rows || []);
       addToast(`Recalculated: ${data.row_count} rows`, 'success');
     } catch {
@@ -909,7 +870,6 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
       const data = await api.post('/api/staff-plans/ai-goals', {
         scenario_id: activeScenario.id,
         goals_text: aiGoalsText,
-        terminations: TERMINATIONS,
       });
       setRows(data.rows || []);
       setAiExplanation(data.explanation || null);
@@ -952,8 +912,8 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
         byUser[r.user_id].push(r);
       }
       const sortedUsers = Object.keys(byUser).sort((a, b) => {
-        const na = STAFF_NAME_MAP[a] || byUser[a][0]?.user_name || a;
-        const nb = STAFF_NAME_MAP[b] || byUser[b][0]?.user_name || b;
+        const na = byUser[a][0]?.user_name || a;
+        const nb = byUser[b][0]?.user_name || b;
         return na.localeCompare(nb);
       });
 
@@ -962,7 +922,7 @@ function PlanBuilderTab({ activeScenario, setActiveScenario, rows, setRows }) {
       for (const userId of sortedUsers) {
         const userRows = byUser[userId].slice().sort((a, b) =>
           (a.period_start || '').localeCompare(b.period_start || ''));
-        const displayName = STAFF_NAME_MAP[userId] || userRows[0]?.user_name || userId;
+        const displayName = userRows[0]?.user_name || userId;
         const sheetRows = [COLS];
 
         for (const r of userRows) {
@@ -1792,7 +1752,7 @@ function AllocationTimeline({ rows, balanceMap, colorMap }) {
   const byStaff = {};
   for (const r of rows) {
     const key = r.user_id;
-    const name = STAFF_NAME_MAP[key] || r.user_name || key;
+    const name = r.user_name || key;
     if (!byStaff[key]) byStaff[key] = { name, rows: [] };
     byStaff[key].rows.push(r);
   }

@@ -26,7 +26,7 @@ async function handlePost(context) {
   if (denied) return denied;
 
   const body = await request.json();
-  const { name, description, plan_start_date, plan_end_date, terminations } = body;
+  const { name, description, plan_start_date, plan_end_date } = body;
 
   if (!name || !plan_start_date || !plan_end_date) {
     return json({ error: 'name, plan_start_date, plan_end_date are required' }, 400);
@@ -45,7 +45,6 @@ async function handlePost(context) {
     scenario_id: scenarioId,
     plan_start: plan_start_date,
     plan_end: plan_end_date,
-    terminations: terminations || {},
   });
 
   if (!optimizeResp.ok) {
@@ -126,12 +125,18 @@ async function runOptimize(env, payload) {
     'SELECT full_account_string, fund_number, remaining_balance, pop_end_date, priority_rank, is_pinned FROM staff_plan_grant_balances'
   ).all();
 
+  // Fetch terminations server-side from users.end_date (never trust client-supplied PII)
+  const { results: userEndDates } = await env.DB.prepare(
+    'SELECT id, end_date FROM users WHERE end_date IS NOT NULL'
+  ).all();
+  const terminations = Object.fromEntries(userEndDates.map(u => [u.id, u.end_date]));
+
   const optimizePayload = {
     staff,
     balances,
     plan_start: payload.plan_start,
     plan_end: payload.plan_end,
-    terminations: payload.terminations || {},
+    terminations,
   };
 
   // Call optimize endpoint internally via module import

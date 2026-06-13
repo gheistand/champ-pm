@@ -36,5 +36,6 @@ export function useApi() {
     post: useCallback((url, body) => request(url, 'POST', body), [request]),
     put: useCallback((url, body) => request(url, 'PUT', body), [request]),
     del: useCallback((url) => request(url, 'DELETE'), [request]),
+    delete: useCallback((url) => request(url, 'DELETE'), [request]), // alias for del
   };
 }

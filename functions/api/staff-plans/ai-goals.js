@@ -118,7 +118,7 @@ export async function onRequest(context) {
   if (request.method !== 'POST') return new Response('Method Not Allowed', { status: 405 });
 
   const body = await request.json().catch(() => ({}));
-  const { scenario_id, goals_text, terminations = {} } = body;
+  const { scenario_id, goals_text } = body;
 
   if (!scenario_id || !goals_text?.trim()) {
     return json({ error: 'scenario_id and goals_text are required' }, 400);
@@ -137,6 +137,12 @@ export async function onRequest(context) {
 
   // Load staff and balances (same as recalculate)
   const { staff, balances } = await loadStaffAndBalances(env);
+
+  // Fetch terminations server-side from users.end_date (never trust client-supplied PII)
+  const { results: userEndDates } = await env.DB.prepare(
+    'SELECT id, end_date FROM users WHERE end_date IS NOT NULL'
+  ).all();
+  const terminations = Object.fromEntries(userEndDates.map(u => [u.id, u.end_date]));
 
   // Build prompt context
   const today = new Date().toISOString().slice(0, 10);

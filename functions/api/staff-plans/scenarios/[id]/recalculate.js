@@ -11,10 +11,15 @@ export async function onRequest(context) {
   }
 
   const { id: scenarioId } = params;
-  const body = await request.json().catch(() => ({}));
-  const { terminations } = body;
+  await request.json().catch(() => ({})); // body accepted but terminations now server-side only
 
   const scenario = await env.DB.prepare('SELECT * FROM staff_plan_scenarios WHERE id=?').bind(scenarioId).first();
+
+  // Fetch terminations server-side from users.end_date (never trust client-supplied PII)
+  const { results: userEndDates } = await env.DB.prepare(
+    'SELECT id, end_date FROM users WHERE end_date IS NOT NULL'
+  ).all();
+  const terminations = Object.fromEntries(userEndDates.map(u => [u.id, u.end_date]));
   if (!scenario) return json({ error: 'Not found' }, 404);
 
   // Preserve overridden AND pinned rows
@@ -68,7 +73,7 @@ export async function onRequest(context) {
     staff, balances,
     plan_start: scenario.plan_start_date,
     plan_end: scenario.plan_end_date,
-    terminations: terminations || {},
+    terminations,
   });
 
   // Apply overrides/pinned rows
