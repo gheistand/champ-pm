@@ -3,7 +3,5 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  # CSP in report-only mode — observe violations in browser console before enforcing.
-  # When no violations appear after normal use, change to: Content-Security-Policy:
-  # Added 2026-06-13: challenges.cloudflare.com (Clerk bot protection/Turnstile) + worker-src blob: (Clerk service worker)
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' https://clerk.champ-pm.app https://challenges.cloudflare.com; connect-src 'self' https://clerk.champ-pm.app https://*.clerk.champ-pm.app https://clerk-telemetry.com; img-src 'self' data: https://img.clerk.com; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:; frame-src https://clerk.champ-pm.app https://challenges.cloudflare.com; frame-ancestors 'none'
+  # CSP enforcing — verified clean 2026-06-13
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://clerk.champ-pm.app https://challenges.cloudflare.com; connect-src 'self' https://clerk.champ-pm.app https://*.clerk.champ-pm.app https://clerk-telemetry.com; img-src 'self' data: https://img.clerk.com; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:; frame-src https://clerk.champ-pm.app https://challenges.cloudflare.com; frame-ancestors 'none'
