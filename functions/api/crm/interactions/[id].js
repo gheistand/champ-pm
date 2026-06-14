@@ -37,7 +37,11 @@ async function handleDelete(context) {
   if (denied) return denied;
 
   const { id } = params;
-  await env.DB.prepare('DELETE FROM interactions WHERE id = ?').bind(id).run();
+  const existing = await env.DB.prepare('SELECT deleted_at FROM interactions WHERE id = ?').bind(id).first();
+  if (!existing) return json({ error: 'Interaction not found' }, 404);
+  if (existing.deleted_at) return json({ error: 'Interaction already deleted' }, 409);
+
+  await env.DB.prepare("UPDATE interactions SET deleted_at = datetime('now') WHERE id = ?").bind(id).run();
   return json({ success: true });
 }
 

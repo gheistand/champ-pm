@@ -4,14 +4,14 @@ async function handleGet(context) {
   const { env, params } = context;
   const { id } = params;
 
-  const org = await env.DB.prepare('SELECT * FROM organizations WHERE id = ?').bind(id).first();
+  const org = await env.DB.prepare('SELECT * FROM organizations WHERE id = ? AND deleted_at IS NULL').bind(id).first();
   if (!org) return json({ error: 'Organization not found' }, 404);
 
   const { results: contacts } = await env.DB.prepare(`
     SELECT c.*, COUNT(cgl.id) as grant_count
     FROM contacts c
     LEFT JOIN contact_grant_links cgl ON cgl.contact_id = c.id
-    WHERE c.org_id = ?
+    WHERE c.org_id = ? AND c.deleted_at IS NULL
     GROUP BY c.id
     ORDER BY c.last_name, c.first_name
   `).bind(id).all();
@@ -57,16 +57,13 @@ async function handleDelete(context) {
   if (denied) return denied;
 
   const { id } = params;
+  const existing = await env.DB.prepare('SELECT deleted_at FROM organizations WHERE id = ?').bind(id).first();
+  if (!existing) return json({ error: 'Organization not found' }, 404);
+  if (existing.deleted_at) return json({ error: 'Organization already deleted' }, 409);
 
-  const { results: contacts } = await env.DB.prepare(
-    'SELECT id FROM contacts WHERE org_id = ?'
-  ).bind(id).all();
-
-  if (contacts.length > 0) {
-    return json({ error: `Cannot delete: this organization has ${contacts.length} contact(s). Remove or reassign them first.` }, 409);
-  }
-
-  await env.DB.prepare('DELETE FROM organizations WHERE id = ?').bind(id).run();
+  // Soft-delete the org and all its active contacts (their interactions are preserved)
+  await env.DB.prepare("UPDATE contacts SET deleted_at = datetime('now') WHERE org_id = ? AND deleted_at IS NULL").bind(id).run();
+  await env.DB.prepare("UPDATE organizations SET deleted_at = datetime('now') WHERE id = ?").bind(id).run();
   return json({ success: true });
 }
 

@@ -105,7 +105,7 @@ export default function CRMContact() {
   }
 
   async function handleDeleteContact() {
-    if (!confirm(`Delete contact "${contact.first_name} ${contact.last_name}"? This will also delete all their interactions.`)) return;
+    if (!confirm(`Archive contact "${contact.first_name} ${contact.last_name}"? They will be hidden from the contact list but their interaction history is preserved.`)) return;
     try {
       await api.del(`/api/crm/contacts/${id}`);
       addToast('Contact deleted');

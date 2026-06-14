@@ -19,7 +19,8 @@ async function handleGet(context) {
     values.push(grant_id);
   }
 
-  const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
+  conditions.push('i.deleted_at IS NULL');
+  const where = `WHERE ${conditions.join(' AND ')}`;
 
   values.push(limit);
 

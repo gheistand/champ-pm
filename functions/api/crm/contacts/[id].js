@@ -8,7 +8,7 @@ async function handleGet(context) {
     SELECT c.*, o.name as org_name, o.type as org_type, o.website as org_website
     FROM contacts c
     LEFT JOIN organizations o ON o.id = c.org_id
-    WHERE c.id = ?
+    WHERE c.id = ? AND c.deleted_at IS NULL
   `).bind(id).first();
 
   if (!contact) return json({ error: 'Contact not found' }, 404);
@@ -25,7 +25,7 @@ async function handleGet(context) {
     SELECT i.*, g.name as grant_name
     FROM interactions i
     LEFT JOIN grants g ON g.id = i.grant_id
-    WHERE i.contact_id = ?
+    WHERE i.contact_id = ? AND i.deleted_at IS NULL
     ORDER BY i.interaction_date DESC
     LIMIT 50
   `).bind(id).all();
@@ -39,6 +39,8 @@ async function handlePut(context) {
   if (denied) return denied;
 
   const { id } = params;
+  const existing = await env.DB.prepare('SELECT deleted_at FROM contacts WHERE id = ?').bind(id).first();
+  if (!existing || existing.deleted_at) return json({ error: 'Contact not found' }, 404);
   const body = await request.json();
 
   const fields = [];
@@ -71,7 +73,11 @@ async function handleDelete(context) {
   if (denied) return denied;
 
   const { id } = params;
-  await env.DB.prepare('DELETE FROM contacts WHERE id = ?').bind(id).run();
+  const existing = await env.DB.prepare('SELECT deleted_at FROM contacts WHERE id = ?').bind(id).first();
+  if (!existing) return json({ error: 'Contact not found' }, 404);
+  if (existing.deleted_at) return json({ error: 'Contact already deleted' }, 409);
+
+  await env.DB.prepare("UPDATE contacts SET deleted_at = datetime('now') WHERE id = ?").bind(id).run();
   return json({ success: true });
 }
 

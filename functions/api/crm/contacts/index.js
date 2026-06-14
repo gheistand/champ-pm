@@ -10,7 +10,8 @@ async function handleGet(context) {
     FROM contacts c
     LEFT JOIN organizations o ON o.id = c.org_id
     LEFT JOIN contact_grant_links cgl ON cgl.contact_id = c.id
-    LEFT JOIN interactions i ON i.contact_id = c.id
+    LEFT JOIN interactions i ON i.contact_id = c.id AND i.deleted_at IS NULL
+    WHERE c.deleted_at IS NULL
     GROUP BY c.id
     ORDER BY c.last_name, c.first_name
   `).all();

@@ -5,7 +5,8 @@ async function handleGet(context) {
   const { results } = await env.DB.prepare(`
     SELECT o.*, COUNT(c.id) as contact_count
     FROM organizations o
-    LEFT JOIN contacts c ON c.org_id = o.id
+    LEFT JOIN contacts c ON c.org_id = o.id AND c.deleted_at IS NULL
+    WHERE o.deleted_at IS NULL
     GROUP BY o.id
     ORDER BY o.name
   `).all();
