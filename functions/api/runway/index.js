@@ -87,9 +87,18 @@ async function handlePost(context) {
     return json({ error: 'entries and as_of_date are required' }, 400);
   }
 
+  // Upsert on (grant_id, as_of_date): re-saving a snapshot for the same date
+  // corrects it in place instead of appending a duplicate row (which previously
+  // caused the runway history chart to double-count re-saved snapshots).
   const stmt = env.DB.prepare(
     `INSERT INTO grant_balances (grant_id, balance, fa_rate, as_of_date, notes, created_by)
-     VALUES (?, ?, ?, ?, ?, ?)`
+     VALUES (?, ?, ?, ?, ?, ?)
+     ON CONFLICT(grant_id, as_of_date) DO UPDATE SET
+       balance = excluded.balance,
+       fa_rate = excluded.fa_rate,
+       notes = excluded.notes,
+       created_by = excluded.created_by,
+       created_at = datetime('now')`
   );
 
   const inserts = entries.map(e =>
