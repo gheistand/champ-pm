@@ -151,6 +151,69 @@
   - Several audit findings resolved 2026-06-13 (Vite upgrade, dependency CVEs, RBAC review — see repo's audit reports and long-term memory for details); no known outstanding critical findings as of that review
 - Recovery steps: a full D1 export exists as a point-in-time backup pattern (`npx wrangler d1 export champ-pm --remote --output=backup-$(date +%F).sql`); Cloudflare Pages retains previous deployments for rollback via dashboard
 
+## Testing and validation
+- What must be checked after any change: no automated test suite exists — verification is manual. For anything touching money/hours math (timesheets, budget, salary, F&A), verify against real data with a direct D1 query, not just code review.
+- Smoke test checklist: not formally documented; at minimum, confirm the touched page loads, the touched API route returns expected shape, and (for admin features) `requireAdmin()` still gates it.
+- High-risk areas to test: anything touching `salary_records`, `fringe_rates`, F&A rate (0.317), grant PoP ceilings (`grants.end_date`), or schedule what-if overrides (must never write to base schedule tables).
+- Browser/device requirements: not formally documented; internal tool, desktop-first — mobile-friendly timesheet is an open backlog item, implying mobile is not currently well-supported.
+- API validation requirements: not formally documented beyond existing per-route field whitelisting patterns already in the codebase (see Known issues below re: one unparameterized query as the exception, not the pattern to follow).
+- Data integrity checks: after any migration or bulk data change against remote D1, spot-check row counts and a few known records via `wrangler d1 execute --remote`.
+- Subscription/payment checks, if relevant: not applicable — no payments/subscriptions in this project.
+
+## Known issues and sharp edges
+- Current bugs:
+  - **SQL injection in `functions/api/program-schedule/index.js` (~line 14)** — `grant_status` query param is interpolated directly into a SQL string (`WHERE g.status = '${grantStatus}'`) instead of parameterized. Found in the 2026-06-12 audit (`AUDIT-2026-06-12.md`, `AUDIT-BACKEND-2026-06-12.md`) as the one exception to an otherwise fully parameterized codebase. **Confirmed still present as of 2026-07-18** — not in the list of items fixed in commit 31c1389. Fix: whitelist allowed values or parameterize with `.bind()`.
+  - **PRIDE sync endpoint (`functions/api/pride/sync.js`) may be blocked by global Clerk middleware** — the 2026-06-12 backend audit found the global `_middleware.js` JWT check can 401 the shared-token PRIDE request before the endpoint's own `PRIDE_SYNC_TOKEN` auth runs. Also flagged: non-timing-safe token comparison on that endpoint. Status of a fix is not confirmed in memory — verify before relying on PRIDE sync working end-to-end.
+  - byard salary discrepancy ($110,806 in CHAMP-PM vs $102,806 in PRIDE) — resolved/explained, not a bug: it's an $8,000 ISWS Operations Manager stipend paid from GRF, correctly excluded from PRIDE.
+- Fragile areas:
+  - AI-Assisted Goals endpoint (`functions/api/staff-plans/ai-goals.js`) — 2026-06-12 audit flagged unvalidated LLM output being applied directly as optimizer constraints; treat Claude's JSON output as untrusted input needing validation before it reaches `optimize.js`.
+  - Auth middleware email-claim account linking (`functions/_middleware.js`) — when a Clerk `sub` isn't found in D1, it falls back to matching by email and rebinding `clerk_id` onto that user row. Audit flagged this as a potential account-linking weakness (an existing user's identity could theoretically be re-bound to a new Clerk account). Confirm current state before treating as fixed.
+- Legacy code to avoid disturbing:
+  - Migration files 0001–0028+ are applied historically via direct `d1 execute`, never via the wrangler migration tracker — do not attempt to "clean this up" by running `wrangler d1 migrations apply`, it will conflict (see Change rules below).
+  - `functions/api/pride/sync.js`'s hardcoded UIN→user_id map for ~25 staff — brittle by nature (manual map), but replacing it with something dynamic has not been requested/planned.
+- Tech debt:
+  - No automated tests, lint, or typecheck configured anywhere in the project.
+  - No CI pipeline — deploy correctness relies on Cloudflare Pages' build succeeding and manual post-deploy checks.
+  - D1 migration tracker was never initialized (see above) — permanent tech debt unless a deliberate one-time reconciliation is planned.
+- Common failure modes:
+  - D1 correlated subqueries inside `SELECT ... GROUP BY` silently return wrong results instead of erroring — always split into separate queries and combine in JS.
+  - Confusing `fund_number` for a unique grant key — it isn't; use `full_account_string`.
+- Workarounds:
+  - PRIDE has no REST API — sync is done via an authenticated-browser bookmarklet (`public/pride-bookmarklet.js`) that POSTs scraped data to `/api/pride/sync`, run manually by Glenn while logged into PRIDE.
+
+## Preferred working style
+- Explain first, then edit.
+- Use plain language unless technical detail is needed.
+- Show diffs or summarize changes clearly.
+- For larger tasks, break work into steps.
+- Recommend safer alternatives when risk is high.
+- Call out unknowns instead of guessing.
+
+## Task intake pattern
+When given a task:
+1. Restate the goal briefly.
+2. Identify affected files/systems.
+3. Propose the smallest safe plan.
+4. Execute only after plan approval for medium/high-risk work.
+5. Summarize what changed.
+6. List validation steps and any follow-up actions.
+
+## Definition of done
+A task is done only when:
+- The requested change is implemented.
+- Relevant tests/checks have been run, if available.
+- No obvious unrelated regressions were introduced.
+- Any important assumptions are documented.
+- The user can understand what changed and what to do next.
+
+## Optional project memory
+Keep this short and prune regularly.
+- Repeated user preferences for this project: Glenn wants to be told what will be pushed before it's pushed (no solo deploys); destructive D1 commands always need explicit confirmation first.
+- Lessons learned: the D1 correlated-subquery limitation and the `fund_number` non-uniqueness issue have each caused real bugs in the past (see MEMORY.md/KNOWLEDGE.md) — both are now standing rules, not just tips.
+- Patterns that worked well: splitting D1 queries and combining in JS (see `functions/api/reports/timesheet.js`); the "$0-budget grant/project/task chain" pattern for logging shared-staff hours on non-CHAMP work (see the ISGS LiDAR / D4512 IDOT Parcels precedent, 2026-07-13 memory note).
+- Patterns to avoid: raw string interpolation into SQL (see the one known exception above — do not replicate it elsewhere).
+- Temporary notes to revisit: confirm current status of the PRIDE middleware conflict and the SQL injection fix before doing further work in those areas — both were open findings as of the last audit and have not been confirmed fixed.
+
 ---
 
-_This file was compiled from the CHAMP-PM agent's local knowledge base (KNOWLEDGE.md, MEMORY.md, memory notes) and repo inspection (README.md, package.json, wrangler.toml, migrations/) on 2026-07-18. It is not exhaustive — fill in gaps as they're discovered rather than guessing._
+_This file was compiled from the CHAMP-PM agent's local knowledge base (KNOWLEDGE.md, MEMORY.md, memory notes), repo inspection (README.md, package.json, wrangler.toml, migrations/), and the 2026-06-12 security audit reports (AUDIT-2026-06-12.md, AUDIT-BACKEND-2026-06-12.md, AUDIT-FRONTEND-2026-06-12.md, AUDIT-INFRA-2026-06-12.md) on 2026-07-18. It is not exhaustive — fill in gaps as they're discovered rather than guessing._
