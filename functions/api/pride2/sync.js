@@ -76,9 +76,10 @@ function parseNonrDate(v) {
 // Wire up allocation sync (from each person's `cfopas`/`plans[].cfopas`,
 // which already carry `account_number` in exact full_account_string format)
 // once both of those are resolved.
-async function syncPeople(env, people) {
+async function syncPeople(env, people, dryRun = false) {
   const today = new Date().toISOString().slice(0, 10);
   const results = {
+    dry_run: dryRun,
     salary_updates: [],
     salary_matches: [],
     salary_discrepancies: [],
@@ -130,16 +131,18 @@ async function syncPeople(env, people) {
             note: 'CHAMP-PM is higher than PRIDE 2.0 — review before updating',
           });
         } else {
-          await env.DB.prepare(`
-            INSERT INTO salary_records
-              (user_id, annual_salary, fringe_rate, appointment_type, effective_date, change_type, notes, created_by)
-            VALUES (?, ?, 0.451, 'surs', ?, 'annual_increase', ?, 'pride2-sync')
-          `).bind(
-            userId,
-            salary,
-            today,
-            `Synced from PRIDE 2.0 staff-plan/plans on ${today}. Previous: $${currentSalary.annual_salary.toLocaleString()}`
-          ).run();
+          if (!dryRun) {
+            await env.DB.prepare(`
+              INSERT INTO salary_records
+                (user_id, annual_salary, fringe_rate, appointment_type, effective_date, change_type, notes, created_by)
+              VALUES (?, ?, 0.451, 'surs', ?, 'annual_increase', ?, 'pride2-sync')
+            `).bind(
+              userId,
+              salary,
+              today,
+              `Synced from PRIDE 2.0 staff-plan/plans on ${today}. Previous: $${currentSalary.annual_salary.toLocaleString()}`
+            ).run();
+          }
 
           results.salary_updates.push({
             user_id: userId,
@@ -147,6 +150,7 @@ async function syncPeople(env, people) {
             old_salary: currentSalary.annual_salary,
             new_salary: salary,
             diff,
+            would_write: dryRun || undefined,
           });
         }
       }
@@ -158,8 +162,10 @@ async function syncPeople(env, people) {
       if (isoDate) {
         const user = await env.DB.prepare('SELECT end_date FROM users WHERE id=?').bind(userId).first();
         if (user && user.end_date !== isoDate) {
-          await env.DB.prepare('UPDATE users SET end_date=? WHERE id=?').bind(isoDate, userId).run();
-          results.end_date_updates.push({ user_id: userId, name, end_date: isoDate });
+          if (!dryRun) {
+            await env.DB.prepare('UPDATE users SET end_date=? WHERE id=?').bind(isoDate, userId).run();
+          }
+          results.end_date_updates.push({ user_id: userId, name, end_date: isoDate, would_write: dryRun || undefined });
         }
       } else {
         results.skipped.push({ user_id: userId, name, reason: `unrecognized nonr_date format: "${nonr_date}"` });
@@ -274,7 +280,11 @@ export async function onRequest(context) {
   // years off by 2000, e.g. "0025-10-01" — needs a fix + Glenn's sign-off
   // first) — and grant-balance sync is still unconfirmed/unbuilt.
   if (body.mode === 'sync' && Array.isArray(body.people)) {
-    const results = await syncPeople(env, body.people);
+    // dryRun defaults to true — callers must explicitly pass dryRun:false to
+    // actually write. Safer default for a scaffold endpoint no one has run
+    // in write mode yet.
+    const dryRun = body.dryRun !== false;
+    const results = await syncPeople(env, body.people, dryRun);
     return new Response(JSON.stringify({ mode: 'sync', ...results }, null, 2), {
       status: 200,
       headers: { 'Content-Type': 'application/json', ...corsHeaders() },
