@@ -46,11 +46,17 @@ function normalizeDate(d) {
   if (!s) return null;
   // Already YYYY-MM-DD
   if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
-  // M/D/YYYY or MM/DD/YYYY
+  // M/D/YYYY or MM/DD/YYYY (also tolerates 2-digit years, e.g. M/D/YY)
   const parts = s.split('/');
   if (parts.length === 3) {
     const [m, day, y] = parts;
-    return `${y.padStart(4,'0')}-${m.padStart(2,'0')}-${day.padStart(2,'0')}`;
+    // BUG FIX (2026-08-11): y.padStart(4,'0') on a 2-digit year ("25")
+    // produced "0025" instead of "2025", corrupting all 324 rows imported
+    // this way (period_start/period_end years off by 2000). Corrected in
+    // prod via one-time UPDATE on staff_appointments same day. 2-digit
+    // years are assumed to be 20YY (no CHAMP-PM data predates 2000).
+    const year = y.length <= 2 ? `20${y.padStart(2,'0')}` : y.padStart(4,'0');
+    return `${year}-${m.padStart(2,'0')}-${day.padStart(2,'0')}`;
   }
   return s;
 }
