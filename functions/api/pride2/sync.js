@@ -1,5 +1,175 @@
 import { json } from '../../_utils.js';
 
+// UIN → CHAMP-PM user_id map, shared with PRIDE 1.0's sync.js.
+// PRIDE 2.0's /staff-plan/plans response includes `uin` directly on every
+// person record, so this map plugs in unchanged. Kept as a separate literal
+// (not imported from ../pride/sync.js) so each endpoint stays independently
+// deployable/rollback-able, matching the existing PRIDE 1.0 file's style.
+const UIN_MAP = {
+  '656625028': 'carnold3',
+  '678026881': 'arpitab2',
+  '651471355': 'gbuckley',
+  '656782942': 'byard',
+  '651194553': 'bchaille',
+  '658082067': 'mlfuller',
+  '677369379': 'fghiami',
+  '656335506': 'hanstad',
+  '671373662': 'heistand',
+  '664080818': 'nazmul',
+  '651893236': 'mrjeffer',
+  '667694639': 'asjobe',
+  '656840055': 'tannerj',
+  '660559576': 'marnilaw',
+  '660875246': 'clebeda',
+  '676728334': 'makdah2',
+  '656414988': 'bmcvay',
+  '674585367': 'rmeekma',
+  '654853452': 'smilton',
+  '674360335': 'spantha',
+  '654781180': 'spaudel',
+  '658397873': 'powell',
+  '664194340': 'sangwan2',
+  '665996363': 'astillwell',
+  '665286055': 'abthomas',
+  '656003841': 'zaloudek',
+  // Confirmed present + active in D1 as of the 2026-08-11 PRIDE 2.0 capture,
+  // but not yet in the PRIDE 1.0 map — add there too if PRIDE 1.0 sync is
+  // still in use for this person.
+  '655940198': 'jbyard',
+};
+
+// PRIDE 2.0's nonr_date (non-renewal date) shape is unconfirmed — every
+// person in the 2026-08-11 capture had it null. Accept a few plausible
+// formats defensively; anything unrecognized is skipped (logged, not
+// thrown) rather than risk writing a bad users.end_date.
+function parseNonrDate(v) {
+  if (!v) return null;
+  const s = String(v).trim();
+  if (!s) return null;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s; // already ISO
+  // "Feb 25, 2027" (PRIDE 1.0 style, in case PRIDE 2.0 matches it)
+  const months = { Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12 };
+  let m = s.match(/^(\w{3})\w*\s+(\d+),?\s+(\d{4})$/);
+  if (m) {
+    const [, mon, day, year] = m;
+    if (months[mon]) return `${year}-${String(months[mon]).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  }
+  // M/D/YYYY
+  m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (m) {
+    const [, mo, day, year] = m;
+    return `${year}-${mo.padStart(2,'0')}-${day.padStart(2,'0')}`;
+  }
+  return null; // unrecognized format — caller should log + skip, not guess
+}
+
+// Real sync logic for the confirmed /staff-plan/plans person-record shape.
+// Mirrors functions/api/pride/sync.js's salary + end-date rules exactly:
+//   - salary_records is append-only — INSERT new record, never UPDATE
+//   - PRIDE higher than CHAMP-PM → auto-insert; PRIDE lower → flag for review
+// Deliberately does NOT touch staff_appointments / allocations yet:
+//   1. staff_appointments.period_start/period_end currently has a confirmed
+//      data bug (years off by 2000, e.g. "0025-10-01") from the import.js
+//      normalizer — needs a fix + Glenn's sign-off before more code writes
+//      into that table.
+//   2. Grant-balance / commitment endpoint on PRIDE 2.0 still unconfirmed.
+// Wire up allocation sync (from each person's `cfopas`/`plans[].cfopas`,
+// which already carry `account_number` in exact full_account_string format)
+// once both of those are resolved.
+async function syncPeople(env, people) {
+  const today = new Date().toISOString().slice(0, 10);
+  const results = {
+    salary_updates: [],
+    salary_matches: [],
+    salary_discrepancies: [],
+    end_date_updates: [],
+    unknown_uins: [],
+    skipped: [],
+    runway_flags: [], // days_until_underfunded < 90, informational only — not written anywhere yet
+  };
+
+  for (const person of people) {
+    const { uin, first_name, last_name, salary, nonr_date, days_until_underfunded } = person;
+    const name = [first_name, last_name].filter(Boolean).join(' ');
+    const userId = UIN_MAP[uin];
+
+    if (!userId) {
+      results.unknown_uins.push({ uin, name });
+      continue;
+    }
+
+    if (typeof days_until_underfunded === 'number' && days_until_underfunded <= 90) {
+      results.runway_flags.push({ user_id: userId, name, days_until_underfunded });
+    }
+
+    // ── Salary sync ───────────────────────────────────────────────────
+    if (typeof salary === 'number') {
+      const currentSalary = await env.DB.prepare(`
+        SELECT annual_salary, effective_date
+        FROM salary_records
+        WHERE user_id = ?
+        ORDER BY effective_date DESC
+        LIMIT 1
+      `).bind(userId).first();
+
+      if (!currentSalary) {
+        results.skipped.push({ user_id: userId, name, reason: 'no existing salary records' });
+      } else if (Math.abs(currentSalary.annual_salary - salary) <= 1) {
+        results.salary_matches.push({ user_id: userId, name, salary });
+      } else {
+        const diff = salary - currentSalary.annual_salary;
+        const pride_higher = diff > 0;
+
+        if (!pride_higher) {
+          results.salary_discrepancies.push({
+            user_id: userId,
+            name,
+            champ_pm_salary: currentSalary.annual_salary,
+            pride2_salary: salary,
+            diff,
+            note: 'CHAMP-PM is higher than PRIDE 2.0 — review before updating',
+          });
+        } else {
+          await env.DB.prepare(`
+            INSERT INTO salary_records
+              (user_id, annual_salary, fringe_rate, appointment_type, effective_date, change_type, notes, created_by)
+            VALUES (?, ?, 0.451, 'surs', ?, 'annual_increase', ?, 'pride2-sync')
+          `).bind(
+            userId,
+            salary,
+            today,
+            `Synced from PRIDE 2.0 staff-plan/plans on ${today}. Previous: $${currentSalary.annual_salary.toLocaleString()}`
+          ).run();
+
+          results.salary_updates.push({
+            user_id: userId,
+            name,
+            old_salary: currentSalary.annual_salary,
+            new_salary: salary,
+            diff,
+          });
+        }
+      }
+    }
+
+    // ── End date (nonr_date) sync ──────────────────────────────────
+    if (nonr_date) {
+      const isoDate = parseNonrDate(nonr_date);
+      if (isoDate) {
+        const user = await env.DB.prepare('SELECT end_date FROM users WHERE id=?').bind(userId).first();
+        if (user && user.end_date !== isoDate) {
+          await env.DB.prepare('UPDATE users SET end_date=? WHERE id=?').bind(isoDate, userId).run();
+          results.end_date_updates.push({ user_id: userId, name, end_date: isoDate });
+        }
+      } else {
+        results.skipped.push({ user_id: userId, name, reason: `unrecognized nonr_date format: "${nonr_date}"` });
+      }
+    }
+  }
+
+  return results;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // PRIDE 2.0 sync endpoint — SCAFFOLD / DISCOVERY MODE
 //
@@ -94,17 +264,22 @@ export async function onRequest(context) {
     });
   }
 
-  // ── REAL SYNC MODE (not yet implemented) ────────────────────────────────
-  // Once /staff-plan/plans (and any grant-balance / salary-history endpoint)
-  // response shapes are confirmed against pride2_capture_log entries, replace
-  // this stub with real parsing + the same salary_records / users.end_date /
-  // staff_plan_grant_balances sync logic used in functions/api/pride/sync.js.
-  if (body.employees || body.staff_plan) {
-    return json({
-      error: 'PRIDE 2.0 real sync not implemented yet — response shapes not confirmed. ' +
-        'Use the discovery bookmarklet (captures[]) to log raw responses first.',
-    }, 501);
+  // ── REAL SYNC MODE ───────────────────────────────────────────────────────
+  // Body shape: { mode: 'sync', people: [ ...raw /staff-plan/plans array... ] }
+  // Explicit mode:'sync' required (not just presence of `people`) so this
+  // never fires by accident from a stray/legacy request shape.
+  // Handles salary + nonr_date (end date) sync only. Does NOT touch
+  // staff_appointments/allocations — see syncPeople() comment for why
+  // (staff_appointments has a confirmed period_start/period_end date bug,
+  // years off by 2000, e.g. "0025-10-01" — needs a fix + Glenn's sign-off
+  // first) — and grant-balance sync is still unconfirmed/unbuilt.
+  if (body.mode === 'sync' && Array.isArray(body.people)) {
+    const results = await syncPeople(env, body.people);
+    return new Response(JSON.stringify({ mode: 'sync', ...results }, null, 2), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders() },
+    });
   }
 
-  return json({ error: 'Unrecognized request body — expected { captures: [...] }' }, 400);
+  return json({ error: 'Unrecognized request body — expected { captures: [...] } or { mode: "sync", people: [...] }' }, 400);
 }
