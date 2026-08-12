@@ -93,6 +93,18 @@ export async function onRequest(context) {
     return next();
   }
 
+  // PRIDE sync bookmarklet endpoints authenticate with their own pre-shared
+  // token (PRIDE_SYNC_TOKEN / PRIDE2_SYNC_TOKEN), not a Clerk session — they
+  // run from an authenticated PRIDE browser tab, which has no Clerk JWT at
+  // all. Without this exclusion, the Clerk JWT check below 401s the request
+  // before the endpoint's own token check ever runs (confirmed 2026-08-11;
+  // previously an unconfirmed finding from the 2026-06-12 backend audit).
+  // Each endpoint still enforces CORS-origin lock + its own bearer-token
+  // check internally — this exclusion only skips the Clerk layer.
+  if (url.pathname === '/api/pride/sync' || url.pathname === '/api/pride2/sync') {
+    return next();
+  }
+
   if (request.method === 'OPTIONS') {
     return new Response(null, {
       headers: {

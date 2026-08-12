@@ -59,9 +59,14 @@ npx wrangler pages secret put ANTHROPIC_API_KEY --project-name champ-pm
 
 # PRIDE salary sync bookmarklet
 npx wrangler pages secret put PRIDE_SYNC_TOKEN --project-name champ-pm
+
+# PRIDE 2.0 discovery sync bookmarklet (scaffold — see below)
+npx wrangler pages secret put PRIDE2_SYNC_TOKEN --project-name champ-pm
 ```
 
 See `public/pride-bookmarklet.js` for the PRIDE sync setup instructions.
+
+**PRIDE 2.0 (in progress):** PRIDE 2.0 is a newer Laravel/React SPA version of PRIDE with clean JSON REST-style endpoints (vs. PRIDE 1.0's HTML table scraping). `public/pride2-bookmarklet.js` (served as `/bookmarklet2.txt`) is a *discovery* bookmarklet — it re-calls PRIDE 2.0's internal JSON endpoints using the browser's authenticated session and POSTs the raw responses to `POST /api/pride2/sync`, which logs them to the `pride2_capture_log` table for inspection. Once response shapes are confirmed, `functions/api/pride2/sync.js` gets real parsing logic mirroring `functions/api/pride/sync.js`.
 
 ### 5. Configure Clerk
 

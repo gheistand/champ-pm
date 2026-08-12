@@ -64,6 +64,7 @@
   - `CLERK_SECRET_KEY` — Cloudflare Pages secret, required for backend Clerk JWT verification / Clerk API calls
   - `ANTHROPIC_API_KEY` — Cloudflare Pages secret, enables AI-Assisted Goals in Staff Plans (Claude Haiku)
   - `PRIDE_SYNC_TOKEN` — Cloudflare Pages secret, pre-shared token authenticating the PRIDE sync bookmarklet endpoint
+  - `PRIDE2_SYNC_TOKEN` — Cloudflare Pages secret (not yet set), pre-shared token for the PRIDE 2.0 discovery/sync scaffold endpoint (`/api/pride2/sync`)
 
 ### Common commands
 - Install: `npm install`
@@ -135,6 +136,7 @@
 - Cloudflare usage: Pages (hosting + Functions for API), D1 (database) — project name `champ-pm`, D1 database name `champ-pm`
 - Domain/DNS notes: production domain `champ-pm.app`; a `www` → `champ-pm.app` redirect cleanup is a known open backlog item
 - Third-party webhooks: PRIDE sync is inbound via bookmarklet POST (not a true webhook, but functions similarly) — `POST /api/pride/sync`, gated by `PRIDE_SYNC_TOKEN` and CORS-locked to the PRIDE origin
+- **PRIDE 2.0 sync (scaffold, 2026-08-11):** PRIDE 2.0 (`pride2.prairie.illinois.edu`) is the in-development successor to PRIDE — Laravel + React SPA with clean JSON REST-style endpoints (vs. PRIDE 1.0's HTML-table scraping), but still session+CSRF gated with no public API keys. Scaffold in place: `functions/api/pride2/sync.js` (currently "capture mode" only — logs raw JSON responses to `pride2_capture_log` table for shape inspection; real sync logic not yet implemented), `public/pride2-bookmarklet.js` / `/bookmarklet2.txt` (discovery bookmarklet — calls PRIDE 2.0's own JSON endpoints via the browser's authenticated session, not DOM scraping), migration `0029_pride2_capture.sql`. Known endpoint so far: `GET /staff-plan/plans?start_date=&end_date=&people=&org_group_id=...`; salary-history and grant-balance endpoint URLs still unconfirmed. `functions/_middleware.js` was patched to exclude `/api/pride/sync` and `/api/pride2/sync` from the global Clerk JWT check (that check was silently 401'ing both PRIDE endpoints before their own token auth ran — previously an unconfirmed 2026-06-12 audit finding, confirmed and fixed 2026-08-11). Next step: Glenn opens PRIDE 2.0 dev tools with the agent to confirm exact response shapes, then real parsing/sync logic gets written mirroring `functions/api/pride/sync.js`.
 - Mobile app relationship, if any: none; a mobile-friendly timesheet view is a backlog item, not a separate app
 - Internal dashboards/admin tools: `/admin/dashboard`, plus dedicated admin pages for staff, grants, budget, runway, timesheets, reports, import, equity, promotions, salary, schedule, CRM (see feature map in project knowledge base for full route/file list)
 - Analytics/monitoring: none formally established
