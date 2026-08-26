@@ -1,0 +1,1238 @@
+Cooperating Technical Partner
+Business Plan
+June 2026 to May 2027
+State of Illinois
+Department of Natural Resources
+Office of Water Resources
+University of Illinois
+Prairie Research Institute
+Illinois State Water Survey
+May 2026
+Contents
+Executive Summary………………………………………………………………………….	4
+Section 1: Background and Program Vision…………………………………………	5
+Coordination of Cooperating Technical Partners
+Illinois Department of Natural Resources/Offices of Water Resources
+Illinois State Water Survey
+Showcase of Recent Accomplishments
+Completed and Ongoing CTP Projects
+Section 2:  Project Planning………………………………………………………………	16
+Paper Inventory Reduction / Completion of Statewide Digital Mapping
+Coordinated Needs Management Strategy (CNMS)
+Discovery for Identification of Watershed Hydrology and Hydraulic Study Needs
+Priority Streams for Hydrologic and Hydraulic Studies
+Priorities for Updating Digital Flood Insurance Rate Maps
+Five Year Plan List of Priorities
+Programmatic Funding Requests
+Section 3:  Staffing and Resources…………………………………………………...	35
+IDNR/OWR Staffing and Resources
+ISWS/CHAMP Staffing and Resources
+IDNR/OWR and ISWS Local, State, and National Associations
+Section 4:  Community Outreach and Mitigation Strategies………………………  56
+Current outreach meetings and process
+Strategic Planning for Community Engagement
+Meetings and Process Facilitation
+Mitigation Support
+Communication and Outreach to Communities
+Training and Community Capability Development
+Stakeholder engagement and building partnerships
+Mentoring
+Recommendations to FEMA
+Conclusion……………………………………………………………………………………	59
+Appendix…………………………………………………………………………………...	61
+Tables
+Table 1. Summary of Current ISWS CTP Projects	13
+Table 2. Paper Inventory Reduction Prioritization – none remaining (FY24)	16
+Table 3. CNMS Stream Miles Summary by HUC 8	19
+Table 4. Discovery HUC8 Ten Highest Priority	21
+Table 5. Kishwaukee Existing Unverified-CNMS Miles and Study Needs	24
+Table 6. Sangamon River Study Needs	26
+Table 7. Proposed Five-Year Plan	28
+Table 10. FY26 OWR Requested Re-Appropriations	45
+Table 12. FEMA Grants	48
+Figures
+Figure 1 SAFR Structure Information Sheet	11
+Figure 2 LiDAR Status in Illinois	13
+Figure 3 Digital FIRM Status	17
+Figure 4 Kishwaukee Watershed Data Development Phasing Plan	25
+Figure 5 IDNR/OWR Organizational Chart	35
+Figure 6 CHAMP Organizational Chart	53
+Figure 7 LiDAR Inventory Status	61
+Figure 8 LiDAR Quality Levels in Illinois	62
+
+### Executive Summary (Heading 1)
+The borders of Illinois are physically and economically defined by large rivers and Lake Michigan. Waters that enter or flow from 24 states and two Canadian provinces. Illinois also has one of the largest inland systems of rivers, lakes, and streams in the entire nation, and flooding is a common occurrence in the state.  While Illinois previously ranked in the top ten states for flood insurance claims, strong state and local regulations that protect property in areas with the potential for flood damage and efforts to move homes and businesses out of harm’s way have removed it from the top ten.  Even so, substantial flood risk remains in Illinois and so does the need to communicate and mitigate this risk.
+This 2026 Illinois Business Plan serves as the State of Illinois’ “notice of interest” to continue its participation as a Cooperating Technical Partner (CTP) with the Federal Emergency Management Agency (FEMA) and perform work under FEMA’s Flood Hazard Mitigation, National Flood Insurance, and Mapping Programs through its Department of Natural Resources, Office of Water Resources (IDNR/OWR) and the Illinois State Water Survey (ISWS), Prairie Research Institute, University of Illinois.  This State of Illinois plan extends the terms of the April 28, 2004, FEMA/IDNR CTP agreement and the September 9, 2013, FEMA/ISWS CTP agreement.  As statewide CTPs, the IDNR/OWR and the ISWS are prepared to continue working with FEMA to identify flood hazard risks, communicate those flood hazard risks, identify means to reduce flood hazard risks, and implement those means to help FEMA meet its national goals.
+
+### Section 1: Background and Program Vision (Heading 1)
+
+### Coordination of Cooperating Technical Partners (Heading 2)
+The Illinois Department of Natural Resources/Office of Water Resources (IDNR/OWR) and the Illinois State Water Survey (ISWS) work closely together to provide improved hazard information with a focus on flooding for communities and property owners with the goal of reducing personal and economic losses while increasing resiliency. This partnership extends a collaborative approach to the local communities by actively engaging them in the process of identifying and assessing natural hazard risks and identifying research needs. The continued tradition of public outreach aims to engage residents and government officials to inform, educate, and empower others to act in preventing losses from natural hazards, and understand their residual risks, climate change impacts, and effects of urbanization.
+The State of’ Illinois CTP Business Plan is a collectively prepared plan by IDNR/OWR and ISWS.  It defines the existing structure and capabilities of IDNR/OWR and ISWS and outlines current programs, program goals, activities, needs, challenges, and priorities related to flood risk identification and reduction. This plan provides the status of Digital Flood Insurance Rate Maps and Risk Mapping, Assessment, and Planning (MAP) in Illinois, as well as the short-term and long-term state goals in this regard.
+The IDNR/OWR and ISWS will continue their partnership, coordinating activities to make the most efficient use of FEMA grant dollars to reduce flood risks and to provide the citizens of Illinois with accurate documentation of the residual flood risks.
+
+### Illinois Department of Natural Resources/Offices of Water Resources (Heading 2)
+The Illinois Department of Natural Resources/Office of Water Resources (IDNR/OWR) is responsible for managing the state’s river, lakes, and streams. IDNR/OWR is also the lead state agency for water resources planning, navigation, floodplain management, the National Flood Insurance Program (NFIP), water supply, including Lake Michigan water allocations to over seven million people, drought, Lake Michigan coastal resource planning and coordination, and interstate organizations on water resources. Interagency duties include the state water plan, drought response, flood emergency situation reports, the comprehensive review of Illinois water use law, and evaluation of national water policy.
+The primary capital activity of the office is in the area of urban flood damage reduction with assistance to units of local government through planning, design, construction, regulations, and financial assistance. The urban program also features the acquisition of flood-prone homes and businesses. IDNR/OWR personnel activities include:
+Administration of programs that regulate construction in the floodways of rivers, lakes, and streams, including Lake Michigan; construction and operation of dams; diversion of water from Lake Michigan; and withdrawal of water from Lake Shelbyville, Carlyle Lake, and Rend Lake.
+Operation of the William G. Stratton lock and dam on the Fox River, the Sinnissippi Dam on Rock River, and other state-owned facilities.
+Sponsorship of water resources research and operates stream gauging stations, flood gauges, and lake water stage recorders in cooperation with federal, state, and local cooperators.
+Collection of water resource data prior, during, and following a flood or other disaster and disseminating data to various state and local agencies while serving as a Technical Liaison to the Illinois Emergency Management Agency (IEMA) and their Emergency Operations Center (EOC).
+Coordination of various state agencies and their statewide resiliency measures intended to reduce flooding issues throughout the state as the lead managing agency for the State of Illinois Resiliency Team.
+
+### IDNR/OWR Goals (Heading 3)
+The goals of the IDNR/OWR are to continue the pursuit of sound floodplain management, provide for secure water sources for public and industrial uses, and further flood risk reduction in Illinois. Program-specific objectives follow:
+
+### Public Safety (Heading 4)
+Implement removal of public low head dams in the NB Chicago River, Fox, Kankakee, and Sangamon River Watersheds to improve public safety.
+Continue to conduct flood surveillance activities as flooding and flood damages occur statewide to update forecast gage stage damage information (identify what is damaged at what stage).
+Continue to inspect State Dam Safety Program review, inspections, and compliance determinations.
+Mapping levees statewide using a LiDAR-based survey to determine overtopping elevations, levee breach inundation mapping, and economic impacts of such levee failures.
+Coordinate with agency, NGO and community partners develop and support plans to build resilience to coastal hazards, including shoreline erosion and flooding.
+Provide pass-through federal funding to for planning, education and outreach to build resilience to coastal hazards.
+Coordinate with agency, NGO and community partners develop and support plans to build resilience to coastal hazards, including shoreline erosion and flooding.
+Provide pass-through federal funding to for planning, education and outreach to build resilience to coastal hazards.
+
+### Flood Risk Reduction (Heading 4)
+Continue to implement additional Flood Hazard Mitigation (acquisition) Projects statewide to eliminate repetitive loss structures as available funding allows. Illinois also intends to continue to partner with FEMA and IEMA to help optimize repetitive loss acquisitions through the Hazard Mitigation Grant Program (HMGP) by working with local communities to provide for the required 25% local match either individually or globally.
+The State of Illinois will continue to partner with local Illinois communities to study the feasibility of potential flood hazard risk reduction projects and, if appropriate, complete project planning and project designs to implement such economically feasible measures. These communities typically have sustained flood damages during several storm events in recent years.  The IDNR conducts flood study from small tributaries to large rivers to identify the source of the flood problem and to develop a flood mitigation strategy for the future.  The improvements can include levees, diversions, detention reservoirs, improved conveyance, and structure buyouts and floodproofing.  In process of the study, an inundation maps based on the new modeling is created as well as a full assessment of existing damages is determined.  The information determined throughout the study can be utilized by FEMA.
+
+### Floodplain Management (Heading 4)
+Continue to work with communities to demonstrate NFIP compliance, participate in the National Community Rating System (CRS) program and minimize flood hazard risks through FEMA’s Community Assistance Program.
+Continue to actively participate in the IAFSM Special Advanced Modeling Subcommittee as a means of developing better insight and policy related to the use of advanced (unsteady and two-dimensional) modeling for regulatory purposes.
+Seek to strengthen enforcement authorities in the Rivers, Lakes, and Streams Act, especially for high hazard public safety floodplain and dam safety violations.
+
+### Flood Hazard Identification and Mapping (Heading 4)
+Illinois recognizes that it needs to continue to develop better flood hazard maps for all urban and urbanizing areas of the State to improve NFIP activities and the State’s regulatory floodplain management programs. Coordinated Needs Management Strategy (CNMS) has helped to identify technical deficiencies in existing floodplain studies and mapping. This information can direct resources to the areas where improved technical products can provide the greatest public benefit. IDNR/OWR through the CTP continues working with FEMA and ISWS toward this goal.
+IDNR/OWR staff assist in the mission of reducing flooding and flood risk through the performance of numerous activities. IDNR/OWR programs and activities that augment FEMA’s efforts include:
+Regulatory Programs – Responsible for floodplain management activities across the state and the issuance of permits for dam construction, construction in stream floodways, and activities in public bodies of water. Assists in coordination of NFIP at the local level.
+Statewide Programs – Responsible for non-permit programs including floodplain management training, community assessment visits, and ordinance reviews. Leads coordination activities for the NFIP communities, coordinates with the CRS program assists in regional stormwater management programs and is responsible for the nonstructural mitigation program including buyouts of repeatedly flooded structures.
+Lake Michigan Programs – Regulates construction in the public bodies of water in Illinois, Lake Michigan, and a portion of the Chicago area water system. Monitors technical studies and data collection. Represents the state on interstate and international organizations related to Lake Michigan and works closely with the Illinois Coastal Management Program.
+Dam Safety – Regulates and maintains an inventory by class of all jurisdictional dams in the state. Monitors dam safety inspections, emergency action plans, and operation and maintenance manuals in the state. Performs dam site inspections as required by FEMA.
+Engineering Studies Program –
+\Develop Statewide Water Sustainability Assessment to support statewide water demand and water supply.
+Flood Surveillance and coordination with IEMA
+Fox River Chain of Lakes operations study, unsteady hydrologic and hydraulic modeling study initiated
+Management of Federal Reservoir Water Use Contracts
+Management of Regional Water Supply Planning
+Update the State Water Plan to provide policy and program guidance in water resources management to state and local agencies.
+Technical Services Program – Responsible for the collection, development, and maintenance of various data sources used to produce floodplain maps, high-water marks, as-built, LiDAR, and other engineering studies.
+Engineering Studies Section
+Develop Statewide Water Sustainability Assessment to support statewide water demand and water supply.
+Flood Surveillance and coordination with IEMA
+Fox River Chain of Lakes operations study, unsteady hydrologic and hydraulic modeling study initiated
+Management of Federal Reservoir Water Use Contracts
+Management of Regional Water Supply Planning
+Update the State Water Plan to provide policy and program guidance in water resources management to state and local agencies.
+Technical Services Section
+Activities related to flooding and flood risk include:
+Bathymetric survesy of the Fox River dam impoundments
+Coordination of GIS data and activities with other entities inside IDNR and other outside agencies
+Creation of project-specific LiDAR derivative products (contours, hillshade relief)
+Data collection for state-owned dams in need of repairs (Sinnissippi)
+Development and maintenance of web-based interfaces for LiDAR data
+Development of geodatabases for OWR project and activity locations
+Development of GIS mobile data collection applications
+Development of Rock River Real-Time Flood Inundation mapping web application
+Extraction and formatting of geospatial data for use by CAD software
+GIS project support and data management
+LiDAR data management
+River flood inundation mapping
+Survey of first floor elevations of structures located in floodplains in Illinois, Des Plaines, and Rock River communities
+Surveys of bridge structures, channel cross-sections and floodplain sections in the Little Wabash and Embarrass River watersheds
+Wetlands and ordinary high-water marks for various projects, etc.
+Capital Appropriations
+Capital Appropriations is a unique program that has augmented how FEMA programs work in Illinois.  IDNR/OWR requested Re-Appropriations for the fiscal year 2022 shown in Table 10 include funding for flood control and flood hazard mitigation projects.
+The governor judiciously controls the release of these funds for expenditures.  Accordingly, limited funding is provided to the IDNR/OWR as state finances and approved bond sales allow based on prioritized funding requests from the IDNR/OWR.
+Table 10. FY26 OWR Requested Re-Appropriations
+
+### Illinois State Water Survey (Heading 2)
+
+### Prairie Research Institute (Heading 3)
+The Illinois State Water Survey (ISWS), the Illinois Natural History Survey, the Illinois State Geological Survey, the Illinois Sustainable Technology Center, and the Illinois State Archeology Survey are collectively referred to as the Illinois State Scientific Surveys.  As of July 1, 2008, the ISWS joined the other state surveys to form the Prairie Research Institute (formerly the Institute of Natural Resource Sustainability) within the University of Illinois. The institute serves as a focal point for applied energy, environmental science, and sustainability programs, taking advantage of the surveys’ complementary goals and missions of providing the scientific underpinnings for energy, sustainability, environmental policy, and natural resource management, ensuring that the natural environment is developed to enhance the well-being of citizens and communities.
+
+### Illinois State Water Survey (Heading 3)
+The ISWS is the primary agency for research and information on surface water, groundwater, and the atmosphere. The ISWS is a premier organization with 125 years of experience in all aspects of water resources.  Located on the University of Illinois campus, the ISWS conducts research and monitors and provides information on the availability, use, and quality of surface water, groundwater, and atmospheric resources, including state and regional data on weather, climate, air quality, water supplies, and flood hazard identification.  ISWS staff apply state-of-the-art science to solve real-world problems. Most staff are funded by grants and contracts through the University of Illinois.
+The ISWS is home to the State Climatologist Office and the State Hydrologist.
+
+### Coordinated Hazard Assessment and Mapping Program (CHAMP) Section (Heading 3)
+The CHAMP Section of ISWS focuses on natural hazard identification, risk assessment, and mitigation.  In concert with the ISWS mission, CHAMP conducts research and provides information on surface water resources and hazards.
+The CHAMP Section is dedicated to preventing losses from natural hazards through hazard identification, risk assessment, mitigation, and communication.  Activities include but are not limited to:
+Engineering and mapping tasks to prepare the Digital Flood Insurance Rate Maps (DFIRMs) and technical data for Flood Insurance Studies (FIS).
+Hydrologic and hydraulic studies to identify flood hazards and manage stormwater.
+ISWS Flood Information Services and Web Resources – Maintains the Illinois Floodplain Maps website, home to Risk MAP watershed-based outreach and products. The site has four main pages (http://www.illinois floodmaps.org/) to support communities, FEMA, and local elected officials:
+DFIRMs page - Tracks the status of the DFIRM mapping and provides links to additional resources
+Outreach page – Risk MAP products made publicly available including Discovery Maps, associated databases, outreach materials, and useful websites
+Services page – Provides additional services and project updates to communities including in-progress hydrologic and hydraulic studies and building footprint polygons for every county using LiDAR, and Topographic Wetness Index analyses for all counties are posted
+MT-2 Letter of Map Revision (LOMR) page – Provides useful information including checklists and relevant websites when preparing an MT-2 application
+Structure Specific Risk Assessment Data and Website – Hosts the Structures at Flood Risk in Illinois (SAFR) website in support of the IDNR/OWR goal of a statewide database of structures in and near the Special Flood Hazard Area (SFHA).  This website provides visualization of structures at risk and a rich array of products that can be downloaded.
+Hazard Mitigation Plan Assistance – Contributed to the Illinois Natural Hazard Mitigation Plan update, including information on climate change and mitigation success stories using Loss Avoidance Studies. Assist counties by preparing Hazus reports to supplement their local hazard mitigation plans. Assist counties with FEMA mitigation planning grant applications.
+
+### Showcase of Recent Accomplishments (Heading 2)
+The following section offers a few diverse accomplishments that IDNR/OWR and ISWS want to highlight. While not all directly stem from previous FEMA CTP funding, all are related to studying risk, educating the public, and reducing risk. More information and other recent accomplishments can be found in Section 3 under their respective agency.
+5th Annual CTP Recognition Program, First Place Award Winners, ISWS/IDNR
+In 2021, FEMA recognized the Illinois Department of Natural Resources and Illinois State Water Survey for the fifth annual CTP Recognition Award for developing structure-specific risk data statewide and creating the Structures at Flood Risk (SAFR) website.
+Recent ISWS Publications –
+Precipitation Frequency Study for Illinois. 2020. Angel, J. R., M. Markus, K. A. Wang, B. M. Kerschner, S. Singh. Illinois State Water Survey Bulletin 75, Champaign, IL. http://hdl.handle.net/2142/106653
+Structure-Specific Flood Risk Assessment Studies, 2019. Graff, L., McConkey, S., McVay, B., Illinois State Water Survey Contract Report 2019-09, Champaign, IL. http://hdl.handle.net/2142/103055
+Structure Specific Risk Assessment Data and Website – ISWS hosts the Structures at Flood Risk in Illinois (SAFR) website in support of the IDNR/OWR goal of a statewide database of structures in and near the SFHA.  This website provides visualization of structures at risk, structure-specific surveyed elevation data, possible damage costs for various frequency storms, and various products that can be downloaded.
+Urban Flooding Awareness Act Report - IDNR/OWR and ISWS with input from other state agencies prepared the Urban Flooding Awareness Act Report in 2015.  This report addresses the increasing impact of urban flooding, in particular flooding outside the mapped floodplain.  Some of the flooding may be described as pluvial flooding.  Illinois’ research on urban flooding positions the state to address the urban/pluvial flooding problem in the future.  Many recommendations were listed in the report.
+In 2018 IDNR/OWR coordinated with the Center for Neighborhood Technology (CNT) on SB1337 sponsored by Senator Resin (previously Steans SB1507) and HB2756 (Representative Cassidy and Fortner sponsors) concerning county stormwater authority statewide.  A bill expanding the authority to counties with population centers exceeding 50,000 passed on August 10, 2018.
+The Illinois State Water Survey has completed topographic wetness index analyses for each county under a grant funded by the Natural Resource Conservation Service.   These are available in an interactive viewer and as shapefiles at the ISWS web page http://illinoisfloodmaps.org/twi.aspx.  Topographic wetness indices can be used for the identification of areas likely prone to urban flooding. This would afford communities the ability to identify areas requiring special consideration for below-ground construction.
+IDNR/OWR encourages communities to join the Community Rating System (CRS):  Illinois now has 70 communities in CRS with an average rating of Class 6. Nearly 50 percent of all flood insurance policies in Illinois are discounted due to proactive floodplain management programs. Ottawa, Illinois reached a Class 2 rating in 2018.
+Community Adoption of Floodplain Ordinances.  In addition to annual performance commitments agreed upon between FEMA and the IDNR/OWR through the CAP/SSSE program, there are several specifically required metrics which all states must meet.   One of these national metrics is that 93% of participating communities that receive new floodplain maps must updated ordinances and adopt the new maps.   Illinois remains one of the few states (perhaps the only state?) in the nation to maintain a 100% community adoption rate.   Illinois not only meets this FEMA metric every year but typically exceeds the metric through new communities joining the NFIP.
+Illinois, Rock, Pecatonica, and Mississippi River Flooding (March April 2019). OWR contacted 12 communities and determined that despite major flood stages, damages were found to be minimal due to previous mitigation projects and strict enforcement of floodplain regulations.
+Illinois had a Federal Disaster Declaration following flooding during the fall or 2019 IDNR contacted over 50 communities and assisted with or reviewed damage assessments of over 500 buildings.
+Completion of Statewide LiDAR Data Acquisition – LiDAR is available for all Illinois Counties as shown in Figure 1. New data acquisitions have been prioritized for counties that have older LiDAR with lower quality levels.  Quality assurance checks are conducted for all collections by Illinois State Geological Survey staff. (Please see the appendix for additional information and figures.)
+The Illinois Height Modernization Program (ILHMP) at the Illinois State Geological Survey has established data-sharing agreements to archive and distribute elevation data. Data are offered as originally delivered LAS tiles or as the derivative products of DEM/DTM or DSM.
+Figure 2 LiDAR Status in Illinois
+
+### Completed and Ongoing CTP Projects (Heading 2)
+ISWS staff perform the full spectrum of activities funded under CTP grants. ISWS works collaboratively with the IDNR/OWR and with other agencies such as the USACE to perform project work.  Below is a list of the tasks performed by ISWS and IDNR/OWR.
+
+### CTP Risk MAP Activities and Level of Involvement (ISWS unless otherwise noted) (Heading 3)
+Planning (IDNR/OWR and ISWS)
+Discovery
+Deployment and Mitigation Action
+Hydrology and hydraulics (IDNR/OWR and ISWS)
+Floodplain mapping and Flood Insurance Study writing
+DFIRM database development
+Community Flood Risk Review Meetings
+Resilience Meetings
+Flood Risk Products (Changes Since Last FIRM; Depth and Analysis Grids; Hazus)
+Preliminary Map Products (FIRM, FIS, database)
+Public Open House and Community Officials Meeting
+Manage Comments and Appeals
+Ordinance Adoption - IDNR/OWR
+Effective DFIRMs – Revalidation Letters
+LOMR delegation (MT-2 application review)
+
+### CTP Program Management (IDNR/OWR unless otherwise noted) (Heading 3)
+Global Program Management Activities
+Outreach for Mapping
+Training to State and Local Officials
+Flood Hazard Risk Assessments (IDNR/OWR and ISWS)
+Mitigation Planning Technical Assistance
+Staffing
+Technical Pilot Projects
+Mentoring
+Minimal Map Printing
+CNMS (IDNR/OWR and ISWS)
+
+### Risk MAP Projects (Heading 3)
+ISWS/CHAMP has conducted Discovery in twelve HUC8 watersheds since 2010 under various Mapping Activity Statements. There are four counties, Champaign, DuPage, Peoria, and Tazewell, which did not have effective FIRMs at the initiation of the Risk MAP program and were considered “conversion counties” as certain Risk MAP activities were performed.
+IDNR/OWR participates in Discovery meetings as the State NFIP coordinator to evaluate future study and hazard mapping needs. The IDNR/OWR participation in Risk MAP activities is described in their annual Project Management Statement of Work.
+https://www.illinoisfloodmaps.org/. shows the counties where digital FIRMs are effective, or data products have been funded through FFY2025. ISWS/CHAMP has successfully completed FEMA MAS/SOW tasks funded in FFY2008 – FFY2019. The University of Illinois provides account management support, and all periodic audits have passed without any negative findings. Current work funded under FFY2020 - FFY2025 is listed in Table 1.
+Table 1. Summary of Current ISWS CTP Projects
+
+### Section 2:  Project Planning (Heading 1)
+Illinois’ long-term goals for flood hazard identification align with FEMA Risk MAP goals, including replacing all paper FIRMs with digital products, addressing high priority study needs, developing watershed-based hydrology and hydraulics, and building greater resiliency. Illinois projects by study type: Paper Inventory Reduction (PIR), unverified streams (CNMS) study needs, and Discovery for watershed-scale hydrologic and hydraulic data development are discussed and prioritized within each study type. On the basis of Illinois priorities, the five-year plan was updated considering a combination of the factors listed below. The overall five-year plan, detailed by project type, location, task range, and funding year, is found at the end of Section 2 in Table 7.
+Paper inventory reduction of unmodernized counties
+Optimize investment by leveraging best available data (e.g., IDNR/OWR Wabash River study, and recent LiDAR development)
+CNMS unverified studies
+Areas with engaged community partners with data development requests to assess risk
+CTP ability to balance ongoing projects and complete new projects in a timely manner
+Advance stated FY20 priorities for Region V and FEMA HQ, and help attain metrics
+
+### Paper Inventory Reduction / Completion of Statewide Digital Mapping (Heading 2)
+https://www.illinoisfloodmaps.org/ illustrates that Counties without an effective countywide digital FIRM have all finally been funded (as of FFY24) to begin the Risk MAP process. This has been the goal of the ISWS program since 2004. In coordination with CNMS tracking, efforts to update aging studies on digital FIRMs throughout the state of Illinois is still an important priority. Many counties are in the data development phase and others have progressed to Preliminary and Pending FIRM status. Table 2 lists the counties in order of Federal Funding Year for countywide DFIRM initiation. LiDAR is available for all counties with a minimum Quality Level of 3. See Appendix for more information about LiDAR status. Hydrologic and hydraulic analyses are underway in some of the counties as part of watershed-scale analyses, e.g., Edwards. Mapping updates should be coordinated with outreach to counties not currently participating in the National Flood Insurance Program or without current Hazard Mitigation Plans.
+Table 2. Paper Inventory Reduction Prioritization – none remaining (FY24)
+Figure 3 Digital FIRM Status
+
+### Coordinated Needs Management Strategy (CNMS) (Heading 2)
+The CNMS database is being used to determine future FEMA study and mapping needs throughout the state. CNMS Mapping Activity Statement No. IDNR10-01_ISWS10-12 was executed in September 2010 and resulted in the development of the CNMS database for all Illinois stream segments by ISWS and quality control evaluation of the database by IDNR/OWR. CNMS Mapping Activity Statement No. IDNR11-01_ISWS11-13 was executed in August 2011 and allowed to expire by FEMA on 9/30/14. That previous MAS resulted in updates to the CNMS database by ISWS with approval from IDNR/OWR. Each year FEMA’s contractor completes an evaluation of expiring and remaining unknown miles. Currently, updates to the CNMS database by ISWS as part of project updates are reviewed and approved on an as-available basis by IDNR/OWR.
+
+### Summary of Coordinated Study Needs System Data (Heading 3)
+Table 3 lists summaries of stream miles classified under the New, Validated, or Updated Engineering (NVUE) standards that were accessed from the CNMS database maintained by the ISWS, which is current as of November 2024. The clear majority of streams in Illinois have only an approximate floodplain represented in the FIRM (Zone A). Regarding the validity of the engineering analyses, 5.7-percent of the mapped stream miles in Illinois are NVUE compliant. This does not include the stream miles in Illinois which have been identified as “unmapped” and yet a Special Flood Hazard zone should be shown.  See Identification of Unmapped Special Flood Hazard Areas in Illinois, http://illinoisfloodmaps.org/sfharisk.aspx for unmapped Special Flood Hazard Areas (SFHA) draining more than 10 square miles in rural areas or 1 square mile in urban areas as of 2008. CNMS has a feature class called S_Unmapped_Ln (also known as Tier 0). Tier 0 is classified by FEMA as “Known to be flood-prone but not yet identified as SHFA on a regulatory FIRM." This feature class has been populated with reaches created by STARRII from the National Hydrology Dataset (NHD) and includes all unmapped/no SFHA areas that have more than one square mile of drainage based on the NHD flow accumulation grids. The definitions of the table fields are as follows:
+Being Studied = Studies that are currently being studied or have been allocated funding for the current FY captured during the Discovery process
+Being Assessed = Studies currently being assessed per CNMS stream reach level validation
+NVUE Compliant = New study performed, or study passes stream reach level validation
+To Be Assessed = Requires Regional input to either defer or perform a CNMS stream reach level validation
+To Be Studied = Studies that need to be studied and are planned for a future FY
+Tier 0 = Known to be flood-prone but not yet identified as SHFA on a regulatory FIRM
+Table 3. CNMS Stream Miles Summary by HUC 8
+
+### Discovery for Identification of Watershed Hydrology and Hydraulic Study Needs (Heading 2)
+A list of Illinois HUC8 watersheds, in order of priority, is provided in Table 4. The selection of HUC8 watersheds for Discovery supports 1) identification of technical and mitigation needs and 2) information gathering for IDNR/OWR watershed planning, flood risk management, and mitigation objectives. Information gathered will be used to determine if further state action is warranted.
+Table 4. Discovery HUC8 Ten Highest Priority
+
+### Priority Streams for Hydrologic and Hydraulic Studies (Heading 2)
+This section addresses priority studies as identified through the watershed Discovery process.  There are numerous hydrologic and hydraulic study needs throughout the state. Illinois’ priority streams for hydrology and hydraulic study include the following.
+
+### Kishwaukee Watershed (Heading 3)
+Table 5 lists the streams in the Kishwaukee HUC8 watershed where updated hydrologic and hydraulic analyses are recommended as well as the desired resulting SHFA designation, Zone A or Zone AE. The NVUE impact of completing data development would be more than 600 miles. The development of hydrologic and hydraulic data in the watershed is expected to begin with FFY2020 funding. A phased approach is recommended with data development beginning in the lower part of the watershed and progressing upstream, see Figure 4. This progressive plan is included in the 5-year plan.
+Phase 1 (FY20)
+Hydrologic analysis for entire main-stem Kishwaukee River.
+Survey main-stem Kishwaukee River structures and channel cross-sections within Winnebago County.
+Hydraulic analysis main-stem Kishwaukee River within Winnebago County (approx. 15 miles BLE-D).
+Survey scoped Zone AE tributary structures and channel cross-sections within HUC-10 watersheds contributing to Winnebago reach main-stem Kishwaukee River. (Kishwaukee River HUC10, Killbuck Creek HUC10, South Branch Kishwaukee River HUC10)
+Phase 2 (FY21)
+Survey main-stem Kishwaukee River structures and channel cross-sections within Boone County.
+Hydraulic analysis main-stem Kishwaukee River within Boone County (approx. 17 miles BLE-D).
+Phase 3 (FY22)
+No survey main-stem Kishwaukee River structures and channel cross-sections within McHenry County.
+Survey scoped Zone AE tributary structures and channel cross-sections within the remaining HUC-10 watersheds contributing to Boone reach main-stem Kishwaukee River. (Rush Creek-Kishwaukee River HUC10, East Branch Kishwaukee River HUC10)
+Phase 4 (FY23)
+Hydrologic analysis scoped tributaries to Kishwaukee within Boone, Winnebago, and Ogle Counties.
+Hydraulic analysis scoped tributaries (Zone A and Zone AE) to Kishwaukee within Boone, Winnebago, and Ogle Counties.
+Floodplain Redelineation for select tributaries in Boone County
+Phase 5 (FY24)
+Survey Data for Zone AE tributaries in Kane and McHenry Counties
+Hydrologic analysis scoped tributaries to Kishwaukee within DeKalb and Kane Counties
+Hydraulic analysis scoped tributaries (Zone A and Zone AE) to Kishwaukee within DeKalb and Kane Counties.
+Phase 6 (FY25)
+Hydrologic analysis scoped tributaries to Kishwaukee within DeKalb and Kane Counties
+Hydraulic analysis scoped tributaries (Zone A and Zone AE) to Kishwaukee within DeKalb and Kane Counties.
+Phase 7 (FY26)
+PMR Dekalb & McHenry & Kane
+Table 5. Kishwaukee Existing Unverified-CNMS Miles and Study Needs
+Figure 4 Kishwaukee Watershed Data Development Phasing Plan
+
+### Sangamon River - Upper Sangamon Watershed (Heading 3)
+Although not proposed for funding this year, the main stem of the Upper Sangamon River has been the subject of several FEMA initiated studies. Hydrology has been completed but due to the age of the study will require an update. An assessment of effective hydraulic models and available model data have been assembled in a draft working HEC-RAS model as of 2013. The level of study recommended, and the priority has been established but will need review before project initiation given the age of the assessment. The summary is provided in Table 6.
+
+### Priorities for Updating Digital Flood Insurance Rate Maps (Heading 2)
+
+### LaSalle County (Heading 3)
+LaSalle County is a priority for updated mapping for a number of reasons, which include:
+The confluence of the Illinois River and the Fox River, which has an unverified effective study (discussed in "Priority Streams for Hydrologic and Hydraulic Studies FFY2018”), is in LaSalle County
+New high-resolution LiDAR is available for LaSalle County as of 2019
+Although in DFIRM format, the Zone A floodplains are not model backed
+Dayton Dam, which is a high-risk dam, is located in LaSalle County
+The City of Ottawa in LaSalle County is a focal point for the Illinois Valley Flood Resilience Alliance
+Discovery in Upper Illinois (HUC 7120005) and the Lower Illinois-Senachwine Lake (HUC 7130001) would support the update of LaSalle County FIRMs
+
+### Five Year Plan List of Priorities (Heading 2)
+The overall five-year plan, detailed by project type, location, task range, and funding year is provided below in Table 7. This table has been changed since the last business plan and reflects projects that may be funded to FFY2030. Adjustments to the plan are expected as projects progress. Principally the projects described in the five-year plan will be conducted by the ISWS and IDNR/OWR. However, two major USACE flood control reservoirs are located on the main stem of the Kaskaskia River. Updated information on flood elevations in this system will be needed from others to proceed with PIR projects in Shelby, Fayette, and Washington Counties.
+Table 7. Proposed Five-Year Plan
+1 Starting in FY26, ISWS intends to initiate a multi-year statewide 2D BLE project to develop 2D modeling coverage for the entire State of Illinois.  Statewide 2D BLE results will be utilized to prioritize future data development and mapping needs across the state.
+
+### Programmatic Funding Requests (Heading 2)
+
+### ISWS Programmatic Funding Requests (Heading 5)
+Program management funds are requested to maintain the illinoisfloodmaps.org website and for general program management. Program management responsibilities will remain consistent with previous years, as described in Section 1. CHAMP is becoming a greater partner with communities and is brought into regular conversations initiated by FEMA, IDNR/OWR, IEMA and communities to serve as an approachable technical liaison. An increase in funding level is requested in keeping with increasing involvement, collaborations on levee issues, and costs.
+
+### Mapping Study Repository (Heading 5)
+A single site repository is necessary to “house” all existing, updated, and new floodplain hydrologic, hydraulic, and floodway models in the State of Illinois.  Such models that are the basis for flood insurance studies, regulatory mapping, and regulatory analysis purposes must be free and readily available to the public for use. The FEMA Map Library is the most logical repository for this information in Illinois. The State of Illinois has continued to press FEMA about this repository and the need to determine which models are already in the FEMA Library, which models are missing, and where the missing models are located (ISWS, IDNR, consultants, etc.). The updated State Water Plan recommends that a GIS Based database be developed to track information (metadata and links) about all hydraulic models developed by federal, state, private and public entities for the state of IL.
+
+### IDNR/OWR Mapping Coordinator (Heading 5)
+Current FEMA CTP Program Management funding for IDNR/OWR is less than a third of the funding necessary to complete FEMA CTP Mapping and Mitigation activities. The IDNR/OWR Division of Resource Management Mapping Coordinator is needed to oversee mapping issues and work with FEMA and other state and local entities to assure continued improvements to flood hazard risk identification mapping in Illinois. IDNR/OWR General Revenue Personnel Services funds are not currently sufficient to fill this position.
+
+### Section 3:  Staffing and Resources (Heading 1)
+
+### IDNR/OWR Staffing and Resources (Heading 2)
+To help streamline program management, the IDNR/OWR has aligned its organization into two divisions, the Division of Resource Management and the Division of Capital Programs. The organization chart is shown in Figure 5.
+Figure 5 IDNR/OWR Organizational Chart
+
+### Division of Resource Management (Manager Stephen Altman, P.E., CFM) (Heading 3)
+The Division of Resource Management is comprised of five sections including Northeastern Illinois Regulatory Section, Downstate Regulatory Section, Dam Safety Program, Statewide Programs, and Lake Michigan Management Program.
+
+### Northeastern Illinois Regulatory Section (Chief, William Boyd, P.E., CFM) (Heading 4)
+
+### Staff (Heading 5)
+1  Section Chief (P.E., CFM)
+3 Full-time Engineers (1 P.E., 3 Staff Engineers 1 CFM)
+
+### Downstate Regulatory Section (Chief Bill Milner, P.E., CFM) (Heading 4)
+
+### Staff (Heading 5)
+Section Chief (P.E., CFM)
+3 Engineers ( P.E., 2 EIT, 3 CFM)
+
+### Dam Safety Program (Chief Paul Mauer, P.E.) (Heading 4)
+
+### Staff (Heading 5)
+1 Section Chief (P.E.)
+Engineer
+Senior Engineers (positions posted)
+
+### Statewide Programs Section (Chief, Vacant) (Heading 4)
+
+### Staff (Heading 5)
+1 Unit Chief (1 CFM)
+2 Floodplain Managers (2 CFM ( 1 starting 10/1/2025), 1 CFM (retiring 12/31/25 (to be backfilled)
+1 Mapping and Studies Engineer (CFM, P.E.)
+
+### Lake Michigan Management Section (Chief, Russell Flinchum) (Heading 4)
+
+### Staff (Heading 5)
+1 Section Chief
+1 Unit Chief (1 P.E.)
+1 Administrative Assistant
+
+### Division of Capital Programs (Manager, Wes Cattoor, P.E., CFM (Acting)) (Heading 3)
+
+### Staff (Heading 5)
+1 Administrative Assistant
+
+### Engineering Studies Section (Chief, Terra McParland, P.E., CFM (Acting)) (Heading 4)
+
+### Staff (Heading 5)
+1 Section Chief (P.E., CFM)
+1 Stream Restoration Engineer (P.E.) vacant
+1 Water Supply Engineer P.E.
+1 Flood Surveillance Engineer (P.E.)
+1 Civil Engineer III
+1 Civil Engineer II
+1 GIS Specialist
+2 GIS Trainees
+
+### Technical Services Section (Chief, Lee Woodward, PLS) (Heading 4)
+
+### Staff (Heading 5)
+1 Land Surveyor (PLS)  Vacant
+3 Engineering Technicians (field)
+
+### Design and Construction Section ((Lindell Loy- Acting  P.E., S.E.) (Heading 4)
+
+### Staff (Heading 5)
+1 Section Chief (P.E., S.E.) - Acting
+1 Design Unit Chief Engineer (P.E.) (Vacant)
+1 Construction Manager (P.E., S.E.)
+1 Engineering Technician IV
+Donohue Associates (Design Consultant – contract thru 12-31-2025)
+AECOM (Construction Inspection Consultants – contract thru  2-28-2026)
+
+### Operations Section (Chief, Jason Reddy P.E) (Heading 4)
+
+### Staff (Heading 5)
+1 Section Chief (P.E.)
+1 Waterway Construction Supervisor II
+2 Waterway Construction Supervisor I
+1 Lock Master
+1 Assistant Lock Master
+5 Lock and Dam Tenders
+IDNR/OWR Mapping Coordinator
+IDNR/OWR Division of Resource Management needs to establish the position of Mapping Coordinator to oversee mapping issues and work with FEMA and other state and local entities to assure continued improvements to flood hazard risk identification mapping in Illinois.  IDNR/OWR General Revenue Personnel Services funds are not currently sufficient to fill this position. This position is noted in Section 2 as a staff funding request.
+IDNR/OWR aims to hire a Mapping and Cooperative Technical Partner (CTP) coordinator in this section to:
+Manage floodplain and floodway mapping development, modification, and prioritization activities statewide to ensure such activities meet state flood risk mapping standards and properly convey flood risk where needed and appropriate.
+Coordinate all FEMA CTP program management and competitive grants and activities in cooperation with the ISWS.
+Assist with preparation of mapping products for the IDNR/OWR; and
+Carry out projects and priorities identified in the annual IDNR/OWR Business Plan.
+IDNR/OWR Floodplain/Floodway Studies and Revisions Review Staff
+IDNR/OWR takes seriously its role to review floodplain/floodway studies and revisions for compliance with state rules and policies in a timely manner and has developed and now maintains a database on the IDNR/OWR website of floodplain map revision and study review requests and review status for public information. Additional funding sources to support additional full-time staff in this program will improve the timeliness of necessary floodplain study and mapping reviews.
+Staff
+While the OWR is aggressively posting and hiring for vacant positions, staff levels for FY-2025-26 remain critically low due to attrition and retirements. The approved State of Illinois operations budget continues to limit the hiring of required new staff and necessary internal promotions. The OWR is working to staff additional engineering studies, engineering design, operations, floodplain management, dam safety, and mapping study review positions as rapidly as the state hiring process allows. Staff work assignments are often adjusted to service critical objectives of the Office.
+IDNR/OWR intends to seek additional staff including:
+Civil Engineer 1 – Design and Construction
+1 Floodplain Manager- Statewide Programs
+2 Dam Safety Engineers
+Statewide Programs Section Chief
+1 Permits Unit Chief
+Waterway Construction Supervisor I
+Water Supply Engineer – Engineering Studies
+Civil Engineer Trainee – Engineering Studies
+Maintenance Equipment Operator - Operations
+Senior Public Service Administrator – Design and Construction
+Northeastern Illinois Regulatory Section
+This section is responsible for enforcing higher floodplain management standards in the metropolitan Chicago counties of Cook, DuPage, Kane, Lake, McHenry, and Will. Its staff of six engineers and one administrative assistant reviews permit applications for construction in floodways of rivers and streams and activities in public bodies of water. It also assists with the administration of the Dam Safety Program. This section reviews on average approximately 180 permit applications annually. It conducts site visits of dams, other completed projects, and proposed construction sites.  It takes enforcement action on unlawful activities in cooperation with local jurisdictions and assists with the coordination of the NFIP.
+This section administers a program through which local governments are delegated authority to approve projects under the State’s floodway construction rules. There are 59 communities within the six-county Chicago metro region (Part 3708 rules area) that have been delegated IDNR/OWR’s regulatory authority, including DuPage and Lake Counties. These communities are authorized to complete their own review of proposed floodway construction activities and issue permits to applicants that comply with existing state and local standards (Part 3708 rules).  The Northeastern Illinois Section is currently conducting audits of these delegated communities to ensure that all terms of the IDNR’s delegation are being enforced properly prior to recertification of these communities by the Department.
+The team of engineers that make up this section responds to numerous phone, email, and people who walk-in inquiries daily related to floodplain management and dam safety regulatory issues in Northeastern Illinois.  Additionally, these engineers conduct community and professional outreach seminars several times each year to expand and improve the understanding of flood risk, sound floodplain management, and dam safety principles and regulations in the region.
+Downstate Regulatory Section
+This section is responsible for enforcing higher standards floodplain management in Illinois except for the six-county metropolitan area covered by the Northeastern Illinois Regulatory Section.  Its staff reviews permit applications for construction in stream floodways (Part 3700 Administrative Rules), activities in and along public bodies of water (Part 3704 Administrative Rules), as well as identification and inspection of violations of the Part 3700 and 3704 Administrative Rules.  It also assists with the coordination of the NFIP as necessary. This section reviews approximately 325 floodway and public bodies of water permit applications annually on average.
+Regulations Updates
+As staff resources allow, both the Northeastern Illinois and Downstate Regulatory sections are working to update the current Part 3700, 3704, and 3708 Administrative Rules.
+The State of Illinois adopted the Part 3710 Rules in 2025, which regulate State-owned facilities in the floodplain.
+The Regulatory Programs continue to take actions against an ever-growing number of violations across the state up to and including legal actions by the State Attorney General.
+The Regulatory Programs are also developing a means to identify statewide mapping needs based on the magnitude, frequency, and extent of permitted floodway activities.
+Dam Safety Program
+Dam Safety Program activities include:
+Maintaining an inventory of all Class I (high hazard), Class II (medium hazard) and Class III (low hazard) dams in the state
+Monitoring all dam safety inspections, emergency action plans (EAPs) and operation and maintenance manuals in the state
+Conducting dam site inspections.
+Developing and/or reviewing EAPs for Class I and Class II dams to ensure compliance with Illinois Emergency Management Act and Dam Safety Program requirements.
+Permit the construction, modification and removal of dams as required by the Department’s Rules for the Construction and Maintenance of Dams.
+Statewide Programs
+The Statewide Programs section is responsible for floodplain compliance, community outreach, NFIP coordination, flood hazard mitigation, and floodplain mapping study reviews.
+Assessment of Conveyance Floodway Mapping Community Compliance
+Part 3708 Administrative Rules provide for Conveyance Floodway (90-percent floodplain storage not preserved in the designated floodway) delineation mapping in the six-county Chicago Metro area. Communities must enter into a Memorandum of Understanding agreeing to regulate and preserve all floodplain storage within a designated stream reach.  The Statewide Programs Section is conducting a floodplain storage audit of these specially-mapped communities in the six-county Chicago Metro area to assess compliance with the storage preservation requirements established in accordance with the terms of the existing IDNR agreements with these communities. Failure to comply with the terms of the Conveyance Only Floodway Agreement results in the limited floodway maps being rescinded and replaced with either previous storage floodway mapping or considering the entire floodplain floodway for regulatory purposes. The Section has completed (2020) the Map Revision and New Studies guidelines manual.
+Community Outreach and Compliance
+From July 2024 to June 2025, the Statewide Programs Section conducted the following activities:
+Workshops and training: The section held 22 virtual and in person training seminars with realtor associations, building officials, local officials and surveyors.  Presentations were made at the annual conferences for the Illinois Association for Floodplain and Stormwater Management, the NAACP, County Zoning Officials, and the Association of State Floodplain Managers.
+Community assessment visits and compliance visits:  The section conducted 19 Community Assistance Contacts and three Community Assistance Visits. Additionally, the section was able to close 19 audits.
+Community Outreach – the program continued outreach efforts by adding a quarterly newsletter, The Flood Record. The newsletter is available on the Office of Water Resources webpage and is sent to the nearly 900 communities across the state that participate in the National Flood Insurance Program.
+General technical assistance to local communities and citizens: As of June 2025, 378 technical assistance contacts were provided by the Statewide Programs Section.
+Coordination meetings with other agencies: Over 30 coordination or mapping meetings were attended with other agencies such as the U.S. Army Corps of Engineers, IEMA, FEMA, etc.
+Community Rating System (CRS):  As of September 2025, Illinois has 77 communities in CRS providing their residents a discount on their flood insurance policies.  With an average rating of Class 6, the average flood insurance premium discount is 20%.
+
+### Flood Hazard Mitigation Program (Heading 4)
+Through the Flood Hazard Mitigation Program, repetitively flood-damaged structures are purchased and removed. This program is used as a global match, providing the necessary funds that allow communities to take advantage of FEMA mitigation programs. In addition: The IDNR/OWR Flood Hazard Mitigation program is focused on assisting Illinois communities to implement flood damage reduction projects and creating open space. IDNR can purchase real property (mobile homes are excluded).
+The program operates independent of, or provides cost-share assistance with, other state or federal mitigation programs.
+Projects are selected based on the overall benefit to the State of Illinois.
+The program operates as an IDNR/OWR reimbursement program, not a grant program. The community must pay all expenses and request reimbursement from IDNR/OWR for the expenses related directly to the project.
+Currently, IDNR/OWR has over $250 million in mitigation project requests.  Several other communities have requested participation in the program and the IDNR/OWR will be entering the discussion with those communities to potentially initiate other new flood hazard mitigation projects.
+Table 8 provides the projects completed between 2018 and 2020.
+Table 9 lists completed and ongoing projects for 2019, 2020, and 2021.
+Table 10 lists buyout needs identified through the Discovery process. Additional projects may also be considered based on mitigation acquisition projects identified in existing countywide Hazard Mitigation Plans
+Table 8. IDNR/OWR FY18 Completed Mitigation Projects
+Table 9. IDNR/OWR FY19, FY20 and FY21 Mitigation Projects
+Table 10. Community Buyout Needs Identified through Discovery
+*Specific need to be determined
+
+### Floodplain Mapping Study Reviews (Heading 4)
+Activities include:
+Reviews and approves new and revised hydrologic watershed and hydraulic floodplain studies that will be incorporated into or used to revise FEMA regulatory mapping, which often includes stream discharges used for regulatory programs.
+State review of applications for Letters of Map Amendment and Revision, which impact floodways.
+Assists regional or local floodplain management programs and individual property owners.
+Maintains a summary table on the IDNR/OWR website to track the status of current study review requests, map revision requests, and discharge certification requests.
+In summary, this section’s June 2023 - May 2024 activities included:
+36 watershed studies reviewed and approved
+22 Letters of Map Amendment reviewed
+Lake Michigan Management Section
+This section is responsible for enforcing the Department’s Part 3704 Rules, which regulate construction in the Public Bodies of Water of Illinois, in Lake Michigan and a portion of the Chicago Area Water System and for regulating the allocation of water from Lake Michigan in accordance with the Department’s Part 3730 Rules. Staff in this section work closely with the Illinois Coastal Management Program and other state and federal agencies associated with Lake Michigan. IDNR has acquired a consultant to determine the re-allocation of Lake Michigan water.  The re-allocation was completed in 2023.
+Engineering Studies Section
+Develop Statewide Water Sustainability Assessment to support statewide water demand and water supply.
+Flood Surveillance and coordination with IEMA
+Fox River Chain of Lakes operations study, unsteady hydrologic and hydraulic modeling study initiated
+Management of Federal Reservoir Water Use Contracts
+Management of Regional Water Supply Planning
+Update the State Water Plan to provide policy and program guidance in water resources management to state and local agencies.
+Technical Services Section
+Activities related to flooding and flood risk include:
+Bathymetric surveys of water supply lakes and State-managed recreational impoundments
+Bathymetric surveys of the Fox River dam impoundments
+Coordination of GIS data and activities with other entities inside IDNR and other outside agencies
+Creation of project-specific LiDAR derivative products (contours, hillshade relief)
+Data collection for state-owned dams in need of repairs (Sinnissippi)
+Development and maintenance of web-based interfaces for LiDAR data
+Development of geodatabases for OWR project and activity locations
+Development of GIS mobile data collection applications
+Development of Rock River Real-Time Flood Inundation mapping web application
+Extraction and formatting of geospatial data for use by CAD software
+GIS project support and data management
+LiDAR data management
+River flood inundation mapping
+Survey of first floor elevations of structures located in floodplains in Illinois, Des Plaines, and Rock River communities
+Surveys of bridge structures, channel cross-sections and floodplain sections in the Little Wabash and Embarrass River watersheds
+Wetlands and ordinary high-water marks for various projects, etc.
+Capital Appropriations
+Capital Appropriations is a unique program that has augmented how FEMA programs work in Illinois.  IDNR/OWR requested Re-Appropriations for the fiscal year 2022 shown in Table 10 include funding for flood control and flood hazard mitigation projects.
+The governor judiciously controls the release of these funds for expenditures.  Accordingly, limited funding is provided to the IDNR/OWR as state finances and approved bond sales allow based on prioritized funding requests from the IDNR/OWR.
+Table 10. FY26 OWR Requested Re-Appropriations
+Existing and anticipated IDNR/OWR capital projects include the following:
+Dam Removal and Improvements to Waterways
+Carpentersville/Fabyan causeway
+Chick Evans Dam removal and new pedestrian bridge
+Crissenberry Dam Plunge Pool and spillway repairs
+Dam 4 removal by OWR
+Develop and implement a Fox River Watershed System and Stratton Dam Operation outreach strategy
+Fox River - Stratton Lock and Dam life extension construction
+Fox River - Yorkville by-pass channel repairs
+Hadley Valley Spring Creek restoration
+Kankakee River - Wilmington
+McHenry Dam Downstream Bank Stabilization
+Brandon Road Interbasin Project
+Maintain state owned dam infrastructure and associated pools for mandated navigation, recreation, water supply, and power generation purposes.
+Maintain state owned dam infrastructure and associated pools for mandated navigation, recreation, water supply, and power generation purposes.
+North Aurora Dam Removal Design
+Pilcher Park Dam removal
+Repairs to State Facilities
+Sangamon River dam removals
+Sinnissippi Dam Rehabilitation
+Statewide construction management
+Tam O Shanter Dam Removal
+Touhy Dam removal by OWR
+Trinski’s Island
+Vermilion River - Oglesby Dam removal
+Flood Control
+East Dubuque Flood Control Project
+Edgar Lake Pump Station Repairs
+Spring and Hickory Creek Channel Improvements
+Town Branch Jacksonville
+Village of Kingston
+Levee 37 Pump Station (Mt. Prospect)
+Palatine Road Closure Structures
+Cache River Levee Repairs
+Flood Hazard Mitigation
+$22,000,000 has been released so far in FY18 and FY19 for flood hazard mitigation with an additional $10,000,000 programmed for FY20. Several other communities have requested participation in the program and the IDNR/OWR will be entering the discussion with those communities to potentially initiate other new flood hazard mitigation projects.
+Additional projects may also be considered based on mitigation acquisition projects identified in existing countywide Hazard Mitigation Plans. Table 11 identifies additional buyout needs that have been identified through Discovery efforts.
+
+### FEMA Grants (Heading 4)
+FEMA grants have been awarded to the IDNR/OWR for the Dam Safety Program, the NFIP, and the CTP Program. These grants support staff assigned to these missions. Staff must provide reports as indicated in Table 12..
+Table 12. FEMA Grants
+
+### Projects in Progress or Proposed (Heading 4)
+Wabash River: A new hydraulic model of the Wabash River was developed for improved flood profiles and floodplain mapping. Numerous floods have occurred along the Wabash River over the past ten years. The existing maps are based on a physical model of the Wabash River, and experience has demonstrated that the Wabash River moves and changes regularly, making the existing maps of limited value.  In coordination with the State of Indiana, the new modeling will serve as a basis for new mapping in the watershed and will be used for regulatory purposes to evaluate proposed floodway activities.
+Rock River: IDNR/OWR has reviewed, commented, and vetted the technical aspects of the mapping and study proposal as required and considers the modified version of the proposed study and computer modeling to be technically sound. IDNR/OWR issued a concurrence letter on April 17, 2020.  For regulatory program purposes, IDNR/OWR will continue to abide by the errant existing regulatory floodway mapping (until it is superseded by FEMA with new mapping) for jurisdictional determinations (is a proposed activity within the floodway, or in the floodplain fringe) concerning the need for an IDNR/OWR permit for work in the floodway.  However, IDNR/OWR will utilize/require the new modeling be used as “best available information” to determine floodway activity flooding impacts to others when assessing compliance with the IDNR Administrative Rules Part 3700 as required by the Rivers, Lakes, and Streams Act when an IDNR/OWR permit is required for floodway activities.  On tributary streams to the Lower Rock River, such as Zuma Creek, where no tributary floodway has been delineated, IDNR/OWR will continue to regulate all activities in the entire tributary floodplain as floodway in accordance with our Administrative Rules until floodway modeling for the tributary stream has been defined and approved by IDNR/OWR.
+Mississippi River: Continuing to assist the USACE in preparing hydraulic modeling of the Mississippi River, which would become the basis for all future work along the river. The adoption of this model by multiple Mississippi River states would minimize the differences in regulatory efforts between states and would ensure that levee districts, highway departments, and others have a sound and consistent model for their application. Although preliminary results of a Mississippi River Levees impact analysis completed using this model have been provided to the states of Illinois, Missouri, and Iowa for consideration, the USACE has been directed by Corps headquarters to refrain from public dissemination of the analysis for now.
+Cache River: Repairing the breached levee and mapping the Upper Cache River and Lower Cache River to accurately reflect flood risk is proposed. The Karnak Levee breached in 2002 leaving the Lower Cache River unprotected from high water on the Ohio River and the Upper Cache River. Flooding of the Lower Cache River occurred in 2008 and 2011. Inundation mapping in the upper portion of the Lower Cache River watershed is used to manage ecological and agriculture resources in the watershed and resolve inundation area conflicts between those two interests.
+Continuing to develop the ability to create real-time inundation mapping in those additional river reaches in the state capable of producing real-time flood inundation mapping based on National Weather Service gage predictions particularly on the Rock, Wabash, and Fox River Watersheds.
+Resolving levee accreditation issues in Illinois where levees remain un-accredited and county mapping remains in an unapproved status, limiting the use of new mapping data. An unaccredited levee in Peoria County has prevented the adoption of improved floodplain and floodway maps. The resolution of the accreditation issue will lead toward improved mapping along the Illinois River in Peoria County.
+Continuing efforts to resolve unsteady modeling floodway determination issues. The use of unsteady and 2-dimensional models in Illinois represent the latest in technology when modeling watersheds and the dynamic response of floodplains. Unsteady models (and in select cases 2-dimensional models) are encouraged by Illinois but the use of unsteady and 2-dimensional models to develop floodways has proven to be problematic.
+
+### Risk Assessment (Heading 5)
+Working with a consultant to utilize existing structural flood damage assessment information already computed (using previously surveyed first floor and low entry surveyed elevations) for strategic flood damage reduction studies to add to a master statewide flood hazard risk assessment database including such watersheds as the North Branch Chicago River Watershed and individual communities such as Grafton, Champaign, Kirkland, Ashland, communities along the Mississippi River and many more.
+The State of Illinois has created a library of Mississippi River flood inundation maps at different stages for the Illinois communities not protected by levees along the Mississippi River. The interpolated flood maps were created so that one-foot increment stage readings at the nearest river gage could be properly mapped at an at-risk community using LiDAR-based topography and the hydraulic river profiles developed by the USACE Flow Frequency Study. The State of Illinois intends to develop a database (and/or PDF booklet) of structural flood damage assessments for each of these communities to be used by the communities to inform individual property owners of their flood risk, to prioritize flood hazard mitigation activities, and to better predict and prepare for impending flood conditions, resulting in more resilient communities. Long-term floodplain/levee management on the Mississippi River requires this better understanding of existing flood risks along the river in Illinois.
+
+### Past Projects (Heading 4)
+Upper Mississippi River System Hydraulic Modeling – Converting the UNET model to the HEC-RAS unsteady flow model.  The reach of the Mississippi River is Keokuk, IA to Thebes, IL.
+Structural Flood Damage Assessments for structures located behind the Rock Island Levee System
+IDNR survey data collected and provided to the USACE for assessment
+IDNR project coordination
+Flood Zone Alliance - Documentation for starting a Flood Zone Alliance (FZA) based on the Upper Illinois River, Quad Cities area, Iroquois River
+IDNR establish FZA working group
+IDNR document what worked and what did not
+IDNR coordination and facilitation of FRM initiatives
+Flood Risk Preparedness Communication Rock Island Levee Breach
+Des Plaines River Flood Inundation Mapping – Combining the flood inundation maps with the structure survey
+IDNR – Inundation Mapping – Real-time vs static incremental mapping
+IDNR – Develop map products
+IDNR – Coordination with Lake County
+NE Illinois Climate Change – Update the Des Plaines River models to HEC-HMS and HEC-RAS
+IDNR – Update to HEC-RAS model
+Jersey County Loss Avoidance Study – Determine how excellent floodplain management has prevented both the monetary and societal costs of flooding. Study will be used to promote floodplain management to other communities.
+IDNR – Gather data on elevation data
+Rock Island County Structural Flood Damage Assessment – Building on the Rock Island Levee project of FY-17, structures behind the East Moline, Milan, and Big Island levees will be analyzed for flood damages.
+IDNR – Collection of structure survey data
+Project coordination
+
+### 2026 Proposals (Heading 4)
+Upper Mississippi River Communities Inundation Mapping and Risk Assessment – Combines the incremental inundation mapping for the unprotected communities on the Mississippi River with structure first floor data.
+IDNR – Survey of first floor data
+IDNR – Add survey data to inundation maps
+Outreach – Help communities understand the mapping
+Interagency Levee Safety Proposal – Evaluate and communicate changes to levee elevations and potential impacts
+IDNR – Coordinate the planning and training to entities in Illinois and facilitate exploration of potential solutions
+
+### ISWS/CHAMP Staffing and Resources (Heading 2)
+CHAMP staff is comprised of GIS Professionals, engineers, and outreach and data management staff. Seven engineers are Registered Professional Engineers in Illinois. Nearly all staff are Certified Floodplain Managers. One planner is an American Institute Certified Planner. Three GIS professionals are certified Hazus-MH trained. Nine GIS staff have earned their Geographic Information Systems Professional (GISP) certification. The CHAMP organization chart is shown in Figure 6 Error! Reference source not found..
+CHAMP staff are primarily funded through grants and contracts secured through proposal writing and responding to various requests for services from communities and agencies for project work related to our mission and expertise. The ISWS provides 0.5 FTE to support FEMA flood studies and projects. Recognizing that flood hazards are the most predictable natural hazard, the ISWS has long been engaged in programs and activities to identify flood hazards and provide technical support to individuals and communities. ISWS staff actively participate in the Illinois Association for Floodplain and Stormwater Management (IAFSM), the Association of State Floodplain Managers (ASFPM), the  National Association of Flood & Stormwater Management Agencies (NAFSMA), the Illinois Geographic Information System Association (ILGISA), Illinois State Hazard Mitigation Plan committee, and the Illinois Silver Jackets. The ISWS, and in particular CHAMP, will continue to seek out and identify agencies and professional organizations for coordination and information exchange that will help promote our long-term vision.
+Mitigation planning contributes to building more resilient communities. Working with the University of Illinois Extension, CHAMP has assisted Illinois Counties (Grundy, Henderson, and Hancock) to prepare FEMA approved Hazard Mitigation Plans by preparing HAZUS risk assessments. CHAMP is extending its efforts to assist communities in mitigation planning.  CHAMP staff are working directly with communities to prepare FEMA mitigation grant applications to support the development of comprehensive mitigation plans, from beginning to end. Resilience Meetings are proposed to be utilized to further advance identified mitigation needs through community-tailored activities. Depending on these needs, an interdisciplinary team of subject matter experts including academic researchers, state agencies, non-governmental organizations, businesses, and community leaders will assist in identifying the relevant risks while developing resources. Activities may include helping a community update building codes, supporting a regional or watershed coalition, assisting with benefit-cost for mitigation projects, grant application support, supplemental analysis or workshops for hazard mitigation plans, or other needs as identified by the community. CHAMP anticipates working closely with the Region 5 Planners on future outreach.
+
+### IDNR/OWR and ISWS Local, State, and National Associations (Heading 2)
+
+### Illinois Association for Floodplain and Stormwater Management (IAFSM) (Heading 3)
+ISWS and IDNR/OWR staff routinely hold officer and board positions. IAFSM is a state chapter of the ASFPM. Its objective is to promote the common interest in floodplain and stormwater management, enhance cooperation among various local, state, and federal agencies, and encourage effective and innovative approaches to managing the State's floodplain and stormwater management systems. The IAFSM annual conference, which attracts approximately 500 attendees each year, provides an effective venue for floodplain and stormwater training, continuing education, FEMA messaging, and professional collaboration statewide. Outside of the conference, IAFSM facilitates and promotes education and outreach around the state for the CRS program, effective floodplain and stormwater management, legislative awareness, hazard mitigation, collaborative community assistance, the State of Illinois CFM certification, and local official support.  Members of IAFSM gain the ability to communicate a uniform position on current concerns, rule changes, local programs, and other issues impacting floodplain and stormwater management.
+
+### IAFSM Rapid Assistance Flood Team (RAFT) (Heading 3)
+Following flooding in 2013, 2015, 2017, and 2018 the IAFSM RAFT team was assembled to assist the local floodplain managers in Watseka, Mason County, and Fox Lake, respectively, with damage assessments. Staff from ISWS, IDNR/OWR, and several local communities participated in these efforts, which resulted in well over 200 damage assessments. Many of those damaged structures have since been elevated or demolished, thereby minimizing future flood damages.
+
+### Association of State Floodplain Managers (ASFPM) (Heading 3)
+The 2026 Annual National Conference was held in-person in Milwaukee, WI, including a virtual attendance option. Glenn Heistand (ISWS) served two terms as Treasurer in 2019 and 2020.  Glenn also served one term as Secretary in 2021 and two terms as elected Chair in 2022 and 2023. He currently serves as co-chair of ASFPM’s Mapping & Engineering Standards policy committee and normally represents ASFPM at quarterly Operational Partner meetings held with FEMA, although these meetings have been paused during 2025 and 2026.
+
+### Technical Mapping Advisory Council (TMAC) (Heading 3)
+FEMA’s Technical Mapping Advisory Council (TMAC) serves as the primary body for reviewing and recommending improvements to the national flood mapping program for FEMA. Glenn Heistand (ISWS) was appointed to TMAC in 2024 to represent state Cooperating Technical Partners (CTP). TMAC reviews national flood mapping activities and reports critical recommendations to FEMA’s Administrator, focusing on the accuracy, utility, and distribution of FEMA flood risk products. The council includes experts in GIS, surveying, engineering, remote sensing, and floodplain management from federal, state, local, tribal, and private sectors to ensure a broad range of scientific and stakeholder perspectives. TMAC provides guidance on mapping standards, performance metrics, innovation in modeling technologies, and ways to incorporate future conditions such as climate and land use change into flood risk assessments. The council issues annual and special reports with hundreds of recommendations for the National Flood Insurance Program. In February 2025, TMAC was disbanded by the Trump administration while the future of FEMA is being evaluated. In May 2026, the FEMA Advisory Council issued their final report to the White House regarding recommendations for administering the FEMA.
+
+### Illinois Geographic Information Systems Association (ILGISA) (Heading 3)
+The Illinois GIS Association is the only statewide organization of GIS/geospatial professionals in Illinois. ILGISA advances the understanding, communication, and effectiveness of geospatial technology in Illinois.  ILGISA connects over 500 members working in local, regional, state, and federal government, higher educational institutions, and private industries. ILGISA offers a wide variety of programs that educate and inform the members. Training programs include an annual conference, regional meetings, training events, and webinars that address the ever-evolving geospatial technologies, applications, and standards. ISWS staff have served on the Board of Directors and currently serve on committees.  Involvement with ILGISA earns CEUs to maintain the GISP Certification.  ISWS information booths at the annual conference provide education about flooding and how GIS is used to identify and communicate the hazard and determine the risk.
+
+### American Planning Association (APA) (Heading 3)
+ISWS CHAMP planners are members of both the national APA and state association. APA strives to inform, provide continuing education opportunities, and build peer relationships among practicing planners. CHAMP planners are certified professionals (AICP) through APA and participate in the Hazard Mitigation and Disaster Recovery Planning Division, a membership division dedicated to fostering professional communications on the topics of natural and man-made hazards and in planning recovery. ISWS will host information booths at future conferences in addition to participating in workshops.
+
+### Association of State Dam Safety Officials (ASDSO) (Heading 3)
+IDNR Dam Safety Section engineers participate in ASDSO activities, conferences, and training to improve the condition and safety of dams through education, support for state dam safety programs, and fostering a unified dam safety community.
+
+### National Association of Flood & Stormwater Management Agencies (NAFSMA) (Heading 3)
+CHAMP participates in the NAFSMA annual meetings held around the country. This is a venue to enhance information sharing and collaboration amongst agency organizations who participate in floodplain and stormwater management activities in Illinois and nationally.
+Flood Resilience Alliances
+Starting with the formation of the Illinois Valley Flood Resilience Alliance IDNR/OWR and ISWS staff have supported the formation and continuation of these grassroots alliances to build local capabilities to reduce the impact of flooding. IDNR/OWR and ISWS staff attend quarterly meetings and present on topics as requested. Below currently operating alliances in Illinois.
+Illinois Valley Flood Resilience Alliance (2013)
+Quad-Cities Flood Resiliency Alliance (October 2018)
+Fox Watershed Flood Commission (Feb 2019)
+
+### Illinois Silver Jackets / Illinois Flood Risk Management Team (Heading 3)
+IDNR/OWR hosts the teleconference and in-person meetings of the Illinois Flood Risk Management Team (Silver Jackets).  ISWS and IDNR/OWR staff attend quarterly meetings and present on topics as requested.
+The team brings together Federal and State Agencies to focus on four themes to reduce flood risk in Illinois: hazard mitigation, emergency response, structural flood reduction measures, and policy evaluation. The IFRMT strengthens intergovernmental partnerships within the State of Illinois and promotes the development and implementation of comprehensive and sustainable solutions to flood hazard challenges in Illinois.
+Structure-Specific Risk Assessments in Illinois have been funded through the Silver Jackets program in Rock Island County and along the Mississippi River.
+There are four focus themes:
+Illinois Mitigation Advisory Group (IMAG) – non-structural solutions,
+Illinois Flood Management Group (IFMG) – structural solutions to flood reduction,
+Illinois Emergency Response Group (IERG) – emergency response and preparedness, and
+Illinois Policy Advisory Group (IPAG) – policy analysis.
+
+### Section 4:  Community Outreach and Mitigation Strategies (Heading 1)
+The COMS Engagement Plan outlines the outreach activities of the Illinois State Water Survey (ISWS) and the Coordinated Hazard Assessment and Mapping Program (CHAMP) in the context of the Federal Emergency Management Agency's (FEMA) Risk Mapping, Assessment, and Planning (Risk MAP) program.
+Current outreach meetings and process in the context of FEMA’s three primary funding phases (Discovery, Data Development, Regulatory):
+Discovery Phase
+Stakeholder Coordination Call/Meeting
+Data Collection & Analysis
+Produce Discovery Products
+Discovery Call/Meeting
+30-day Community Review of draft Discovery products
+Comment Resolution
+Prepare proposed data development scope
+Follow-up Call/Meeting to clarify data development scope
+MIP Deliverables
+KDP1
+Data Development Phase
+Project Initiation Coordination Call/Meeting
+FEMA 620 Letter & 30-day Review Proposed Study Areas & Modeling Methods
+Comment resolution
+Develop New Floodplain Studies
+Develop Draft Floodplain Delineations
+Flood Risk Review Call/Meeting
+30-day Community Review of draft delineations
+Comment resolution
+State Review
+Comment resolution
+FEMA 621 Letter & 30-day Review of Draft Database
+Comment resolution
+MIP Deliverables
+KDP2
+Regulatory Phase
+Produce County-based Digital Products (FIRM, FIS, Database) plus project SOMA
+QR1 – QR3 (Preliminary Products Review)
+KDP3
+Release Preliminary Products for Public Review & Comment
+CCO Call/Meeting (aka Officials meeting)
+Accept Comments
+Public Open House Call/Meeting
+Accept Comments
+Determine if Revised Preliminary products are necessary
+Comment Resolution
+Initiate Due Process Procedures
+QR4
+KDP4
+Federal Register Publication
+Appeal Start Letters
+Newspaper Publications
+Implement 90-day Appeals Process
+Accept Appeals and additional Comments
+Resolve Appeals and additional Comments
+KDP5
+QR5-7 (Final Products Review)
+Letter of Final Determination (LFD)
+QR8 (MSC Review)
+Community Adoption of Study, Maps, & Floodplain Management Ordinance
+Effective Products
+Revalidation Letters
+Potential strategies to enhance Community Outreach and Mitigation:
+Strategic Planning for Community Engagement
+Update website and other digital platforms - Updating and maintaining a digital presence is critical to convey information to stakeholders and to keep all partners at the State, Federal and local levels informed of current floodplain mapping, engineering, and mitigation efforts.
+Meetings and Process Facilitation
+Meeting minutes, attendee lists, and actions discussed/identified are provided to FEMA Region within 2 weeks of the meeting.
+Additional outreach, meetings, or process facilitation to support existing Risk MAP projects that fall outside current outreach, meetings, and process.
+Mitigation Support
+Potential Actions Identified:
+Workshops and Training
+Partnerships and Collaboration
+Community Resilience Planning
+Communication and Outreach to Communities
+Potential Actions Identified:
+Develop messaging and outreach materials that frame flood risk in an accessible way for communities.
+Develop outreach materials that help community officials’ outreach to their constituents to inform them of flood risk and ways to reduce their risk.
+Training and Community Capability Development
+To make communities safer from flooding, ISWS regularly presents training at local and national conferences to build floodplain management knowledge, skill, and capability.
+This includes annual training to instruct communities in the basics of the National Flood Insurance Program (NFIP) including regulations and mapping at the Illinois Association of Floodplain and Stormwater Management (IAFSM) conference.
+Stakeholder Engagement and Building Partnerships
+Serve on the following committees and groups to monitor and inform of Risk MAP program priorities and actions and to build organizational partnerships.
+Environmental Law Institute’s “Hazard Mitigation Advisory Council”
+Illinois Height Modernization Program (ILHMP) Advisory Committee
+Illinois Association of Floodplain and Stormwater Management (IAFSM)
+Association of State Floodplain Managers (ASFPM)
+ASFPM Social Justice Task Force
+Illinois Silver Jackets
+Mentoring
+ISWS participates in the CTP Mentoring Pilot Program to learn and to share information with other CTPs. At least two staff participate in this program each year to build out programmatic, technical, and other skills related to all aspects of CTP participation. ISWS participation includes, but is not limited to:
+Sharing GIS technology solutions and custom tools.
+Distribution of custom Python scripts to CTP’s including training and support in use of custom Python scripts.
+Preparation of best practice documents on FEMA CTP Collaboration Center.
+MT2 training to expand LOMR review program within the CTP community.
+Project process training including SOMA preparation.
+Recommended actions for future RiskMAP Outreach and Mitigation projects in Illinois.
+Develop updated database for community contact information beyond that available in CIS; for all project stakeholders and community information used throughout the Risk MAP process.
+Develop a statewide 2D Modeling Plan to:
+Statewide 2D modeling flood hazard coverage.  This will be a tool to help communities quickly assess their flood hazards that may or may not be currently identified on FEMA’s maps.  The statewide coverage will be able to help communities identify where they may need more targeted investment from FEMA to better assess the risk and mitigation options.
+Development of Best Practices for 2D Watershed Modeling in Illinois while referencing November 2021 document, “2D Watershed Modeling in HEC-RAS Recommended Practices.”
+Develop structure-specific flood risk assessments as part of Risk MAP projects’ Flood Risk Products to upload on the Illinois Structures at Flood Risk (SAFR) site. Notify and train communities to use this flood risk assessment information for community planning and decision-making.
+Maintain “ISWS Bulletin 75, Precipitation Frequency Study for Illinois” and continue to update as new data and methodology are available. Storm frequency estimates and their temporal distributions are important in determining estimates of runoff or peak flow rates in many engineering and hydrological problems. Previous rainfall standards were outdated so ISWS prepared Precipitation Frequency Study for Illinois (Bulletin 75, March 2020). This report provides new, updated precipitation frequencies for 10 regions in Illinois for a range of event durations and for a variety of recurrence intervals. While this document accounts for increased rainfall in recent years, the analysis relies on historical rainfall events, so it does not account for the increases projected in the future due to climate change. The Final Remarks in Bulletin 75 advise that future studies will require the use of both historical data and climate model-based projections. For that to occur, new and more comprehensive methodologies need to be developed and implemented to improve our ability to anticipate future risks of heavy precipitation events and move towards a broader risk management approach that involves extreme precipitation, uncertainty, exposure, and vulnerability.
+Identify underserved populations in Illinois that can be prioritized for future Risk MAP projects.
+Develop approaches to create flood inundation mapping. The updated State Water Plan (published 2022) recommended to continue generating dynamic inundation map products since public and local officials need a mapping tool to show them what different flood events might look like in their communities with respect to their local flood stage gauges. In order for this work to be completed, IDNR/OWR needs additional GIS support. Provide assistance to IDNR/OWRs GIS specialist to generate dynamic inundation mapping for areas of the state as selected by IDNR.
+Develop inventory of H&H models. The updated State Water Plan (published December 2022) recommends that a GIS Based database be developed to track information (metadata and links) about all hydraulic models developed by federal, state, private and public entities for the state of IL. At this time, it is recommended to update the existing online portal to include links to ISWS developed hydraulic models. The database should eventually be expanded to include OWR developed models. Models developed by other agencies, groups, and engineers should also be considered for inclusion.
+
+### Conclusion (Heading 1)
+The State of Illinois through the Illinois Department of Natural Resources and the Illinois State Water Survey wishes to continue to partner with FEMA through the CTP program. This business plan serves as a notice of interest for funding in FFY2026 and into the future.  It is important to continue the dialogue between the State and FEMA to identify projects that serve the common interests and advance the reduction of flood risk in Illinois.
+
+### Appendix: (Heading 1)
+North Eastern Illinois (NEIL) LiDAR Data Acquisition: Data were acquired in 2017 using new technologies as a QL1 pilot project for four Illinois Counties, including Cook, Lake, Kane, and McHenry, and two adjacent counties in Wisconsin.  Data were acquired at 20 points per square meter (ppsm) and sub-sampled down to 8 ppsm.  Funding was provided by the individual counties in concert with federal funding via a USGS 3DEP grant.  We took delivery of all four counties in 2019; data are accessible on-line.  Note that the vendor also acquired DuPage County; we have received preliminary reporting that the USGS may be working with the vendor to process these data as well.
+Champaign County LiDAR Data Acquisition: Data for Champaign County were acquired in December of 2019 with funding from FEMA, NRCS, USGS 3DEP, and the Champaign County GIS Consortium (CCGIS) at QL2 point density.  In addition, a buy-up for the cities of Champaign and Urbana was acquired at QL1 in spring 2019; the data the cities are accessible on-line.
+Carroll, Henry, Lee, Jo Daviess, Ogle, Rock Island, Stephenson, and Whiteside Counties LiDAR Data Acquisition: Data are in the process of being acquired in Winter 2019/2020 with funding from FEMA, NRCS, and USGS 3DEP at QL2 point density if flooding conditions subside before leaf-out.  Roughly 58% of the project area was acquired in December 2019.
+Monroe, Randolph, St. Clair and also Alexander, Edwards, Franklin, Gallatin, Hamilton, Hardin, Johnson, Massac, Pope, Pulaski, Saline, Union, Wabash, Wayne, White, and Williamson Counties LiDAR Data Acquisition: Data are in the process of being acquired in Winter 2019/2020 with funding from NRCS and USGS 3DEP at QL2 point density if flooding conditions subside before leaf-out.  Roughly 7% of the project area was acquired in December 2019.
+Hurricane Ike funding for LiDAR Data Acquisition: Spring 2020 acquisition for
+Clark, Coles, Crawford, Cumberland, Douglas, Edgar, Jasper, and Lawrence Counties LiDAR Data Acquisition: Data are contracted to be acquired in Spring 2020 with primary funding from the Hurricane Ike Disaster Declaration and supplemental funding from the USGS (pending) at QL2 point density if flooding conditions subside before leaf-out.
+The plan for future LiDAR data acquisition is shown in Figure 7.  The quality level of available data as of February 2019 is shown in Figure 8.
+Figure 7 LiDAR Inventory Status
+Figure 8 LiDAR Quality Levels in Illinois
+
+[TABLE 1]
+Project Category | Cost of Projects
+Flood Control | $21,400,000
+Flood Hazard Mitigation Program | $8,022,756
+Dam Removal and Improvements | $19,350,000
+Improvements to Waterways | $17,608,309
+Brandon Road Ecosystem Project | $50,000,000
+Total | $116,381,065
+ | 
+
+[TABLE 2]
+MAS Number | MIP Case Number | Project Name | Comments
+IDNR/OWR 2023-01 | NA | Program Management | In progress
+ISWS_21_01 |  | PM_SOW_CTP Region V FY21 PM SOW | In progress
+ISWS_21_02 | 18-05-0008S | Rock_Island | In progress
+ISWS_21_03 | 18-05-0008S | Whiteside_County | In progress
+ISWS_21_04 | 18-05-0008S | Henry_County | In progress
+ISWS_21_05 | 20-05-0021S | Stark_County | Effective 4/23/2025
+ISWS_21_06 | 22-05-0014S | Montgomery_County | In progress
+ISWS_21_07 | 22-05-0012S | Hamilton_County | In progress
+ISWS_21_08 | 15-05-3894S, 15-05-3958S | Middle_and_Lower_Wabash | In progress
+ISWS_21_09 | 12-05-1529S | Peoria_County | Preliminary map products released 6/26/2024
+ISWS_21_10 | 20-05-0018S | Bond_County | In progress
+ISWS_21_11 | 22-05-0013S | COMS_SOW_CTP | In progress
+ISWS_21_12 | 18-05-0007S | Kishwaukee_Phase_2 | In progress
+ISWS-LOMR-FY21 |  | FY21 LOMR MAS SOW | In progress
+ISWS_22-01 |  | PM_SOW | In progress
+ISWS_22-02 | 20-05-0018S | BondCo_DFIRM | In progress
+ISWS_22-03 | 20-05-0022S | RichlandCo_DFIRM | In progress
+ISWS_22-04 | 16-05-2865S | CookCo_PPP_AdditionalFunds | Planned effective date is 1/23/2026
+ISWS_22-05 | 16-05-2865S | KaneCo_PPP_AdditionalFunds | Planned effective date is 1/23/2026
+ISWS_22-06 | 16-05-3000S | Winnebago_Turtle | In progress
+ISWS_22-07 | 23-05-0005S | Embarras_Hydro_Survey | In progress
+ISWS_22-08 | 23-05-0006S | Kaskaskia_Pre_Data_Development | In progress
+ISWS_22-09 | 18-05-0007S | Kishwaukee_Survey | In progress
+ISWS_22-10 | 23-05-0007S | COMS_SOW | In progress
+ISWS_22-11 | 20-05-0017S | White_Co | In progress
+ISWS-FY22 LOMR |  | LOMR MAS SOW | In progress
+ISWS Region 5 FY23 LOMR |  | LOMR MAS SOW | In progress
+ISWS_23-01 |  | PM_SOW | In progress
+ISWS_23-02 | 24-05-0004S | COMS_SOW | In progress
+ISWS_23-03 | 12-05-1529S | Peoria_DFIRM_QR1_OpenHouse | Preliminary map products released 6/26/2024
+ISWS_23-04 | 24-05-0005S | McHenry_Nippersink_PMR_QR1_OpenHouse | Preliminary map products released 8/21/2024
+ISWS_23-05 | 20-05-0020S | McDonough_DFIRM_QR2_OpenHouse | Preliminary map products released 11/4/2024
+ISWS_23-06 | 24-05-0008S | Edwards_DFIRM_QR1_OpenHouse | Preliminary map products released 8/20/2025
+ISWS_23-07 | 24-05-0009S | WabashCo_CW_PMR_QR1_OpenHouse | Preliminary map products released 8/20/2025
+ISWS_23-08 | 18-05-0007S | Kishwaukee_Phase_4_DD | In progress
+ISWS_23-09 | 19-05-0002S | Alexander_Pulaski_DD | In progress
+ISWS_23-10 | 23-05-0005S | Embarras_River | In progress
+ISWS_23-11 | 15-05-3958S | Mid_Lower_Wabash_Outreach | In progress
+ISWS_23-12 | 18-05-0008S | Henry_County_DD | In progress
+ISWS_23-13 | 18-05-0008S | Whiteside_County_DD | In progress
+ISWS_23-14 | 18-05-0007S | Kaskaskia_Survey | In progress
+ISWS_24-01 |  | PM_SOW | In progress
+ISWS_24-02 | 25-05-0016S | COMS_SOW | In progress
+ISWS_24-03 | 12-05-1529S | Peoria County (Due Process – Effective) | In progress
+ISWS_24-04 | 24-05-0005S | McHenry County (Due Process – Effective) | In progress
+ISWS_24-05 | 20-05-0020S | McDonough County (Due Process – Effective) | In progress
+ISWS_24-06 | 21-05-0003S | Johnson County (QR1 – Open House) | In progress
+ISWS_24-07 | 21-05-0002S | Bureau County (QR1 – Open House) | In progress
+ISWS_24-08 | 18-05-0007S | Kishwaukee HUC-8 Phase 5 (to KPD2) | In progress
+ISWS_24-09 | 20-05-0019S | Macoupin County (QR1 - QR3, not including Prelim release) | In progress
+ISWS_24-10 | 23-05-0005S | Embarras River HUC-8 (to KDP2) | In progress
+ISWS FY24 LOMR |  | MT-2 Review (LOMR) | In progress
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+
+[TABLE 3]
+As of FY24 | None Remaining
+
+[TABLE 4]
+HUC8 | Name | Being Studied | NVUE Compliant | To Be Assessed | To Be Studied | Tier 0 
+( > 1 sq. mile drainage and no SFHA)
+ |  |  |  |  |  | 
+4040001 | Little Calumet-Galien | 0 | 0 | 0 | 6.6 | 0
+4040002 | Pike-Root | 0 | 21.4 | 0 | 15.7 | 5.3
+5120108 | Middle Wabash-Little Vermilion | 0 | 0 | 0 | 43.5 | 90.6
+5120109 | Vermilion | 0 | 132.2 | 0 | 278.4 | 543.9
+5120111 | Middle Wabash-Busseron | 380.1 | 4.8 | 0 | 0 | 329.9
+5120112 | Embarras | 1251.3 | 33 | 0 | 186.4 | 920.9
+5120113 | Lower Wabash | 359.2 | 0 | 0 | 0 | 123.6
+5120114 | Little Wabash | 689.3 | 500.8 | 0 | 8.9 | 706.1
+5120115 | Skillet | 281.3 | 8.9 | 0 | 107.3 | 472.9
+5140202 | Highland-Pigeon | 0 | 0 | 0 | 9.3 | 7.9
+5140203 | Lower Ohio-Bay | 350.1 | 52.2 | 0 | 45.8 | 94
+5140204 | Saline | 215.3 | 30.5 | 0 | 335.4 | 294.5
+5140206 | Lower Ohio | 261.6 | 3.2 | 0 | 59.7 | 181.7
+7060005 | Apple-Plum | 0 | 83.6 | 0 | 383.3 | 267.8
+7080101 | Copperas-Duck | 91 | 35.1 | 0 | 65.7 | 231.7
+7080104 | Flint-Henderson | 0 | 126.9 | 0 | 539.8 | 716.1
+7090002 | Middle Rock | 1 | 3.6 | 0 | 0 | 0
+7090003 | Pecatonica | 0 | 50.6 | 0 | 318.7 | 276.4
+7090004 | Sugar | 0 | 19.4 | 0 | 24.9 | 15.3
+7090005 | Lower Rock | 255.8 | 229.6 | 0 | 420.6 | 781.4
+7090006 | Kishwaukee | 690.8 | 62.8 | 0 | 142.9 | 181.2
+7090007 | Green | 279.2 | 5.6 | 0 | 115.2 | 408.4
+7110001 | Bear-Wyaconda | 0 | 12.9 | 0 | 215.3 | 322.5
+7110004 | The Sny | 0 | 393.1 | 0 | 146.3 | 422.4
+7110009 | Peruque-Piasa | 184.3 | 33.2 | 0 | 25.1 | 88.7
+7120001 | Kankakee | 0 | 123.1 | 0 | 403.6 | 185
+7120002 | Iroquois | 0 | 33.1 | 0 | 304.9 | 726.5
+7120003 | Chicago | 0 | 88.4 | 0 | 317.3 | 11.7
+7120004 | Des Plaines | 0 | 389.6 | 0 | 1002.2 | 28.4
+7120005 | Upper Illinois | 0 | 67.7 | 0 | 351.3 | 520.6
+7120006 | Upper Fox | 275.8 | 107.8 | 0 | 167.8 | 23.2
+7120007 | Lower Fox | 0 | 102.7 | 0 | 494.1 | 322.3
+7130001 | Lower Illinois-Senachwine Lake | 442.8 | 31 | 0 | 396 | 825.8
+7130002 | Vermilion | 0 | 114.6 | 0 | 448.2 | 529.1
+7130003 | Lower Illinois-Lake Chautauqua | 407.7 | 55.1 | 0 | 182.3 | 526
+7130004 | Mackinaw | 0 | 14.1 | 0 | 478.8 | 402.1
+7130005 | Spoon | 98.9 | 270.9 | 0 | 430.6 | 755.8
+7130006 | Upper Sangamon | 0 | 82.6 | 0 | 484.1 | 503.4
+7130007 | South Fork Sangamon | 16 | 8.7 | 0 | 448.5 | 434.7
+7130008 | Lower Sangamon | 0 | 27.6 | 0 | 320 | 344.4
+7130009 | Salt | 0 | 15.3 | 0 | 675.2 | 715.7
+7130010 | La Moine | 260.8 | 8.8 | 0 | 370.5 | 525.4
+7130011 | Lower Illinois | 15.5 | 187 | 0 | 668.8 | 1061
+7130012 | Macoupin | 238.9 | 0 | 0 | 75.7 | 483.8
+7140101 | Cahokia-Joachim | 1049.3 | 20.2 | 0 | 36.8 | 137.7
+7140105 | Upper Mississippi-Cape Girardeau | 0 | 42.2 | 0 | 332.1 | 99.3
+7140106 | Big Muddy | 29.1 | 55.5 | 0 | 1106.1 | 743.8
+7140108 | Cache | 129.8 | 3.3 | 0 | 173.1 | 55.4
+7140201 | Upper Kaskaskia | 0 | 33.2 | 0 | 529.2 | 610
+7140202 | Middle Kaskaskia | 117.8 | 43.8 | 0 | 676.7 | 638
+7140203 | Shoal | 374.2 | 13.1 | 0 | 128.8 | 280.2
+7140204 | Lower Kaskaskia | 750.1 | 21.6 | 0 | 380.9 | 315.3
+ |  |  |  |  |  | 
+Totals |  | 9497 | 3804.4 | 0 | 14878.4 | 19287.8
+% of Total Miles |  | 0.32629 | 0.13071 | 0 | 0.51118 | 
+ |  |  |  |  |  | 
+Total S_Studies_Ln Miles: | 29105.6 |  |  |  |  | 
+
+[TABLE 5]
+ |  | 
+HUC Number | HUC Name | Priority
+7140204 | Lower Kaskaskia | 1
+7140202 | Middle Kaskaskia | 2
+7140201 | Upper Kaskaskia | 3
+7120005 | Upper Illinois | 4
+7130001 | Lower Illinois-Senachwine Lake | 5
+5120112 | Embarras | 6
+7120001 | Kankakee | 7
+7120002 | Iroquois | 8
+7130008 | Lower Sangamon | 9
+7130010 | La Moine | 10
+7130012 | Macoupin | TBD
+5120115 | Skillet | TBD
+7130005 | Spoon | TBD
+7130007 | South Fork Sangamon | TBD
+5120109 | Vermilion (Wabash) | TBD
+7060005 | Apple-Plum | TBD
+7140106 | Big Muddy | TBD
+7080101 | Copperas-Duck | TBD
+7130002 | Vermilion (Illinois) | TBD
+7090003 | Pecatonica | TBD
+7110001 | Bear-Wyaconda | TBD
+7140101 | Cahokia-Joachim | TBD
+7080104 | Flint-Henderson | TBD
+7090007 | Green | TBD
+4040001 | Little Calumet-Galien | TBD
+7130011 | Lower Illinois | TBD
+7130003 | Lower Illinois-Chautauqua | TBD
+5140206 | Lower Ohio | TBD
+5140203 | Lower Ohio-Bay | TBD
+7130004 | Mackinaw | TBD
+7090002 | Middle Rock | TBD
+5120108 | Middle Wabash-Little Vermilion | TBD
+7110009 | Peruque-Piasa | TBD
+4040002 | Pike Root | TBD
+7130009 | Salt | TBD
+7140203 | Shoal | TBD
+7090004 | Sugar | TBD
+7110004 | The Sny | TBD
+7140105 | Upper Mississippi-
+Cape Girardeau | TBD
+7140108 | Cache | Complete
+7120003 | Chicago | Complete
+7120004 | Des Plaines | Complete
+5120114 | Little Wabash | Complete
+7120007 | Lower Fox | Complete
+5120113 | Lower Wabash | Complete
+5120111 | Middle Wabash-Busseron | Complete
+7090005 | Lower Rock | Complete
+5140204 | Saline | Complete
+7120006 | Upper Fox | Complete
+7130006 | Upper Sangamon | Complete
+7090006 | Kishwaukee | Complete
+
+[TABLE 6]
+HUC10 | Name | Zone A | Zone AE / FW | Zone AE / NO FW
+709000605 | East Branch Kishwaukee River | 72 | 11 | 0
+709000607 | Killbuck Creek | 40 | 6 | 11
+709000602 | Rush Creek-Kishwaukee River | 112 | 10 | 6
+709000603 | Piscasaw Creek | 88 | 0 | 0
+709000601 | Coon Creek | 76 | 0 | 0
+709000608 | Kishwaukee River HUC 10 | 17 | 7 | 2
+709000606 | South Branch Kishwaukee River | 59 | 8 | 0
+709000604 | Beaver Creek | 27 | 0 | 0
+NA | Kishwaukee River (main stem) | 27 | 33 | 0
+ | TOTAL MILES | 518 | 75 | 19
+
+[TABLE 7]
+Project Type | Location | Task Range | Funding Year | MAS No.
+Countywide Mapping | Edwards County | Due Process - Effective | 2025 | 
+Updated
+Countywide Mapping | Wabash County | Due Process - Effective | 2025 | 
+Countywide Mapping | Johnson County | Due Process - Effective | 2025 | 
+Updated
+Countywide Mapping | Bureau County | Due Process - Effective | 2025 | 
+Countywide Mapping | Macoupin County | Preliminary Release - Effective | 2025 | Contractor
+Countywide Mapping | Montgomery County | QR1 - QR3; does not include Preliminary products release | 2025 | Paper Inventory Reduction
+Updated
+Countywide Mapping | White County | QR1 - QR3; does not include Preliminary products release
+(6 Data Dev MASs) | 2025 | 
+Limited Panel Physical Map Revision (PMR) | Gallatin County | QR1 - QR3; does not include Preliminary products release
+(Little Wabash, Lower Wabash HUC8s) | 2025 | 
+Data Development | Kane/McHenry County | Kishwaukee Phase 6 – Zone A and Zone AE tributaries in Kane and McHenry County | 2025 | 
+Data Development | Boone County | Rock River Tributaries for Boone County | 2025 | 
+COMS |  |  | 2025 | 
+Countywide Mapping | Montgomery County | Preliminary Release - Effective | 2026 | Contractor
+Updated
+Countywide Mapping | White County | Preliminary Release - Effective | 2026 | Contractor
+Limited Panel Physical Map Revision (PMR) | Gallatin County | Preliminary Release - Effective | 2026 | Contractor
+Countywide Mapping | Pope
+County | QR1 - QR3; does not include Preliminary products release | 2026 | Paper Inventory Reduction
+Countywide Mapping | Massac County | QR1 - QR3; does not include Preliminary products release | 2026 | Paper Inventory Reduction
+Countywide Mapping | Wayne County | QR1 - QR3; does not include Preliminary products release | 2026 | Paper Inventory Reduction
+Countywide Mapping | Hamilton County | QR1 - QR3; does not include Preliminary products release | 2026 | Paper Inventory Reduction
+Statewide 2D BLE1 – Phase 1 | TBD | Statewide 2D BLE modeling – Phase 1 | 2026 | 
+Saline HUC8 Data Development | Gallatin County | 2D Data Development primarily for Gallatin County | 2026 | 
+Kaskaskia Data Development | Shelby, Fayette, and/or Washington County | Data Development to advance some portions of the Kaskaskia to KDP2 | 2026 | 
+COMS |  |  | 2026 | 
+Countywide Mapping | Pope
+County | Preliminary Release - Effective | 2027 | Contractor
+Countywide Mapping | Massac County | Preliminary Release - Effective | 2027 | Contractor
+Countywide Mapping | Wayne County | Preliminary Release - Effective | 2027 | Contractor
+Countywide Mapping | Hamilton County | Preliminary Release - Effective | 2027 | Contractor
+Countywide Mapping | Pulaski County | QR1 - QR3; does not include Preliminary products release | 2027 | Paper Inventory Reduction
+Limited Panel Physical Map Revision (PMR) | Alexander County | QR1 - QR3; does not include Preliminary products release | 2027 | 
+Limited Panel Physical Map Revision (PMR) | Winnebago County | QR1 - QR3; does not include Preliminary products release (Kishwaukee HUC-8) | 2027 | 
+Limited Panel Physical Map Revision (PMR) | Ogle County | QR1 - QR3; does not include Preliminary products release (Kishwaukee HUC-8) | 2027 | 
+Statewide 2D BLE – Phase 2 | TBD | Statewide 2D BLE modeling – Phase 2 | 2027 | 
+COMS |  |  | 2027 | 
+Countywide Mapping | Pulaski County | Preliminary Release - Effective | 2028 | Contractor
+Limited Panel Physical Map Revision (PMR) | Alexander County | Preliminary Release - Effective | 2028 | Contractor
+Limited Panel Physical Map Revision (PMR) | Winnebago County | Preliminary Release - Effective | 2028 | Contractor
+Limited Panel Physical Map Revision (PMR) | Ogle County | Preliminary Release - Effective | 2028 | Contractor
+Countywide Mapping | Jasper County | QR1 - QR3; does not include Preliminary products release
+(Embarras & Little Wabash HUC-8s) | 2028 | Paper Inventory Reduction
+Updated
+Countywide Mapping | Cumberland
+County | QR1 - QR3; does not include Preliminary products release
+(Embarras & Middle Wabash-Busseron HUC-8s) | 2028 | 
+Updated
+Countywide Mapping | Lawrence County | QR1 - QR3; does not include Preliminary products release
+(Embarras & Lower Wabash & Middle Wabash-Busseron HUC-8s) | 2028 | 
+Limited Panel Physical Map Revision (PMR) | Dekalb County | QR1 - QR3; does not include Preliminary products release
+(Kishwaukee HUC-8) | 2028 | 
+Countywide Mapping | Boone
+County | QR1 - QR3; does not include Preliminary products release
+(Kishwaukee HUC-8) | 2028 | 
+Statewide 2D BLE – Phase 3 | TBD | Statewide 2D BLE modeling – Phase 3 | 2028 | 
+COMS |  |  | 2028 | 
+Countywide Mapping | Jasper County | Preliminary Release - Effective | 2029 | Contractor
+Updated
+Countywide Mapping | Cumberland
+County | Preliminary Release - Effective | 2029 | Contractor
+Updated
+Countywide Mapping | Lawrence County | Preliminary Release - Effective | 2029 | Contractor
+Limited Panel Physical Map Revision (PMR) | Dekalb County | Preliminary Release - Effective | 2029 | Contractor
+Countywide Mapping | Boone
+County | Preliminary Release - Effective | 2029 | Contractor
+Updated
+Countywide Mapping | Coles
+County | QR1 - QR3; does not include Preliminary products release
+(Embarras & Middle Wabash-Busseron HUC-8s) | 2029 | Coles can be CW update if add data dev
+Updated
+Countywide Mapping | Crawford County | QR1 - QR3; does not include Preliminary products release
+(Embarras & Middle Wabash-Busseron HUC-8s) | 2029 | 
+Updated
+Countywide Mapping | Clark
+County | QR1 - QR3; does not include Preliminary products release
+(Embarras & Middle Wabash-Busseron HUC-8s) | 2029 | 
+Updated
+Countywide Mapping | Edgar County | QR1 - QR3; does not include Preliminary products release
+(Embarras & Middle Wabash-Busseron HUC-8s) | 2029 | 
+Limited Panel Physical Map Revision (PMR) | McHenry Co | QR1 - QR3; does not include Preliminary products release (Kishwaukee HUC-8) | 2029 | 
+Limited Panel Physical Map Revision (PMR) | Kane Co | QR1 - QR3; does not include Preliminary products release (Kishwaukee HUC-8) | 2029 | 
+COMS |  |  | 2029 | 
+Updated
+Countywide Mapping | Coles
+County | Preliminary Release - Effective | 2030 | Contractor
+Updated
+Countywide Mapping | Crawford County | Preliminary Release - Effective | 2030 | Contractor
+Updated
+Countywide Mapping | Clark
+County | Preliminary Release - Effective | 2030 | Contractor
+Updated
+Countywide Mapping | Edgar County | Preliminary Release - Effective | 2030 | Contractor
+Limited Panel Physical Map Revision (PMR) | McHenry Co | Preliminary Release - Effective | 2030 | Contractor
+Limited Panel Physical Map Revision (PMR) | Kane Co | Preliminary Release - Effective | 2030 | Contractor
+COMS |  |  | 2030 | 
+Limited Panel Physical Map Revision (PMR) | Rock Island County | Lower portion of Lower Rock HUC-8 | ? | 
+Updated
+Countywide Mapping | Whiteside County | Lower portion of Lower Rock HUC-8 | ? | 
+Limited Panel Physical Map Revision (PMR) | Henry County | Lower portion of Lower Rock HUC-8 | ? | 
+Limited Panel Physical Map Revision (PMR) | Lee
+County | Portion of Green River HUC-8 | ? | 
+Countywide Mapping | Shelby County | Kaskaskia River HUC-8's | ? | Paper Inventory Reduction
+Countywide Mapping | Fayette County | Kaskaskia River HUC-8's | ? | Paper Inventory Reduction
+Countywide Mapping | Washington County | Kaskaskia River HUC-8's | ? | Paper Inventory Reduction
+Updated
+Countywide Mapping | Clinton County | Kaskaskia River HUC-8's | ? | Clinton can be CW update if add data dev
+Limited Panel Physical Map Revision (PMR) | Hardin County | If FEMA wants to map re-delineated Ohio River floodplain 
+(would involve Rosiclare Levee) | ? | 
+ |  |  |  | 
+ |  |  |  | 
+ |  |  |  | 
+ |  |  |  | 
+ |  |  |  | 
+
+[TABLE 8]
+Project Location | IDNR/OWR Funding | Structures
+Alexander County | $5,000,000 | 113
+Pearl City | $2,145,000 | 23
+Des Plaines | $1,925,000 | 12
+DuPage County | $277,500 | 1
+McHenry County (FY19) | $317,680 | 3
+Total | $9,665,180 | 152
+
+[TABLE 9]
+Project Location | IDNR/OWR Funding | Structures in application | Structures Purchased | Amount spent | Status
+Calhoun County | $440,611 | 9 | 6 | $425,000 | Complete
+DePue | $1,500,000 | 1 | 0 | $0 | In Progress
+Des Plaines | $1,500,000 | 12 | 4 | $250,000 | Complete
+Dieterich | $1,404,000 | 10 | 5 | $0 | In Progress
+East St. Louis | $2,583,182 | 40 | 14 | $110,000 | In Progress
+Freeport | $81,130 | 1 | 1 | $80,000 | In Progress
+Hamburg | $476,572 | 7 | 6 | $390,000 | Complete
+Kampsville | $771,000 | 11 | 6 | $350,000 | Complete
+Kampsville | $100,000 | 1 | 0 | $0 | In Progress
+Lake County (FY19) | $3,503,373 | 13 | 4 | $1,800,000 | Complete
+Lake County (FY20) | $1,732,968 | 7 | 3 | $1,000,000 | Complete
+McHenry County (FY20) | $1,744,049 | 8 | 8 | $1,500,000 | Complete
+Ottawa | $300,000 | 1 | 0 | $0 | In Progress
+Roanoke | $617,500 | 5 | 3 | $11,250 | In Progress
+Rock Island County | $1,543,140 | 15 | 0 | $0 | In Progress
+Rockford | 1,581,650 | 1 | 2 | $1,150,000 | Complete
+Watseka | $5,357,029 | 65 | 40 | $3,500,000 | In Progress
+
+[TABLE 10]
+Project Category | Cost of Projects
+Flood Control | $21,400,000
+Flood Hazard Mitigation Program | $8,022,756
+Dam Removal and Improvements | $19,350,000
+Improvements to Waterways | $17,608,309
+Brandon Road Ecosystem Project | $50,000,000
+Total | $116,381,065
+ | 
+
+[TABLE 11]
+FEMA Grant | Grant Period | Grant Award | Reporting
+Dam Safety 2023 | 07/01/2023-06/30/2024 | $146,619 | Quarterly
+NFIP Community Assessment Program (CAP) 2024 | 7/01/2024 – 06/30/2025 | $ 293,317 | Quarterly
+CTP Project Management 2024 | 9/26/2024 – 09/25/2025 | $50,000 | Quarterly
+
+[TABLE 12]
+ISWS Coordinated Hazard Assessment and Mapping Program Section
+Organizational Chart by Subject Area
+May 2026
+
+[TABLE 13]
+Section Lead – Glenn Heistand
+Operations Manager – Greg Byard
+
+[TABLE 14]
+Engineering
+Senior Hydraulic Engineer - 
+Chris Hanstad
+
+Project Engineer
+Greg Byard
+Brian Chaille
+Jimmy Powell
+Aaron Thomas (Survey)
+Staff Engineer
+Addison Jobe
+Nikhil Sangwan
+H&H Engineer
+Jennifer Byard
+Sabin Paudel
+Fereshteh Shomami
+Communications
+Camden Arnold (Outreach Coordinator & MIP)
+
+Engineering - Special Studies
+Manager - Greg Byard
+Sabin Paudel
+Nikhil Sangwan | Geospatial Science
+GIS Manager - 
+Ryan Meekma
+
+GIS Specialists
+Nazmul Huda (Remote Sensing)
+Matt Jefferson (Remote Sensing)
+Samikshya Pantha
+
+
+
+
+MT-2 Review & Processing
+Lead – Brian Chaille
+
+Engineers
+Addison Jobe
+Jimmy Powell
+Others (as needed)
+GIS Specialists
+Greta Buckley
+Brad McVay
+Others (as needed)
+
+Post Processing Manager - 
+Shelly Fuller (Due Process) | Mapping
+Mapping Manager – 
+Zoe Zaloudek
+
+GIS Specialists
+Nazmul Huda
+Marni Law (Lead & CNMS)
+Caitlyn Lebeda (FIS)
+Lena Makdah
+Brad McVay (SOMA)
+Sarah Milton (Lead & MIP)
+
+Geospatial Applications Manager-
+Zoe Zaloudek
+
+Post Processing Manager - 
+Shelly Fuller (Due Process)
+
+QA/QC
+Chris Hanstad (Engineering)
+Sarah Milton (GIS)
+
+Web Page
+Sarah Milton (Content)
+Zoe Zaloudek (Development) | Mitigation & Planning
+Mitigation Manager – 
+Camden Arnold
+
+Planners
+Arpita Banerjee
+
+GIS Specialists
+Tanner Jones
+
+Additional Support (as needed)
+Brad McVay (Hazus)
+Zoe Zaloudek
+
+
+
+
+
+
+
+
+
+
+
+Notes:
+Black = primary assignment
+Blue = secondary assignment

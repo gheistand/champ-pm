@@ -1,0 +1,1393 @@
+This template should be used by Cooperating Technical Partners (CTPs) submitting an application
+for an award to complete activities for the Letter of Map Revision (LOMR) Review Partners
+project.
+
+Illinois State Water Survey
+Cooperating Technical Partners (CTP)
+Letter of Map Revision (LOMR) Review Partners
+Fiscal Year 2021 Mapping Activity Statement (MAS)
+In accordance with the Cooperating Technical Partner (CTP) Partnership Agreement referenced in Table
+1.1 between the Illinois State Water Survey (ISWS) (herein referred to as “CTP”) and the Federal
+Emergency Management Agency (FEMA), Mapping Activity Statement (MAS) No. ISWS-21-LOMR is
+as follows:
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+1
+
+Instructions: Complete Table 1.1 below with the basic project information and point of contact information for both the CTP and FEMA staff.
+Table 1.1: Insert Project and Point of Contact Information
+Information Type
+
+Insert Information
+
+CTP Organization Name:
+
+Illinois State Water Survey
+
+CTP Contractor Working on the activities in this SOW (optional, only if
+
+N/A
+
+contractors have already been identified).
+
+CTP Partnership Agreement Date:
+
+September 9, 2013
+
+Period of Performance:
+
+August 1, 2021 to September 30, 2023
+
+CTP Project Manager:
+
+Christopher R. Hanstad
+
+FEMA Regional Project Officer:
+
+John Wethington
+
+When necessary, additional FEMA assistance should be requested through the
+FEMA Regional Project Officer.
+
+FEMA Funding to Complete this LOMR Review MAS:
+
+$370,000
+
+CTP Estimated Leverage (Final Leverage dollars or units will be entered as
+
+N/A
+
+applicable in the Manage Data Development Task Workflow. Leverage data
+shown here is an estimate of available Leverage at the time the scope is prepared
+and may be refined throughout the project.):
+
+Project Coordination Activities
+Throughout the project, all members of the Project Team will coordinate,
+as needed, to ensure that activities, products, and deliverables meet
+FEMA requirements and contain accurate, up-to-date information.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+ Meetings, teleconferences, and video conferences with FEMA and other Project
+Team members as needed
+
+ Telephone conversations with FEMA and other Project Team members on a
+scheduled monthly basis and ad hoc basis, as required
+ Email as needed
+
+2
+
+SECTION 1 – Definitions
+The following definitions from 44 CFR Part 59.1 are provided here for reference
+(https://www.ecfr.gov/cgi-bin/textidx?SID=0fb8cc27b03bf52c3ea88882d2b275c0&mc=true&node=se44.1.59_11&rgn=div8). All other
+relevant definitions and regulatory requirements are to be referenced as well.
+Area of special flood hazard is the land in the flood plain within a community subject to a 1 percent or
+greater chance of flooding in any given year. The area may be designated as Zone A on the FHBM. After
+detailed ratemaking has been completed in preparation for publication of the flood insurance rate map,
+Zone A usually is refined into Zones A, AO, AH, A1-30, AE, A99, AR, AR/A1-30, AR/AE, AR/AO,
+AR/AH, AR/A, VO, or V1-30, VE, or V. For purposes of these regulations, the term “special flood
+hazard area” is synonymous in meaning with the phrase “area of special flood hazard”.
+Base flood means the flood having a one percent chance of being equaled or exceeded in any given year.
+Regulatory floodway means the channel of a river or other watercourse and the adjacent land areas that
+must be reserved in order to discharge the base flood without cumulatively increasing the water surface
+elevation more than a designated height.
+Violation means the failure of a structure or other development to be fully compliant with the
+community's flood plain management regulations. A structure or other development without the elevation
+certificate, other certifications, or other evidence of compliance required in § 60.3(b)(5), (c)(4), (c)(10),
+(d)(3), (e)(2), (e)(4), or (e)(5) is presumed to be in violation until such time as that documentation is
+provided.
+Additionally, the following references are provided:
+A Conditional Letter of Map Revision (CLOMR) is FEMA's comment on a proposed project that would,
+upon construction, affect the hydrologic or hydraulic characteristics of a flooding source and thus result in
+the modification of the existing regulatory floodway, the effective Base Flood Elevations (BFEs), or the
+Special Flood Hazard Area (SFHA). The letter does not revise an effective NFIP map, it indicates
+whether the project, if built as proposed, would be recognized by FEMA.
+A Letter of Map Revision (LOMR) is FEMA's modification to an effective Flood Insurance Rate Map
+(FIRM), or Flood Boundary and Floodway Map (FBFM), or both. LOMRs are generally based on the
+implementation of physical measures that affect the hydrologic or hydraulic characteristics of a flooding
+source and thus result in the modification of the existing regulatory floodway, the effective Base Flood
+Elevations (BFEs), or the Special Flood Hazard Area (SFHA). The LOMR officially revises the Flood
+Insurance Rate Map (FIRM) or Flood Boundary and Floodway Map (FBFM), and sometimes the Flood
+Insurance Study (FIS) report, and when appropriate, includes a description of the modifications.
+
+Section 2 - OBJECTIVE AND SCOPE
+The objective of the activities for the Letter of Map Revision (LOMR) Review Partners project
+documented in this Mapping Activity Statement (MAS) is to have the CTP assume the responsibility of
+the evaluation of Conditional Letters of Map Revision (CLOMRs) and final Letters of Map Revision
+(LOMR) requests, as defined in the National Flood Insurance Program (NFIP) regulations cited in the
+Code of Federal Regulations (CFR) at Title 44, Chapter 1, Section 72.2 (44 CFR 72.2), for the entire
+State of Illinois geographical area. The CTP shall review and recommend for approval these CLOMR
+and LOMR requests in accordance with the provisions of Part 65 of the National Flood Insurance
+Program (NFIP) regulations (44 CFR Part 65) that are compliant with 44 CFR 60.3 as appropriate.
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+3
+
+FEMA shall make and issue the final determinations regarding the requests.
+Based on the results of the CTP’s review and recommendation:
+
+
+For proposed projects, FEMA shall make conditional determinations and issue CLOMRs in
+accordance with Sections 65.8 or 65.12 of the NFIP regulations (44 CFR 65.8, 44 CFR 65.12)
+that are compliant with 44 CFR 60.3 as appropriate.
+
+
+
+For existing conditions or “as-built” projects, FEMA shall make final determinations and issue
+LOMRs in accordance with Section 65.9 of the NFIP regulations (44 CFR 65.9), that are
+compliant with 44 CFR 60.3 as appropriate.
+
+In instances where the size, scope, complexity, and time to effective of a revision warrants it, Physical
+Map Revisions (PMRs) will be required. Funding for PMRs is outside of the scope of this agreement.
+The CTP shall coordinate with the FEMA Headquarters (HQ) LOMR Review Partners Point of Contact
+(POC) regarding potential violations of the NFIP regulations prior to Activity 5 as defined by this
+document. The CTP will document potential violations with FEMA HQ and the Regional Office using
+standard potential violation letters. Submittals that are determined to be potential violations must be
+suspended until the potential violation has been resolved to the satisfaction of FEMA HQ and the
+Regional Office.
+Your organizational access to the MIP signifies that you have access to Personally Identifiable Information
+(PII). As such, please ensure each user is meeting the requirements with the new Risk Analysis Management
+Access Request (RAMSAR) process, including:
+
+
+
+Signed and executed Information Sharing Access Agreement (ISAA) for the CTP organization
+RAMSAR form for every CTP staff and CTP contractor user that needs access to the Risk Analysis
+Management (RAM) System, which also acknowledges review of the Rules of Behavior
+
+Please contact your FEMA Project Officer for more information.
+Table 1.2: LOMR Review Partners Staffing Mix identifies the key personnel of the CTP and their
+contractor (if applicable), their role/responsibility, and percentage of their time spent on the project.
+Table 1.2: LOMR Review Partners Staffing Mix
+
+Name
+
+Role
+
+Technical
+Engineering and
+Mapping Review
+and Processing
+
+QA/
+QC
+
+Program
+Management
+
+5%
+
+Chris
+Hanstad
+
+Project
+Manager/
+Engineer
+
+35%
+
+15%
+
+Brian Chaille
+
+Staff
+Engineer
+
+35%
+
+15%
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+{Insert
+additional
+activities}
+
+Total
+
+50%
+
+50%
+
+4
+
+Name
+
+Role
+
+Technical
+Engineering and
+Mapping Review
+and Processing
+
+QA/
+QC
+
+Program
+Management
+
+{Insert
+additional
+activities}
+
+Total
+
+Jimmy
+Powell
+
+Staff
+Engineer
+
+30%
+
+10%
+
+40%
+
+Addison Jobe
+
+Staff
+Engineer
+
+20%
+
+5%
+
+25%
+
+Shelly Fuller
+
+Post
+Processing
+Lead
+
+Sam
+Chakravorty
+
+GIS
+Specialist
+
+20%
+
+20%
+
+Greta
+Buckley
+
+GIS
+Specialist
+
+20%
+
+20%
+
+45%
+
+45%
+
+The activities for this LOMR Review Partners project, including required Quality Assurance/Quality
+Control (QA/QC) reviews, and the Mapping Partners that will complete them are summarized below in
+Table 1.3. All activities that are to be accomplished by the CTP, or their contractors, that may be added
+after the project startup, are inclusive in the term “CTP.”
+The sections of this MAS that follow Table 1.3 describe the specific mapping activities associated with
+the LOMR Review Partners project. Each activity description identifies the responsible Mapping
+Partner(s), the scope of the activity, the FEMA standards that must be met, and resultant product(s).
+Table 1.3: Summary of Activities and Responsible Mapping Partners
+
+Activity
+
+CTP
+
+Activity 1 – Initiation of Request
+
+X
+
+Activity 2 – Fee-Charge System
+Administration/Coordination
+
+X
+
+Activity 3 – Initial Technical Review of Request
+
+X
+
+Activity 4 – Final Technical Review of Request
+
+X
+
+Activity 5 – Preparation of Draft Determination Documents
+
+X
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+FEMA/FEMA’s
+Contractor
+
+X
+
+5
+
+Activity
+
+CTP
+
+Activity 6 – Internal QA/QC Review of Draft Determination
+Documents
+
+X
+
+FEMA/FEMA’s
+Contractor
+
+Activity 7 – Audit Review
+
+X
+
+Activity 8 – FEMA Review of Determination Documents
+
+X
+
+Activity 9 – Distribution of Determination Documents and
+Flood Hazard Determination (FHD) Publications
+
+X
+
+X
+
+Activity 10 – Post Processing of LOMRs
+
+X
+
+X
+
+Activity 11 – Appeal and Comments Processing of LOMRs
+
+X
+
+X
+
+Activity 12 – Data Upload Requirements and Library
+Submittals
+
+X
+
+X
+
+Activity 13 – Miscellaneous
+
+X
+
+X
+
+Activity 1 – Initiation of Request
+Responsible Mapping Partner: The CTP.
+Scope: For cases received through the mail, the CTP shall receive copies of CLOMR and LOMR requests
+from requesters within the geographical extent noted in this MAS. The review and processing fee for
+these cases shall be received and reviewed by the CTP for completeness. Received fees are then
+processed as outlined in Activity 2.
+Cases involving levee review will not be processed by the CTP. They will be sent to FEMA’s contractor.
+The CTP shall enter all information into the Mapping Information Platform (MIP) within 24 hours of
+receipt of a CLOMR or LOMR request, and the MIP will generate a Case Number (Case No). FEMA and
+its contractor shall use the MIP to track the cases reviewed and processed by the CTP.
+For cases submitted to FEMA through FEMA’s Online LOMC tool, the MIP will generate the Case No.
+and process the fee. Once these tasks are completed, the case will appear on the CTP’s workbench for
+standard processing procedures.
+The CTP shall use the unique Case No. on all correspondence generated by the CTP regarding that
+particular case. For cases submitted online, the MIP will be used to generate standard correspondence.
+The CTP will be responsible for maintaining and tracking all CLOMR and LOMR requests within the
+geographical extent noted in this MAS, other than requests sent to FEMA’s contractor.
+Within three working days, the CTP shall send an acknowledgment by email to the requester to confirm
+that the submittal was received (mail is acceptable when email is not available). An acknowledgment
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+6
+
+email is not required for cases submitted online, though encouraged, as the MIP will send the requester an
+automatically generated email confirming the Case Number.
+If a CLOMR or LOMR application was developed by the CTP or their contractors using CTP
+organizational funds, they may not be able to also process it. At this time, potential conflicts of interest
+shall be coordinated with FEMA HQ.
+Products: The CTP shall prepare the following products for this mapping activity as indicated above:
+
+
+Updates to the MIP;
+
+
+
+email acknowledgment letter.
+
+Activity 2 – Fee-Charge System Administration/Coordination
+Responsible Mapping Partners: FEMA, FEMA’s contractor, and the CTP.
+Scope for cases submitted through the mail: FEMA has established a centralized fee-charge system,
+administered by a Fee-Charge System Administrator (FCSA).
+The review and processing fee is based on the type of map change requested. A list of current review and
+processing fees for map change requests is provided on the FEMA Flood Hazard Mapping website at
+https://www.fema.gov/flood-maps/change-your-flood-zone/status/flood-map-related-fees.
+Upon receipt of the request, the CTP shall review the submittal to determine whether the appropriate fee
+has been submitted and to determine if the request is fee exempt. The CTP will obtain concurrence from
+FEMA HQ regarding fee exempt requests through a monitoring note using the template provided in
+FEMA’s MT-2 Procedures Manual. Coordination regarding fee-exemption requests should include
+FEMA and FEMAs contractor. Fee-exempt cases will proceed to the initial technical review step. When
+the CTP determines that the request is not fee-exempt, the CTP shall then review the case once the fee
+payment is received. When a check or money order is submitted, it is reviewed to identify obvious errors
+(e.g., missing date, missing signature, discrepancies between the written and the numerical amount,
+incorrect fee amount, and check made payable to incorrect entity).
+Some checks have a 60- or 90-day void clause from the date of the check. If no void clause appears on the
+check, the check is good for 6 months from its issue date, unless otherwise indicated. If the check is past
+its expiration date, the CTP shall not forward the check to FEMA for submission to the FCSA. Instead,
+the CTP shall return the check to the requester and ask for a new check with a current date. FEMA cannot
+accept any check over 6 months old, unless stated otherwise on the check.
+The CTP shall ensure that any credit card payment form submitted directly to the CTP contains all
+required information, including the following: correct amount; credit card number; current expiration
+date; signature of cardholder; date of signature; name of cardholder as it appears on the credit card;
+address of cardholder (for the credit card receipt); daytime telephone number; and case number. If any of
+the required information is missing, the CTP shall call the requester and request a corrected Payment
+Information Form. The FCSA cannot process credit card payments unless all correct information is
+provided. The FCSA and the CTP cannot, under any circumstances, accept a credit card authorization
+over the telephone.
+Before forwarding checks, money orders, or credit card information to the FCSA, the CTP shall ensure
+the check, money order, or Payment Information Form has been annotated with the correct Case Number.
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+7
+
+The CTP shall place a copy of the annotated check or money order in the case file for the map change
+request. For security reasons, the CTP shall block out the credit card number and expiration date on any
+copy of the original credit card information form before placing the copy in the case file.
+If during the course of the CLOMR or LOMR review it is determined that a possible refund of fee
+payment is required, the CTP should coordinate and monitor the refund request with FEMA and FEMA’s
+contractor. If a fee refund is approved by FEMA, the CTP should prepare and make available all
+necessary documentation to move forward with the fee refund process as outlined by the FCSA.
+Scope for cases submitted online: As the MIP will process the fee prior to establishing a case number for
+cases submitted online, the CTP will only be required to confirm that the fee provided is correct. When an
+incorrect fee is provided by the requester, the CTP will either request additional fees through the online
+LOMC tool or will use the above procedures to refund fees as needed.
+Products: The CTP shall provide the following to FEMA and FEMA’s contractor and the FCSA as
+appropriate:
+
+
+Copies of checks, money orders, and credit card payment sheets annotated to show assigned case
+number;
+
+
+
+Copies of letters sent to requester to notify requester about refund or incorrect payment;
+
+
+
+Memorandums to the Office of the Comptroller to request refunds when appropriate;
+
+
+
+Coordination with FEMA HQ.
+
+Activity 3 – Initial Technical Review of Request
+Responsible Mapping Partner: The CTP.
+Scope: Upon receiving a case, the CTP shall review the submittal for technical and regulatory adequacy,
+required information, application forms, Hydraulic and Hydrologic (H&H) modeling, and supporting data
+and documentation.
+The CTP shall identify previous or ongoing Letters of Map Change (LOMC) and ongoing restudies for
+the affected map panel(s), determine if any pending request for the same area may affect the submittal,
+and contact the requester for missing information or additional data required to ensure that the data are
+scientifically sound and technically accurate. (See Section 8, Technical Assistance and Resources of this
+Mapping Activity Statement.) These activities are a part of the “pre-acceptance review” of the request,
+which shall be completed within five working days of receiving the request.
+The CTP shall inform the requester in writing about the additional data necessary to complete the
+processing of the request, if applicable. The CTP shall mail the letter within 5 working days of receiving
+the request. If all data was received with the initial submittal, the email acknowledgment discussed in
+Activity 1 shall serve as notification to the requester. For cases submitted online, the CTP will make data
+requests through the MIP within 5 workings days of receiving the request.
+If additional data is requested and the required data is not received within 90 days of the date of the letter,
+the CTP shall suspend processing of the request. No extensions shall be granted. When additional data is
+received within the 90 days of the date of the additional data letter, the CTP shall acknowledge the receipt
+of this data by email to the requester.
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+8
+
+Further guidance on the additional data letter is provided in FEMA’s MT-2 Procedures Manual. Standard
+templates must be used.
+Products: The CTP shall make the following products available (through the MIP) to FEMA and its
+contractor as appropriate. The following correspondence items may be provided in a digital format, via
+email:
+
+
+Additional data letter using the appropriate letter template provided by FEMA;
+
+
+
+Enclosures to the additional data letter as appropriate;
+
+
+
+MIP data entry.
+
+Activity 4 – Final Technical Review of Request
+Responsible Mapping Partner: The CTP.
+Scope: Upon receipt of all required data in accordance with Part 65 of the NFIP regulations (44 CFR Part
+65), the CTP shall review the technical, scientific, and other information submitted by the requester to
+ensure that the data are technically accurate, consistent with standard engineering practice and FEMA
+standards, and sufficient to warrant a conditional or final determination by FEMA regarding a revision to
+the Flood Insurance Rate Map (FIRM), Flood Boundary and Floodway Map (FBFM), and/or Flood
+Insurance Study (FIS) report. The CTP generally shall limit the extent of the technical review to a review
+of the information presented on the MT-2 application forms and the supporting documentation submitted
+with them against the requirements in Part 65 of the CFR.
+The CTP shall use the forms to identify inconsistencies and discrepancies and judge reasonableness. In
+certain cases, such as review of requests involving alluvial fan flooding, unique hydrologic or hydraulic
+analyses, or significant changes to the Special Flood Hazard Areas (SFHA) shown on the effective FIRM,
+additional technical reviews beyond the reviews of the application forms may be required, as directed by
+the FEMA HQ contact and Regional Project Monitor or his/her designee. These unique situations will be
+identified early in the case review by the case reviewer and the FEMA HQ contact will be informed of the
+situation and the additional reviews suggested to be performed.
+For revisions involving the addition of detailed flood information or changes to flooding sources
+originally studied by detailed methods, analyses and other supporting data for the 10-percent-annualchance (10-year), 2-percent-annual-chance (50-year), 1-percent-annual-chance (100-year), and 0.2percent-annual-chance (500-year) floods and/or regulatory floodway may be required. At a minimum, the
+analyses and other supporting data provided in support of a revision request must meet the standards
+outlined in Section 4.
+The CTP shall perform the required coordination and documentation activities necessary for processing
+each request. During the processing, the CTP shall:
+
+
+Communicate with the requester and officials of the affected communities, as necessary;
+
+
+
+Coordinate activities with the FEMA Regional Office and HQ Office as appropriate (the most
+common examples of coordination that may be required between the CTP and FEMA include but
+are not limited to: potential violations, corrections, PMRs, FEMA-initiated requests and fee
+exemptions);
+
+
+
+Communicate with other FEMA contractors and federal, state, and local agencies, as needed;
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+9
+
+
+
+Prepare letters and other correspondence for FEMA signature;
+
+
+
+Maintain legal documentation, records of correspondence, and technical data.
+
+In addition, the CTP shall organize and submit to FEMA, via the MIP, records of the correspondence and
+supporting data associated with each request for the final determination to be made.
+Standards: The relevant standards for Activity 4 are provided in Section 4 of this MAS.
+Products: The CTP shall make the following products available (through the MIP) to FEMA and its
+contractor as appropriate. The following items may be provided in a digital format:
+
+
+A case file maintained on a continuous basis of all supporting data provided by the requester(s)
+and community official(s) in support of the request. The contents of the case file should include
+copies of correspondence sent to requestors, records of telephone conversations, emails, and
+faxes with requesters, community officials, FEMA, and others regarding each request. The final
+MT-2 case file submitted must be consistent with the structure shown in FEMA’s MT-2
+Procedures Manual;
+MT-2 Final Case File Structure
+Case Number
+1 – Correspondence
+Final Determination Documents
+Correspondence to and from the requestor and community
+2 – Incoming Data
+Hydraulics
+Final
+Superseded
+Hydrology
+Final
+Superseded
+Mapping
+Final
+Annotated FIRM
+Final workmap
+Final CAD/RASPLOT profile files
+GIS mapping (if not incorporated into National Flood Hazard Layer
+(NFHL)
+Spatial files (CAD/GIS/Microstation)
+Superseded
+3 – Map Attachments and Profiles
+4 – FEDD
+Final documents with certified mailing receipts
+Newspaper publication affidavit
+Interim Federal register publication
+Final Federal register publication
+116 letters with certified mailing receipts
+Correspondence related to any appeals that were received
+5 – Appeals
+6 – Internal Review
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+10
+
+Summary Documents
+Checklists
+Comparison Tables
+Check-RAS
+Internal correspondence
+Miscellaneous
+
+
+All appropriate documentation and modeling.
+
+
+
+Submissions to FEMA’s library, maintained by FEMA’s contractor, shall be made on a quarterly
+basis and shall be in a standard and acceptable digital format.
+
+
+
+MIP data entry.
+
+Activity 5 – Preparation of Draft Determination Documents
+Responsible Mapping Partner: The CTP
+Scope: No later than 60 calendar days of receiving all required data, the CTP shall prepare the
+recommended draft determination letters and map attachments (Activity 5), perform an internal QA/QC
+of those documents (Activity 6), and submit them for final audit review by FEMA’s contractor and
+FEMA (Activity 7). At the time that the CTP submits these draft determination letters and map
+attachments to FEMA and its contractor, the CTP also shall ensure a complete file containing the case
+correspondence, backup material, and engineering review notes have been assembled and are available to
+FEMA and its contractor for their review. A detailed list of the required products, to be submitted to
+FEMA, is provided under “Products” below.
+Products: The CTP shall make the following products available to FEMA and its contractor as appropriate
+after Activity 6 (Independent QA/QC of Draft Determination Documents) is complete:
+
+
+A case summary providing the case background and review and final recommendation.
+
+
+
+Cover letter(s) for the affected communities.
+
+
+
+A draft conditional comment document for CLOMR requests.
+
+
+
+A draft final determination document for LOMR requests.
+
+
+
+Annotated FIRM(s) showing the proposed boundary delineations for a CLOMR and the revised
+boundary delineations for a LOMR of the 1-percent-annual-chance (100-year) and 0.2-percentannual-chance (500-year) floodplain boundaries and/or regulatory floodway boundaries as
+appropriate.
+
+
+
+Topographic maps of the revision area that meet the requirements outlined in MT-2
+Application/Certification Form 2, “Riverine Hydrology & Hydraulics Form.”
+
+
+
+Digital Flood Profiles of the 10-percent-annual-chance (10-year), 2-percent-annual-chance (50year), 1-percent-annual-chance, and 0.2-percent-annual-chance water-surface elevations
+representing proposed conditions for a CLOMR and existing or “as-built” conditions for a
+LOMR, if applicable.
+
+
+
+Revised Floodway Data Table(s) (FDTs), if applicable.
+
+
+
+Revised Summary of Discharges Table(s), if applicable.
+
+
+
+Revised Summary of Stillwater Elevations Table(s), if applicable.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+11
+
+
+
+Other affected FIS tables, if applicable.
+
+
+
+Copies of the effective FIRM(s), FIS profiles, and any other affected FIS tables, if applicable.
+
+
+
+44 CFR 65.12 documentation for CLOMR requests when required.
+
+
+
+44 CFR 65.7 documentation for CLOMR and LOMR requests involving a floodway revision.
+
+
+
+Endangered Species Act compliance documentation for all CLOMR requests.
+
+
+
+Affected property owner notifications, via individual letters or newspaper notice, for
+CLOMR/LOMR requests that cause the flood hazards to increase, compared with the
+information shown on the effective FIRM, due to a project or updated modeling,
+including BFEs and/or base flood depths, Special Flood Hazard Area (SFHA) boundaries,
+zone designations, and/or regulatory floodway boundaries.
+
+
+
+Draft Flood Hazard Determination (FHD) on the Web notice, when required, based on the
+template and notice types and draft newspaper notice for a LOMR, when applicable.
+
+
+
+For an effective FIRM, a digital attachment will be issued to amend the effective FIRM for a
+LOMR. Draft digital data that will be posted to the National Flood Hazard Layer (NFHL) should
+be made available (NFHL data submittal requirements are shown under Activity 12).
+
+
+
+Monitoring Checklist.
+
+
+
+MIP LOMC Case Tracking form.
+
+
+
+MIP data entry.
+
+Activity 6 – Internal QA/QC Review of Draft Determination Documents
+Responsible Mapping Partner: The CTP.
+Scope: The CTP shall develop and follow internal procedures for QA/QC reviews (review of technical
+accuracy of data, technical agreement between all components, and graphic accuracy, along with a review
+against NFIP Regulations). All products produced by the Mapping Partners involved in this project are
+subject to periodic auditing by FEMA. Quality review plans shall be coordinated with FEMA prior to
+implementation.
+Standards: The relevant standards for Activity 6 are provided in Section 4 of this MAS.
+Products: Once the internal QA/QC review is completed and all applicable issues with been addressed,
+the CTP shall package the required products listed in Activity 5 and deliver them to FEMA. The CTP
+shall retain a complete case file and all supporting back up data for each case in an archive.
+
+
+A completed QA/QC checklist for the case.
+
+
+
+Annotated copies of draft comments letters or draft determination documents and enclosures with
+all questions and/or concerns indicated, if necessary.
+
+Activity 7 – Audit Review
+Responsible Mapping Partners: FEMA’s contractor.
+Scope: 50-percent of CLOMR and 50-percent of LOMR determination documents and enclosures are
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+12
+
+subjected to a final audit by FEMA’s contractor before they are submitted to FEMA for approval. Based
+on performance, a reduction in the number of cases audited may occur over time.
+Products: FEMA’s contractor shall make the following products available to the CTP and FEMA as
+appropriate:
+
+
+A Summary Report that describes the findings of the audit, noting any deficiencies and providing
+recommendations to resolve them or noting agreement with the results.
+
+
+
+Annotated copies of draft determination documents and enclosures with all questions and/or
+concerns indicated if necessary.
+
+Activity 8 – FEMA Review of Determination Documents
+Responsible Mapping Partner: FEMA.
+Scope: FEMA shall make final determinations, review and sign all determination letters for the CLOMR
+and LOMR cases reviewed and processed by the CTP.
+
+Activity 9 – Distribution of Determination Documents and FHD Publication
+Responsible Mapping Partner: CTP
+Scope: Upon receipt of FEMA electronic signature block on all draft documents for the CLOMR or
+LOMR, the CTP will follow the guidance below.
+CLOMRs
+Upon receipt of the signed conditional comment document for a CLOMR request, the CTP shall
+distribute copies of the comment document to the requester, Chief Executive Officers (CEOs) and
+floodplain administrators of the affected communities, FEMA Regional Office, the CTP (when
+applicable), and others as directed by FEMA.
+LOMRs
+Upon receipt of the signed final determination document for a LOMR request, the CTP will complete the
+responsibilities summarized below. Pre-approved CTPs performing aspects of this activity will follow the
+LOMR Delegation Review Partner Program Procedures for Post-Processing of LOMRs document
+available from FEMA HQ.
+The CTP shall distribute copies of the signed final determination document to the requester, Chief
+Executive Officer(s) (CEO) and floodplain administrator(s) of the affected community(ies), FEMA
+Regional Office, the CTP (when applicable), and others as directed by FEMA. For cases submitted
+online, only the CEO copy will be sent through the mail. The requester will download the determination
+document through the Online LOMC tool.
+As per the Expanded Appeal Process guidelines, all LOMRs with BFE, SFHA boundary, regulatory
+floodway, and zone designation changes require a 90-day appeal period. In such cases, FEMA’s
+contractor shall distribute the appropriate transmittal letter to the local newspaper(s) and provide the
+standard notice regarding the proposed modified FHDs to be published twice in that paper. The notice
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+13
+
+will direct interested individuals to the appropriate website where the entire FHD notice will be available.
+FEMA’s contractor will perform a QA/QC review of the FHD notice and will update the database to
+publish the FHDs on the website. The FHD notice must be published on the web prior to the first
+newspaper publication date.
+Products: The CTP shall make the following products available through the MIP for CLOMR and
+LOMR requests:
+
+
+Copies of the CLOMR comment document(s), for the community CEO(s) and floodplain
+administrator(s), FEMA Regional Office, and others as directed by FEMA;
+
+
+
+Copies of the LOMR determination document(s) and FIRM, FBFM, and/or FIS report enclosures,
+for the community CEO(s) and floodplain administrator(s), FEMA Regional Office, and others as
+directed by FEMA;
+
+
+
+FHD on the Web notification and newspaper publication affidavits.
+
+Activity 10 – Post Processing of LOMRs
+Responsible Mapping Partners: CTP.
+Scope: When BFEs, SFHA boundaries, regulatory floodways and flood zone designations are changed as
+a result of a LOMR, publication of the change and a 90-day appeal period is required. Publication
+responsibilities are listed in Activity 9. FEMA’s contractor shall follow the appeal period requirements
+which are documented in FEMA’s MT-2 Guidance Document. Pre-approved CTPs performing this
+activity will follow the LOMR Review Partner Program Procedures for Post-Processing of LOMRs
+document available from FEMA HQ.
+Products: The CTP shall make the following products available, as appropriate:
+
+
+Interim and Final Rule published in the Federal Register;
+
+
+
+Finalized FHD change letter (116 letter);
+
+
+
+MIP data entry.
+
+Activity 11 – Appeal and Comment Processing for LOMRs
+Responsible Mapping Partners: FEMA, FEMA’s contractor, and CTP.
+
+Scope: The responsibilities of the Mapping Partners are summarized below. Pre-approved CTPs
+performing aspects of this activity will also follow the LOMR Review Partner Program Procedures for
+Post-Processing of LOMRs document available from FEMA HQ.
+FEMA and its contractor shall perform the required coordination and documentation activities necessary
+for processing appeals and/or comments for any LOMR. During the processing, FEMA and its contractor
+shall:
+
+
+Communicate with the requester and community.
+
+
+
+Coordinate activities with the FEMA HQ Contact or Regional Project Monitor or his/her designee.
+
+
+
+Communicate with other FEMA contractors and federal, state, and local agencies, as needed.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+14
+
+
+
+Prepare letters and other correspondence for FEMA signature.
+
+
+
+Maintain legal documentation, records of correspondence, and technical data.
+
+
+
+Update the MIP as appropriate and/or necessary.
+
+
+
+When a 30-day comment period is required for a LOMR, FEMA and its contractor shall review all
+comments submitted by the affected communities during the 30-day comment period.
+
+FEMA and its contractor shall review and resolve all appeals in reference to these cases in accordance
+with Part 67 of the NFIP regulations (44 CFR Part 67). Close coordination with the CTP shall be a part of
+this process. For each appeal, the following activities shall be conducted as appropriate:
+
+
+Initial processing and acknowledgment of the submittal.
+
+
+
+Technical review of the submittal.
+
+
+
+Preparation of letters requesting additional supporting data.
+
+
+
+Performance of revised analyses.
+
+
+
+Preparation of the draft resolution letter and revised FIRM panels, FBFM panels, and FIS report
+materials for FEMA review.
+
+FEMA’s contractor or pre-approved CTP shall provide draft and final appeal resolution letters, and all
+backup data and information for FEMA review and signature and will distribute copies of the
+approved/signed resolution letters and enclosures.
+Products: FEMA’s contractor or pre-approved CTP shall make the following products available, as
+appropriate:
+
+
+Copies of all correspondence related to the appeal/protest.
+
+
+
+A summary providing background and review and final recommendations for the
+appeal/comment.
+
+
+
+Final version of revised H&H modeling based on the appeal/comment.
+
+
+
+Final resolution letters and enclosures, as appropriate.
+
+
+
+Updates to the MIP.
+
+Activity 12 - Data Upload Requirements and Library Submittals
+Responsible Mapping Partners: FEMA, FEMA’s contractor, and the CTP.
+Scope: The responsibilities of the Mapping Partners are summarized below.
+
+
+The CTP shall ensure that all required correspondence and data have been uploaded to the
+Content Manager in the MIP. Required items and upload specifications can be found in the
+FEMA MT-2 Procedures Manual and the FEMA MIP Guidance documents.
+
+
+
+The CTP shall ensure that all engineering back up data and related correspondence for all
+completed LOMR and CLOMR requests are packaged and submitted to the FEMA library
+archives on an “as-complete” basis in digital format. A detailed list of the required products is
+provided under “Products” below.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+15
+
+
+
+FEMA’s contractor shall ensure the engineering backup data and related correspondence for all
+CLOMR and LOMR requests are packaged and stored properly in the library archives in digital
+format.
+
+Products: In accordance with the requirements of FEMA, the CTP and/or FEMA and its contractor shall
+make the following products available as appropriate:
+
+
+Complete, organized Engineering Study Data Package which includes the following:
+o
+
+Digital and paper copies of all final materials including topographic work map, drainage
+area map, hydrologic model, hydraulic model;
+
+o
+
+Finalized version of the Technical Support Data notebook or other bound report/binder
+submitted;
+
+o
+
+Complete case file which includes of all supporting data provided by the requester(s) and
+community official(s) in support of the request. The contents of the case file should
+include copies of correspondence sent to requestors, records of telephone conversations,
+emails, and faxes with requesters, community officials, FEMA, and others regarding each
+request. The case file should also include copies or original MT-2 forms submitted by the
+requester. A copy of the finalized CLOMR comment letter or LOMR determination
+document should be included along with any associated annotations.
+
+Activity 13 – Miscellaneous
+Responsible Mapping Partners: FEMA, FEMA’s contractor, and the CTP.
+
+Scope: The CTP shall provide FEMA with timely support in the processing of Congressional responses
+and other special responses related to CLOMR and LOMR requests reviewed by the CTP under this
+MAS.
+Products: In accordance with the requirements provided by FEMA, the CTP and/or FEMA and its
+contractor shall make the following products available as appropriate:
+
+
+Draft special correspondence and backup data and information for FEMA review and signature.
+
+SECTION 4 – FUNDING/COST-SHARING
+Cost share can be defined in this document and would typically be the value of work performed on
+CLOMR or LOMR cases should the work exceed the available Federal funding. This amount must be
+documented in this MAS and the amount of federal funding must not be exceeded.
+The CTP LOMR Review Partners Narrative accompanies this MAS as a separate document.
+The funding request is based on an estimated cost of $9,250 per application with an estimated 40
+applications being received during the funding year.
+Prior to the occurrence of exceeding the above stated amount of funding in this MAS, the CTP will notify
+FEMA in writing clearly stating the nature of the circumstance(s) requiring the exceedance of funds, and
+whether the CTP is requesting additional funds, proposing to cover the remainder of processing as costshare, or transferring all remaining activities for the period of performance to FEMA and its contractor.
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+16
+
+FEMA and the CTP will discuss these options and determine the path forward. When necessary, FEMA
+or the CTP will initiate a grant amendment in the Non-Disaster (ND) Grants system to officially
+document the decision and amend the LOMR Review Partners award scope, budget and/or Terms and
+Conditions.
+
+SECTION 5 – STANDARDS
+The standards relevant to this MAS are presented in FEMA Policy 204-078-1 Standards for Flood Risk
+Analysis and Mapping, Revision 11, dated November 2020, located at
+https://www.fema.gov/sites/default/files/documents/fema_flood_risk_analysis_mapping_policy__rev11_f
+inal.pdf. This Policy supersedes all previous standards included in the Guidelines and Specifications for
+Flood Hazard Mapping Partners, including all related appendices and Procedure Memorandums (PMs).
+Additional information and links to FEMA Technical References, guidance documents, templates and
+other resources may be accessed and downloaded at https://www.fema.gov/flood-maps/guidancereports/guidelines-standards.
+To facilitate the use of standards and related documents, users can access the FEMA Guidelines and
+Standards Master Index located here: www.fema.gov/media-library/assets/documents/94095. This index
+provides a cross-reference of documentation available for Flood Risk Projects, Letters of Map Change
+and related Risk MAP activities. The cross-referenced relationships are organized and accessible through
+linkages for standards, guidance, technical references, and templates. The master index is updated in
+coordination with the FEMA Policy Memo noted above. The CTP is expected to comply with all updated
+standards (unless FEMA concurs that compliance is not required)
+CTPs and their sub-awardees must comply with FEMA’s Federal Regulations in Chapter 44 of the Code
+of Federal Regulations (CFR), specifically, CFR Parts 65, 66 and 67, and the appropriate year CTP
+Notice of Funding Opportunity and Agreement Articles. CTPs shall also coordinate with their Regional
+office to determine additional standards that should be met.
+
+SECTION 6 – SCHEDULE
+The statutory time frame for a determination on a CLOMR or LOMR request under Part 65 of the NFIP
+regulations is 90 days after all data are received; however, the CTP shall adhere to the same 60-day
+schedule for processing cases as FEMA’s contractor does. This means that the CTP will submit all cases
+to audit/review within 60 days of a case having all data received. The final 30 days within the regulatory
+timeframe will be used for reviews and coordination as needed between FEMA, FEMA’s contractor, and
+the CTP. If additional time is required, due to complexities of the particular case, the CTP shall
+coordinate with the FEMA HQ contact. Upon approval by FEMA, the CTP will prepare an interim letter
+to explain that more time is needed. The CTP shall obtain concurrence from FEMA and/or its contractor
+on the draft letter then shall transmit this letter to the requester and community officials before the 90-day
+processing period expires.
+Table 1.4 displays the grant project schedule noting estimated quarterly progress for expected cases
+received during the Period of Performance (PoP).
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+17
+
+Table 1.4: Summary of Project Schedule Progress
+
+Cases
+
+Quarter 1
+
+Quarter 2
+
+Quarter 3
+
+Quarter 4
+
+Total
+
+Estimated Cases
+carried over
+
+15
+
+15
+
+15
+
+15
+
+N/A
+
+Estimated Cases
+received
+
+10
+
+10
+
+10
+
+10
+
+40
+
+Estimated Total
+Cases in process
+
+25
+
+25
+
+25
+
+25
+
+N/A
+
+The CTP estimates receiving 10 cases within the first quarter of the grant schedule and processing at least
+10 of the cases received within the first quarter. The CTP estimates receiving 10 cases and processing 10
+cases in Quarter 2; receiving 10 cases and processing 10 cases in Quarter 3; and receiving 10 cases and
+processing 10 cases in Quarter 4. A total of 40 cases are estimated to be received and 40 cases are
+estimated to be processed during the period of performance grant schedule.
+
+SECTION 7 – CERTIFICATION
+The definitions of certification in Paragraph 65.2(b) of the NFIP regulations (44 CFR 65.2(b)) for
+certification of analyses, “as-built” plans, and structural works apply to this MAS. Specifically:
+
+
+
+If fill is to be considered in the mapping to raise land areas to or above the 1-percent-annualchance flood elevation, certification that the area to be removed as a result of the fill shall be
+provided in accordance with 44CFR 65.2(c) by the community;
+Topographic information shall be certified by a Registered Professional Engineer or Licensed
+Land Surveyor in accordance with 44 CFR 65.5(c);
+
+
+
+All analyses and data submitted in support of a revision to BFEs shall be certified by a Registered
+Professional Engineer or Licensed Land Surveyor as appropriate in accordance with 44 CFR
+65.6(f);
+
+
+
+All analyses submitted in support a revision to the regulatory floodway shall be certified by a
+Registered Professional Engineer in accordance with 44 CFR 65.7(d);
+
+
+
+Any levee systems to be accredited with flood protection as discussed in Section 4 of this MAS
+shall be certified in accordance with 44 CFR 65.10(e);
+
+
+
+Data submitted to support flood-control measures that provide protection from the 1-percentannual-chance flood in an area subject to alluvial fan flooding shall be certified by a Registered
+Professional Engineer in accordance with 44 CFR 65.13(f).
+
+Additionally, a Professional Engineer within the CTP must be assigned to oversee the project to ensure
+that standard engineering practices are followed. This person must be on staff for the entire period of
+performance and the FEMA HQ contact should be immediately notified if staffing changes are made.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+18
+
+SECTION 8 – TECHNICAL ASSISTANCE AND RESOURCES
+The CTP may obtain copies of FEMA-issued CLOMRs, LOMRs, Letters of Map Amendment, and
+Letters of Map Revision Based on Fill; archived engineering backup data; and data collected as part of
+FEMA’s former Mapping Needs Assessment process and current Coordinated Needs Management
+Strategy. The CTP may contact FEMA Map and Insurance eXchange (FMIX) at 1-877-FEMA MAP (1877-336-2627) or email a FEMA map specialist FEMAMapSpecialist@riskmapcds.com.
+General technical and programmatic information not cited in this MAS also can be downloaded from the
+FEMA Flood Hazard Mapping Website (https://www.fema.gov/flood-insurance).
+Technical and programmatic issues requiring FEMA resolution will be coordinated, as needed, with the
+FEMA HQ contact specified in Section 12 of this MAS.
+Additional guidance for H&H analyses and floodplain mapping can be found in FEMA’s Standards and
+other technical reference and guidance documents as explained in Section 4 – Standards.
+The CTP may obtain the map revision production tools, software, automated QA/QC tools, etc., that
+FEMA has developed for its own use. For example, copies of FEMA’s rule-based engineering software
+packages, such as CHECK-RAS for evaluating HEC-2/HEC-RAS models and RASPLOT for
+automatically plotting flood profiles, may be obtained through FEMA’s contractor.
+Specific technical and programmatic support may be provided by FEMA’s contractor; such assistance
+must be requested through the FEMA HQ contact specified in Section 12 of this MAS and may include:
+1. Technical assistance in the form of training and/or technical guidance regarding the review and
+processing of revision cases.
+2. Training on using the MIP.
+3. Training on resolving protests and appeals.
+
+SECTION 9 – CONTRACTORS
+The CTP does not intend to use the services of a contractor for this MAS. No transfer of funds to agencies
+other than those identified in the approved cooperative agreement application shall be made without prior
+approval from FEMA.
+
+SECTION 10 – REPORTING
+The CTP shall upload to the MIP copies of all correspondence between the CTP and the requester and/or
+community officials, including acknowledgment letters, additional data letters, processing delay letters,
+phone call reports, email correspondence, and any other documents. FEMA’s contractor shall use this
+information to audit the appropriate status information in the MIP. FEMA’s contractor shall then use the
+MIP to provide FEMA with updates to the LOMC module of FEMA’s Community Information System
+database. FEMA HQ will use the MIP to track progress of individual projects and may perform periodic
+audits of the MIP to ensure that timeframe processing standards are being met. The CTP will ensure that
+the data in the MIP is up-to-date at all times. All private information will be protected as a result of the
+work contained in this MAS. MIP passwords will not be shared within organizations and security
+protocols will be followed.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+19
+
+SECTION 11 – FINANCIAL AND PERFORMANCE REPORTING
+Financial: Obligations and expenditures must be reported on a quarterly basis through the Federal
+Financial Report (FFR) (SF-425), which is due within 30 days of the end of each calendar quarter. This
+report must be submitted with quarterly progress report (SF-PPR) for every quarter of the period of
+performance, including partial calendar quarters, as well as for periods where no grant activity occurs.
+Future awards and fund drawdowns may be withheld if these reports are delinquent. The final FFR is due
+90 days after the end date of the performance period.
+FFRs must be filed electronically, through the Payment and Reporting System according to the process
+and schedule below. Progress Reports must be submitted within the (ND) Grants system as required by
+the Notice of Funding Opportunity and Terms and Conditions of the award.
+Reporting periods and due dates:
+
+
+October 1 – December 31; Due January 30
+
+
+
+January 1 – March 31; Due April 30
+
+
+
+April 1 – June 30; Due July 30
+
+
+
+July 1 – September 30; Due October 30
+
+The CTP shall also provide financial reports to the FEMA HQ contact, Regional Project Monitor, and
+Assistant Officer in accordance with the terms of Notice of Funding Opportunity.
+Performance: Recipients are responsible for providing updated performance reports using the SF-PPR on
+a quarterly basis throughout the period of performance, including partial calendar quarters as well as for
+periods where no grant award activity occurs. The CTP shall refer to 2 CFR Part 200 to obtain minimum
+requirements for progress reporting. The Project Officer, as needed, may request additional information
+on progress.
+The CTP may meet with FEMA and/or its contractor(s) as frequently as needed to review the progress of
+the project in addition to the quarterly financial and status submittals. These meetings may alternate
+between FEMA’s Regional Office, the CTP office, and conference calls, as necessary.
+The CTP must report performance of the grant in conjunction with the progress reporting. The
+performance of the CTP is measured by the following criteria. Quantitative targets for performance
+measures will be defined between the CTP and its FEMA Project Monitor and amended to the MAS as
+needed.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+20
+
+Table 1.5: Quantitative Targets for Performance Measures
+Measure
+
+Target
+
+Continued maintenance, through non-federal
+funds, of the processes or systems in place to
+support the collection, development, evaluation,
+dissemination and communication of flood hazard
+and risk assessment data and mapping (e.g.,
+continued data collection related to changes in
+flood hazards and development in flood-prone
+areas; continued upgrades to data collection or
+mapping capabilities to incorporate new
+technologies; preparation of multiple-year
+mapping or data collection plans; maintenance of
+hardware, software, licenses and certifications,
+etc., necessary to complete, review, monitor and
+report on the work.).
+
+Identify the level of non-federal support CTP has
+provided via the previous quarter and show
+cumulative for the project.
+
+Management and commitment to existing, and
+continued support of, flood hazard identification
+and mapping activities and other program
+activities conducted with and by FEMA.
+
+Internal turnaround time of “active” processing
+should be less than 140 days (internal turnaround
+time of “active” processing is defined as the time
+needed to complete the case exclusive of the
+time waiting for data from requestors). Identify
+current processing times. Also identify if any
+cases have exceeded this timeframe. If there are
+any delinquencies, provide a Corrective Action
+Plan.
+
+Adherence to statutory and regulatory
+requirements for timeliness and completeness of
+project activities and deliverables submitted to
+FEMA and/or provided to the public.
+
+All cases should be completed within the 90-day
+regulatory turnaround time as defined in 44 CFR
+65.9. Identify if any cases have exceeded the 90day regulatory turnaround time for full
+processing. If there are any delinquencies,
+provide a Corrective Action Plan.
+
+Adherence to program standards for timeliness,
+completeness and quality of project activities and
+deliverables submitted to FEMA and/or provided
+to the public.
+
+The internal goal of producing two or less 316AD letters during processing MT-2s. How many
+316-AD letters were produced for each case.
+Indicate if any exceeded 2.
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+21
+
+AUTHORIZED REPRESENTATIVE SIGNATURES
+Each party has caused this MAS to be executed by its duly authorized representatives on the date
+mentioned above.
+
+signed by Christopher R. Hanstad
+Christopher R. Hanstad Digitally
+Date: 2021.07.16 12:06:37 -05'00'
+
+Christopher R. Hanstad
+Project Manager
+ISWS
+
+Date
+
+John Wethington
+Regional Project Officer
+Federal Emergency Management Agency, Region 5
+
+Date
+
+Julia McCarthy
+Risk Analysis Branch Chief
+Federal Emergency Management Agency, Region 5
+
+Date
+
+Mary Beth Caruso
+Mitigation Division Director
+Federal Emergency Management Agency, Region 5
+
+Date
+
+FY21 LOMR Review Partners MAS Version 2.0
+Illinois State Water Survey
+
+22
+
+

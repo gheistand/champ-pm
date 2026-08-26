@@ -1,0 +1,1188 @@
+This template should be used by Cooperating Technical Partners (CTPs) applying for an
+award to complete program management activities.
+
+Illinois State Water Survey
+
+COOPERATING TECHNICAL PARTNERS (CTP)
+PROGRAM MANAGEMENT (PM)
+STATEMENT OF WORK (SOW)
+PM SOW No. ISWS 21-01 PM SOW
+In accordance with the CTP Partnership Agreement referenced in Table 1.1 between Illinois
+State Water Survey (herein referred to as “CTP”) and the Federal Emergency Management
+Agency (FEMA), Program Management (PM) Statement of Work (SOW) No. ISWS21-PM is as
+follows:
+
+DOCUMENT ORGANIZATION
+This document is organized into Part 1 and Part 2 to simplify and streamline the SOW completion process
+and improve the usability of the SOW for both the CTP and Federal Emergency Management Agency
+(FEMA). Part 1 will be completed by each CTP. The CTP will provide a narrative on the project and
+complete a series of tables to demonstrate the work to be completed under this SOW, the schedule for
+delivery, leverage, budget, performance measures, and more.
+Part 2 of this document provides standard, detailed reference information regarding fundable activities
+and scope items, Standards, use of contractors, and more that are relevant to the Program Management
+(PM) Statement of Work (SOW). Part 2 does not require any inputs from the Cooperating Technical
+Partner (CTP) – it simply acts as standard language for this PM SOW that the CTP can review and
+reference as needed.
+DISCLAIMER (DO NOT DELETE): In recognition of the MIP Studies Redesign which was deployed
+in June 2017, FEMA Region V has made an effort to update the accompanying RV MIP Workbook to
+align with terminology, projects, purchases, and tasks in the redesigned MIP. The Region acknowledges
+that the signed MAS or SOW may or may not contain the required sections, tables, scope or terminology
+that is fully aligned with the RV MIP Workbook. Due to these reasons, the RV MIP Workbook will be
+treated as the sole source for creating and obligating projects, purchases, and tasks in the redesigned MIP
+and must be completed by the CTP.
+
+1
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+2
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+PART 1 – CUSTOM STATEMENT OF WORK (SOW) INFORMATION
+1.1 – Project and Point of Contact Information
+Instructions: Complete Table 1.1 below with the basic project information and point of contact information for both the CTP and FEMA staff.
+Table 1.1: Insert Project and Point of Contact Information
+Information Type
+
+Insert Information
+
+CTP Organization Name:
+
+Illinois State Water Survey
+
+CTP Contractor Working on the activities in this SOW (optional, only if
+contractors have already been identified; contractor support may be used for all
+activities except Staffing and Mentoring, which must be completed by the CTP).
+
+NA
+
+CTP Partnership Agreement Date:
+
+September 9, 2013
+
+Period of Performance:
+
+09/01/2021 to 09/30/2023
+
+CTP Project Manager:
+
+Glenn Heistand
+
+FEMA Regional Project Officer:
+
+John Wethington
+
+When necessary, additional FEMA assistance should be requested through the
+FEMA Regional Project Officer.
+
+5
+
+FEMA Funding to Complete this PM SOW:
+
+$80,000
+
+CTP Estimated Leverage (Final Leverage dollars or units will be entered as
+applicable in the Manage Data Development Task Workflow. Leverage data
+shown here is an estimate of available Leverage at the time the scope is prepared
+and may be refined throughout the project.)
+
+NA
+
+3
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Project Coordination Activities:
+Throughout the project, all members of the Project Team will
+coordinate, as needed, to ensure that activities, products, and
+deliverables meet FEMA requirements and contain accurate, up-to-date
+information.
+
+• Meetings, teleconferences, and video conferences with FEMA and other Project
+
+Team members Monthly
+• Telephone conversations with FEMA and other Project Team members on a
+scheduled Monthly basis and ad hoc basis, as required
+• Email as needed
+•
+
+4
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+1.2 – Identify Tasks and Deliverables to be Completed Under this SOW
+CTP must indicate deliverable and leverage details below for activities that are applicable. CTP will also use the RV MIP Workbook to indicate associated MIP task,
+grant, cost and schedule details.
+Instructions: Tasks and deliverables that can be accomplished under this PM SOW are in the table below. Please fill out the table below by checking the box of the activities and deliverables to be
+completed and add a description of the detailed scope elements for each relevant task. Please also add funding/project budget information per task. FEMA is providing funding to the CTP for the
+completion of this PM SOW (funding column A). The CTP shall provide any additional resources required to complete the assigned activities for this PM SOW (also known as Leverage, column
+B). The Leverage listed below is based on Blue Book values or actual costs where Blue Book values do not exist. The current Blue Book is dated April 2017 and can be downloaded from FEMA’s
+Information Resource Library at https://www.fema.gov/sites/default/files/documents/fema_risk-map_blue-book_2017.pdf.
+Table 1.2.1: Identify PM SOW Activities and Deliverables to be Completed
+PM Task
+
+State and Local Business Plans and/or
+Updates (required as a condition of PM funding)
+
+Mark “X” if
+activity will
+be done under
+this SOW
+
+☒
+
+Deliverable
+
+Business Plan
+Other: {Insert additional details}
+
+Mark “X” if
+deliverable will
+be done under
+this activity
+
+☒
+☐
+
+Project Budget and Leverage by Task
+(A)
+FEMA Contribution
+
+(B)
+Partner Contribution
+
+(A + B)
+Total Project Cost
+
+$25,000
+
+$0
+
+$25,000
+
+Detailed Scope Elements:
+ISWS will collaborate with the Illinois Department of Natural Resources/ Office of Water Resources (IDNR/OWR) a CTP, to prepare a joint business plan for the State of Illinois.
+
+Global Program Management Activities (to be
+
+completed under the PM SOW when Recipient is
+also funded for tasks in the Flood Risk Project MAS)
+
+☒
+
+Other: Updated project risk assessments and CTP
+Performance Metrics included in quarterly reports.
+
+$25,000
+
+$0
+
+$25,000
+
+Detailed Scope Elements:
+The ISWS Coordinated Hazard and Mapping Program (CHAMP) staff carry out the tasks for FEMA projects. These staff are expected to earn and maintain Certification as a Floodplain Managers (CFM). Maintaining
+the CFM status of CHAMP staff is part of the management performance and quality assurance protocols for the program. Other specialized certifications to maintain high quality performance standards include
+Professional Engineer, Geographic Information Systems Professional, and American Institute of Certified Planners. Continuing education credits must be earned annually to maintain certification. Attendance at
+Illinois Association for Floodplain and Stormwater Management (IAFSM), Illinois Geographic Information Systems Association (ILGISA), Environmental Systems Research Institute (ESRI), Association of State
+
+5
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+PM Task
+
+Mark “X” if Deliverable
+Mark “X” if
+Project Budget and Leverage by Task
+activity will
+deliverable will
+be done under
+be done under
+(A)
+(B)
+(A + B)
+this SOW
+this activity
+FEMA Contribution Partner Contribution
+Total Project Cost
+Floodplain Managers (ASFPM), American Planning Association (APA), Illinois Emergency Management Agency (IEMA), and other professional conferences, and FEMA training courses, conferences, and webinars
+provides the opportunity to earn required continuing education credits. Project risks identified in the Mapping Activity Statements and CTP Performance Metrics under this grant will be reviewed quarterly and
+updates provided with the Quarterly Reports submitted through ND Grants.
+Global Outreach for Mapping
+
+☒
+
+Outreach Plan
+Report detailing outreach and coordination activities,
+including backup or supplemental information used
+in writing the report
+Business Plan update describing (in detail) the
+outreach activities
+Updates to CTP’s website
+Other: {Insert additional details}
+
+☐
+☐
+☒
+☒
+☐
+
+$5,000
+
+$0
+
+$5,000
+
+Detailed Scope Elements:
+The ISWS has a history of providing technical data and support to communities, conducting applied research, publishing, and presenting results. In general, ISWS staff take advantage of opportunities to engage the
+public and provide technical data and support to reduce losses due to flooding. Specific activities envisioned are as follows:
+The Illinois Association for Floodplain and Stormwater Management (IAFSM) conducts workshops and conferences as well as providing a bi-monthly newsletter. Community officials and engineers who represent
+communities look to IAFSM for leadership in floodplain management and flood risk mitigation. ISWS staff support IAFSM serving as officers and committee chairs. ISWS staff contribute articles to the newsletter
+and present at workshops and conferences providing training, education, and updates to communities and engineers on FEMA standards, products, and best practices. ISWS has a booth at the annual Illinois conference
+to demonstrate FEMA products developed in Illinois. ISWS staff in this leadership role are recognized as experts in flood hazard identification and risk management, developing and maintaining relationships with
+community leaders and professionals involved with floodplain and stormwater management. ISWS staff participate in the Rapid Assistance Flood Team (RAFT) deployment supported by IAFSM assisting local
+floodplain managers with post disaster damage assessments.
+ISWS staff are active in the Illinois Geographic Information Systems Association (ILGISA). ISWS staff serve as officers and assist with annual conferences. ISWS has a booth at conferences to demonstrate FEMA
+products as well as presenting on FEMA projects. Communities send GIS staff to this conference and this provides an opportunity to educate them about FEMA GIS products, in particular the DFIRM geodatabase
+and Flood Risk Database.
+The Association of State Floodplain Managers (ASFPM) is a national organization of professionals interested in floods, floodplain management and related topics. IAFSM is a state Chapter of ASFPM. ISWS staff
+support ASFPM activities in a variety of ways including serving as officers, on committees, presenting through hosted webinars and at the national conference.
+ISWS has a booth at the Annual Illinois Emergency Management Agency Training Summit.
+ISWS maintains a web site hosting Discovery and other outreach products including reports and geodatabases, studies that are in progress, and providing links to relevant FEMA web sites.
+Training to State and Local Officials
+
+☐
+
+Other: {Insert additional details}
+
+☐
+6
+
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+PM Task
+
+Detailed Scope Elements:
+
+Mark “X” if
+activity will
+be done under
+this SOW
+
+Mitigation Planning Technical Assistance (TA)
+
+☐
+
+Deliverable
+
+A report detailing the TA provided, including date(s)
+of TA and type of assistance and state, tribal, or local
+community stakeholders supported
+Copies of all technical data provided to local, state,
+and tribal communities
+Other: {Insert additional details}
+
+☐
+
+{Insert number of staff} will attend regional
+mapping meetings hosted by FEMA Regions
+
+☐
+
+Maintain {Insert number of staff}; potentially utilize
+{Insert number of staff} current personnel to support
+CTP program activities
+Other: {Insert additional details}.
+
+☐
+
+Detailed Scope Elements:
+
+Directly Funded Staffing*
+(*If Staffing is the only PM Task to be
+performed under this SOW, please complete
+Table 1.2.2 below)
+
+☐
+
+Detailed Scope Elements:
+
+Technical Pilot Projects
+
+☐
+
+Mark “X” if
+deliverable will
+be done under
+this activity
+
+{Insert additional details}
+
+Project Budget and Leverage by Task
+(A)
+FEMA Contribution
+
+(B)
+Partner Contribution
+
+(A + B)
+Total Project Cost
+
+☐
+☐
+
+☐
+
+☐
+
+7
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+PM Task
+
+Detailed Scope Elements:
+
+Mark “X” if
+activity will
+be done under
+this SOW
+
+Mentoring and Best Practices
+
+☐
+
+Deliverable
+
+List of existing or potential CTP entities to be
+mentored
+Schedule and explanation of Mentoring activities
+Report detailing Mentoring activities provided
+Participant Surveys completed by mentored
+individuals providing feedback on the quality and
+benefits of the mentor(s) and Mentoring activities
+<Insert #> Best Practice write-ups to be shared
+nationally on the CTP Collaboration Center and with
+FEMA Project Officer
+Other: {Insert additional details}.
+
+Mark “X” if
+deliverable will
+be done under
+this activity
+
+Project Budget and Leverage by Task
+(A)
+FEMA Contribution
+
+(B)
+Partner Contribution
+
+(A + B)
+Total Project Cost
+
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements:
+{E.g., insert list of specific knowledge management assets that will be shared/transferred, including with whom and how (Example: Best Practice write-ups, mentoring meetings, or conference calls).}
+
+Minimal Map Printing
+
+Detailed Scope Elements:
+
+☐
+
+Quarterly report detailing the map printing activities,
+including recipient community/individual, panel
+number, number of copies, and total associated cost
+Other: {Insert additional details}.
+
+☐
+☐
+
+8
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+PM Task
+
+Mark “X” if
+activity will
+be done under
+this SOW
+
+Coordinated Needs Management Strategy
+(CNMS)
+
+☒
+
+Interim deliverables for the mapping project along its
+life cycle (funded, Preliminary, LFD)
+Supporting documentation for new determinations
+A self-certification document outlining the funded
+scope and comments per region discretion
+A self-certified CNMS spatial database using the
+CNMS QC tool
+Other: QC and Incorporation of Validation
+Assessments
+
+Detailed Scope Elements:
+Illinois CNMS updates
+
+Programmatic Quality Assurance / Quality
+Control (QA/QC) Plans
+
+Deliverable
+
+☒
+
+Programmatic QA/QC Plan, including any updates
+Quarterly report detailing the QA/QC activities
+completed for flood mapping products
+Corrective Action Plan(s), as needed
+Other: {Insert additional details}.
+
+Detailed Scope Elements:
+ISWS QA/QC Plans and Checklists
+
+Mark “X” if
+deliverable will
+be done under
+this activity
+
+☒
+
+Project Budget and Leverage by Task
+(A)
+FEMA Contribution
+
+(B)
+Partner Contribution
+
+(A + B)
+Total Project Cost
+
+$20,000
+
+$0
+
+$20,000
+
+☐
+☐
+☐
+☒
+
+☒
+☐
+☐
+☐
+
+$5,000
+
+9
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Table 1.2.2: Identify Percentage of Time Spent on Tasks or Activities
+This table is only required if Staffing is the only PM Task to be performed under this SOW (other
+than the State/Local Business Plan, which is required). If the CTP is not performing Staffing or is
+performing multiple activities which include Staffing, this table may not be required. Coordinate
+with your FEMA POC on any additional applicability.
+Note: The activities that include staffing Section 1 in the table below is for staff who are funded under the
+current CTP Program Activity. Assume each staff member works 100% of their day on this project. This
+represents percentage of total time on the project, not the hours spent. Section 2 is for staff who are not
+funded.
+Task and Activity – Funded Staff
+Section 1: Staff
+positions funded under
+
+Staff Member 1
+
+Staff Member 2
+
+Staff Member 3
+
+Staff Member 4
+
+Program Management
+
+%
+
+%
+
+%
+
+%
+
+Brief description of work across staff members
+Outreach for Mapping
+
+%
+
+%
+
+%
+
+%
+
+Brief description of work across staff members
+
+Training to State,
+Tribal, and Local
+Officials
+
+%
+
+%
+
+%
+
+%
+
+Brief description of work across staff members
+
+Mitigation Planning
+Technical Assistance
+
+%
+
+%
+
+%
+
+%
+
+Brief description of work across staff members
+
+10
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Mentoring and Best
+Practices
+
+%
+
+%
+
+%
+
+%
+
+Brief description of work across staff members
+{Insert additional
+activities}
+Total (not to exceed
+100 percent per
+employee)
+Task and Activity – Unfunded Staff (Also reported as Leverage)
+Section 2: Staff
+positions supporting
+CTP activities not
+funded under this
+
+Staff Member 1
+
+Staff Member 2
+
+Staff Member 3
+
+Staff Member 4
+
+Task
+Technical Engineering
+and Mapping
+Hazard Mitigation
+
+Risk Assessment
+
+Outreach
+Program Management
+and Overseeing
+Contracts
+
+11
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+{Insert additional
+activities}
+Total (not to exceed
+100 percent per
+employee)
+
+1.3 – Schedule and Performance
+Instructions: Insert deliverables for all activities included in this PM SOW in the table below. Examples
+provided in italics. Deliverables can be listed individually or grouped into a single deliverable date. Due
+dates will be negotiated with the FEMA Regional Project Officer.
+Table 1.3.1: PM Task Deliverables Schedule
+
+SOW Activities
+
+Deliverable
+
+Deliverable Due Date
+
+Submitted To
+
+Business Plan (required)
+
+Business Plan
+
+3 months from Award
+date
+
+FEMA Regional
+Project Officer
+
+Global Program
+Management
+
+Program
+Management Plan
+
+4 months from Award
+date
+
+FEMA Regional
+Project Officer
+
+Global Outreach for
+Mapping
+
+Notice of meetings
+with community
+officials, and other
+relevant meetings
+
+Four weeks prior to the
+meeting, or sooner if
+possible
+
+FEMA Region 5
+RMD SharePoint
+Calendar
+
+CNMS
+
+CNMS spatial
+database updates
+
+Regularly through
+grant period
+
+Regional CNMS
+database
+
+Programmatic QA/QC
+Plan
+
+Programmatic
+QA/QC Plan
+
+5 months from Award
+date
+
+FEMA Regional
+Project Officer
+
+The activities documented in this SOW shall be completed in accordance with Table 1.3.1: PM Task
+Deliverables Schedule. If changes to this schedule are required, the CTP shall coordinate with the FEMA
+Regional Project Officer and other necessary Mapping Partners in a timely manner.
+Table 1.3.2: Performance Measures Targets
+
+12
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Note: Insert appropriate measures in table below based on the document “2021 CTP Performance
+Measures Matrix” in the Appendix of the Notice of Funding Opportunity and coordinate with your FEMA
+Regional Project Officer.
+
+Measure
+Evidence of continued
+maintenance, using nonFederal funds, of the
+processes/systems to
+support collection,
+development, evaluation,
+dissemination, and
+communication of flood
+hazard and risk
+assessment data and
+mapping (REQUIRED)
+
+Target
+Target should be expressed as either “Achieved” or “Not
+Achieved” for completing non-federally funded maintenance
+activities for the CTP agreement.
+Examples of maintenance activities below:
+1. Continued data collection related to changes in flood hazards and
+development in flood-prone areas
+2. Continued upgrades to data collection or mapping capabilities to
+incorporate new technologies
+3. Preparation of multiple-year mapping or data collection plans
+4. Maintenance of equipment and supplies, such as hardware,
+software, licenses, certifications, etc. that are necessary to
+complete, review, monitor and report on the work
+
+Earned Value
+Management
+(REQUIRED)
+
+Report on SPI and CPI. Must be between 0.92 and 1.08. If it is not,
+provide information on what is being done to correct the problem.
+
+Timely MIP
+Management
+
+100% of MIP tasks updated monthly
+
+Public
+Awareness/Outreach
+
+IAFSM conference training and presentations -see business plan
+
+Hazard Mitigation
+Planning
+
+Coordinate with State Hazard Mitigation Officer or Risk MAP
+Coordinator to develop or update actions and progress annually (Assist
+with State HMGP annual update, record date)
+
+Continued maintenance
+(using non-federal
+funds)
+
+0.5 FTE non-federal support.
+See business plan for activities.
+
+Quality partnerships
+through quarterly
+survey with FEMA staff
+
+Goal rating: 5 (excel at achieving objectives)
+
+13
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Measure
+
+Target
+
+Monthly updates for all
+cases, including (%) of
+active tasks per
+
+Monthly calls with FEMA & IDNR/OWR
+
+Ongoing and regular
+coordination with other
+state/local offices to
+discuss agency’s
+prioritization process
+for Risk MAP projects
+as well as schedules,
+meetings, strategy
+development and
+stakeholder
+engagement.
+
+Monthly calls with FEMA & IDNR/OWR
+Attend Regional Meetings
+
+14
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+PART 2 – REFERENCE INFORMATION
+2.1 – Standards
+All activities completed under the PM SOW shall be performed in accordance with the relevant FEMA
+standards. The standards relevant to this SOW are presented in FEMA Policy 204-078-1 Standards for
+Flood Risk Analysis and Mapping, Revision 11, dated November 2020, located at
+https://www.fema.gov/sites/default/files/documents/fema_flood_risk_analysis_mapping_policy__rev11_f
+inal.pdf. Additional information, along with links to Guidance, Technical References, Templates, and
+other resources that support these standards, may be accessed and/or downloaded from the FEMA Flood
+Hazard Mapping website at https://www.fema.gov/flood-maps/guidance-reports/guidelines-standards.
+CTPs may refer to historical documents for assistance. Additionally, CTPs and their sub-awardees must
+comply with FEMA’s Federal Regulations in Chapter 44 of the Code of Federal Regulations (44 CFR
+Parts 1-362) and the appropriate year CTP Notice of Funding Opportunity and Agreement Articles. CTPs
+should also coordinate with their regional office to determine additional standards that should be met.
+For the Mitigation Planning Technical Assistance activity, coordinate with the FEMA Regional Project
+Officer to ensure that Technical Assistance also complies with regional standards. Additional information
+may be available in FEMA’s guidance document Risk MAP Guidance for Incorporating Mitigation
+Planning Technical Assistance and Training into Flood Risk Projects.
+For Coordinated Needs Management Strategy activities, all work shall be performed in accordance with
+the standards specified in the CNMS Technical Reference (https://www.fema.gov/sites/default/files/202002/CNMS_Technical_Reference_Nov_2019.pdf ).
+
+2.2 – Use of Contractors
+Contractor support may be used for all activities within this SOW, except staffing and mentoring, which
+must be completed by the CTP. The CTP will identify the name of the CTP contractor for services used
+as part of this SOW. The CTP shall ensure that the procurement for all contractors used for this Program
+Management Activity complies with the requirements of 2 CFR Part 200.
+Guidance provided in this part includes, but is not limited to, contract administration and record keeping,
+notification requirements, review procedures, competition, methods of procurement, and cost and pricing
+analysis. 2 CFR Part 200 may be viewed online at http://www.ecfr.gov/cgi-bin/textidx?SID=cc011f4fb962e68cb0da4bc91e8fbb43&mc=true&node=pt2.1.200&rgn=div5. Additionally,
+contractors must not pose a conflict of interest issue.
+OR
+The CTP does not intend to use the services of a contractor for this SOW. No transfer of funds to agencies
+other than those identified in the approved cooperative agreement application shall be made without prior
+approval from FEMA. The CTP shall ensure that the procurement for all contractors, if any are used for
+this SOW, complies with the requirements of 2 CFR Part 200.
+Guidance provided in this part includes, but is not limited to, contract administration and recordkeeping,
+notification requirements, review procedures, competition, methods of procurement, and cost and pricing
+
+15
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+analysis. 2 CFR Part 200 may be viewed online at http://www.ecfr.gov/cgi-bin/textidx?SID=cc011f4fb962e68cb0da4bc91e8fbb43&mc=true&node=pt2.1.200&rgn=div5.
+
+2.3 – Reporting and Performance
+Financial Reporting: Because funding has been provided to the CTP by FEMA, financial reporting
+requirements for the CTP will be in accordance with Cooperative Agreement Funding Opportunity
+Announcement, Articles of Agreement, or Award Notice for this SOW. The CTP shall also refer to 2 CFR
+Part 200. The CTP shall provide financial reports to the FEMA Regional Project Officer and Assistance
+Officer in accordance with the terms of the signed Cooperative Agreement for this SOW.
+Performance Reporting: Recipients are responsible for providing a signed performance report using the
+required list of information shown in the Notice of Funding Opportunity (NOFO) (or an old SF-PPR if you
+prefer) on a quarterly basis throughout the period of performance, including partial calendar quarters as
+well as for periods where no grant award activity occurs. The CTP shall refer to 2 CFR Part 200 to obtain
+minimum requirements for progress reporting. The FEMA Regional Project Officer, as needed, may request
+additional information on progress.
+The CTP may meet with FEMA and/or its contractor(s) as frequently as needed to review the progress of
+the project in addition to the quarterly financial and status submittals. These meetings may alternate
+between the FEMA Regional Office, the CTP office, and conference calls, as necessary.
+The CTP must report performance of the grant in conjunction with the progress reporting. The
+performance of the CTP is measured by Table 1.3.2 Performance Measure Targets. If you are completing
+a PM project in conjunction with a Flood Risk Project MAS, then you may use the measures outlined in
+that MAS based on the 2021 CTP Performance Measures Matrix. Quantitative Targets for performance
+measures will be defined using the 2021 CTP Performance Measures Matrix in conjunction with your
+FEMA Regional Project Officer and defined in Table 1.3.2: Performance Measures Targets.
+Earned Value Data Entry:
+Community Outreach and Mitigation Strategies (COMS) SOW/PM SOW tasks are now tracked in the
+MIP. Cost and schedule performance measures are defined in this SOW. These measures will be used to
+monitor partner performance and to determine future funding eligibility. Earned Value data entry involves
+updating cost, schedule, and performance (physical percent complete) in the MIP by the CTP each month
+for each assigned task. The CTP may contact the Region to obtain additional guidance (as needed) for
+updating COMS/PM efforts in the MIP.
+
+2.4 – Privacy and Protection of Personally Identifiable Information
+Your organizational access to the MIP signifies that you have access to Personally Identifiable Information
+(PII). As such, please ensure each user is meeting the requirements with the new Risk Analysis Management
+Access Request (RAMSAR) process, including:
+•
+•
+
+Signed and executed Information Sharing Access Agreement (ISAA) for the CTP organization
+RAMSAR form for every CTP staff and CTP contractor user that needs access to the Risk Analysis
+Management (RAM) System, which also acknowledges review of the Rules of Behavior
+
+Please contact your FEMA Project Officer for more information.
+
+16
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+2.5 – Available PM Scope Activities
+The activities outlined in this SOW will be completed as specified in the Cooperative Agreement Funding
+Opportunity Announcement, Award Notice, and/or Articles of Agreement. The SOW may be terminated
+at the option of FEMA or the CTP in accordance with the provisions of the Partnership Agreement. If the
+SOW is terminated, all products produced to date must be returned and the remaining funding, provided
+by FEMA for this SOW, from uncompleted activities will be returned to FEMA.
+The objective of the PM tasks and activities documented in this SOW is to recognize activities undertaken
+by Community Technical Partners (CTPs) as part of the active process of managing multiple projects.
+This is broader than individualized project management, which should be covered more directly in any
+other assigned Mapping Activity Statements (MASs).
+PM tasks and activities cannot result in the production of a Flood Insurance Rate Map (FIRM). Tasks that
+can be accomplished under this PM SOW are as follows:
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+State and Local Business Plans and/or Updates (required)
+Global Program Management Activities (completed under the PM SOW when Recipient is
+also funded for tasks in the Flood Risk Project MAS)
+Global Outreach for Mapping
+Training to State and Local Officials
+Mitigation Planning Technical Assistance
+Staffing
+Technical Pilot Projects
+Mentoring and Best Practices
+Minimal Map Printing
+Coordinated Needs Management Strategy (CNMS)
+Programmatic Quality Assurance / Quality Control (QA/QC) Plans
+
+Contractor support may be used for all activities except staffing and mentoring, which must be completed
+by the CTP.
+
+State and Local Business Plans and/or Updates (Required)
+Intent: State and Local Business Plans and/or Updates must be submitted for a partner to receive funding
+for program management in Fiscal Year 2021 (FY 2021). Plans must document the capabilities and
+accomplishments of the partner; explain the CTP’s vision for implementing or participating in Risk MAP,
+such as describing how the partner’s activities advance the vision, goals, and objectives of Risk MAP
+(including encouraging communities to take action to mitigate risk); include updates from previous years’
+activities (if applicable); identify flood hazard mapping needs based on physical, climatological, or
+engineering methodology changes and document these mapping needs to be included in the CNMS GIS
+data model; and provide recommendations to FEMA regarding future Risk MAP projects within the state
+or local jurisdiction.
+CTPs who also receive an award for the Community Outreach and Mitigation Strategies (COMS) SOW
+may combine the Business Plan requirements of the PM and COMS awards into a single deliverable, with
+approval from the FEMA Regional Project Officer. The combined Business Plan must include all required
+elements of the PM Business Plan and the COMS Business Plan.
+
+17
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Global Program Management
+
+(Completed under the PM SOW when Recipient is also funded for tasks in the Flood Risk Project MAS)
+Intent: Program management is the active process of managing multiple related projects that need to
+meet or exceed predefined performance metrics. Specific metrics are defined on a region-by-region basis,
+and it is recommended to include and/or reference specific relevant metrics as appropriate in this
+document. Efforts across a program should be aligned and integrated toward the accomplishment of Risk
+MAP goals.
+PM activities will typically occur in the areas of integration, scope, schedule, cost, quality, human
+resources (staffing, training, resource enablement), communication, risk, and/or procurement. Some
+efforts may extend beyond the scope of work defined in the SOW or specific project MAS.
+The CTP will work with the FEMA Regional Officer during the initiation of this activity to determine a
+PM Plan for implementation.
+
+Global Outreach for Mapping
+If doing a COMS SOW as well, this activity should be placed in COMS and removed/
+referenced here.
+Intent: The Outreach project or activities for a PM SOW can best be understood as a process that enhances
+the understanding of the overall NFIP flood mapping program, including flood risks and hazard
+identification. This task does not include the Outreach activities for a specific mapping project that begins
+during the project Discovery phase and continues through the map production and post- preliminary phases.
+Note: Communication and Outreach activities described in this task are meant to be supplemental or
+complementary efforts to those identified in the Community Engagement tasks in the Flood Risk Project
+MAS. CTPs and the FEMA Region are responsible for confirming no duplication of effort in other
+awards (grants, cooperative agreements, interagency agreements and contracts).
+The overarching goal for outreach is to create a climate of understanding and ownership of the mapping
+process at the state, tribal, and local levels. Well-planned outreach activities can ensure a more positive
+interaction throughout the Risk MAP process. These outreach activities can also assist FEMA and other
+members of the Project Management Team (PMT) in responding to Congressional inquiries. The CTP
+plans to continue Outreach activities to fulfill its strategy to educate communities on the necessary
+standards and benefits of developing better flood risk information.
+The CTP will work with the FEMA Regional Office during the initiation of this activity to determine or
+understand the Outreach Plan. The FEMA Regional Office will have access to many outreach tools that
+have been developed for this process that can be utilized or customized. All communication with local
+governments will be done in accordance with 44 CFR Part 66.
+The CTP shall notify FEMA and all applicable parties of all meetings with community officials, and other
+relevant meetings, four weeks prior to the meeting (with as much notice as possible). All meetings will be
+entered on the FEMA Region 5 RMD SharePoint here Region 5 Calendar. FEMA and/or its contractor
+may or may not attend the community meetings. FEMA Region 5’s Outreach Plan and Open House
+
+Toolkit are available for additional details.
+
+18
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Training to State, Tribal, Territory, and Local Officials
+Intent: Develop and provide technical training to state, tribal, territory, and local officials throughout the
+course of a flood risk project. Training can be provided at any time during the flood risk project, and it may
+be desired to include a series of training activities over the course of a flood risk project.
+If the CTP elects to perform Training to State, Tribal, and Local Officials, the CTP will coordinate and/or
+administer training for a defined Community and/or Individual on specific topics. The CTP will:
+
+•
+•
+•
+•
+•
+•
+•
+
+Determine target audience;
+Advertise to and confirm training participants;
+Determine training facility;
+Provide training materials;
+Provide training instructors;
+Provide list of participants and evaluations to FEMA;
+Follow up with participants on unresolved issues.
+
+Mitigation Planning Technical Assistance
+Intent: Develop and disseminate products and materials to support states, tribes, and local jurisdictions to
+develop, evaluate, update, and implement their mitigation plans and strategies. Technical Assistance for
+Mitigation Planning provided through Risk MAP should focus on building a community’s capability to
+plan for and reduce risk. Technical Assistance should encourage hazard mitigation plan implementation
+and advance community hazard mitigation actions through the Mitigation Planning Process and Risk MAP
+projects. The following steps are emphasized:
+•
+•
+•
+•
+
+Incorporating new flood hazard and risk information;
+Updating and refining mitigation strategies, especially as related to new flood hazard/risk
+information;
+Training mitigation planning teams;
+Incorporating mitigation into existing community plans, programs, and policies.
+
+This task may be used to provide state and local officials with technical assistance for achieving mitigation
+actions. This task cannot be used to fund the creation or update of a Hazard Mitigation Plan. This task
+cannot fund an activity that is already funded through another federal grant (including the COMS SOW)
+and should not duplicate assistance available to any community engaged in a Risk MAP project or a Hazard
+Mitigation Assistance (HMA) planning or project grant.
+
+Staffing
+Intent: Provide staff to support Risk MAP Program Management activities.
+
+Technical Pilot Projects
+Intent: (As defined by and negotiated with the FEMA Regional Office and approved in coordination with
+FEMA HQ. Please note that the Letter of Map Revision (LOMR) Review Partner Pilot has its own unique
+Mapping Application System (MAS). This PM SOW must not be used for the LOMR Review Partner Pilot
+
+19
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+Activity.)
+
+Mentoring and Best Practices
+Intent: Share CTP program experience and related information with peer participants regarding best
+practices and process improvements.
+For this agreement, the CTP shall submit at least one written Best Practice to its FEMA Project Officer
+detailing something that was innovative, cost saving, enhanced community engagement, etc. to be loaded
+to the CTP Collaboration Center. If this CTP has a COMS SOW as well, this Best Practice can be done in
+collaboration with the requirement in that agreement as well.
+
+Minimal Map Printing
+Intent: Print copies of maps for individuals within the CTP’s jurisdiction. Funding for this activity must
+not be covered under another FEMA grant program and may not exceed $5,000.
+
+Coordinated Needs Management Strategy (CNMS)
+Intent: CNMS is a spatial database that each FEMA Region Service Center (FEMA Region SC) maintains
+as representation of FEMA’s mapped floodplain inventory and a reporting system for New Valid Updated
+Engineering (NVUE). CNMS is maintained and updated for LOMRs, Discovery, Digital Flood Insurance
+Rate Map (DFIRM) mapping projects, and for expiring CNMS validation miles. The mapping partner will
+need to work and coordinate with their respective FEMA Region SC to make sure the database is updated
+in accordance to FEMA specifications.
+(The following two optional paragraphs should be identified in the Flood Risk Project MAS. If for some
+reason a CTP is only doing the CNMS and not the actual discovery or mapping project, this must be
+coordinated in advance with the FEMA Region and explained in this section.)
+For this SOW, the CTP will evaluate and update the CNMS database for request area(s) within the
+Discovery project footprint after the meeting. This includes stream reaches identified for study/restudy
+and any areas with remaining needs and/or requests as appropriate. The mapping partner needs to resolve
+any discrepancies within CNMS found at Discovery working with the FEMA Region SC before the final
+deliverable.
+For this MAS, the CTP will evaluate and update the CNMS database for all studies impacted by the
+mapping project for new or updated studies. This will require updates and deliverables to the FEMA
+Region SC when the project is funded for Discovery, DFIRM production, Preliminary Issuance, and Letter
+of Final Determination (LFD) Issuance. These are four vital updates needed in CNMS along a project’s life
+cycle. The mapping partner is to use the CNMS Technical Reference sections (S_Studies_Ln Discovery
+and Scoping Phase Updates, S_Studies_Ln Preliminary Issuance Phase Update, and S_Studies_Ln LFD
+Issuance Phase Update) when updating CNMS. At each of the three update points the CNMS database will
+be submitted to the FEMA Region SC for incorporation into the Regional CNMS database. The FEMA
+Region SC will work with the mapping partner to make sure study information is correct.
+For this SOW, the CTP will evaluate and update the database for all current fiscal year expiring miles
+and/or unknown miles as of a specified year(s) for evaluation. Expiring Miles are defined as any miles
+with a VALIDATION_STATUS of Valid or Unknown and without a STUDY_TYPE of Being-Studied
+where the STATUS_DATE is 5 years or older within that fiscal year. For example, Flood Creek with a
+status date of October 10, 2020, will “expire” calendar year October 10, 2025, or FY25Q1.
+
+20
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+During CNMS assessments of existing effective Zone A studies, Base Level Engineering (BLE) data should
+support directly Refined Zone A Engineering study (A5) validation. For additional details about the A5
+validation process, refer to Appendix C: Zone A Study Validation Assessment in the Coordinated Needs
+Management Strategy (CNMS) Technical Reference. BLE data prepared in accordance with the BLE
+Analyses and Mapping Guidance (February 2018) will meet the standards for comparison against effective
+floodplains as described in the CNMS technical reference.
+All identified detailed (AE, AO, AH) reaches will be evaluated using the checks identified in Appendix B:
+Detailed Study Validation Assessment of the CNMS Technical Reference, and have appropriate
+documentation provided The mapping partner can document the validation findings in check-sheets or
+within a CNMS database by adding additional fields.
+As with detailed validation, all reaches must have appropriate documentation provided (See Appendix B:
+Detailed Study Validation Assessment in the 2019 CNMS Database User’s Guide:
+https://www.fema.gov/sites/default/files/2020-02/CNMS_Technical_Reference_Nov_2019.pdf). The
+mapping partner can document the validation findings in check-sheets or within a CNMS database by
+adding additional fields.
+In addition to incorporating new and/or updated studies, as well as the validation checks on expiring miles
+(if applicable), the mapping partner will update line work to FEMA specifications so that it can be
+incorporated into the Regional CNMS database. This will include but is not limited to:
+•
+
+•
+•
+
+Utilization of topology rules to eliminate erroneous overlaps, multipart features, elimination of
+lines smaller than Cluster Tolerance, self-overlaps, and self-intersections. Where possible, the
+mapping partner will strive to eliminate inappropriate dangles and pseudos. Stream network should
+have connectivity where appropriate.
+Maintenance of all attributes as indicated by the CNMS Technical Reference (using the latest
+available release as a guide).
+Utilization of the most recent CNMS QC tool (ArcGIS Add-in) with no critical errors found. Any
+secondary errors will need RSC approval. The ArcGIS add-in tool can be obtained by requesting it
+from the RSC.
+
+The mapping partner shall maintain an archive of all data submitted for not less than three years past the
+Grant closing date.
+
+Programmatic QA/QC Plan
+Intent: Develop and implement a programmatic plan for QA and QC of products funded under the Flood
+Risk Project Mapping Activity Statement. Funding for this task does not include performing QA/QC of
+products, only the development of a plan for QA/QC and the program management aspects associated
+with implementing and monitoring the effectiveness of the plan. Activities may include the development
+of Corrective Action Plans and updates to the QA/QC Plan as a result of quality errors identified by the
+CTP, FEMA, or FEMA Contractors. Funding for this activity must not be covered under another award
+and may not exceed $10,000.
+
+21
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+AUTHORIZED REPRESENTATIVE SIGNATURES
+Each party has caused this SOW to be executed by its duly authorized representative.
+
+Glenn Heistand
+Project Manager
+Illinois State Water Survey
+
+08/09/2021
+Date
+
+John Wethington
+Regional Project Officer
+Federal Emergency Management Agency, Region 5
+
+Date
+
+Julia McCarthy
+Risk Analysis Branch Chief
+Federal Emergency Management Agency, Region 5
+
+Date
+
+Mary Beth Caruso
+Mitigation Division Director
+Federal Emergency Management Agency, Region 5
+
+Date
+
+22
+Region V FY21 PM SOW Template Version 2.0
+PM SOW No. ISWS 21-01 PM SOW
+
+

@@ -1,0 +1,2292 @@
+[
+  {
+    "results": [
+      {
+        "id": 1946,
+        "user_id": "carnold3",
+        "full_account_string": "1-100026-332000-332036-A03",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1947,
+        "user_id": "carnold3",
+        "full_account_string": "1-100026-740005-740025-A10",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1948,
+        "user_id": "carnold3",
+        "full_account_string": "1-470714-384613-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1949,
+        "user_id": "carnold3",
+        "full_account_string": "1-470736-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1950,
+        "user_id": "carnold3",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1951,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1952,
+        "user_id": "carnold3",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1953,
+        "user_id": "carnold3",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1954,
+        "user_id": "carnold3",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1955,
+        "user_id": "carnold3",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1956,
+        "user_id": "carnold3",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 1957,
+        "user_id": "carnold3",
+        "full_account_string": "1-100026-332000-332036-A03",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1958,
+        "user_id": "carnold3",
+        "full_account_string": "1-100026-740005-740025-A10",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1959,
+        "user_id": "carnold3",
+        "full_account_string": "1-470714-384613-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1960,
+        "user_id": "carnold3",
+        "full_account_string": "1-470736-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1961,
+        "user_id": "carnold3",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1962,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1963,
+        "user_id": "carnold3",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1964,
+        "user_id": "carnold3",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1965,
+        "user_id": "carnold3",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1966,
+        "user_id": "carnold3",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1967,
+        "user_id": "carnold3",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 1968,
+        "user_id": "carnold3",
+        "full_account_string": "1-100026-740005-740025-A10",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1969,
+        "user_id": "carnold3",
+        "full_account_string": "1-470714-384613-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1970,
+        "user_id": "carnold3",
+        "full_account_string": "1-470736-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1971,
+        "user_id": "carnold3",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1972,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1973,
+        "user_id": "carnold3",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1974,
+        "user_id": "carnold3",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1975,
+        "user_id": "carnold3",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1976,
+        "user_id": "carnold3",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1977,
+        "user_id": "carnold3",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 1978,
+        "user_id": "carnold3",
+        "full_account_string": "1-100026-740005-740025-A10",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1979,
+        "user_id": "carnold3",
+        "full_account_string": "1-470736-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1980,
+        "user_id": "carnold3",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1981,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1982,
+        "user_id": "carnold3",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1983,
+        "user_id": "carnold3",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1984,
+        "user_id": "carnold3",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1985,
+        "user_id": "carnold3",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1986,
+        "user_id": "carnold3",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 1987,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 1988,
+        "user_id": "carnold3",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 1989,
+        "user_id": "carnold3",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 1990,
+        "user_id": "carnold3",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 1991,
+        "user_id": "carnold3",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 1992,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 1993,
+        "user_id": "carnold3",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 1994,
+        "user_id": "carnold3",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 1995,
+        "user_id": "carnold3",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 1996,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-09-21"
+      },
+      {
+        "id": 1997,
+        "user_id": "carnold3",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-09-21"
+      },
+      {
+        "id": 1998,
+        "user_id": "carnold3",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-09-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 1999,
+        "user_id": "arpitab2",
+        "full_account_string": "1-470714-384613-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 2000,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 2001,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 2002,
+        "user_id": "arpitab2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 2003,
+        "user_id": "arpitab2",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 2004,
+        "user_id": "arpitab2",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-04-15"
+      },
+      {
+        "id": 2005,
+        "user_id": "arpitab2",
+        "full_account_string": "1-470714-384613-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2006,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2007,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2008,
+        "user_id": "arpitab2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2009,
+        "user_id": "arpitab2",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2010,
+        "user_id": "arpitab2",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-04-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2011,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2012,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2013,
+        "user_id": "arpitab2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2014,
+        "user_id": "arpitab2",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2015,
+        "user_id": "arpitab2",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2016,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2017,
+        "user_id": "arpitab2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2018,
+        "user_id": "arpitab2",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2019,
+        "user_id": "arpitab2",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2020,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2021,
+        "user_id": "arpitab2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2022,
+        "user_id": "arpitab2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2023,
+        "user_id": "gbuckley",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2024,
+        "user_id": "gbuckley",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2025,
+        "user_id": "gbuckley",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2026,
+        "user_id": "gbuckley",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2027,
+        "user_id": "gbuckley",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2028,
+        "user_id": "gbuckley",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-05-15"
+      },
+      {
+        "id": 2029,
+        "user_id": "gbuckley",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 2030,
+        "user_id": "gbuckley",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 2031,
+        "user_id": "gbuckley",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 2032,
+        "user_id": "gbuckley",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 2033,
+        "user_id": "gbuckley",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 2034,
+        "user_id": "gbuckley",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-05-16",
+        "period_end": "0026-06-15"
+      },
+      {
+        "id": 2035,
+        "user_id": "gbuckley",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2036,
+        "user_id": "gbuckley",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2037,
+        "user_id": "gbuckley",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2038,
+        "user_id": "gbuckley",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2039,
+        "user_id": "gbuckley",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2040,
+        "user_id": "gbuckley",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-06-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2041,
+        "user_id": "gbuckley",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2042,
+        "user_id": "gbuckley",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2043,
+        "user_id": "gbuckley",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2044,
+        "user_id": "gbuckley",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2045,
+        "user_id": "gbuckley",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2046,
+        "user_id": "gbuckley",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2047,
+        "user_id": "gbuckley",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2048,
+        "user_id": "byard",
+        "full_account_string": "1-100026-740005-740025-A10",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2049,
+        "user_id": "byard",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2050,
+        "user_id": "byard",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2051,
+        "user_id": "byard",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2052,
+        "user_id": "byard",
+        "full_account_string": "1-100026-740005-740025-A10",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2053,
+        "user_id": "byard",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2054,
+        "user_id": "byard",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2055,
+        "user_id": "byard",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2056,
+        "user_id": "byard",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2057,
+        "user_id": "byard",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2058,
+        "user_id": "bchaille",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2059,
+        "user_id": "bchaille",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2060,
+        "user_id": "bchaille",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2061,
+        "user_id": "bchaille",
+        "full_account_string": "1-475168-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2062,
+        "user_id": "bchaille",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2063,
+        "user_id": "bchaille",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2064,
+        "user_id": "bchaille",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2065,
+        "user_id": "dianad",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2066,
+        "user_id": "dianad",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2067,
+        "user_id": "dianad",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2068,
+        "user_id": "mlfuller",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2069,
+        "user_id": "mlfuller",
+        "full_account_string": "1-471634-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2070,
+        "user_id": "mlfuller",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2071,
+        "user_id": "mlfuller",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2072,
+        "user_id": "mlfuller",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-05-01",
+        "period_end": "0026-07-31"
+      },
+      {
+        "id": 2073,
+        "user_id": "mlfuller",
+        "full_account_string": "1-471634-740000-191200-A00",
+        "period_start": "0026-05-01",
+        "period_end": "0026-07-31"
+      },
+      {
+        "id": 2074,
+        "user_id": "mlfuller",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-05-01",
+        "period_end": "0026-07-31"
+      },
+      {
+        "id": 2075,
+        "user_id": "mlfuller",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-05-01",
+        "period_end": "0026-07-31"
+      },
+      {
+        "id": 2076,
+        "user_id": "mlfuller",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2077,
+        "user_id": "mlfuller",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2078,
+        "user_id": "mlfuller",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-08-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2079,
+        "user_id": "mlfuller",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2080,
+        "user_id": "mlfuller",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2081,
+        "user_id": "mlfuller",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2082,
+        "user_id": "hanstad",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-03-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2083,
+        "user_id": "hanstad",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-03-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2084,
+        "user_id": "hanstad",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-03-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2085,
+        "user_id": "hanstad",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2086,
+        "user_id": "hanstad",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2087,
+        "user_id": "hanstad",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2088,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-602007-602059-A01",
+        "period_start": "0026-03-16",
+        "period_end": "0026-06-30"
+      },
+      {
+        "id": 2089,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740025-A01",
+        "period_start": "0026-03-16",
+        "period_end": "0026-06-30"
+      },
+      {
+        "id": 2090,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740027-A01",
+        "period_start": "0026-03-16",
+        "period_end": "0026-06-30"
+      },
+      {
+        "id": 2091,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740084-B35",
+        "period_start": "0026-03-16",
+        "period_end": "0026-06-30"
+      },
+      {
+        "id": 2092,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740084-B36",
+        "period_start": "0026-03-16",
+        "period_end": "0026-06-30"
+      },
+      {
+        "id": 2093,
+        "user_id": "heistand",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-06-30"
+      },
+      {
+        "id": 2094,
+        "user_id": "heistand",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-06-30"
+      },
+      {
+        "id": 2095,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740025-A01",
+        "period_start": "0026-07-01",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2096,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740027-A01",
+        "period_start": "0026-07-01",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2097,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740084-B35",
+        "period_start": "0026-07-01",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2098,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740084-B36",
+        "period_start": "0026-07-01",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2099,
+        "user_id": "heistand",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-01",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2100,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740025-A01",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2101,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740027-A01",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2102,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740084-B35",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2103,
+        "user_id": "heistand",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2104,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740025-A01",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2105,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740027-A01",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2106,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740084-B35",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2107,
+        "user_id": "heistand",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2108,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740025-A01",
+        "period_start": "0026-09-16",
+        "period_end": "0027-02-28"
+      },
+      {
+        "id": 2109,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740027-A01",
+        "period_start": "0026-09-16",
+        "period_end": "0027-02-28"
+      },
+      {
+        "id": 2110,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740084-B35",
+        "period_start": "0026-09-16",
+        "period_end": "0027-02-28"
+      },
+      {
+        "id": 2111,
+        "user_id": "heistand",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0027-02-28"
+      },
+      {
+        "id": 2112,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740025-A01",
+        "period_start": "0027-03-01",
+        "period_end": "0027-06-30"
+      },
+      {
+        "id": 2113,
+        "user_id": "heistand",
+        "full_account_string": "1-100026-740005-740027-A01",
+        "period_start": "0027-03-01",
+        "period_end": "0027-06-30"
+      },
+      {
+        "id": 2114,
+        "user_id": "heistand",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0027-03-01",
+        "period_end": "0027-06-30"
+      },
+      {
+        "id": 2115,
+        "user_id": "nazmul",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-04-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2116,
+        "user_id": "nazmul",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-04-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2117,
+        "user_id": "nazmul",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-04-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2118,
+        "user_id": "nazmul",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2119,
+        "user_id": "nazmul",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2120,
+        "user_id": "nazmul",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2121,
+        "user_id": "mrjeffer",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-04-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2122,
+        "user_id": "mrjeffer",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-04-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2123,
+        "user_id": "mrjeffer",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-04-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2124,
+        "user_id": "mrjeffer",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2125,
+        "user_id": "mrjeffer",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2126,
+        "user_id": "mrjeffer",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2127,
+        "user_id": "asjobe",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2128,
+        "user_id": "asjobe",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2129,
+        "user_id": "asjobe",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2130,
+        "user_id": "asjobe",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2131,
+        "user_id": "asjobe",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2132,
+        "user_id": "asjobe",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2133,
+        "user_id": "tannerj",
+        "full_account_string": "1-471060-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2134,
+        "user_id": "tannerj",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2135,
+        "user_id": "tannerj",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2136,
+        "user_id": "tannerj",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2137,
+        "user_id": "tannerj",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2138,
+        "user_id": "tannerj",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2139,
+        "user_id": "tannerj",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2140,
+        "user_id": "tannerj",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2141,
+        "user_id": "tannerj",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2142,
+        "user_id": "tannerj",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2143,
+        "user_id": "tannerj",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2144,
+        "user_id": "tannerj",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2145,
+        "user_id": "tannerj",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2146,
+        "user_id": "tannerj",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2147,
+        "user_id": "tannerj",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2148,
+        "user_id": "tannerj",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2149,
+        "user_id": "marnilaw",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2150,
+        "user_id": "marnilaw",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2151,
+        "user_id": "marnilaw",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2152,
+        "user_id": "marnilaw",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2153,
+        "user_id": "marnilaw",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2154,
+        "user_id": "marnilaw",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2155,
+        "user_id": "clebeda",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2156,
+        "user_id": "clebeda",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2157,
+        "user_id": "clebeda",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2158,
+        "user_id": "clebeda",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2159,
+        "user_id": "clebeda",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2160,
+        "user_id": "clebeda",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2161,
+        "user_id": "clebeda",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2162,
+        "user_id": "clebeda",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2163,
+        "user_id": "clebeda",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2164,
+        "user_id": "clebeda",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2165,
+        "user_id": "makdah2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2166,
+        "user_id": "makdah2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2167,
+        "user_id": "makdah2",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2168,
+        "user_id": "makdah2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2169,
+        "user_id": "makdah2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2170,
+        "user_id": "makdah2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2171,
+        "user_id": "bmcvay",
+        "full_account_string": "1-470736-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2172,
+        "user_id": "bmcvay",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2173,
+        "user_id": "bmcvay",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2174,
+        "user_id": "bmcvay",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2175,
+        "user_id": "bmcvay",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-02-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2176,
+        "user_id": "bmcvay",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2177,
+        "user_id": "bmcvay",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2178,
+        "user_id": "bmcvay",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2179,
+        "user_id": "bmcvay",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2180,
+        "user_id": "bmcvay",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2181,
+        "user_id": "bmcvay",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2182,
+        "user_id": "bmcvay",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2183,
+        "user_id": "bmcvay",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2184,
+        "user_id": "bmcvay",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2185,
+        "user_id": "bmcvay",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2186,
+        "user_id": "bmcvay",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2187,
+        "user_id": "bmcvay",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2188,
+        "user_id": "bmcvay",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2189,
+        "user_id": "rmeekma",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-01-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2190,
+        "user_id": "rmeekma",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-01-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2191,
+        "user_id": "rmeekma",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-01-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2192,
+        "user_id": "rmeekma",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2193,
+        "user_id": "rmeekma",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2194,
+        "user_id": "rmeekma",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2195,
+        "user_id": "smilton",
+        "full_account_string": "1-100026-740005-740027-A99",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2196,
+        "user_id": "smilton",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2197,
+        "user_id": "smilton",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2198,
+        "user_id": "smilton",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2199,
+        "user_id": "smilton",
+        "full_account_string": "1-100026-740005-740027-A99",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2200,
+        "user_id": "smilton",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2201,
+        "user_id": "smilton",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2202,
+        "user_id": "smilton",
+        "full_account_string": "1-100026-740005-740027-A99",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2203,
+        "user_id": "smilton",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2204,
+        "user_id": "spaudel",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2205,
+        "user_id": "spaudel",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2206,
+        "user_id": "spaudel",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2207,
+        "user_id": "spaudel",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2208,
+        "user_id": "spaudel",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2209,
+        "user_id": "spaudel",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2210,
+        "user_id": "powell",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2211,
+        "user_id": "powell",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2212,
+        "user_id": "powell",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2213,
+        "user_id": "powell",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2214,
+        "user_id": "powell",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2215,
+        "user_id": "powell",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2216,
+        "user_id": "mjr",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-11-17",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2217,
+        "user_id": "mjr",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-11-17",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2218,
+        "user_id": "mjr",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-11-17",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2219,
+        "user_id": "mjr",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0025-11-17",
+        "period_end": "0026-04-30"
+      },
+      {
+        "id": 2220,
+        "user_id": "sangwan2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2221,
+        "user_id": "sangwan2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2222,
+        "user_id": "sangwan2",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2223,
+        "user_id": "sangwan2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2224,
+        "user_id": "sangwan2",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2225,
+        "user_id": "sangwan2",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2226,
+        "user_id": "spantha",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2227,
+        "user_id": "spantha",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2228,
+        "user_id": "spantha",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2229,
+        "user_id": "spantha",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2230,
+        "user_id": "spantha",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2231,
+        "user_id": "spantha",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2232,
+        "user_id": "fghiami",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2233,
+        "user_id": "fghiami",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2234,
+        "user_id": "fghiami",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-12-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2235,
+        "user_id": "fghiami",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2236,
+        "user_id": "fghiami",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2237,
+        "user_id": "fghiami",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2238,
+        "user_id": "abthomas",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2239,
+        "user_id": "abthomas",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2240,
+        "user_id": "abthomas",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0025-10-01",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2241,
+        "user_id": "abthomas",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2242,
+        "user_id": "abthomas",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2243,
+        "user_id": "abthomas",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      },
+      {
+        "id": 2244,
+        "user_id": "zaloudek",
+        "full_account_string": "1-470736-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2245,
+        "user_id": "zaloudek",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2246,
+        "user_id": "zaloudek",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2247,
+        "user_id": "zaloudek",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2248,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2249,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2250,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-03-16",
+        "period_end": "0026-07-15"
+      },
+      {
+        "id": 2251,
+        "user_id": "zaloudek",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2252,
+        "user_id": "zaloudek",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2253,
+        "user_id": "zaloudek",
+        "full_account_string": "1-474013-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2254,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2255,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2256,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-07-16",
+        "period_end": "0026-08-30"
+      },
+      {
+        "id": 2257,
+        "user_id": "zaloudek",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2258,
+        "user_id": "zaloudek",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2259,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2260,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2261,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-08-31",
+        "period_end": "0026-09-15"
+      },
+      {
+        "id": 2262,
+        "user_id": "zaloudek",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2263,
+        "user_id": "zaloudek",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2264,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592612-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2265,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592613-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2266,
+        "user_id": "zaloudek",
+        "full_account_string": "1-592614-740000-191200-A00",
+        "period_start": "0026-09-16",
+        "period_end": "0026-12-31"
+      },
+      {
+        "id": 2267,
+        "user_id": "zaloudek",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2268,
+        "user_id": "zaloudek",
+        "full_account_string": "1-472875-740000-191200-A00",
+        "period_start": "0027-01-01",
+        "period_end": "0027-10-21"
+      },
+      {
+        "id": 2269,
+        "user_id": "zaloudek",
+        "full_account_string": "1-471633-740000-191200-A00",
+        "period_start": "0027-10-22",
+        "period_end": "0027-11-15"
+      }
+    ],
+    "success": true,
+    "meta": {
+      "served_by": "v3-prod",
+      "served_by_region": "ENAM",
+      "served_by_colo": "ORD",
+      "served_by_primary": true,
+      "timings": {
+        "sql_duration_ms": 1.1507
+      },
+      "duration": 1.1507,
+      "changes": 0,
+      "last_row_id": 0,
+      "changed_db": false,
+      "size_after": 9916416,
+      "rows_read": 324,
+      "rows_written": 0,
+      "total_attempts": 1
+    }
+  }
+]

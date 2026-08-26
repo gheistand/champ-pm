@@ -1,0 +1,4801 @@
+This template should be used by Cooperating Technical Partners (CTPs) submitting an application
+for an award to complete Technical Hazard Identification, Risk Analysis, and Mapping for a Flood
+Risk Project(s). ***
+
+Illinois State Water Survey
+COOPERATING TECHNICAL PARTNERS (CTP)
+FLOOD RISK PROJECT (FRP)
+MAPPING ACTIVITY STATEMENT (MAS)
+MAS No. ISWS 21-03 Whiteside County
+The Flood Risk Project described in this MAS dated August 2021 shall be completed in accordance with
+the CTP Partnership Agreement referenced in Table 1.1.1 between Illinois State Water Survey (herein
+referred to as “CTP”) and the Federal Emergency Management Agency (FEMA).
+
+1
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+DOCUMENT ORGANIZATION
+This document is organized into Part 1 and Part 2 to simplify and streamline the Mapping Activity
+Statement (MAS) completion process and improve the usability of the MAS for both the Cooperating
+Technical Partner (CTP) and Federal Emergency Management Agency (FEMA). Part 1 will be
+completed by each CTP. The CTP will provide a narrative on the project and complete a series of tables
+to demonstrate the work to be completed under this Mapping Activity Statement, the schedule for
+delivery, leverage, budget, performance measures, and more.
+Part 2 of this document provides standard, detailed reference information regarding fundable activities
+and scope items, Standards, use of contractors, and more that are relevant to the Flood Risk Project (FRP)
+MAS. Part 2 does not require any inputs from the CTP – it simply acts as standard language for
+this FRP MAS that the CTP can review and reference as needed.
+DISCLAIMER (DO NOT DELETE): In recognition of the MIP Studies Redesign which was deployed
+in June 2017, FEMA Region V has made an effort to update the accompanying RV MIP Workbook to
+align with terminology, projects, purchases, and tasks in the redesigned MIP. The Region acknowledges
+that the signed MAS or SOW may or may not contain the required sections, tables, scope or terminology
+that is fully aligned with the RV MIP Workbook. Due to these reasons, the RV MIP Workbook will be
+treated as the sole source for creating and obligating projects, purchases and tasks in the redesigned MIP,
+and must be completed by the CTP.
+
+2
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+PART 1 – CUSTOM MAPPING ACTIVITY STATEMENT (MAS) INFORMATION
+1.1 – Project and Point of Contact Information
+Instructions: Complete Table 1.1.1 below with the basic project information and point of contact information for both the CTP and FEMA staff.
+Table 1.1.1: Insert Project and Point of Contact Information
+Information Type
+
+Insert Information
+
+CTP Organization Name:
+
+Illinois State Water Survey
+
+CTP Contractor Working on the activities in this MAS (optional, only if contractors
+
+NA
+
+CTP Partnership Agreement Date:
+
+September 9, 2013
+
+Period of Performance:
+
+09/01/2021 to 09/30/2025
+
+CTP Project Manager:
+
+Glenn Heistand
+
+FEMA Regional Project Officer:
+
+John Wethington
+
+FEMA Funding to Complete this FRP MAS:
+
+$150,000
+
+CTP Estimated Leverage (Final Leverage dollars or units will be entered as applicable
+in the Manage Data Development Task Workflow. Leverage data shown here is an estimate
+of available Leverage at the time the scope is prepared and may be refined throughout the
+project.):
+
+NA
+
+have already been identified. Please see section 2.2 for more info.)
+
+When necessary, additional FEMA assistance should be requested through the FEMA
+Regional Project Officer.
+
+3
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Project Coordination Activities:
+
+Throughout the project, all members of the Project Team will coordinate, as needed, to
+ensure that activities, products, and deliverables meet FEMA requirements and contain
+accurate, up-to-date information.
+
+• Meetings, teleconferences, and video conferences with FEMA and other
+
+Project Team members Monthly
+• Telephone conversations with FEMA and other Project Team members on a
+scheduled Monthly basis and ad hoc basis, as required
+• Email as needed
+
+4
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Table 1.1.2: Flood Risk Project Watershed and Jurisdictions
+Instructions: In the table below, provide the watershed or county and jurisdictions in which Flood Risk Project will be performed, as well as it’s applicable project type (e.g., Discovery only, Paper
+Inventory Reduction, Data Development, Preliminary Map Production, Post Preliminary Map Production, etc.). Watershed Reports will be created and distributed to counties/parishes and
+communities identified as including Discovery in the Project Type. FEMA is providing funding to the CTP for the completion of this FRP MAS (funding column A). The CTP shall provide any
+additional resources required to complete the assigned activities for this FRP MAS (also known as Leverage, column B). The Leverage listed below is based on Blue Book values or actual costs
+where Blue Book values do not exist. The current Blue Book is dated April 2017 and can be downloaded from FEMA’s Information Resource Library at
+https://www.fema.gov/sites/default/files/documents/fema_risk-map_blue-book_2017.pdf.
+Project Budget and Leverage by
+Watershed/Project
+Watershed or
+County
+
+Whiteside
+County, IL
+
+Geographic
+Footprint
+
+Counties/Parishes and
+Communities Included in Project
+
+Whiteside Co, IL
+50 Panel PMR
+(See list in RV
+Workbook)
+
+Albany, Village of
+Coleta, Village of
+Erie, Village of
+Fulton, City of
+Lyndon, Village of
+Prophetstown, City of
+Rock Falls, City of
+Sterling, City of
+Tampico, Village
+Whiteside Co Unincorporated Areas
+Whiteside County All Jurisdictions
+
+Project Type
+
+(A)
+FEMA
+Contribution
+($)
+
+(B)
+Partner
+Contribution ($)
+
+(A + B)
+Total Project
+Cost ($)
+
+$150,000
+
+0
+
+$150,000
+
+Redelineation &
+PMR thru QR1
+
+Additionally, the CTP involved in this project will develop new and/or updated flood hazard data as summarized in Table 1.1.3: Total Stream or Shoreline Mile, or 2D Square Mile Counts by
+Type of Study. The FIRM and FIS report for the watershed and areas identified in Table 1.1.3 will be produced in the North American Vertical Datum of 1988 (NAVD88).
+
+5
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Table 1.1.3: Total Stream or Shoreline Mile, or 2D Square Mile Counts by Type of Study
+
+Type of
+Study*
+
+Watershed or
+Jurisdiction
+
+Coastal
+
+Riverine
+
+Wave = ##
+
+New AE = ##
+
+Surge = ##
+
+Leverage AE =
+
+Hydraulic
+Analysis
+Option (A-E)
+
+1D or 2D
+
+This Table N/A.
+Effective
+Flood
+Insurance
+Study
+
+See Table
+
+1.2.9
+Summary of
+Floodplain
+Mapping for
+Redelineation
+
+Updated
+Effective
+Zone VE and
+AE Studies
+Updated
+Effective
+Zone A
+Studies
+New Zone
+VE and AE
+Studies
+Identified
+New Zone A
+Studies
+Identified
+
+New A = ##
+Leverage A =
+
+Wave = ##
+
+New AE = ##
+
+Surge = ##
+
+Leverage AE =
+
+New A = ##
+Leverage A =
+
+6
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. {MAS No.}
+
+Type of
+Study*
+
+Watershed or
+Jurisdiction
+
+Coastal
+
+Riverine
+
+Hydraulic
+Analysis
+Option (A-E)
+
+1D or 2D
+
+New Zone A
+Studies
+Identified *
+New Base
+Level
+Engineering
+(BLE)
+Studies
+Identified
+
+To complement Table 1.1.3, the CTP will deliver a GIS shapefile indicating streamlines and
+study method (with reach ID’s as indicated in CNMS) for all mapping activities in this MAS,
+prior to the MAS becoming final.
+
+Details on type of study are documented in the Flood Risk Project recommendations section of the Discovery Report
+Deliverable. This includes the production of Base Level Engineering deliverables that may or may not be part of a
+future mapping update.
+
+*
+
+7
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+1.2 – Identify Tasks and Deliverables to be Completed Under this MAS
+CTP must indicate deliverable details below for activities that are applicable. CTP will also use the RV MIP Workbook to
+indicate associated MIP task, grant, cost and schedule details.
+Instructions: Tasks and deliverables that can be accomplished under this FRP MAS are in the table below. Please fill out the table below by checking
+the box of the activities and deliverables to be completed and add a description of the detailed scope elements for each relevant task.
+Table 1.2.1: Identify FRP MAS Activities and Deliverables to be Completed
+Flood Risk Project Task
+
+Project Management and
+Earned Value Data Entry
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+☒ Whiteside Co, IL
+
+Monthly earned value data reporting through the MIP with variance explanations to
+support management of technical mapping activities within specified time frame, for
+both Regulatory and Flood Risk Products
+
+☒
+
+Management of SPI/CPI performance for an organization
+
+☒
+
+Overall project Quality Management Plan including QA/QC maintenance
+information, such as maintaining a QA/QC log and providing a QA/QC approach to
+FEMA for review and approval (to be provided early in the grant lifecycle)
+
+☒
+
+Other: {Insert additional details}.
+
+☐
+
+50 panel PMR
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+Detailed Scope Elements: This MAS advances the Whiteside County PMR through QR1 database development. The project includes incorporation of new study
+data (Zone AE & Zone A) from MAS ISWS 17-06 and redelineation of the Mississippi River Zone AE effective data on PMR panels and the redelineation of the
+Meredosia Levee area.
+Project Risk Identification
+and Mitigation
+
+☒ Footprint Name
+
+Other: New Whiteside County LiDAR availability.
+
+☒
+8
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. {MAS No.}
+
+Flood Risk Project Task
+
+Mark “X” if
+Deliverable
+activity will be done
+under this MAS for
+each Project
+Footprint
+Detailed Scope Elements: Monitor new LiDAR availability with ISGS.
+
+Discovery Data Capture
+
+☐ Footprint Name
+
+Task Documentation
+Correspondence
+Discovery Preparation
+Discovery Meeting
+Post Discovery
+Spatial Files
+Supplemental Data
+Other: {Insert additional details}.
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+Event Data Capture
+
+☐ Footprint Name
+
+Correspondence
+
+☐
+☐
+
+Event type
+
+☐
+
+Task Documentation
+
+9
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+Other: {Insert additional details}.
+
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables): <Including risk communication and outreach; advancing
+mitigation action; watershed and community assessment; action identification, planning and assessment; meetings, etc. See part 2, Event Data Capture for more
+information.>
+
+Project Outreach and
+Communication Plan
+
+1
+
+☒ Footprint Name
+
+A Project Communication Plan detailing outreach and coordination activities. NOTE:
+The MIP has tasks available to capture Outreach activities. Upon completion of these
+tasks, please upload relevant data to those tasks in the MIP. 1
+Watershed/Community Assessment outputs, including logs of telephone discussions
+(if applicable)
+Meeting invitation, agenda, presentation slides (as requested), and meeting notes for
+FEMA review
+
+☒
+☐
+☒
+
+Action Identification and Advancement Plan (if applicable)
+
+☐
+
+Project update status reports for project communities
+
+☒
+
+Provide documentation of adherence with the requirements for the community 30-day
+review of proposed models and 30-day review of work maps, completed models, and
+associated information
+
+☒
+
+All products should be uploaded to the MIP (or submitted to MIP Help on a hard drive if they are over the size listed in the MIP Guidance document)
+10
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+Other: {Insert additional details}.
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables): ISWS will develop and implement communication plan
+for the project.
+
+Flood Risk Products Data
+Capture
+
+☐ Footprint Name
+
+Task Documentation
+Correspondence
+Changes Since Last FIRM (CSLF)
+Flood Depth and Analysis Grids (FDAG)
+Flood Risk Assessment (FRA)
+Flood Risk Database (FRD)
+Flood Risk Report (FRR) (if applicable)
+Flood Risk Map (FRM) (if applicable)
+Supplemental Data
+Other: {Insert additional details}.
+
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+11
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Independent QA/QC of
+Flood Risk Products
+
+☐ Footprint Name
+
+Deliverable
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+Quality Review (QR) checklist and any documents related to independent reviews of
+Flood Risk Products submittals.
+
+☐
+
+Other: {Insert additional details}.
+
+☐
+
+Task Documentation
+
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements:
+
+Survey Data Capture
+
+☐ Footprint Name
+
+Correspondence
+Photos
+Sketches
+Survey Data
+Supplemental Data
+As-built Data
+Spatial Files
+Other: {Insert additional details}.
+
+12
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+Deliverable
+activity will be done
+under this MAS for
+each Project
+Footprint
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+Existing or New
+Topographic Data
+Capture and Terrain Data
+Capture
+*Complete Summary of
+Topographic Elevation
+Data on subsequent pages
+(Table 1.2.4)
+
+☒ Footprint Name
+
+Task Documentation
+Correspondence
+Source
+Spatial Files
+Supplemental Data
+Other: {Insert additional details}.
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+☒
+☒
+☒
+☒
+☒
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables): Includes the final derived topographic datasets and MIP
+submittal.
+
+Independent QA/QC:
+Topographic Data
+Capture
+
+☐ Footprint Name
+
+Quality Review (QR) checklist and any documents related to independent reviews of
+Topographic and Terrain data submittals.
+
+☐
+
+Other: {Insert additional details}.
+
+☐
+
+13
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Detailed Scope Elements:
+
+Base Map Data Capture
+*Complete Summary of
+Planned Base Map (if
+known) on subsequent
+pages (Table 1.2.5)
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+☒ Footprint Name
+
+Task Documentation
+
+☒
+
+Correspondence
+
+☒
+
+Spatial Files
+
+☒
+
+Supplemental Data
+
+☒
+
+Other: {Insert additional details}.
+
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables): MIP upload of aerial photo
+
+Independent QA/QC:
+Base Map Data Capture
+
+☐ Footprint Name
+
+Quality Review (QR) checklist and any documents related to independent reviews of
+Base Map data submittals.
+
+☐
+
+Other: {Insert additional details}.
+
+☐
+
+14
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Detailed Scope Elements:
+
+Hydrology Data Capture
+*Complete Summary of
+Hydrologic Analyses on
+subsequent pages (Table
+1.2.6)
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+☐ Footprint Name
+
+Task Documentation
+Correspondence
+Simulations
+Supplemental Data
+Spatial Files
+Other: {Insert additional details}.
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+Independent QA/QC:
+Hydrology Data Capture
+
+☐ Footprint Name
+
+Quality Review (QR) checklist and any documents related to independent reviews of
+Hydrology data submittals.
+
+☐
+
+Other: {Insert additional details}.
+
+☐
+
+15
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Detailed Scope Elements:
+
+Hydraulics Data Capture
+*Complete Summary of
+Hydraulic Analyses on
+subsequent pages (Table
+1.2.7)
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+☐ Footprint Name
+
+Task Documentation
+Correspondence
+Simulations
+Profiles
+Floodway Data Tables (FWDT), Flood Hazard Data Tables
+Supplemental Data
+Spatial Files
+Other: {Insert additional details}.
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+Independent QA/QC:
+Hydraulics Data Capture
+
+☐ Footprint Name
+
+Quality Review (QR) checklist and any documents related to independent reviews of
+Hydraulic data submittals.
+
+☐
+
+16
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+Other: {Insert additional details}.
+
+☐
+
+Task Documentation
+
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements:
+
+Coastal Data Capture (if
+applicable)
+(only applicable to
+Coastal studies)
+
+☐ Footprint Name
+
+Coastal_IDS_1 through Coastal_IDS_5*
+Correspondence
+Stillwater Data
+
+*Note that for Pacific
+Coast regions there are
+only IDS 1 through 4
+
+Stillwater Analysis
+2D Hydro Modeling
+Wave Analysis
+Transect Based Wave Hazard Analysis
+Spatial Files
+Coastal Flood Risk Spatial Files
+Other: {Insert additional details}.
+
+17
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+Deliverable
+activity will be done
+under this MAS for
+each Project
+Footprint
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+Independent QA/QC:
+Coastal Data Capture (if
+applicable)
+
+☐ Footprint Name
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+Quality Review (QR) checklist and any documents related to independent reviews of
+Coastal data submittals (if applicable).
+
+☐
+
+Other: {Insert additional details}.
+
+☐
+
+Task Documentation
+
+☒
+☒
+☒
+☒
+☒
+☒
+☐
+
+Detailed Scope Elements:
+
+Floodplain Mapping Data
+Capture -Riverine
+Redelineation and Levee
+Area Redelineation
+
+☒ Footprint Name
+
+Correspondence
+Base Map
+Spatial Files
+Topographic Data
+Supplemental Data
+Other: {Insert additional details}.
+
+18
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+Deliverable
+Mark “X” if
+activity will be done
+deliverable will
+under this MAS for
+be done under
+each Project
+this Task
+Footprint
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables): Redelineation of the Mississippi River Zone AE effective
+data on PMR panels and the redelineation of the Meredosia Levee area.
+
+Independent QA/QC:
+Floodplain Mapping Data
+Capture
+
+☐ Footprint Name
+
+A Summary Report that describes the findings of the QA/QC review, noting any
+deficiencies in or agreeing with the mapping results
+Recommendations to resolve any problems that are identified during the independent
+QA/QC review
+An annotated work map with all questions and/or concerns indicated, if necessary
+Updated deliverables for previous tasks (if data changed during review)
+Other: {Insert additional details}.
+
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements:
+
+Draft FIRM Database
+Capture
+
+☒ Whiteside Co, IL
+50 panel PMR
+
+FIRM Database Draft Metadata
+FIS Text Overflow for Principal Flood Problems and Special Considerations (if
+necessary)
+FIRM Database Files
+Task Documentation
+Correspondence
+Other: {Insert additional details}.
+
+☒
+☒
+☒
+☒
+☒
+☐
+19
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+Deliverable
+Mark “X” if
+activity will be done
+deliverable will
+under this MAS for
+be done under
+each Project
+this Task
+Footprint
+Detailed Scope Elements (including justification of omission of specific deliverables): Incorporation of new study data (Zone AE & Zone A) from MAS ISWS
+17-06; redelineation of the Mississippi River Zone AE effective data on PMR panels; and redelineation of the Meredosia Levee area.
+Produce Preliminary Map
+Products
+
+☐ Footprint Name
+
+FIRM Database Preliminary Metadata
+FIRM Database Files
+Task Documentation
+Correspondence
+Complete set of Preliminary FIRM panels showing all detailed flood hazard
+information at a suitable scale as developed by FEMA’s Automated Map Production
+(AMP) tool
+FIS Report
+Preliminary or Revised Preliminary Issuance Letters
+Preliminary SOMA(s) prepared using the SOMA Tool on the MIP
+Pre-and Post-Quality Review (QR)3 Documentation
+Other: {Insert additional details}.
+
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+20
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Independent QA/QC:
+Produce Preliminary Map
+Products
+
+☐ Footprint Name
+
+Deliverable
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+Quality Review (QR) checklist and any documents related to independent reviews of
+Preliminary Map Product submittals.
+
+☐
+
+Other: {Insert additional details}.
+
+☐
+
+Distribute Preliminary Products receipts
+
+☐
+
+Other: {Insert additional details}.
+
+☐
+
+Detailed Scope Elements:
+
+Distribute Preliminary
+Map Products
+
+☐ Footprint Name
+
+Detailed Scope Elements (including justification of omission of specific deliverables):
+
+Post-Preliminary Map
+Production
+
+☐ Footprint Name
+
+CCO Meeting Data Capture (Task Documentation and Correspondence)
+Feedback Data Capture (Task Documentation, Correspondence, Feedback Type)
+
+☐
+☐
+21
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+Flood Risk Project Task
+
+Mark “X” if
+activity will be done
+under this MAS for
+each Project
+Footprint
+
+Deliverable
+
+Due Process (QR4 Checklist Part 1, QR4 Checklist Part 2, Task Documentation,
+Correspondence, Appeal Start Documentation, Affidavit/Receipt Documentation,
+Appeal/Comment Documentation)
+Final Map Production and Distribution Products Data Capture
+Other: {Insert additional details}.
+
+Mark “X” if
+deliverable will
+be done under
+this Task
+
+☐
+☐
+☐
+
+Detailed Scope Elements (including justification of omission of this task and/or specific deliverables):
+
+22
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS 21-03 Whiteside County
+
+The CTP must report performance of the grant in conjunction with the progress reporting. The
+performance of the CTP is measured by the following criteria. Quantitative Targets for performance
+measures will be defined using the CTP Performance Measures Matrix in conjunction with your FEMA
+PM and defined in Table 1.2.2.
+Table 1.2.2: Performance Measures Targets
+Note: Insert appropriate measures in table below based on the document “2021 CTP Performance
+Measures Matrix” and coordination with your FEMA PM.
+Measure
+
+Evidence of continued
+maintenance, using nonFederal funds, of the
+processes/systems to
+support collection,
+development, evaluation,
+dissemination, and
+communication of flood
+hazard and risk
+assessment data and
+mapping (REQUIRED)
+
+Target
+Target should be expressed as either “Achieved” or “Not
+Achieved” for completing non-federally funded maintenance
+activities for the CTP agreement.
+Examples of maintenance activities below:
+1. Continued data collection related to changes in flood hazards
+and development in flood-prone areas
+2. Continued upgrades to data collection or mapping capabilities
+to incorporate new technologies
+3. Preparation of multiple-year mapping or data collection plans
+
+Maintenance of equipment and supplies, such as hardware,
+software, licenses, certifications, etc. that are necessary to
+complete, review, monitor and report on the work
+
+Earned Value
+Management
+(REQUIRED)
+
+Report on SPI and CPI. Must be between 0.92 and 1.08. If it is
+not, provide information on what is being done to correct the
+problem.
+
+Timely MIP Management
+
+100% of MIP tasks updated monthly
+
+Avoidance of Change
+Requests
+
+Zero
+
+23
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Measure
+
+Target
+
+Ongoing and regular
+coordination with other
+state/local offices to
+discuss agency’s
+prioritization process for
+Risk Map projects as well
+as schedules, meetings,
+strategy development, and
+stakeholder engagement
+
+Monthly calls with FEMA & IDNR-OWR
+
+Table 1.2.3: Project Risk Identification
+<Add risk, impact and solution strategy information in this paragraph and the table below, as necessary,
+including an Integrated Baseline Review for the project as required by the Regional Office.>
+Project Risk
+
+Potential Impact
+
+Solution Strategy
+
+Delay in new LiDAR availability
+
+Schedule Delay
+
+Continue coordination With
+ISGS Height Modernization
+Program
+
+Schedule Delay
+
+Continue coordination with
+IDNR-OWR and community
+officials
+
+Community resistance
+political intervention
+
+and
+
+24
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Table 1.2.4: Summary of Topographic Elevation Data
+
+Watershed
+/ Flooding
+Source
+
+Lower
+Rock,
+CopperasDuck
+
+New
+OR
+Existing
+
+Existing
+
+Year
+Acquired
+
+Data
+Type
+
+2020
+
+LiDAR,
+4 ppsm
+(points
+per
+square
+meter)
+
+Vertical
+Accuracy
+(RMSEz)
+
+NVA
+0.196
+meters at
+the 95th
+percentile,
+2020
+
+Source/Data
+Vendor (e.g. Public
+domain,
+community
+supplied, procured
+as part of this
+MAS, etc.)
+
+Contact
+Information
+
+Use
+Restrictions
+
+Illinois Geospatial
+Data
+Clearinghouse
+
+isgs@isgs.ill
+inois.edu
+
+none
+
+The CTP shall address all concerns or questions regarding the base map that are raised during the
+Independent QC review, or during the MIP Validate Content Submission Process. Table 1.2.5 is useful if
+multiple counties are involved with this map update. Any additional base map information that is
+discovered after the MAS has been completed shall be recorded in a supplemental report delivered to the
+FEMA Region.
+
+25
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Table 1.2.5: Summary of Planned Base Map: (if known)
+
+Data
+
+Orthophotos/
+Aerial
+Photographs
+
+New/
+Existing
+
+Existing
+
+Leveraged
+
+no
+
+Study
+Area
+
+Whiteside
+County
+
+Accuracy
+and Year
+Acquired
+
+1 foot,
+2015
+
+Source/
+Data
+Vendor
+
+Contact
+Information
+
+Use
+Restrictions
+
+IDOT
+
+https://data.
+isgs.illinois.e
+du/arcgis/se
+rvices/Image
+ry/IDOT_201
+4/ImageServ
+er/Imagery/I
+DOT_2014
+(note, this is
+an ArcGIS
+data service)
+
+none
+
+Hydrography
+Public Land
+Survey System
+Corporate
+Boundaries
+Transportation
+Features
+
+(Enter
+additional base
+map data as
+necessary)
+
+26
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Table 1.2.6: Summary of Hydrologic Analyses <Include additional columns as needed>
+
+Study Area/Flooding
+Source
+
+Method
+
+Square Miles of
+Leveraged
+Hydrology
+
+Square Miles of New
+Hydrology
+
+Table 1.2.7: Summary of Hydraulic Analyses
+
+Study
+Area/Flooding
+Source
+
+Hydraulic
+Analysis
+Option *
+
+Total Miles of
+New Base Level
+or Enhanced
+Level Hydraulics
+
+Description of
+Level of study- i.e.,
+AE with BFE or A
+zone mapping
+
+Model Type
+(1D or 2D)
+
+*List Option letter from Exhibit 1.8.
+
+27
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Table 1.2.8: Summary of Coastal Data (if applicable)
+
+Study Area/Flooding Source
+
+Total Shoreline Miles of
+New Detailed Coastal
+Analysis
+
+Method
+
+Table 1.2.9 Summary of Floodplain Mapping
+Study Area/Flooding
+Source
+
+Method
+
+Mapping
+Type
+(A/AE)
+
+Miles
+
+Topographic
+Data Source
+
+Mississippi River
+
+Riverine
+Redelineation
+
+AE
+
+10.2 mi
+
+See Table 1.2.4
+
+Meredosia Levee
+
+Levee Area
+Redelineation
+
+AE
+
+12.4 sq mi
+
+See Table 1.2.4
+
+(Whiteside portion)
+
+Table 1.2.10: FIRM Panel Summary
+Watershed / Area of Study
+
+Whiteside Co, IL
+limited panel PMR
+
+County/Communities
+
+Number of Revised Panels
+
+Albany, Village of
+Coleta, Village of
+Erie, Village of
+Fulton, City of
+Lyndon, Village of
+Prophetstown, City of
+Rock Falls, City of
+Sterling, City of
+Tampico, Village
+Whiteside Co Unincorporated
+Areas
+Whiteside Co All Jurisdictions
+
+50 (See list in RV Workbook)
+
+28
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+PART 2 – REFERENCE INFORMATION
+2.1 – Project Management
+Project Management is the active process of planning, organizing, and managing resources toward the
+successful accomplishment of predefined project goals and objectives. The CTP will coordinate with the
+FEMA Regional Office with respect to Project Management activities and technical mapping activities.
+The CTP will coordinate with FEMA, or its designee, to develop a baseline schedule for individual
+project activities. FEMA or its designee will utilize the individual project task schedule create the Flood
+Risk Project in the MIP and baseline the project activities with schedule and cost information within 30
+days of the funds being awarded and FEMA’s approval of the final cost and schedule. The baseline
+schedule for individual project activities may be re-baselined in the MIP with approval from the FEMA
+Project Officer, and does not require a change to this MAS unless the overall project end date is modified.
+For projects being initiated following Discovery, the accompanying Discovery Database attributed with
+study scope (in DCS_S_Discovery_Map feature class), study watershed (in DCS_S_HUC feature class),
+and FIRM panels to be updated (in DCS_S_Prp_FirmPan feature class) is provided. In addition, the
+available LiDAR footprint is provided along with the CNMS database updated following Discovery.
+The CTP shall notify FEMA and all applicable parties of all meetings with community officials, and other
+relevant meetings, four weeks prior to the meeting (with as much notice as possible). All meetings will be
+entered on the FEMA Region 5 RMD SharePoint here Region 5 Calendar. FEMA and/or its contractor
+may or may not attend the community meetings. FEMA Region 5’s Outreach Plan and Open House
+
+Toolkit are available for additional details.
+
+The CTP shall maintain an archive of all data submitted. All supporting data must be retained for three
+years from the date a funding recipient submits its final expenditure report to FEMA. The CTP must
+demonstrate to FEMA compliance with Subpart 24.1 of the Federal Acquisition Regulation (FAR) related
+to the handling of Personally Identifiable Information (PII) associated with the Activities listed in this MAS.
+The CTP is responsible for providing a Quality Management Plan (QMP) to include an independent
+Quality Assurance/Quality Control (QA/QC) plan for all assigned activities. The CTP will submit a
+Summary Report that describes and provides the results of all automated or manual QA/QC review steps.
+The report should include the process for all assigned activities. The QMP is delivered directly to the
+FEMA Regions.
+Independent QC review activities may be performed by the CTP or FEMA’s contractor at the discretion
+of FEMA. If the CTP will be responsible for the QC review, the entity that will perform QC should be
+identified in this MAS. The CTP will need to submit its QC plan to the Regional Project Officer for
+approval.
+Please note FEMA will also be performing periodic audits and overall study/project management to
+promote quality, including National Quality Reviews (QR) required per FEMA standards for all Flood
+29
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Risk Projects. Whether or not the CTP performs the Independent QC review mentioned in the preceding
+paragraph, the CTP will be responsible for addressing any and all comments resulting from National QRs
+and any additional independent QA reviews required by the FEMA Regional Office, including resubmittal of deliverables as needed to pass technical or quality review. The CTP will submit regulatory
+products to FEMA’s designated National QR reviewer (for QR 1-8 reviews) for review and approval prior
+to public issuance. Metadata is required for certain activities.
+FIRM-related tasks require a passing QC Report from FEMA’s National FIRM database auto-validation
+tool, the Database Validation Tool (DVT) for QRs #1, #2, and #5 as required in FEMA standards. DVT
+can be found in the Mapping Information Platform tasks that correspond to the aforementioned QRs:
+Draft FIRM Database Capture, Produce Preliminary Products Data Capture, and Final Mapping Products
+Data Capture. Training materials for this step are available on the Mapping Information Platform (MIP)
+at MIP User Care Training Materials.
+FEMA will provide download/upload capability for data submittals through the MIP located at
+https://hazards.fema.gov. As each activity is completed, the data must be submitted to the MIP by the
+CTP or other designee. After data is submitted, a Validation task must be completed. Note that FEMA’s
+designee will be assigned this task, not the CTP.
+The CTP assigned to the activity will respond to any comments generated as a result of the mandatory
+quality control checks by the Production and Technical Services (PTS) contractor. The PTS QC process is
+nationally funded and required on each non-PTS study.
+In cooperation with the FEMA Project Officer, a Project Management Team (PMT) will be established by
+the CTP consisting of representatives from the CTP, FEMA’s Regional Engineer, and other appropriate
+parties (e.g., FEMA contractors) at the discretion of FEMA. The PMT will be responsible for
+coordinating the activities identified in this MAS. The FEMA Region will be provided with
+documentation identifying the established PMT.
+
+2.1 – Standards
+The standards relevant to this MAS are presented in FEMA Policy 204-078-1 Standards for Flood Risk
+Analysis and Mapping, Revision 11, dated December 2020, located at http://www.fema.gov/medialibrary/assets/documents/35313. This Policy supersedes all previous standards included in the Guidelines
+and Specifications for Flood Hazard Mapping Partners, including all related appendices and Procedure
+Memorandums (PMs). Additional information and links to FEMA Technical References, guidance
+documents, templates and other resources may be accessed and downloaded at
+http://www.fema.gov/guidelines-and-standards-flood-risk-analysis-and-mapping. Revisions to the Policy
+memo are made on a regular basis. Some changes / updates are considered low impact, not requiring any
+scope, financial, process or technology changes to implement. CTPs should always check for the latest
+version of the policy memo to evaluate potential standards updates.
+For the Floodplain Mapping Data Capture, the CTP will perform self-certification audits for the
+Floodplain Boundary Standards for all flood hazard areas. All FIRM Database work shall be performed in
+accordance with the standards specified in Section 5 – Standards. All work must pass the automated and
+visual National QRs prior to the distribution of the preliminary copies of the FIRM and FIS report and the
+Preliminary SOMA. Coastal guidance documents are broken out by topics and can be found at
+30
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+https://www.fema.gov/flood-maps/guidance-reports/guidelines-standards. More information specifically
+related to coastal flood hazard analysis and mapping found at https://www.fema.gov/coastal-flood-hazardanalysis-and-mapping.
+To facilitate the use of standards and related documents, users can access the FEMA Guidelines and
+Standards Master Index located here: www.fema.gov/media-library/assets/documents/94095. This index
+provides a cross-reference of documentation available for Flood Risk Projects, Letters of Map Change
+and related Risk MAP activities. The cross-referenced relationships are organized and accessible through
+linkages for standards, guidance, technical references and templates. The master index is updated in
+coordination with the FEMA Policy Memo noted above.
+CTPs and their sub-awardees must comply with FEMA’s Federal Regulations in Chapter 44 of the Code
+of Federal Regulations (CFR), specifically CFR Parts 65, 66 and 67, and the appropriate year CTP Notice
+of Funding Opportunity and Agreement Articles. CTPs shall also coordinate with their Regional office to
+determine additional standards that should be met.
+
+2.2 – Use of Contractors
+Contractor support may be used for all activities within this MAS, except staffing and mentoring, which
+must be completed by the CTP.
+The CTP intends to use the services of the contractor in Table 1.1.1 for this MAS. The CTP shall ensure
+that the procurement for all contractors used for this Program Management Activity complies with the
+requirements of 2 CFR Part 200.
+Guidance provided in this part includes, but is not limited to, contract administration and record keeping,
+notification requirements, review procedures, competition, methods of procurement, and cost and pricing
+analysis. The 2 CFR 200 documents may be viewed online at http://www.ecfr.gov/cgi-bin/textidx?SID=cc011f4fb962e68cb0da4bc91e8fbb43&mc=true&node=pt2.1.200&rgn=div5. Additionally,
+contractors must not pose a conflict of interest issue.
+OR
+The CTP does not intend to use the services of a contractor for this SOW. No transfer of funds to agencies
+other than those identified in the approved cooperative agreement application shall be made without prior
+approval from FEMA. The CTP shall ensure that the procurement for all contractors, if any are used for
+this SOW, complies with the requirements of 2 CFR Part 200.
+Guidance provided in this part includes, but is not limited to, contract administration and recordkeeping,
+notification requirements, review procedures, competition, methods of procurement, and cost and pricing
+analysis. The 2 CFR 200 documents may be viewed online at http://www.ecfr.gov/cgi-bin/textidx?SID=cc011f4fb962e68cb0da4bc91e8fbb43&mc=true&node=pt2.1.200&rgn=div5.
+Additionally,
+contractors must not pose a conflict of interest issue.
+
+31
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+2.3 – Reporting and Performance
+Financial Reporting: Because funding has been provided to the CTP by FEMA, financial reporting
+requirements for the CTP will be in accordance with the terms of the Cooperative Agreement Funding
+Opportunity Announcement, Articles of Agreement or Award Notice for this MAS. The CTP shall also
+refer to 2 CFR Part 200. The CTP shall provide financial reports to the FEMA Regional Project Officer and
+Assistance Officer in accordance with the terms of the signed Cooperative Agreement for this MAS.
+Performance Reporting: Recipients are responsible for providing a signed performance report using the
+required list of information shown in the NOFO (or and old SF-PPR if you prefer) on a quarterly basis
+throughout the period of performance, including partial calendar quarters as well as for periods where no
+grant award activity occurs. The CTP shall refer to 2 CFR Part 200 to obtain minimum requirements for
+progress reporting. The Project Officer, as needed, may request additional information on progress.
+The CTP may meet with FEMA and/or its contractor(s) as frequently as needed to review the progress of
+the project in addition to the quarterly financial and status submittals. These meetings may alternate
+between FEMA’s Regional Office, the CTP office, and conference calls, as necessary.
+The CTP shall communicate with communities throughout the life of each project. Continued engagement
+is necessary and appropriate and will build upon the relationships established or enhanced during Discovery
+and provide transparency into the Risk MAP process. This may occur through monthly or quarterly updates
+or project status calls with community leaders, project websites including updates at several milestones or
+along a specific timeline, or other methods.
+
+2.4 – Privacy and Protection of Personally Identifiable Information
+Your organizational access to the MIP signifies that you have access to Personally Identifiable Information
+(PII). As such, please ensure each user is meeting the requirements with the new Risk Analysis Management
+Access Request (RAMSAR) process, including:
+Signed and executed Information Sharing Access Agreement (ISAA) for the CTP organization
+RAMSAR form for every CTP staff and CTP contractor user that needs access to the Risk
+Analysis Management (RAM) System, which also acknowledges review of the Rules of Behavior
+Please contact your FEMA Project Officer for more information.
+•
+•
+
+2.5 – Available FRP Scope Activities
+The objective of the Flood Risk Project documented in this Mapping Activity Statement is to develop and/or
+support flood hazard data and program-related tasks through completing technical risk analysis and
+mapping activities. These activities may or may not result in a new or updated Flood Insurance Rate Map
+(FIRM) and Flood Insurance Study (FIS) report for one or more communities within the project area.
+The mapping activities outlined in this MAS will be completed as specified in the Cooperative Agreement
+Funding Opportunity Announcement, Award Notice and/or Articles of Agreement. The Mapping Activities
+may be terminated at the option of FEMA or the CTP in accordance with the provisions of the Partnership
+Agreement. If these mapping activities are terminated, all products produced to date must be submitted and
+32
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+updated into the MIP (if applicable) and the remaining funds, provided by FEMA for this MAS, from
+uncompleted activities will be returned to FEMA.
+
+Earned Value Data Entry
+The FEMA Mapping Information Platform (MIP) is designed to track the earned value of
+Flood Risk Projects. This information is automatically calculated by the MIP, using the
+actual cost and schedule of work performed, or “actuals,” and comparing them to the
+expected cost and schedule of work performed, or “baseline.”
+Once the FEMA Regional Office has funded a project, FEMA or its contractor will create the tasks in the
+MIP. This step establishes the baseline for the project in the MIP, using the cost and schedule information
+for each task as outlined in this document.
+The MIP study application allows FEMA and the CTP to manage the status of these projects at a task
+level. The cost and schedule information, updated monthly by the CTP for each contracted task, is
+compared to the baseline established for those tasks. This information is rolled up to a project level and
+monitored by the FEMA Region to assess progress and earned value.
+Earned Value data entry involves updating cost, schedule, and performance (physical percent complete),
+and as of date in the MIP by the CTP each month for each assigned task.
+Once the baseline has been established in the MIP, the CTP shall input the performance and actual cost to
+date for all tasks within each project for which the CTP is responsible. This must be completed at a
+minimum once every 30 days and at the completion of the task. When a task is completed and has been
+validated (if applicable), the CTP shall enter 100 percent complete, enter the actual completion cost, and
+the actual completion date within the Track Task Progress Workbench as applicable. The tasks will be
+available on the Track Progress workbench up to 90 days after the completion of the producer task in each
+purchase.
+The MIP shall also be populated with appropriate leverage information regarding who (CTP or
+community) paid for the data provided and the amount of data used by the Flood Risk Project. The CTP
+will maintain a Schedule Performance Index (SPI) and Cost Performance Index (CPI) between 0.92 and
+1.08. Special Problem Reports (SPR) explaining any variance must be submitted in a timely manner as
+required.
+The CTP is required to report on the earned value of projects that are in the MIP monthly and must give
+explanations for variances outside of the tolerance defined above. FEMA Regional Offices must implement
+a Corrective Action Plan (CAP) when a CTP partner is outside of the tolerance. A CAP must define the
+reason for the variance and the intended resolution. FEMA Regional Offices must coordinate with FEMA
+Headquarters when CAPs are developed.
+Program Management and overarching Community Outreach and Mitigation Strategies (COMS) SOW
+tasks are now tracked in the MIP. Cost and schedule performance measures must be defined and
+documented in those separate MAS or SOW. These measures must be used to monitor partner performance
+33
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+and to determine future funding eligibility. This exception only applies to tasks not able to be conducted or
+tracked in the MIP.
+The Project Officer, as needed, may request additional information on status of the project on an ad hoc
+basis.
+Deliverables: The CTP shall deliver the following checked item(s) to the FEMA Regional Project Officer
+(please click/check the box of the deliverables included in this MAS):
+•
+•
+•
+•
+•
+
+Monthly earned value data reporting through the MIP with variance explanations to support
+management of technical mapping activities within specified time frame, for both Regulatory and
+Flood Risk Products
+Management of SPI/CPI performance for an organization
+Overall project Quality Management Plan including QA/QC maintenance information, such as
+maintaining a QA/QC log and providing a QA/QC approach to FEMA for review and approval
+Management of adherence to scope of work and quality of work for an organization
+Other
+
+Project Risk Identification and Mitigation
+Risks to the planned completion of a project may come from various sources. Risks should be identified
+during the planning phase and monitored throughout the project, so that potential impact can be assessed,
+and solution strategies developed and implemented as needed.
+
+Discovery Data Capture
+Scope: Discovery begins once a watershed has been prioritized and sequenced. Discovery is the process
+of evaluating a watershed to determine what components of a Flood Risk Project may be appropriate. A
+Flood Risk Project may include regulatory and non-regulatory flood hazard identification, risk
+assessment, Mitigation Planning Technical Assistance, and outreach and communication assistance. The
+Flood Risk Project may include one of these elements or all of these elements, depending on the need in
+the watershed. Discovery is divided into six main activities — Watershed Stakeholder Coordination, Data
+Analysis, Discovery Meeting, Post-Meeting Coordination, Database Updates, and Project Refinement.
+Numerous templates have been created to aid the CTP during Discovery. Please contact the FEMA
+Region to obtain the templates. These templates can be utilized during Discovery as necessary and
+appropriate for the project. Mapping Partners may revise or change these Discovery templates as needed,
+in coordination with the FEMA Regional Office.
+Stakeholder Coordination
+Stakeholder engagement begins with upfront coordination with the PMT to plan the Discovery effort,
+identify roles and responsibilities, and plan the level of stakeholder engagement, which can be scaled to
+engage the appropriate level of project stakeholders based on community need and risk. Coordination
+with this team, including state and FEMA representatives with mapping, risk, and mitigation expertise,
+34
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+should be ongoing throughout Discovery. In addition to collecting data from national and state datasets
+and mitigation plans, information about communities is collected through two-way information exchange
+before the Discovery Meeting. All activities leading up to the Discovery Meeting are intended to increase
+involvement, build partnerships, reduce the potential for conflict, and ensure that more people are
+engaged in discussing local risks and considering mitigation actions from day one. Some examples of preDiscovery Meeting activities might include:
+Community Understanding Activities – Community understanding activities include developing
+community profiles to better understand communities throughout the watershed before Discovery
+begins. A community profile may include information such as where people live and work, their
+incomes, the hazards they are subject to, frequency and intensity of those hazards impacting the
+community, and goals and strategies from their mitigation plan.
+
+Development of an engagement plan – To reach the key community stakeholders, such as local
+
+officials and community partners, and to develop or enhance relationships with key community
+stakeholders to increase the reach of messages about risk and to improve the local will and ability to
+take mitigation actions.
+Introductory and Pre-call Screenings – Introductory and pre-call screening activities include
+conducting a pre-Discovery interview with each of the key influencers to ensure understanding
+of FEMA’s involvement with the community, as well as more information on what is
+important to the influencer.
+
+Data Analysis
+Discovery-related data that incorporates appropriate background research shall be provided to the
+communities prior to the Discovery Meeting and presented at the Discovery Meeting to facilitate
+discussions. Following the Discovery Meeting, a Discovery Report and associated data shall be
+provided to communities.
+Discovery Meeting
+All communities and other stakeholders as identified by the PMT are invited to the Discovery Meeting.
+Analysis of the data collected prior to the meeting should be used as a facilitation tool during the meeting
+to support discussions about appropriate topics such as: Risk MAP, the watershed vision, local floodrelated concerns and potential mitigation strategies, regulatory map study needs, risk assessment, and
+local communication capabilities and responsibilities. Newly identified or improved mitigation strategies
+should be documented at the meeting, as well as support needed for communities to advance mitigation
+actions.
+Activities may include:
+•
+•
+
+Develop an engagement plan to reach the key community stakeholders, such as local officials and
+community partners, during Discovery;
+Develop or enhance relationships with key community stakeholders to increase the reach of
+messages about risk and to improve the local will and ability to take mitigation actions;
+35
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+Drive attendance with outreach to meeting invitees through personalized emails and calls;
+Develop a baseline to inform the creation of a Resilience Activity Roadmap, including identifying
+real risk and pain points for hazards;
+Track engagement efforts and responses to reflect ongoing work;
+Facilitate meeting and breakout sessions;
+Develop an outreach toolkit (select from materials such as a fact sheet, talking points, social
+media template, FAQs, brochures, and media engagement);
+Develop a community-specific infographic or dashboard to help local officials visualize complex
+ideas;
+Create a Discovery Report (20-30 pages);
+Collect Project Charters (if used);
+Conduct a post-meeting review session with the study team and provide a future
+recommendations report (1-2 pages);
+Create a post-meeting outreach plan with a public awareness toolkit and coordination with
+community officials to identify available resources to promote flood risk education;
+Provide mitigation assistance to the community to increase their ability to act.
+
+Post Meeting Coordination
+After the Discovery Meeting, the Mapping Partner shall provide meeting notes, outreach materials, and
+updated contacts to the attendees and stakeholders. The Mapping Partner shall collect Project Charters (if
+used). The Mapping Partner will update the Discovery Report to reflect the meeting discussions and
+include recommendations for a Flood Risk Project. A final Discovery Report and appropriate data are
+provided to stakeholders. A list of all actions discussed with the communities will be provided to FEMA
+within two weeks after Meetings are held.
+Database Updates
+After the Discovery Meeting, four sources must be updated:
+•
+
+•
+•
+
+The Coordinated Needs Management Strategy (CNMS) Regional File Geodatabase shall be
+updated to reflect information gathered during Discovery, for needs and/or requests as
+appropriate.
+o Updated, cleaned, linework reflecting any new validation that has changed as a result of
+evaluation or determination of study during Discovery.
+o Supporting documentation for new validation.
+o An updated requests layer containing all requests made as part of Discovery.
+o A self-Certified CNMS spatial database using the CNMS QC tool.
+o CNMS database will be updated to reflect the status of all streams or shorelines within
+the watershed, whether scoped or not.
+The P4 and MIP should be updated per the Geospatial Data Coordination (GDC) Guidance to
+reflect data collected.
+The final Discovery Report, and appropriate data must be uploaded to the MIP.
+
+36
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Project Refinement and project charters can happen as part of Discovery, or as part of a Risk MAP
+project.
+See SID 620 for more information, available at https://www.fema.gov/media-collection/flood-risktemplates-and-other-resources.
+Project Refinement
+If it is decided that a Flood Risk Project will move forward, FEMA and the CTP shall work with
+communities to refine the elements of the project and update the Discovery Report accordingly. FEMA
+and the CTP may also coordinate with communities to develop a project charter to document the Flood
+Risk Project and the roles and responsibilities of all parties. If used, project charters are distributed to
+each community affected by a planned Flood Risk Project, and the CTP will track the number of signed
+charters.
+Base Level Engineering (BLE) – BLE includes the production of models using software techniques that
+require minimal manual edits to provide a planning level assessment of flood risk and effective floodplain
+validity. This can either be done through a large-scale watershed study or through the creation of models
+for selected streams. BLE activities include model-based assessments to verify quality and relevance of
+the effective flood study information. Assessments should also be used to determine if significant changes
+or improvements in flood risk data are likely to result from an updated flood study.”
+Deliverables: The CTP shall produce deliverables listed in the Discovery Data Capture section within the
+most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-library/assets/documents/34519. The deliverables shall also include:
+•
+
+CNMS Regional File Geodatabase reflected with updated request area(s) and/or existing
+inventory in study extents and attributes as evaluated during the Discovery process. The updated
+CNMS database shall be delivered to the respective FEMA Region or its designee within 15
+days of completion of Discovery.
+
+Event Data Capture
+NOTE: The performance of community engagement and outreach takes place throughout the life
+of the Flood Risk Project. Work with your FEMA Region to develop a Project Outreach and
+Communication Plan.
+An alternate tracking method is acceptable with approval from the FEMA Regional Office. Up to 10
+percent of the total budget can be used for Community Engagement. An additional (up to) 10 percent of
+the total budget can be used for Project Outreach. The activities identified here are for project specific
+community engagement and outreach. The overarching Community Outreach and Mitigation Strategies
+(COMS) Statement of Work (SOW) can be used for broader program wide engagement activities.
+Scope:
+Risk Communication & Outreach
+37
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Risk Communication & Outreach activities funded through this MAS shall not supplant or duplicate
+Community Engagement activities funded through other grants or contracts. There is a separate Statement
+of Work document used to document additional program-wide COMS activities performed by CTPs.
+The activities listed below are intended to support on-going project efforts that foster working relationships
+between federal, state, tribal and local governments with private and public interests to reduce the impact
+of natural disasters where a community’s interaction with a natural hazard may be altered or averted. These
+activities should be reviewed for implementation throughout the Risk MAP lifecycle, including the defined
+meetings within it.
+It is expected that including these approaches will assist in increased risk awareness and the development
+of actionable measures to reduce risk within the Flood Risk Project footprints. These activities should be
+implemented as directed by the Project Officer to:
+•
+•
+•
+
+Increase the understanding of natural hazard risk within a community.
+Support local efforts to reduce natural hazard risk within a community or watershed area.
+Increase the effectiveness of meetings and engagement opportunities with communities
+throughout the Risk MAP life cycle.
+
+Advancing Mitigation Action
+Advancing community mitigation action is a key part of the Risk MAP program vision and of moving
+communities towards resilience. As such, identifying and helping communities implement mitigation
+actions should be a component of each Flood Risk Project. Community mitigation action cannot be
+purchased (meaning, mitigation projects cannot be purchased through a Risk MAP project); however, it can
+be influenced and advanced by proper project and communications planning throughout the Risk MAP
+process. Strategic communication planning can be assisted by the tools and tactics identified below.
+Watershed and Community Assessment
+Activities include assessing a watershed and high priority communities to understand what is important to
+them, their mitigation priorities, and their existing relationships with FEMA. This assessment may
+include holding telephone discussions with local officials and residents to understand the watershed and
+identify key stakeholders. The discussions should include local planners, floodplain administrators
+(FPAs), elected officials, community leaders, local levee/dam/coastal leadership/business owners and
+others, based on local needs.
+Action Identification, Planning, and Assessment
+Support for communities to identify and/or advance mitigation opportunities, and/or select amongst
+alternatives, through the provision of data, analysis and/or strategic support. Based on information learned
+from conversations with community influencers, the Hazard Mitigation Plan, and information obtained
+though Discovery, identify the top 2–3 actions to focus on advancing within each community, and work
+with community contacts to create a plan to advance them.
+30-Day Review of Proposed Models
+38
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Before any data development tasks supporting a Flood Risk Project that includes a FIRM update begin,
+each community affected by a new or updated regulatory products (FIS or FIRM) must be notified of the
+planned model or models to be used. The affected communities will be provided with a 30-day review
+period beginning upon notification to consult with FEMA and the CTP regarding the appropriateness of the
+mapping model or models to be used. The results of the consultation do not necessarily guarantee that a
+change should be made, and decisions should be clearly documented. This consultation does not waive or
+otherwise affect the right of the community to later appeal any flood hazard determinations. See SID 620
+for more information, available at https://www.fema.gov/media-collection/flood-risk-templates-and-otherresources.
+30-Day Review of Completed Models, Work Maps, and Database
+When a Flood Risk Project will include new or updated FIRM panels, the CTP must provide access to the
+draft FIRM database and other contributing data, as requested, to the communities by the conclusion of
+Quality Review 1. The CTP also must provide the affected communities with a 30-day review period,
+during which the communities may provide data to FEMA and the CTP that can be used to supplement or
+modify the existing data. The CTP should incorporate any community-submitted data into the project as
+appropriate. In order to be directly incorporated into the study, data or information submitted must be
+consistent with prevailing engineering principles or demonstrate scientific incorrectness by one or more of
+the following:
+•
+•
+•
+•
+
+Identifying and providing documentation of the methods or assumptions purported to be
+scientifically incorrect.
+Providing supporting data as to why the methods or assumptions used are not appropriate.
+Providing new or alternative analysis and mapping data utilizing methods consistent with
+prevailing engineering principles and meeting FEMA’s Standards.
+Providing technical information or data indicating why the provided new or updated analysis and
+mapping should be accepted as more correct.
+
+See SID 621 for more information, available at https://www.fema.gov/media-collection/flood-risktemplates-and-other-resources.
+Television and Radio Outreach
+The Project Team, in coordination with the appropriate staff in the FEMA Regional Office of External
+Affairs, other FEMA staff, and community officials, shall engage with local radio and television outlets in
+an effort to further educate property owners about flood map revisions and appeals processes. FEMA
+cannot fund advertising, so public service announcements should be considered as a prime opportunity to
+meet this standard. Any engagement with the media should include explanations of the entire appeal
+process for flood hazard information, including comments on other information on the FIRM and Flood
+Insurance Study (FIS) report. Users should review the Stakeholder Engagement – Due Process Guidance
+document available at https://www.fema.gov/sites/default/files/202002/Stakeholder_Engagement_Post_Prelim_Due_Process_Guidance_Nov_2019.pdf and SID 622
+https://www.fema.gov/media-collection/flood-risk-templates-and-other-resources for more information.
+Meetings
+39
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Flood Risk Projects will include in-person or virtual opportunities, as appropriate, to engage
+communities, build risk awareness, increase capabilities for risk communication, and stimulate mitigation
+action at the local level. The overarching goal is to create a climate of understanding and ownership of the
+mapping process at the state and local levels. Well-planned and executed community engagement and
+project outreach can reduce political stress, confrontation in the media, and public controversy, which can
+arise from lack of information, misunderstanding, or misinformation. These engagement and outreach
+activities also can assist the CTP, FEMA, and other members of the PMT in responding to congressional
+inquiries. The MIP has the capability to capture all meeting information including sign in sheets, attendee
+lists, meeting minutes, and shared documents.
+Provisions should be made for remote access video/audio feeds for those that cannot attend in person.
+These opportunities consist of:
+Discovery Meeting. This meeting is held to engage communities, understand the communities’ and
+watershed’s needs, inform the purpose of FEMA’s engagement, balance FEMA resources, build
+partnerships, and plan project execution. It is a working meeting that brings together a large crosssection of community stakeholders with interests related to flood risk and mitigation. It provides all
+the communities within a project area with an opportunity to validate the collected information and to
+identify any areas of local concern that may not have been captured through previous research or
+interviews. Discovery is included as a separate task within this MAS.
+Project Initiation Meeting/Coordination Call. This meeting will serve to discuss the project scope
+and timeline, set expectations for communities with regard to risk communication, share methods and
+data to be used in the mapping efforts if included in the project, and answer any local questions about
+the project. If regulatory product updates are included, this meeting can also serve as the required
+coordination with communities regarding the expected results (increasing/decreasing flood hazard
+areas/depths, etc.). This can be held as an in-person meeting, webinar, or conference call. Note:
+although not required unless regulatory products are involved, this call/meeting is especially helpful
+for introducing the project to the involved communities when six months or more has passed since the
+post-Discovery coordination.
+Flood Risk Review Meeting. This meeting will serve to provide communities with engineering data
+and drafts of Flood Risk products, collect feedback, and revise as needed. It will also provide the
+opportunity to show how the datasets and outreach tools can help communities become more resilient
+by understanding risk data, communicating about risk, prioritizing mitigation actions and improving
+mitigation plans, especially risk assessments and mitigation strategies. Activities include planning,
+presenting, and facilitating discussions of data inputs and engineering models used for flood studies
+with community officials. In addition, draft work maps showing initial study results will be presented
+during the meeting. This meeting may also be used to kick off or occur during the 30-day review of
+materials at the workmap stage (workmap, associated models, etc.). Note: It is also recommended that
+for a coastal storm surge study, a meeting be held with the community and additional stakeholders as
+appropriate to review the results of the storm surge modeling before proceeding to modeling coastal
+wave heights and mapping.
+Activities may include:
+
+40
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+Develop an engagement plan to reach the key community stakeholders, such as local officials
+and community partners, during the Flood Risk Review period.
+Develop or enhance relationships with key community stakeholders to increase the reach of
+messages about risk and to improve the local will and ability to take mitigation actions.
+Drive meeting attendance through personalized follow-up emails and calls to invitees.
+Conduct webinar to further engage and inform attendees.
+Track engagement efforts and responses to reflect ongoing work.
+Facilitate meeting.
+Talk with local officials regarding their desired role in engaging the public after the issuance
+of Preliminary FIRMs.
+Develop/update an outreach toolkit (select from materials such as fact sheets, talking points,
+FAQs, and brochures).
+Revise or create a Community Profile and/or dashboard to reflect the most current
+community information and insights.
+Conduct a post-meeting review session with the project team and provide a future
+recommendations report.
+Identify and document community commitments, such as mitigation action and engagement
+activities, to inform future interactions with the community. Update and collect Project
+Charters (when applicable).
+
+Resilience Meeting. The meeting will provide a comprehensive view of mitigation planning,
+mitigation options available to communities, sharing of success stories, and potential mitigation
+actions that communities can initiate. Activities include the planning, presenting and facilitation of
+community discussions related to mitigation plan status, community risks and hazards, local
+mitigation action opportunities and best mitigation practices. Mitigation strategies that communities
+have implemented or progressed on since Discovery should be documented at, or before, this
+meeting. In addition, discussions about a community’s outreach plans during this meeting help enable
+local officials to begin or strengthen local risk communication.
+Activities may include:
+•
+•
+•
+•
+•
+•
+•
+•
+
+Develop/update an engagement plan to reach potential partners in resilience, such as local
+officials and community partners.
+Conduct listening sessions with community stakeholders to understand their mitigation
+priorities and inform the Resilience Meeting agenda.
+Foster relationships between community stakeholders and federal and state partners to
+improve the local ability to take mitigation action.
+Drive meeting attendance through personalized follow-up emails and calls to invitees.
+Stand up a Resilience Team composed of FEMA Regional staff and Subject Matter Experts
+to prepare for the Resilience Meeting and support the community.
+Brief local elected officials to promote understanding about the importance of communitywide resilience and the community’s flood risk.
+Facilitate meeting.
+Provide community-specific applications/explanations of Flood Risk Products to educate
+community officials on how to leverage the products to achieve or inform mitigation projects.
+41
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+•
+•
+•
+•
+•
+
+•
+
+Coordinate with other key stakeholders, such as government agencies and nonprofits, who
+will work with the community towards resilience in a “Resilience Marketplace.”
+Provide the community with a media relations strategy template and sample tools (e.g., media
+advisory, talking points) to promote community understanding of flood risk and further the
+discussion of important community mitigation projects.
+Revise or create a Community Profile and/or dashboard to include the most current
+community information and insights.
+Create a Resilience Report and dataset.
+Update the Mitigation Action Tracker with identified and/or advanced community mitigation
+activities.
+Create a post-meeting outreach plan with a public awareness toolkit (including web content,
+newsletter content, media follow-up, etc.) to assist the community in keeping the public
+informed of the valuable mitigation as they advance actions in their community to increase
+public buy-in.
+Develop a follow-up plan (1-year mitigation check-up, etc.) to increase community
+touchpoints and maintain relationships after the Risk MAP project ends. Post-Resilience
+support can be scoped under Special Services.
+
+Final Consultation Coordination Officer (CCO) Meeting and Public Meeting (or Open House).
+If regulatory products are included in a Flood Risk Project, these meetings will provide local officials
+an opportunity to verify the appropriate revisions have been made to previously demonstrated
+information, take ownership of the products, and deliver the results of the project to local community
+members. Activities include planning, presenting, and facilitating discussions with community
+officials for awareness and acceptance of regulatory products. The purpose of the meeting will be to
+review data inputs to a flood study, preview changes to preliminary FIRM data and maps, discuss
+newly identified flood risk and community actions to reduce risk, and provide information about the
+appeals period, map adoption, and insurance impacts. The CTP will support the local officials at the
+Public Meeting or deliver the messages at the Public Meeting if the local officials are unwilling. Also,
+communities will be encouraged to identify short- and long-term efforts to progress towards
+increasing flood risk awareness and management. These meetings can be held concurrently or
+separately at the region and community’s discretion.
+Activities may include:
+•
+•
+•
+•
+•
+•
+•
+
+Develop/update an engagement plan to reach key community stakeholders, such as local
+officials, community partners, and key members of the public, for the Consultation
+Coordination Officer meeting and preliminary map release.
+Develop or enhance relationships with key community stakeholders to increase the reach of
+messages about risk and to improve the local will and ability to take mitigation actions.
+Drive meeting attendance through personalized follow-up emails and calls to invitees.
+Conduct webinar meetings to further engage and inform attendees.
+Track engagement efforts and responses to reflect ongoing work.
+Facilitate meetings.
+Begin conversations with local officials about Flood Risk Products (Average Annualized
+Loss data, Changes Since Last FIRM, etc.) to prepare them for more robust conversations
+about overall risk and the road to resilience.
+42
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+•
+•
+•
+•
+•
+
+Develop/update an Outreach Toolkit (select from materials such as a fact sheet, talking
+points, social media template, Frequently Asked Questions (FAQs), brochures, and media
+engagement)
+Create or revise a Community Profile and/or dashboard to include the most current
+community information and insights.
+Hold feedback check-ins with local officials to gauge their satisfaction with the process to
+date.
+Conduct a post-meeting review session with the project team and provide a future
+recommendations report.
+Create a post-meeting outreach plan with a public awareness toolkit and coordination with
+community officials to identify available resources to promote flood risk education.
+Identify and document community commitments, including mitigation action and
+engagement activities, to inform future interactions with the community.
+
+For all meetings, provisions may be made for remote access video/audio feeds for those that cannot
+attend in person.
+The actual number of meetings will be determined based on the risk, need, and interest at the local
+level and determined as part of developing the project-based communication plan.
+Status Reports
+In addition to Risk MAP meetings, to facilitate information sharing and a continuing dialogue between
+the PMT and the community, the CTP will provide communities with regular status reports outlining the
+current project status, key accomplishments to date, identified risks, if any, and next steps including
+estimated next meeting date and meeting content (template to be provided by FEMA or can be created by
+Mapping Partner). These status reports will be provided to FEMA for review before electronic
+distribution. Project update status reports will be distributed to communities at mid-points between each
+of the meetings, and between the Final Meeting and effective date (if included in this MAS), to help
+introduce and prepare the communities for upcoming discussions.
+
+Project Outreach and Communication Plan (POCP)
+The CTP will work with the FEMA Regional Office during the initiation of this activity to develop the
+Project Outreach and Communication Plan (POCP) to support the implementation of the mapping project.
+The FEMA Regional Office will have access to many customizable outreach tools that have been
+developed for this process to support each touchpoint that the PMT has with the community.
+Deliverables: The CTP shall deliver the following checked items to the FEMA Regional Project Officer
+in accordance with the schedule outlined in Section 6 – Schedule and include within the Technical
+Support Data Notebook (TSDN):
+•
+
+A Project Communication Plan detailing outreach and coordination activities. NOTE: The MIP
+has tasks available to capture Outreach activities. Upon completion of these tasks, please upload
+relevant data to those tasks in the MIP.
+43
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+•
+•
+•
+•
+
+Watershed/Community Assessment outputs, including logs of telephone discussions (if
+applicable)
+Meeting invitation, agenda, presentation slides (as requested), and meeting notes for FEMA
+review
+Action Identification and Advancement Plan (if applicable)
+Project update status reports for project communities
+Provide documentation of adherence with the requirements for the community 30-day review of
+proposed models and 30-day review of work maps, completed models, and associated
+information
+
+Flood Risk Products Data Capture
+Scope: Flood hazard risk assessment data and analyses are used to make informed decisions to reduce the
+impacts of the hazard on people and property as part of the Risk MAP Program, Flood Risk Products shall
+be developed for study areas 2 as listed in Table 1.3. Flood Risk Datasets are the input and output data
+associated with the Flood Risk Products
+
+Flood Risk Dataset
+
+Table 1.3: Flood Risk Products
+
+Flood Risk Product/Dataset
+
+New Flood Hazard
+Analysis Conducted (1)
+
+No New Flood Hazard
+Analysis Conducted (1)
+
+Flood Risk Database
+
+Required
+
+Required
+
+Changes Since Last Firm (CSLF)
+
+Required (2)
+
+N/A
+
+Water Surface Elevation Grids
+
+Required (3)
+
+Optional (4)
+
+Flood Depth Grids
+
+Required (3)
+
+Optional (4)
+
+Percent Annual Chance &
+
+Required (5)
+
+Optional (4)
+
+Percent 30-Year Chance Grids
+
+2
+
+Refer to SID 417 https://www.fema.gov/media-library/assets/documents/35313
+44
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Flood Risk Product/Dataset
+
+New Flood Hazard
+Analysis Conducted (1)
+
+No New Flood Hazard
+Analysis Conducted (1)
+
+Flood Risk Assessment
+
+Required (6,8)
+
+Required (7,8)
+
+Required
+
+Required
+
+Flood Risk Map
+
+Optional
+
+Optional
+
+Flood Risk Report
+
+Optional
+
+Optional
+
+Areas of Mitigation Interest
+(AoMI)
+
+(1) “New Flood Hazard Analysis” = Flooding sources receiving regulatory-level analyses
+(2) CSLF is optional in areas where National Flood Hazard Layer data or other digital modernized
+floodplain boundaries are not available for the effective Flood Insurance Rate Map (FIRM).
+(3) Riverine Studies: 10%, 4%, 2%, 1%, “1%+”, and 0.2% annual-chance floods.
+Coastal Studies: Only the 1% and 0.2% annual chance floods.
+Levee Studies: Riverward/Seaward side – same as Riverine or Coastal
+Landward side – only the scenarios(s) used to delineate Special Flood Hazard Area
+(SFHA) boundary.
+(4) Can be produced for flooding sources not receiving new analyses if based on valid current
+effective data.
+(5) Riverine only.
+(6) Riverine Studies: 10%, 4%, 2%, 1%, “1%+”, and 0.2% annual-chance floods.
+Coastal Studies: Only the 1% and 0.2% annual chance floods.
+Levee Studies: Riverward/Seaward side – same as Riverine or Coastal
+Landward side – only based on the landward depth grid.
+(7) Assessments are performed for the flood events with available depth grids. “See Technical
+Reference: Flood Risk Database” for more information.
+(8) Analysis can be conducted at U.S. Census block or user-defined facility level.
+Deliverables: The CTP shall produce products purchased for the specific geography referenced in Table
+1.3, for those communities identified in Table 1.1.1, listed in the Flood Risk Products Data Capture
+section within the most currently dated “Technical Reference: Data Capture” document, located at
+45
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading the
+digital data to the MIP in accordance with the schedule outlined in Section 6.
+
+Independent QA/QC of Flood Risk Products
+Scope: Independent QC review activities may be performed by the CTP, PTS, OFA or FEMA’s
+contractor at the discretion of FEMA. If the CTP, PTS, OFA will be utilizing its staff, contractors, and/or
+partners to do the QC review, this should be identified during project planning and Discovery. The CTP,
+PTS, OFA or FEMA’s contractor will be responsible for addressing all comments resulting from
+independent QC, including resubmittal of deliverables as needed to pass technical review. The
+independent QC is tied to a checklist available under templates on the Guidelines and Standards for Flood
+Risk Analysis and Mapping.
+Deliverables: The Mapping Partner shall produce items listed in the Flood Risk Products Data Capture
+section within the most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading the
+digital data to the MIP in accordance with the schedule outlined in Section 6.The current MIP Guidance
+document includes a section for data upload methods and limitations. The guidance also explains how
+performance will be tracked for Flood Risk Products.
+Deliverables should be submitted through to the FEMA Regional Office with coordination of the Region
+Service Center. The Mapping Partner is responsible for confirming and/or obtaining any revised or
+updated guidance from the region or FEMA Region SC lead.
+Data from flood hazard assessment will be coordinated with your FEMA Regional POC and submitted 60
+days prior to release of this data to the general public. Data to be submitted to FEMA for this review may
+include:
+•
+
+Flood Risk Datasets (Changes Since Last FIRM, Flood Depth and Analysis Grids, Flood Risk
+Assessment)
+
+•
+
+Flood Risk Products (Flood Risk Dataset, Flood Risk Report, Flood Risk Map)
+
+•
+
+Flood Depth and Analysis rasters and accompanying metadata file
+
+•
+
+Project Narrative of assumptions made, and approaches taken for analysis.
+
+•
+
+The Hazus system files (.hpr files).
+
+•
+
+Global summary report.
+
+•
+
+Direct damage and contents data used to populate tables in Flood Risk Report.
+
+•
+
+Updated local parcel/building information, topographic data, etc. used in analysis.
+
+•
+
+Description of data used that were not part of the default Hazus data sets.
+
+46
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Survey Data Capture
+Note: CTPs should consider including and completing this task in the MIP if the partner believes data
+will need to be submitted during the course of the project, even if conducting field survey is not included
+in the MAS. In addition, leveraged field survey data must be documented and submitted for this task.
+Failure to submit this data could result in the workflow being reverted to production tasks and could lead
+to a delay in the schedule. If the CTP obtains field survey data that was not included in the MAS, the CTP
+shall contact the Region to submit a change request to include the task and leverage as part of the award
+and request that this task be added to the study in the MIP.
+Scope: To supplement any field reconnaissance conducted during the Discovery phase of this project, the
+CTP shall conduct a detailed field or desktop reconnaissance of the specific study area to determine
+conditions along the floodplain(s), types and numbers of hydraulic and/or flood-control structures,
+apparent maintenance or lack thereof of existing hydraulic structures, locations of cross sections to be
+surveyed, and other parameters needed for the hydrologic and hydraulic analyses.
+The CTP shall conduct field surveys, including obtaining channel and floodplain cross sections,
+identifying or establishing temporary or permanent benchmarks, and obtaining the physical dimensions of
+hydraulic and flood-control structures. If appropriate, the CTP shall also identify items needed for coastal
+analyses including land cover, vegetation types, housing, dunes, beach nourishment, coastal structures,
+and transects. The CTP shall also coordinate with other entities that are involved in the Topographic Data
+Development process regarding ongoing activities and deliverables.
+Existing survey data, or as-built data, may be used to produce flood studies and related products.
+However, if existing data are to be collected, the FEMA Region should be consulted before leveraging the
+best available existing survey data to ensure acceptability for the intended level of flood hazard study.
+Deliverables: The CTP shall produce items listed in the Survey Data Capture section within the most
+currently dated “Technical Reference: Data Capture” document, located at https://www.fema.gov/medialibrary/assets/documents/34519, made available to FEMA by uploading the digital data to the MIP in
+accordance with the schedule outlined in Section 6. Where paper documentation is required by state law
+for professional certifications, the CTP may submit the paper in addition to a scanned version of the paper
+for the digital record. Please coordinate with the regional and/or state representative to verify state
+reporting requirements.
+
+47
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Existing or New Topographic Data Capture and Terrain Data Capture
+Note: Every MAS for a flood data update must include this task to ensure the topography used is
+documented and submitted. In addition, leveraged topographic data must be documented and submitted
+for this task. For coastal studies, include collection or leveraged bathymetry data plans.
+Scope: Topographic/elevation data may be new or existing. New is defined as data that will be flown and
+processed for the areas specified in this MAS as study areas according to the referenced specifications.
+Existing topographic/elevation data (previously flown and/or processed) may be used to produce flood
+studies and related products. However, if new data is not to be collected, the FEMA Region should be
+consulted before leveraging the best available existing topographic data to ensure acceptability for the
+intended level of flood hazard study.
+The CTP shall obtain topographic data for the floodplain areas to be studied including overbank areas.
+These data will be used for hydrologic analysis, hydraulic analysis, coastal analysis, floodplain boundary
+delineation and/or testing of floodplain boundary standard compliance. The CTP shall gather availability,
+currency, and accuracy information for existing topographic data covering the affected communities in
+this MAS. The CTP shall use topographic data for work in this MAS only if it is better quality than that of
+the original study or effective studies. The Mapping Partner will ensure that the FEMA Geospatial Data
+Coordination Policy and Implementation Guide is followed, and the data obtained or to be produced are
+documented properly as per those policies and guidelines.
+Requirements for New Topographic Data Capture (if applicable): The CTP shall generate new
+topographic data for areas defined in Table 1.2.4. The CTP also shall coordinate with team members
+conducting field surveys as part of this MAS. All ground control and checkpoint field surveys must be
+compliant with the current version of the ASPRS Positional Accuracy Standards. Survey completed for
+New Topographic Data Capture requires:
+• Survey report detailing methodology and results for absolute vertical accuracy testing
+• Signed and sealed FEMA Certificate of Compliance from a certified Public Land Surveyor
+• Survey monument datasheets and photos
+• Ground control coordinates or shapefile and photos
+• Checkpoint coordinates or shapefile and photos
+• Vertical accuracy validation spreadsheet that includes calculations
+The CTP should follow guidelines set forth in the Elevation Guidance to determine the appropriate
+accuracy required for the areas specified in this MAS. All new topographic data collected should meet the
+requirements outlined in the current version of the USGS LiDAR Base Specification and must include:
+• All scoped data products
+• Flight reports
+o Mission planning
+o Collection report(s) and flight logs
+• Metadata for all delivered products
+• Processing reports detailing the production and quality assurance of each deliverable product
+• Spatial files including project area, indices, and areas of low confidence (if applicable)
+48
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+• Signed and sealed FEMA Certificate of Compliance from a certified Photogrammetrist
+In addition, the CTP shall address all concerns or questions regarding the topographic data development
+and processing that are raised during the Independent QA/QC review. The CTP should confirm with the
+FEMA Project Officer the appropriate data model(s) (i.e. mass points and breaklines) for the intended use
+of the data.
+Requirements for Existing Topographic Data Capture (if applicable): The CTP shall use topographic data
+for the areas described in the Table 1.2.4 Summary of Topographic Elevation Data table. The source of
+the topographic data must be listed as well. The CTP shall coordinate with other team members
+conducting field surveys as part of this MAS. The CTP should follow the guidelines set forth in the Data
+Capture Standards Guidance, Technical Reference and the Elevation Guidance documentation to
+determine the suitability of the existing dataset in terms of currency and accuracy. The CTP should
+confirm with the FEMA Project Officer the use of leveraged topographic data.
+In addition, the CTP shall address all concerns or questions regarding the topographic data development
+that are raised during the Independent QA/QC review.
+Requirements for development of Terrain Data Capture (if applicable): For this activity, the CTP shall
+utilize the data collected under the New and/or Existing Topographic Data Capture task and via field
+surveys to create a best available digital elevation model for the subject flooding sources. The CTP should
+confirm with the FEMA Project Officer the appropriate data model(s) (i.e. DEMS) for the intended use of
+the data.
+In addition, the CTP shall address all concerns or questions regarding the topographic data development
+that are raised during the Independent QA/QC review.
+Deliverables: The CTP shall produce items listed in the New or Existing Topographic Data Capture
+section within the most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading the
+digital data to the MIP in accordance with the schedule outlined in Section 6. Where paper
+documentation is required by state law for professional certifications, the CTP may submit the paper in
+addition to a scanned version of the paper for the digital record. Please coordinate with the regional and/or
+state representative to verify state reporting requirements.
+
+Independent QA/QC: Topographic Data Capture
+Scope: The Independent QA/QC Mapping Partner shall perform an impartial review of the mapping data
+defined in Table 1.2.4 under Develop Topographic Data to ensure that these data are consistent with
+FEMA standards and standard engineering practice and are sufficient to prepare the FIRM. FEMA may
+audit or assist in these activities if deemed to be necessary by the Regional Project Officer.
+Please note FEMA will also be performing periodic audits and overall study/project management to
+ensure study quality. The CTP will be responsible for addressing any and all comments resulting from
+independent QC, including resubmittal of deliverables as needed to pass technical review.
+
+49
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Deliverables: The responsible Mapping Partner(s) shall produce items listed in the New or Existing
+Topographic Data Capture section within the most currently dated “Technical Reference: Data Capture”
+document, located at https://www.fema.gov/media-library/assets/documents/34519, made available to
+FEMA by uploading the digital data to the MIP in accordance with the schedule outlined in Section 6.
+
+Base Map Data Capture
+Note: Every MAS for a flood data update must include this task to ensure the base map used is
+documented and submitted. In addition, leveraged base map data must be documented and submitted for
+this task.
+Scope: Base map preparation activities consist of obtaining and formatting the digital base map (raster or
+vector) for the project. Activities also include the review of the base map and obtaining the necessary
+documentation/verification that base map data source(s) may be used and distributed by FEMA. This task
+is equivalent to the Base Map Data Capture task in the MIP. The CTP shall prepare and provide the
+digital base map, including:
+
+•
+
+Obtain digital files (raster or vector) of the base map. In coordination with the partner who
+performed Project Discovery, ensure that the FEMA Geospatial Data Coordination (GDC) Policy
+and Implementation Guide are followed.
+
+•
+
+Secure necessary permissions from the base map source to allow FEMA’s use and distribution of
+hardcopy and digital map products using the digital base map, free of charge.
+
+•
+
+Review and supplement the content of the acquired base map to comply with FEMA standards.
+
+•
+
+For the base map components that have a mandatory data structure, convert the base map data to
+the format required in FEMA standards.
+
+•
+
+Certify that the digital data meets the minimum standards and specifications that FEMA requires
+for FIRM production.
+
+Deliverables: The CTP shall produce items listed in the Base Map Data Capture section within the most
+currently dated “Technical Reference: Data Capture” document, located at https://www.fema.gov/medialibrary/assets/documents/34519, made available to FEMA by uploading the digital data to the MIP in
+
+Independent QA/QC: Base Map Data Capture
+Scope: The Independent QA/QC Mapping Partner shall perform an impartial review of the base map
+obtained and prepared by the CTP to ensure it includes data consistent with FEMA standards and
+sufficient to include on the FIRM. Any needed edits should be made to the product to comply with FEMA
+standards.
+Please note FEMA will also be performing periodic audits and overall study/project management to
+ensure study quality. The CTP will be responsible for addressing any and all reasonable comments
+50
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+resulting from independent QC of the base map, including resubmittal of deliverables as needed to pass
+technical review.
+Deliverables: The responsible Mapping Partner(s) shall produce items listed in the Base Map Data
+Capture section within the most currently dated “Technical Reference: Data Capture” document, located
+at https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading
+the digital data to the MIP in accordance with the schedule outlined in Section 6.
+
+Hydrology Data Capture
+CTPs must complete this task in the MIP if an updated hydrologic analysis is completed. In addition,
+leveraged hydrology data must be documented and submitted to the MIP for this task. Failure to submit
+this task when data should have been submitted is no longer an issue. The MIP redesign allows for tasks
+to be reopened so that data can be uploaded. Note, however, if the CTP obtains hydrology data that was
+not included in the MAS, the CTP shall contact the region to submit a change request to include the task
+and leverage as part of the award and request that this task be added to the MIP workflow.
+Scope: The CTP shall perform hydrologic analyses for the flooding source(s) identified in Table 1.2.6:
+Summary of Hydrologic Analyses. Hydrologic analysis activities include the determination of peak flood
+discharges, the use of rainfall-runoff models, regression equations, gage analysis, and hydrograph
+development to support the level of detail required for the project. The CTP shall calculate peak flood
+discharges and/or flood hydrographs for the 10, 4, 2, 1, “1- plus” and 0.2 percent annual chance events
+using the analysis method listed in Table 1.2.6. These flood discharges will be the basis for subsequent
+Hydraulic Analyses performed under this MAS. In addition, the CTP will be responsible for addressing
+any and all comments resulting from the independent QC, including resubmittal of deliverables as needed
+to pass the technical review.
+The CTP shall document automated data processing and modeling algorithms and provide the data to
+FEMA to ensure these are consistent with FEMA standards. Digital datasets (such as elevation, basin, or
+land use data) are to be documented and provided to FEMA for approval before performing the
+hydrologic analyses to ensure the datasets meet minimum requirements. If non-commercial (i.e., customdeveloped) software is used for the analysis, then the CTP shall provide full user documentation,
+technical algorithm documentation, and the software to FEMA for review before performing the
+hydrologic analyses.
+The CTP will compare the calculated, or computed, discharge with discharge determined from reliable gage
+data, if any. This comparison will only be done at locations where the two discharge values are considered
+representative of the same flooding source. Results of this comparison will be used in making a professional
+judgment for determining the discharge to be used for the hydraulic analysis.
+Deliverables: The CTP shall produce items listed in the Hydrology Data Capture section within the most
+currently dated “Technical Reference: Data Capture” document, located at https://www.fema.gov/medialibrary/assets/documents/34519, made available to FEMA by uploading the digital data to the MIP in
+accordance with the schedule outlined in Section 6. Where paper documentation is required by state law
+for professional certifications, the CTP may submit the paper in addition to a scanned version of the paper
+for the digital record. Please coordinate with the regional and/or state representative to verify state
+reporting requirements.
+51
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Independent QA/QC: Hydrology Data Capture
+Scope: The Independent QA/QC Mapping Partner shall perform an impartial review of the technical,
+scientific, and other information submitted by the CTP specific to the hydrologic analyses to ensure that
+the data and modeling are consistent with FEMA standards and standard engineering practice and are
+sufficient to prepare the FIRM. FEMA may audit or assist in these activities if deemed to be necessary by
+the Regional Project Officer. This work shall include, at a minimum, the activities listed below. Please
+note FEMA will also be performing periodic audits and overall study/project management to ensure study
+quality. Where paper documentation is required by state law for professional certifications, the CTP may
+submit the paper in addition to a scanned version of the paper for the digital record. Please coordinate
+with the regional and/or state representative to verify state reporting requirements.
+•
+
+Review the submittal for technical and regulatory adequacy, completeness of required
+information, and supporting data and documentation. The technical review is to focus on the
+following:
+o
+o
+o
+o
+o
+
+Use of acceptable models;
+Use of appropriate methodology(ies);
+Correctly applied methodology(ies)/model(s), including QC of input parameters;
+Comparison with gage data and/or regression equations, if appropriate;
+Comparison with discharges for contiguous reaches or flooding sources throughout the
+watershed.
+
+•
+
+Verify that the data was submitted under the applicable folders on the MIP as described in the
+“Technical Reference: Data Capture” and “Guidance: Data Capture” documents.
+
+•
+
+Maintain records of all contacts, reviews, recommendations, and actions and make the data
+readily available to FEMA.
+
+•
+
+The reviewing Mapping Partner must document the results of the review in a memorandum or
+letter, send it to the Mapping Partner that performed the hydrologic analysis, and post it to the MIP
+through the Independent QA/QC of Hydrologic Analyses task. The review document must present
+specific comments and may include any new calculations or model runs in support of the review.
+
+Deliverables: The responsible Mapping Partner(s) shall produce items listed in the Hydrology Data
+Capture section within the most currently dated “Technical Reference: Data Capture” document, located
+at https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading
+the digital data to the MIP in accordance with the schedule outlined in Section 6. Additionally, the TSDN
+must be delivered in accordance with Section 2 – Technical and Administrative Support Data Submittal.
+This submittal will occur in accordance with the schedule outlined in Section 6 – Schedule.
+•
+
+A Summary Report that documents the findings of the independent QA/QC review.
+
+•
+
+Recommendations to resolve any problems that are identified during the independent QA/QC
+review.
+
+52
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Hydraulics Data Capture
+CTPs must complete this task in the MIP if an updated hydraulic analysis is completed. In addition,
+leveraged hydraulic data must be documented and submitted to the MIP for this task. Failure to submit
+this task when data should have been submitted is no longer an issue. The MIP redesign allows for tasks
+to be reopened so that data can be uploaded. If the CTP obtains hydraulic data that was not included in
+the MAS, the CTP shall contact the region to discuss the potential need for a change request to include
+the task and leverage as part of the award and request that this task be added to the MIP workflow.
+Scope: The CTP shall perform hydraulic analyses as described in Table 1.2.7: Summary of Hydraulic
+Analyses. Hydraulics analysis activities include establishing and reviewing regulatory floodways and
+flood elevations for the 10 -, 4 -, 2 -, 1 -, “1- plus” and 0.2 percent annual chance events based on flood
+discharge rates computed under Develop Hydrologic Data. The hydraulic methods used for this analysis
+may include base level and/or enhanced level hydraulic modeling. The base level will use an automated
+hydraulic model and use the best available elevation data to model the 10-, 4-, 2-, 1-, “1- plus” and 0.2
+percent annual chance events. It may not include field surveys, floodways, or mapped Base Flood
+Elevations (BFEs) but will include mapped A or AE zones per Table 1.2.7. The enhanced level may
+include field surveys, floodways, and the 10-, 4-, 2-, 1-, 1- plus and 0.2 percent annual chance events,
+using methods described in Table 1.2.7. The Mapping Partner, at a minimum, must delineate the
+floodplain and floodway, if applicable, boundaries of the base flood. The Mapping Partner must also
+delineate the floodplain boundaries associated with the 0.2-percent-annual-chance flood, if it is
+calculated.
+Exhibit 1.1 Hydraulic Analysis Options for Base and Enhanced Level Engineering
+
+Option
+
+Cross Sections
+
+Flow Paths
+Manning’s “n”
+(Left, Right
+Values
+and Channel)
+
+Structures
+
+A
+
+Auto-placed;
+may be
+unnaturally
+straight with
+computerized
+look to them
+adjusted or
+auto-placed by
+“intelligent”
+methods.
+
+Reach lengths
+are assumed
+equal.
+
+Not included;
+cross sections
+placed as if
+Single value for structures don't
+each cross
+exist or cross
+A
+section.
+sections placed
+appropriately
+for structure
+modeling.
+
+B
+
+Auto-placed
+and hand
+adjusted or
+auto-placed by
+
+Reach lengths
+computed by
+offsetting
+stream
+centerline.
+
+Overbanks
+from Land Use
+Land Cover
+(LULC) data,
+channel value
+
+Flood Zone
+
+Not included;
+but cross
+A
+sections placed
+appropriately
+53
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Option
+
+Cross Sections
+
+Flow Paths
+Manning’s “n”
+(Left, Right
+Values
+and Channel)
+
+“intelligent”
+methods.
+
+C
+
+Each section
+reviewed by
+engineers.
+
+D
+
+Each section
+reviewed by
+engineers.
+
+E
+
+Each section
+reviewed by
+engineers;
+channel
+bathymetry
+included in
+sections.
+
+Structures
+
+Flood Zone
+
+estimated
+separately.
+
+for structure
+modeling.
+
+Reach lengths
+adjusted based
+on draft
+floodplain.
+
+Overbanks
+LULC data,
+channel value
+estimated
+separately.
+
+Included;
+structure data
+from national,
+state or other
+data source.
+Estimated
+A
+based on
+topography and
+aerial photos
+for those not
+available.
+
+Reach lengths
+adjusted based
+on draft
+floodplain.
+
+Included;
+structure data
+Overbanks
+from as-builts,
+from LULC
+design plans,
+data, channel
+“measured” in
+value estimated the field, or
+separately and other
+calibrated
+community
+where possible. datasets with
+opening
+information.
+
+A or AE
+
+Reach lengths
+adjusted based
+on draft
+floodplain.
+
+Overbanks
+from LULC
+data and field
+data, channel
+value estimated
+separately from
+field data and
+calibrated
+where possible.
+
+AE
+
+Included;
+structure data
+from field
+survey, asbuilts, design
+plans,
+“measured” in
+the field.
+
+Exhibit 1.2 2D Hydraulic Analysis Options for Base and Enhanced Level Engineering
+
+54
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Option
+
+Grid/Mesh
+
+Manning’s “n”
+Values
+
+A
+
+Auto-generated
+from terrain
+Single value
+data
+
+B
+
+Terrain
+corrected with
+breaklines
+
+C
+
+D
+
+Terrain
+corrected with
+breaklines
+
+Terrain
+corrected with
+breaklines
+.
+
+Structures
+
+Not included
+
+Flood Zone
+
+A
+
+From Land Use Not included;
+Land Cover
+terrain adjusted A
+(LULC) data,
+for structures
+Included;
+structure data
+from national,
+state or other
+From Land Use data source.
+Land Cover
+Estimated
+A
+(LULC) data,
+based on
+topography and
+aerial photos
+for those not
+available.
+Included;
+structure data
+Overbanks
+from as-builts,
+from LULC
+design plans,
+data, channel
+“measured” in
+value estimated the field, or
+separately and other
+calibrated
+community
+where possible. datasets with
+opening
+information.
+
+A or AE
+
+55
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Option
+
+E
+
+Manning’s “n”
+Values
+
+Structures
+
+Overbanks
+from LULC
+Channel
+data and field
+bathymetry
+data, channel
+included in
+value estimated
+sections; 1D
+separately from
+modeling added
+field data and
+as appropriate
+calibrated
+where possible.
+
+Included;
+structure data
+from field
+survey, asbuilts, design
+plans,
+“measured” in
+the field.
+
+Grid/Mesh
+
+Flood Zone
+
+AE
+
+The CTP shall use the cross-section and field data or leveraged existing survey and as-builts collected
+during Survey Data Capture and the topographic data collected during the Topographic Data Capture,
+when appropriate, to perform the hydraulic analyses. The hydraulic analyses will be used to establish
+flood water surface elevations, floodplain extents, and regulatory floodways for the listed study area or
+flooding sources.
+If applicable, the CTP shall use the FEMA CHECK-2 or CHECK-RAS checking program to verify the
+reasonableness of the hydraulic analyses. To facilitate the independent QA/QC review, the CTP shall
+provide explanations for unresolved messages from the CHECK-2 or CHECK-RAS program, as
+appropriate. In addition, the CTP shall address all concerns or questions regarding the hydraulic analyses
+that are raised during the independent QA/QC review including resubmittal of deliverables as needed to
+pass the technical review.
+The CTP shall document automated data processing and modeling algorithms for all GIS based studies
+and provide the data to FEMA for review to ensure these are consistent with the standards outlined above.
+If non-commercial (i.e., custom-developed) software is used for the analyses, then the CTP shall provide
+full user documentation, technical algorithm documentation, and software to FEMA for review before
+performing the hydraulic analyses.
+Any flooding sources associated with a levee that are mapped as providing protection on effective FIRMs
+but will not meet certification requirements for the new FIRMs, will require revised hydraulic analysis.
+This revised analysis should be done in accordance with FEMA standards and guidance, as appropriate.
+Deliverables: The CTP shall produce items listed in the Hydraulics Data Capture section within the most
+currently dated “Technical Reference: Data Capture” document, located at https://www.fema.gov/medialibrary/assets/documents/34519, made available to FEMA by uploading the digital data to the MIP in
+accordance with the schedule outlined in Section 6.
+
+Independent QA/QC: Hydraulics Data Capture
+Scope: The Independent QA/QC Mapping Partner shall perform an impartial review of the technical,
+scientific, and other information submitted by the CTP under Hydraulic Analysis to ensure that the data and
+56
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+modeling are consistent with FEMA standards, guidance, and standard engineering practice and are
+sufficient to revise the FIRM. FEMA may audit or assist in these activities if deemed to be necessary by
+the Regional Project Officer. This work shall include, at a minimum, the activities listed below.
+Please note FEMA will also be performing periodic audits and overall study/project management to
+ensure study quality. The CTP will be responsible for addressing any and all comments resulting from
+independent QC, including resubmittal of deliverables as needed to pass technical review.
+•
+
+Review the submittal for technical and regulatory adequacy, completeness of required
+information, and supporting data and documentation. The technical review is to focus on the
+following:
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+
+Use of acceptable model(s)
+Use of appropriate methodology(ies)
+Starting water-surface elevations
+Cross-section geometry (for 1D models) or mesh orientation and resolution (for 2D
+models)
+Manning’s “n” values and expansion/contraction coefficients
+Bridge and culvert modeling
+Ineffective and non-conveyance areas
+Flood discharges
+Regulatory floodway computation methods
+Tie-in to upstream and downstream non-revised Flood Profiles and floodways
+Agreement between the model, spatial data, work maps, Flood Profiles and Floodway
+Data Tables, where applicable
+Calibration of model(s), where high-water marks are available
+Floodplain and floodway boundaries for the 1 percent and 0.2 percent annual chance
+events
+
+•
+
+Verify that the data was submitted under the applicable GEOGRAPHIC FOOTPRINT folders in
+the MIP.
+
+•
+
+Use the CHECK-2 or CHECK-RAS program, as appropriate, to flag potential problems and focus
+review efforts.
+
+•
+
+Maintain records of all contacts, reviews, recommendations, and actions and make the data
+readily available to FEMA.
+
+•
+
+Maintain an archive of all data submitted for hydraulic modeling review. (All supporting data
+must be retained for three years from the date a funding recipient submits its final expenditure
+report to FEMA, and once the study is effective all associated data should be submitted to the
+FEMA library).
+
+•
+
+The reviewing Mapping Partner must document the results of the review in a memorandum or
+letter, send it to the Mapping Partner that performed the hydraulic analysis and post it to the MIP
+through the Independent QA/QC of Hydraulic Analyses task. The review document must present
+specific comments and may include any new calculations or model runs in support of the review.
+
+Deliverables: shall produce items listed in the Hydraulics Data Capture section within the most currently
+dated “Technical Reference: Data Capture” document, located at https://www.fema.gov/media57
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+library/assets/documents/34519, made available to FEMA by uploading the digital data to the MIP in
+accordance with the schedule outlined in Section 6. Where paper documentation is required by state law
+for professional certifications, the CTP may submit the paper in addition to a scanned version of the paper
+for the digital record. Please coordinate with the regional and/or state representative to verify state
+reporting requirements.
+•
+
+A Summary Report that describes the findings of the independent QA/QC review;
+
+•
+
+Recommendations to resolve any problems that are identified during the independent QA/QC
+review.
+
+Coastal Data Capture
+Scope: The CTP shall perform a coastal analysis for flooding sources identified in Table 1.2.8: Summary
+of Coastal Data. The coastal analysis shall include the following components as necessary:
+•
+
+Terrain and Bathymetric Data Processing;
+
+•
+
+Combined Topo-Bathy Seamless DEM;
+
+•
+
+Land Use and Manning’s “n”
+
+•
+
+Field Reconnaissance;
+
+•
+
+Water level Station Analysis;
+
+•
+
+Wave gage Analysis;
+
+•
+
+Storm Statistical Analysis;
+
+•
+
+Storm Selection;
+
+•
+
+Develop 2D Model Grid;
+
+•
+
+Tidal Calibration and Validation;
+
+•
+
+Wind and Pressure Field Development;
+
+•
+
+Storm Validation (Storm Surge and Wave Height & Period);
+
+•
+
+Storm Production;
+
+•
+
+Return Period Analysis (50% to 0.2%);
+
+•
+
+Transect Layout;
+
+•
+
+Primary Frontal Dune Assessment;
+
+•
+
+Coastal Structure Analysis;
+
+•
+
+Coastal Levee Analysis;
+
+•
+
+Erosion Analysis;
+
+•
+
+Overland Wave Height Analysis (1% and 0.2%);
+58
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+
+LiMWA Analysis;
+
+•
+
+Wave Runup and Overtopping Analysis:
+
+•
+
+0.2% coastal Wave Envelope FIS Profiles
+
+•
+
+Combined probability analysis for riverine areas in coastal floodplain
+
+•
+
+Coastal Hazard Mapping and Workmap development.
+
+Deliverables: The CTP shall produce items listed in the Coastal Data Capture section within the most
+currently dated “Technical Reference: Data Capture” document, located at https://www.fema.gov/mediacollection/technical-references-flood-risk-analysis-and-mapping made available to FEMA by uploading
+the digital data to the MIP in accordance with the schedule outlined in Section 6. The Coastal data
+submittals shall follow an Intermediate Data Submittal organization as outlined below.
+Atlantic, Gulf, and Great Lakes
+•
+
+Intermediate Submission No. 1 – Scoping and Data Review
+
+•
+
+Intermediate Submission No. 2 – Storm Surge Model Calibration, Validation, and Storm Selection
+
+•
+
+Intermediate Submission No. 3 – Storm Surge Runs and Flood Frequency Analysis
+
+•
+
+Intermediate Submission No. 4 – Nearshore Hydraulics
+
+•
+
+Intermediate Submission No. 5 – Draft Flood Hazard Mapping
+
+Pacific
+•
+
+Intermediate Submission No. 1 – Scoping and Data Review
+
+•
+
+Intermediate Submission No. 2 – Offshore Water Levels and Waves
+
+•
+
+Intermediate Submission No. 3 – Nearshore Hydraulics
+
+•
+
+Intermediate Submission No. 4 – Draft Flood Hazard Mapping
+
+Independent QA/QC: Coastal Data Capture
+Scope: The CTP shall perform QA/QC of all Coastal Data.
+Deliverables: The responsible Mapping Partner(s) shall produce items listed in the Coastal Data Capture
+section within the most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-collection/technical-references-flood-risk-analysis-and-mapping, made
+available to FEMA by uploading the digital data to the MIP in accordance with the schedule outlined in
+Section 6.
+
+59
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Floodplain Mapping Data Capture
+CTPs must complete this task in the MIP if a redelineation or digital conversion study is completed. A
+Floodplain Mapping MIP submittal is not required for revised data based on new or updated hydraulic
+or coastal analyses, as the required information shall be submitted with the Hydraulics Data Capture or
+Coastal Data Capture tasks. In addition, leveraged floodplain mapping data must be documented and
+submitted to the MIP for this task. Failure to submit this task when data should have been submitted is no
+longer an issue. The MIP redesign allows for tasks to be reopened so that data can be uploaded. If the
+CTP obtains floodplain mapping data that was not included in the MAS, the CTP shall contact the region
+to discuss the need to submit a change request to include the task and leverage as part of the award and
+request that this task be added to the MIP workflow.
+Responsible Mapping Partner: CTP/Mapping Partner
+The CTP shall perform floodplain mapping as described in Table 1.2.9: Summary of Floodplain Mapping.
+Floodplain Mapping activities include mapping and redelineation of the 1 percent and 0.2 percent annual
+chance event floodplains and regulatory floodways based upon updated topographic data. Floodplain
+Mapping may also include the digital conversion of non-revised floodplain area(s). Coastal flood sources
+shall also include mapping coastal static BFE zones as well as mapping the Limit of Moderate Wave
+Action (LiMWA).
+The redelineation of floodplains utilizes updated topographic data to remap the floodplain boundary based
+upon effective water surface elevations. Per FEMA Standard ID #104, redelineation shall only be used
+when the terrain source data is better than effective, and the stream reach is classified as VALID in the
+CNMS database. Please review SID #104 listed in the last FEMA Policy for the most current language of
+the standard. Prior to redelineating effective floodplain boundaries, the current CNMS database should be
+reviewed to assess the appropriateness of this approach. The CTP shall use the effective FIS profile,
+floodway data table, FIRM/Flood Hazard Boundary Map (FHBM), and, as necessary, the effective
+hydraulic model, to delineate floodplain boundary on updated topography.
+Per FEMA Standard ID #137, redelineation of coastal flood hazard areas requires the revision of the 1percent-annual-chance SFHA boundary, the 0.2 percent-annual-chance floodplain boundary, and the
+primary frontal dune delineation. Please review SID #137 listed in the last FEMA Policy for the most
+current language of the standard.
+Digital conversion of non-revised floodplain areas is the incorporation of the effective floodplain
+boundary, as-is, into the digital FIRM DB. This activity involves the georeferencing of effective paper
+maps and digitizing the effective floodplain and floodway boundaries. Digital conversions do not revise
+the effective Special Flood Hazard Area (SFHA). The CTP shall incorporate the results of all effective
+Letters of Map Change (LOMC) for all affected communities on the FIRM and provide to the appropriate
+PTS the required submittals for incorporation into the National Flood Hazard Layer (NFHL). Also, the
+CTP shall address all concerns or questions regarding Floodplain Mapping that are raised during the
+independent QA/QC review.
+Per FEMA Standard ID #134, if the redelineation topographic data indicates that the effective hydraulic
+analyses are no longer valid, further actions must be coordinated with the FEMA Project Officer and the
+60
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+CNMS database must be updated. Please refer to SID #134 listed in the last FEMA Policy for the most
+current language of the standard. The CTP shall capture flood hazard engineering and/or mapping data
+quality issues encountered during this activity in the CNMS database for the area(s) of interest. These
+issues will be entered as “Requests” or “Needs” in the CNMS requests feature dataset based on the nature
+of the deficiency encountered. Detailed information on performing this task can be found in the relevant
+standards specified in Section 5 – Standards.
+Deliverables: The CTP shall produce items listed in the Floodplain Mapping Data Capture section within
+the most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading the
+digital data to the MIP in accordance with the schedule outlined in Section 6.
+
+Independent QA/QC: Floodplain Mapping Data Capture
+Scope: The Independent QA/QC Mapping Partner shall perform an impartial review of the floodplain
+mapping submitted by the CTP under Floodplain Mapping to ensure that the results of the analyses
+performed are accurately represented, the redelineation of existing data on new, updated topography is
+appropriate, and to ensure that the new FIRM panels accurately represent the information shown on the
+effective FIRMs and Flood Boundary and Floodway Maps (FBFMs) for the unrevised areas that are
+mapped. FEMA may audit or assist in these activities if deemed to be necessary by the Regional Project
+Officer. This work shall include, at a minimum, the activities listed below.
+Please note FEMA will also be performing periodic audits and overall study/project management to
+ensure study quality. The CTP will be responsible for addressing any and all comments resulting from
+independent QC, including resubmittal of deliverables as needed to pass technical review.
+
+•
+
+If developing Coastal Mapping:
+1. Review the Summary of Stillwater Elevations and Transect Data tables for agreement
+with the coastal modeling results.
+2. Review the coastal transects for proper location and orientation on the work maps and
+agreement with the Transect Descriptions table. Ensure that the transects on the work
+maps extend to the inland limit of the coastal modeling results used for mapping;
+3. Review the PFD and Zone VE/Zone AE boundary delineations to ensure that the PFD
+delineation is coincident with, or seaward of, the Zone VE/Zone AE boundary.
+4. Review the Limit of Moderate wave Action (LiMWA) line to ensure proper placement
+and that the line is oriented in the right direction so that when symbolized the line points
+to the appropriate area where wave heights are greater than 1.5 feet.
+
+•
+
+Review the cross sections for proper location and orientation on the work map and agreement
+with the Floodway Data Table and Flood Profiles.
+
+•
+
+Review the Base Flood Elevations (BFEs) and coastal flood zones (both Zones VE and Zones
+AE) shown on the work map for proper location and agreement with the results of the coastal
+modeling.
+
+61
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+
+Review the regulatory floodway widths for agreement with the widths shown in the Floodway
+Data Table.
+
+•
+
+For non-revised floodplain areas, the 1 percent and 0.2 percent annual chance floodplain
+boundaries agree with the floodplain boundaries shown on the FIRM, the contour lines, other
+topographic information, and planimetric information shown on the FIRM base.
+
+•
+
+Road and floodplain relationships are maintained for all unrevised areas.
+
+•
+
+Review the flood insurance risk zones as shown on the work maps to ensure the data are labeled
+properly.
+
+•
+
+Review the FIRM mapping files to ensure the data were prepared in accordance with FEMA
+standards.
+
+•
+
+Review the metadata files to ensure the data includes all required information shown in the NFIP
+Metadata Profiles Specification, located at https://www.fema.gov/media-collection/flood-risktemplates-and-other-resources.
+
+•
+
+Review that effective LOMCs for all affected communities on the FIRM were accounted for.
+
+•
+
+Verify that the data was submitted under the applicable GEOGRAPHIC FOOTPRINT folders.
+
+Deliverables: The responsible Mapping Partner(s) shall produce the following checked items listed in the
+Floodplain Mapping Data Capture section within the most currently dated “Technical Reference: Data
+Capture” document, located at https://www.fema.gov/media-library/assets/documents/34519, made
+available to FEMA by uploading the digital data to the MIP in accordance with the schedule outlined in
+Section 6.
+•
+•
+•
+•
+•
+
+A Summary Report that describes the findings of the QA/QC review, noting any deficiencies in
+or agreeing with the mapping results
+Recommendations to resolve any problems that are identified during the independent QA/QC
+review
+An annotated work map with all questions and/or concerns indicated, if necessary
+Updated deliverables for previous tasks (if data changed during review)
+Other: {Insert additional details}.
+
+Draft FIRM Database Capture
+Every MAS for a FIRM update must include this task to ensure the database used is documented and
+submitted for National Quality Review 1 per FEMA standards. In addition, leveraged FIRM data must be
+documented and submitted for this task.
+Scope: The CTP shall prepare the database in accordance FEMA standards and guidance, including all
+relevant Technical Reference documents, for upload to the MIP. The CTP is responsible for confirming
+and/or obtaining any revised or updated guidance from the region. The CTP shall coordinate with the
+RSC to complete and submit the Key Decision Point (KDP) 2 form prior to Quality Review (QR) 1. The
+CTP shall coordinate with appropriate Mapping Partners, as necessary, to resolve any problems that are
+identified during development of the FIRM Database.
+62
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Deliverables: The CTP shall produce items listed in the Draft FIRM Database Data Capture section
+within the most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading the
+digital data to the MIP in accordance with the schedule outlined in Section 6.
+
+Produce Preliminary Map Products
+CTPs may consider including and completing this task in the MIP. In addition, leveraged hydrologic data
+must be documented and submitted to the MIP for this task. Failure to submit this task when data should
+have been submitted is no longer an issue. New projects for FY2020 or newer should utilize the AMP
+Tool for FIRM production. The “Automated Map Production (AMP) Best Practices” guidance is located
+at https://hazards.fema.gov/femaportal/usercare/guidesAndDocs/Documents/AMP_Best_Practices.pdf.
+The MIP redesign will allow for tasks to be reopened and data can be uploaded.
+Scope: The Automated Map Production Tool (AMP) will apply the final FEMA FIRM graphic and
+database specifications to the FIRM files produced under Floodplain Mapping for the panels identified in
+Table 1.2.10. This work shall include adding all required annotation, line pattern, area shading, and map
+collar information (e.g., map borders, title blocks, legends, and notes to user). The CTP shall coordinate
+with those entities responsible for Floodplain Mapping and/or Redelineation, as necessary, to resolve any
+problems that are identified during development of the FIRM Database and graphics. The CTP shall
+follow all Database specifications and ensure the product is generated as expected. The Best Practice
+Guidance for AMP is located at
+https://hazards.fema.gov/femaportal/usercare/guidesAndDocs/Documents/AMP_Best_Practices.pdf. The
+CTP shall prepare a Preliminary Summary of Map Actions (SOMA) for each affected community, if
+appropriate. The CNMS Regional File Geodatabase is to reflect changes to the existing inventory
+applicable to scoped studies, study extents and attributes.
+Deliverables: The CTP shall produce items the below checked items, which are listed in the Produce
+Preliminary Products Data Capture section within the most currently dated “Technical Reference: Data
+Capture” document, located at https://www.fema.gov/media-library/assets/documents/34519, made
+available to FEMA by uploading the digital data to the MIP in accordance with the schedule outlined in
+Section 6.
+
+Perform Independent QA/QC: Produce Preliminary Map Products
+Scope: Upon completion of the floodplain mapping and re-delineation activities, the Independent QA/QC
+Mapping Partner shall perform an impartial review of the FIRM spatial database to determine if it meets
+current FEMA database specifications. The CTP shall coordinate with other entities, as necessary, to
+resolve any problems identified during this QA/QC review. FEMA may audit or assist in these activities
+if deemed to be necessary by the FEMA Regional Project Officer.
+Please note FEMA will also be performing periodic audits and overall study/project management to
+ensure study quality. The CTP will be responsible for addressing any and all comments resulting from
+independent QC, including resubmittal of deliverables as needed to pass technical review.
+This work shall ensure that the requirements below are met.
+63
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+•
+•
+•
+•
+•
+•
+•
+
+Preliminary FIRM database is in a GIS file and database format as specified in FEMA standards,
+and conform to those specifications for content and attribution.
+FIRM database files are in one of the database formats specified in FEMA standards, and
+conform to those specifications for content and attribution.
+Assess risk assessment products for compliance with FEMA standards if applicable.
+Review and affirm that Preliminary SOMAs were accurately created for applicable communities.
+Perform any needed updates to the CNMS database for the project area of interest.
+Updated, cleaned, linework reflecting any change in status or attribution as a result of scope
+change during the production period and updated to “Being Studied” where applicable.
+Supporting documentation for new validation.
+An updated requests layer containing all requests made as part of production related to items
+discovered as part of the study process.
+
+Deliverables: The responsible Mapping Partner(s) shall produce items listed in the Produce Preliminary
+Products Data Capture section within the most currently dated “Technical Reference: Data Capture”
+document, located at https://www.fema.gov/media-library/assets/documents/34519, made available to
+FEMA by uploading the digital data to the MIP in accordance with the schedule outlined in Section 6.
+
+Distribute Preliminary Map Products
+Scope: The Distribute Preliminary Map Products 3 task consists of the final preparation, review, and
+distribution of the Preliminary copies of the FIRM and FIS report and the Preliminary SOMA and Risk
+Assessment products to community officials and the general public for review and comment. The CTP
+shall prepare and submit the KDP3 required documentation to be reviewed and approved at the FEMA
+Regional level. Preliminary distribution cannot begin until this process is approved. FEMA may audit or
+assist in these activities if deemed to be necessary by the Regional Project Officer. The activities to be
+performed are summarized below.
+Preliminary Transmittal Letter Preparation: The CTP shall prepare letters and transmit the Preliminary
+copies of the FIRM and FIS report and related enclosures to all affected communities, all other Project
+Team members, the State NFIP Coordinator, the FEMA Regional Office, and others as directed by
+FEMA. This letter may be prepared using the national or regional template with FEMA letterhead/logo
+and with FEMA signature only, or (when pre-approved by the Regional Office) on FEMA and CTP joint
+letterhead for signature by FEMA and the CTP.
+Distribution of Preliminary Package: The CTP shall distribute the Preliminary copies of the FIRM and
+FIS report, Preliminary SOMA (as applicable) and Risk Assessment products (as applicable) to all
+
+Refer to MIP task names as needed. Validation tasks need to be created in MIP. Note that FEMA’s designee will be
+assigned this task, not the CTP and/or as part of the general guidance to projects. Tasks CTPs must know about include:
+Produce, Distribute, Independent QA/QC. The others are PTS provider tasks.
+
+3
+
+64
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+affected communities, all other Project Team members, the State NFIP Coordinator, the FEMA Regional
+Office, and others as directed by FEMA.
+Deliverables: The CTP shall produce items listed in the Distribute Preliminary Products section within the
+most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading the
+digital data to the MIP in accordance with the schedule outlined in Section 6.
+
+Post-Preliminary Map Production
+Scope: The Post-Preliminary activity consists of completing the statutory, regulatory and administrative
+activities required to finalize the FIRM and FIS report after the Preliminary copies of the FIRM and FIS
+report have been issued to community officials and the public for review and comment. FEMA may audit
+or assist in these activities as necessary. The activities to be performed are summarized below. In
+addition, additional Stakeholder Engagement tasks and the Final (CCO) Meeting and Public Meeting are
+held during this time, as described in the Risk MAP Meetings Section of the Perform Community
+Engagement and Project Outreach task.
+News Release Preparation: The CTP shall use the MIP in accordance with FEMA standards to create
+Expanded Appeals Process (EAP) notices for studies that result in new or modified BFEs or base flood
+depths and/or new or modified flood hazard information, including additions or modifications of any
+SFHA boundary, SFHA zone designation, or regulatory floodway within a community. FEMA, or its
+designee, shall perform QA/QC reviews of the Flood Hazard Determination (FHD) information for
+accuracy and compliance with FEMA format requirements.
+Initiation of Statutory 90-Day Appeal Period: When required, upon completion of a 30-day community
+comment period and/or final coordination meeting with the affected communities, the following activities
+are completed in accordance with the current version of the FEMA standards, and appropriate guidance:
+
+•
+•
+
+•
+•
+•
+
+The CTP shall prepare and submit the KDP4 required documentation to be reviewed and
+approved at the FEMA Regional level. FHD notice publication cannot begin until this process is
+approved.
+The CTP shall meet with the FEMA Regional Office of External Affairs, other FEMA staff,
+community officials, to discuss the mapping project and at a minimum provide a local PSA
+statement to local radio and television outlets to further educate property owners about appeals
+processes.
+The CTP shall prepare and submit the FEDD File to FEMA, or its designee, for interim review
+#1. The FEDD file check is required to pass prior to the proposed flood hazard notice being
+submitted for publication.
+The CTP shall prepare and deliver to FEMA, or its designee, the appropriate flood hazard
+determination notice(s) to be published in the Federal Register. FEMA standards and guidance
+shall be followed.
+The CTP shall send proposed Flood Hazard Determination notification letters and verify
+confirmation of receipt to meet FEMA standards and guidance, using the Appeal Start template to
+the community CEOs and floodplain administrators.
+65
+
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+•
+
+The CTP shall ensure that news release notifications of Proposed Flood Hazard Determination
+changes are published in prominent newspapers or the community’s official social media
+outreach (e.g. Facebook, Twitter) with local circulation in accordance with 44 CFR Part 67.4.
+FEMA, or its designee, shall perform QA/QC reviews of the Federal Register notice, community
+notification letters and news release notifications for accuracy and compliance with FEMA format
+requirements.
+Resolution of Appeals and Comments 4: The CTP shall review and provide relevant information for
+FEMA to resolve appeals and comments received during the 90-day appeal period in accordance with
+FEMA standards. For each appeal and comment, the following activities shall be conducted as
+appropriate:
+
+•
+•
+•
+
+•
+•
+•
+•
+•
+•
+
+Prepare and mail (or email) acknowledgment letter on FEMA letterhead with FEMA signature
+following FEMA concurrence.
+Perform technical review of submitted information.
+Prepare interim communication letter(s) requesting additional supporting data, as needed. Any
+additional data requested and accepted outside the 90-day appeal period will be subject to the
+running of another appeal period. Only data submitted, asked for, and received during the actual
+90-day regulatory appeals window can be considered for resolution without needing a subsequent
+appeal period.
+Perform revised analyses, if necessary, upon FEMA direction.
+Prepare a draft resolution letter for appeals and comments, on FEMA letterhead for FEMA
+signature, and (as necessary) revised FIRM and FIS report materials for FEMA review.
+Mail resolution letter(s) upon FEMA concurrence.
+Update CNMS as appropriate when resolving appeals/comments.
+Complete self-certification of compliance with FEMA’s Floodplain Boundary Standards within
+30 days of the issuance of a study’s Letter of Final Determination if the floodplain boundaries
+have been modified during the post-preliminary processing/appeals resolution process.
+Update the Risk Assessment Suite as needed (and directed by FEMA) for appeal resolutions.
+
+The CTP shall prepare all associated correspondence using FEMA letterhead and mail upon authorization
+by FEMA. When approved by FEMA, appeal and comment correspondence may be on joint FEMA-CTP
+letterhead and co-signed by FEMA and the CTP. Note: Collaboration and coordination with
+appellants/communities is the statutory responsibility of FEMA and cannot be entirely delegated. As such,
+all appeal-related correspondence must be on FEMA letterhead (or occasionally on joint FEMA-CTP
+letterhead, when approved by FEMA) and must direct official requests and data submissions to FEMA.
+
+PPP is broken out into “Due Process,” “Final Map Production and Distribution,” and “Outreach.” This would mean
+that the tables with a single PPP row need to be further broken out with multiple costs and schedules.
+
+4
+
+66
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Appeal-related correspondence may not be distributed on CTP-only letterhead or on CTP contractor
+letterhead.
+Preparation of Special Correspondence: The CTP shall, at the request of FEMA, respond to comments not
+received within the 90-day appeal period and before the maps are effective (referred to as “special
+correspondence”) including drafting responses for FEMA review and finalizing responses for signature.
+The CTP shall mail the final correspondence (and enclosures, if appropriate) and distribute appropriate
+copies of the correspondence and enclosures upon authorization from FEMA. The CTP shall prepare all
+associated correspondence using FEMA letterhead and mail upon authorization by FEMA. When approved
+by FEMA, correspondence may be on joint FEMA-CTP letterhead and co-signed by FEMA and the CTP.
+Revision and Finalization of FIRM and FIS Report: If necessary, the CTP shall coordinate with FEMA to
+determine the appropriate level of effort to revise the FIRM and FIS report and shall distribute revised
+Preliminary copies of the FIRM and FIS report to the CEO and floodplain administrator of each affected
+community, all other Project Team members, the State NFIP Coordinator, the FEMA Regional Office,
+and others as directed by FEMA. The CTP shall finalize the FIRM and FIS, including incorporating
+effective Letters of Map Revision, in accordance with FEMA standards and guidance, and upload final
+products to the MIP for automated and visual National QRs (Quality Review 5 and Quality Review 7) in
+accordance with FEMA standards. All work must pass appropriate QRs prior to issuance of the Letter of
+Final Determination.
+Processing of Letter of Final Determination: The CTP shall prepare and submit the KDP5 required
+documentation to be reviewed and approved at both the FEMA Regional and FEMA Headquarters levels.
+FEDD File Interim Review #2, QRs 5, 6, 7 and processing of the Letter of Final Determination (LFD)
+cannot begin until this process is approved at all levels. The CTP should follow the regional submittal
+guidelines on all KDP5 packages as each region has their own processes set up to review this
+documentation. The CTP shall work with FEMA to establish the effective date for the FIRM and FIS
+report and shall prepare LFDs for affected communities. The CTP shall submit the Final Mapping
+Products and LFD Package for Quality Reviews 5, 6, and 7 per FEMA guidance and standards, in
+coordination with the Region and its designated contractor. FEMA, or its designated contractor, shall mail
+the final signed LFDs and enclosures, including Final SOMAs, and distribute appropriate copies of the
+signed LFDs and Final SOMAs. FEMA’s CDS contractor shall address all automated and visual National
+QRs (Quality Review 5 and Quality Review 7) comments and the CTP will be responsible for obtaining a
+pass on the QR of the LFD package (Quality Review 6) prior to the distribution of the LFD letters.
+Final SOMA Preparation: The CTP shall prepare Final SOMAs for the affected communities with
+assistance from FEMA, or its designee, as appropriate. The products must pass QR6 prior to issuance of
+the LFD letters.
+Final Flood Hazard Determination Notice: Typically, the Final Flood Hazard Determination Notice to be
+published in the Federal Register is generated from the Proposed Notice. The CTP shall prepare an
+appropriate final notice and deliver to FEMA, or its designee, for review and publication. The product
+must pass QR6 prior to issuance of the LFD letters.
+Processing of Final FIRM and FIS Report for Printing: The CTP shall prepare final reproduction
+materials for the FIRM (developed from the FEMA AMP tool) and FIS report and provide these materials
+to FEMA, or its designee, in accordance with FEMA standards and guidance for printing by the Map
+67
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Service Center (MSC); please refer to the “Technical Reference: Data Capture” document. The CTP shall
+also prepare the appropriate paperwork to accompany the FIRM and FIS report and transmittal letters to
+the community CEOs. The CTP will submit a DVT compliant FIRM DB that will be used with FEMA’s
+AMP tool to produce FIRM panels. FEMA’s CDS contractor will be responsible to address any Quality
+Review 7 (QR7) and Quality Review 8 in accordance with FEMA standards and guidance. The products
+must pass QR7 prior to issuance of the LFD letters.
+Revalidation Letter Processing: The CTP shall prepare and distribute letters for FEMA signature to the
+community CEOs and floodplain administrators to notify the affected communities about Letters of Map
+Change for which determinations will remain in effect after the FIRM and FIS report become effective.
+The CTP shall update the MIP SOMA tool as necessary to prepare and submit the Revalidation Letters to
+FEMA, or its designee, for review and approval prior to distributing the letters to communities. The
+Revalidation Letters must be submitted for review 4–5 weeks prior to the effective date. The CTP shall
+mail Revalidation Letters to communities one week before the effective date, following review
+completion and FEMA approval. After distribution of the revalidation letters, the CTP shall send copies
+of the official dated letters to FEMA, or its designee, for submittal to the LOMC subscription service.
+Archiving Data: The CTP shall ensure that technical and administrative support data are packaged in the
+FEMA required format and stored properly in the library archives until transmitted to the FEMA
+Engineering Study Data Package Facility. In addition, the CTP will maintain copies of all data for a
+period of no less than three years from the submission of the Final Report for award management.
+MIP: The CTP shall complete all necessary PPP MIP tasks and purchases in accordance with FEMA
+Standards and requirements.
+Deliverables: The CTP shall produce items listed in the CCO Meeting Data Capture, Feedback Data
+Capture, Due Process, and Final Map Production and Distribution Products Data Capture sections, within
+the most currently dated “Technical Reference: Data Capture” document, located at
+https://www.fema.gov/media-library/assets/documents/34519, made available to FEMA by uploading the
+digital data to the MIP in accordance with the schedule outlined in Section 6.
+The deliverables shall include items listed in CCO Meeting Data Capture, Feedback Data Capture, Due
+Process, and Final Map Production and Distribution Products Data Capture.
+
+2.6 – Technical and Administrative Support Data Submittal
+The Project Team members for this Flood Risk Project that have responsibilities for activities
+included in this MAS shall comply with the data submittal requirements summarized below and in
+appropriate guidance.
+All supporting documentation for the activities in this MAS shall be submitted according to FEMA
+standards and requirements and will include a FEDD folder. Submittals must be made to the appropriate
+PTS for a review of required materials. The CTP will respond to requests from FEMA or its contractors
+for additional information and ensure that all required documents are included in the TSDN.
+
+68
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+If any issues arise that could affect the completion of an activity within the proposed scope or budget, the
+CTP shall complete and submit to FEMA a Special Problem Report (SPR) as soon as possible after the
+issue is identified. The SPR describes the issue and proposes possible resolutions. For additional
+information on SPRs, consult the FEMA Regional Office.
+Information supporting FEMA standards and requirements regarding the TSDN and FEDD file may be
+found in the “Technical Reference: Data Capture” document and other associated guidance documents.
+Table 2.1: TSDN Section Mapping Activities
+
+Mapping
+Information
+
+Miscellaneous
+Reference
+X
+
+Independent
+QA/QC:
+Discovery Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Survey Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Independent
+QA/QC: Survey
+Data Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+New/Existing
+Topographic Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Independent
+QA/QC:
+New/Existing
+Topographic Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Terrain Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Draft FIS Report
+
+X
+
+Key to Transect
+Labeling
+
+X
+
+Key to CrossSection Labeling
+
+X
+
+Hydraulic
+Analyses
+
+General
+Correspondence
+
+X
+
+Engineering
+Analyses
+
+Meeting
+Minutes/ Reports
+
+X
+
+Hydrologic
+Analyses
+
+Telephone
+Conversation
+
+Discovery Data
+Capture
+
+Mapping
+Activities
+
+General
+Documentation
+
+Change Requests
+
+TSDN Section
+
+69
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Base Map Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Independent
+QA/QC: Base
+Map Data Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Hydrology Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Independent
+QA/QC:
+Hydrology Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Hydraulics Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Independent
+QA/QC:
+Hydraulics Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Coastal Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Independent
+QA/QC: Coastal
+Data Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Levee Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Hydraulic
+Analyses
+
+Miscellaneous
+Reference
+
+X
+
+Mapping
+Information
+
+X
+
+Draft FIS Report
+
+X
+
+Key to Transect
+Labeling
+
+X
+
+Key to CrossSection Labeling
+
+General
+Correspondence
+
+X
+
+Engineering
+Analyses
+
+Meeting
+Minutes/ Reports
+
+X
+
+Hydrologic
+Analyses
+
+Telephone
+Conversation
+
+Independent
+QA/QC:
+Topographic Data
+Capture
+
+Mapping
+Activities
+
+General
+Documentation
+
+Change Requests
+
+TSDN Section
+
+70
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+X
+
+X
+
+LAMP Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Independent
+QA/QC: LAMP
+Data Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Floodplain
+Mapping Data
+Capture
+Independent
+QA/QC:
+Floodplain
+Mapping Data
+Capture
+Draft DFIRM
+Database Capture
+Independent
+QA/QC: Draft
+DFIRM Database
+Capture
+Flood Risk
+Products Data
+Capture
+Independent
+QA/QC of Flood
+Risk Products
+Data Capture
+Produce
+Preliminary
+Products Data
+Capture
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+71
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Miscellaneous
+Reference
+
+X
+
+Mapping
+Information
+
+X
+
+Engineering
+Analyses
+
+Draft FIS Report
+
+Hydrologic
+Analyses
+
+X
+
+Key to Transect
+Labeling
+
+General
+Correspondence
+
+X
+
+Key to CrossSection Labeling
+
+Meeting
+Minutes/ Reports
+
+X
+
+Hydraulic
+Analyses
+
+Telephone
+Conversation
+
+Independent
+QA/QC: Levee
+Data Capture
+
+Mapping
+Activities
+
+General
+Documentation
+
+Change Requests
+
+TSDN Section
+
+Mapping
+Information
+
+Miscellaneous
+Reference
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+
+Draft FIS Report
+
+X
+
+Key to Transect
+Labeling
+
+X
+
+Key to CrossSection Labeling
+
+X
+
+Hydraulic
+Analyses
+
+X
+
+Engineering
+Analyses
+
+X
+
+Hydrologic
+Analyses
+
+General
+Correspondence
+
+Due Process
+Management
+
+Meeting
+Minutes/ Reports
+
+Independent
+QA/QC:
+Preliminary
+Products Data
+Capture
+Distribute
+Preliminary
+Products
+
+Telephone
+Conversation
+
+Mapping
+Activities
+
+Change Requests
+
+General
+Documentation
+
+TSDN Section
+
+Event Data
+Capture
+Final Mapping
+Products
+Management
+
+Certifications
+Data Capture
+
+•
+
+Data Capture: Please refer to the current “Technical Reference: Data Capture” document, located
+at https://www.fema.gov/media-library/assets/documents/34519, for instructions on certifications.
+Generally, each Data Capture task includes certification forms and a project narrative. Mapping
+Partners should complete and submit only one Certification of Completeness and/or one
+Certification of Compliance form when the task is complete.
+
+Perform Field Surveys and Develop Topographic Data
+A Registered Professional Engineer or Licensed Land Surveyor shall provide an accuracy statement for
+field surveys and/or topographic data used and shall certify these data meet the accuracy statement
+provided. Data accuracy should be stated used the Federal Geographic Data Committee National
+Standards for Spatial Data Accuracy, but the American Society for Photogrammetry and Remote Sensing
+accuracy reporting standards are acceptable.
+72
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+Prepare Base Map
+
+•
+•
+
+•
+
+A community official or responsible party shall provide written certification that the digital data
+meet FEMA minimum standards and specifications.
+The CTP shall provide documentation that the digital base map can be used by FEMA and freely
+made available to the public. Please note that uploading Base Map data to the MIP does not
+constitute agreement that the digital base map can be used by FEMA. Documentation that the
+digital base map can be used by FEMA is still required.
+Certifications are required at the time the intermediate or final data is submitted.
+
+Develop Hydrologic Data, Develop Hydraulic Data, Perform Coastal Analysis, and Perform
+Floodplain Mapping
+
+•
+•
+•
+
+A Registered Professional Engineer shall certify hydrologic and hydraulic and coastal analyses
+and data in accordance with 44 CFR 65.6(f).
+Any levee systems to be accredited will be certified by the levee owner or other appropriate entity
+in accordance with 44 CFR 65.10.
+Certifications are required at the time the intermediate or final data is submitted.
+
+2.7 – Technical Assistance and Resources
+Project Team members may obtain copies of FEMA-issued LOMCs, archived engineering backup data,
+and data collected as part of the CNMS process from FEMA and/or your Regional Project Officer.
+General technical and programmatic information can be downloaded from the FEMA website at
+https://www.fema.gov/cooperating-technical-partners-program. Specific technical and programmatic
+support may be provided through FEMA and/or its contractor; such assistance should be requested
+through the FEMA Project Officer specified in Section 12 – Points of Contact.
+Project Team members also may consult with the FEMA Regional Project Officer to request support in
+the areas of selection of data sources, digital data accuracy standards, assessment of vertical data
+accuracy, data collection methods or subcontractors, and GIS-based engineering and modeling training.
+Please contact the region to obtain the most recent version of the Risk MAP timeline.
+Assistance with the MIP may be requested at FEMA-RiskMAP-ITHelp@fema.dhs.gov.
+
+73
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+AUTHORIZED REPRESENTATIVE SIGNATURES
+Each party has caused this MAS to be executed by its duly authorized representative.
+
+Glenn Heistand
+Project Manager
+Illinois State Water Survey
+
+08/09/2021
+Date
+
+John Wethington
+Regional Project Officer
+Federal Emergency Management Agency, Region 5
+
+Date
+
+Julia McCarthy
+Risk Analysis Branch Chief
+Federal Emergency Management Agency, Region 5
+
+Date
+
+Mary Beth Caruso
+Mitigation Division Director
+Federal Emergency Management Agency, Region 5
+
+Date
+
+74
+FEMA Region 5 FY21 Flood Risk Project MAS Template Version 2.0
+
+MAS No. ISWS21-03
+
+
